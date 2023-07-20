@@ -1,0 +1,16 @@
+entity\Ingredient$IngredientBuilder.class
+entity\Restaurant$RestaurantBuilder.class
+entity\Employee$EmployeeBuilder.class
+entity\Employee.class
+entity\Restaurant.class
+entity\Supplier$SupplierBuilder.class
+entity\MenuItem$MenuItemBuilder.class
+entity\Order$OrderBuilder.class
+entity\SupplierIngredient$SupplierIngredientBuilder.class
+entity\Ingredient.class
+entity\OrderDetails$OrderDetailsBuilder.class
+entity\Order.class
+entity\SupplierIngredient.class
+entity\MenuItem.class
+entity\Supplier.class
+entity\OrderDetails.class
