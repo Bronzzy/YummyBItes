@@ -1,5 +1,8 @@
 package com.dhbinh.yummybites.restaurant.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalTimeDeserializer;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -31,9 +34,13 @@ public class Restaurant {
     @Column(nullable = false)
     private String phone;
 
+    @JsonDeserialize(using = LocalTimeDeserializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm:ss ")
     @Column(nullable = false)
     private LocalTime openHour;
 
+    @JsonDeserialize(using = LocalTimeDeserializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm:ss ")
     @Column(nullable = false)
     private LocalTime closingHour;
 }

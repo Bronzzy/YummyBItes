@@ -2,6 +2,7 @@ package com.dhbinh.yummybites.restaurant.controller;
 
 import com.dhbinh.yummybites.restaurant.service.RestaurantService;
 import com.dhbinh.yummybites.restaurant.service.model.RestaurantDTO;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -22,8 +23,13 @@ public class RestaurantResource {
     @Produces({MediaType.APPLICATION_JSON})
     @Consumes({MediaType.APPLICATION_JSON})
     public Response create(RestaurantDTO restaurantDTO){
+
         RestaurantDTO createdRestaurant = restaurantService.create(restaurantDTO);
+
         return Response.created(URI.create("restaurants/" + createdRestaurant.getName()))
-                .entity(createdRestaurant).status(Response.Status.CREATED).build();
+                .entity(createdRestaurant)
+                .status(Response.Status.CREATED)
+                .build();
     }
+
 }

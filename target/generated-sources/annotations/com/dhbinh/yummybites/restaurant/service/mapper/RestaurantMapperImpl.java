@@ -9,28 +9,11 @@ import javax.enterprise.context.ApplicationScoped;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-07-28T17:38:38+0700",
-    comments = "version: 1.5.2.Final, compiler: javac, environment: Java 11.0.18 (Oracle Corporation)"
+    date = "2023-07-30T23:43:42+0700",
+    comments = "version: 1.5.2.Final, compiler: javac, environment: Java 11.0.17 (Oracle Corporation)"
 )
 @ApplicationScoped
 public class RestaurantMapperImpl implements RestaurantMapper {
-
-    @Override
-    public RestaurantDTO toDTO(Restaurant entity) {
-        if ( entity == null ) {
-            return null;
-        }
-
-        RestaurantDTO.RestaurantDTOBuilder restaurantDTO = RestaurantDTO.builder();
-
-        restaurantDTO.name( entity.getName() );
-        restaurantDTO.address( entity.getAddress() );
-        restaurantDTO.phone( entity.getPhone() );
-        restaurantDTO.openHour( entity.getOpenHour() );
-        restaurantDTO.closingHour( entity.getClosingHour() );
-
-        return restaurantDTO.build();
-    }
 
     @Override
     public List<RestaurantDTO> toDTOList(List<Restaurant> entityList) {
@@ -75,5 +58,22 @@ public class RestaurantMapperImpl implements RestaurantMapper {
         }
 
         return list;
+    }
+
+    @Override
+    public RestaurantDTO toDTO(Restaurant entity) {
+        if ( entity == null ) {
+            return null;
+        }
+
+        RestaurantDTO.RestaurantDTOBuilder restaurantDTO = RestaurantDTO.builder();
+
+        restaurantDTO.openHour( entity.getOpenHour() );
+        restaurantDTO.closingHour( entity.getClosingHour() );
+        restaurantDTO.name( entity.getName() );
+        restaurantDTO.address( entity.getAddress() );
+        restaurantDTO.phone( entity.getPhone() );
+
+        return restaurantDTO.build();
     }
 }

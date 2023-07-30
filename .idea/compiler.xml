@@ -20,5 +20,8 @@
         <module name="YummyBites" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="YummyBites-EE" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>
