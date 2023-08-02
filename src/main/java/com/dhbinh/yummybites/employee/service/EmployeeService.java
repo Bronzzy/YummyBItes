@@ -14,15 +14,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class EmployeeService {
 
+    private final EmployeeMapper employeeMapper;
     @Autowired
     private EmployeeRepository employeeRepository;
-
-    private final EmployeeMapper employeeMapper;
-
     @Autowired
     private RestaurantService restaurantService;
 
-    public EmployeeDTO createEmployee(EmployeeDTO employeeDTO){
+    public EmployeeDTO createEmployee(EmployeeDTO employeeDTO) {
         Employee employee = Employee.builder()
                 .firstName(employeeDTO.getFirstName())
                 .lastName(employeeDTO.getLastName())

@@ -2,18 +2,11 @@ package com.dhbinh.yummybites.employee.service.dto;
 
 import com.dhbinh.yummybites.employee.entity.RoleEnum;
 import com.dhbinh.yummybites.employee.entity.StatusEnum;
-import com.dhbinh.yummybites.restaurant.entity.Restaurant;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.Table;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Pattern;
 
@@ -29,7 +22,6 @@ public class EmployeeDTO {
     @Pattern(regexp = "^[^0-9]*$", message = "Name cannot contain number")
     private String firstName;
 
-
     @Pattern(regexp = "^[^0-9]*$", message = "Name cannot contain number")
     private String lastName;
 
@@ -40,7 +32,7 @@ public class EmployeeDTO {
     @Pattern(regexp = "^[0-9]+$", message = "Phone number must contain only numbers")
     private String phone;
 
-    @Min(value = 20000)
+    @Min(value = 20000, message = "Salary must be greater than 20000")
     private Double baseSalary;
 
     @Pattern(regexp = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$", message = "Not a valid email format")

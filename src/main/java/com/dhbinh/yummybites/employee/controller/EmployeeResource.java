@@ -22,7 +22,7 @@ public class EmployeeResource {
     private EmployeeService employeeService;
 
     @PostMapping
-    public ResponseEntity<EmployeeDTO> createEmployee(@Valid @RequestBody EmployeeDTO employeeDTO){
+    public ResponseEntity<EmployeeDTO> createEmployee(@Valid @RequestBody EmployeeDTO employeeDTO) {
         EmployeeDTO dto = employeeService.createEmployee(employeeDTO);
         return ResponseEntity.created(URI.create("/api/employees" + dto.getId())).body(dto);
     }

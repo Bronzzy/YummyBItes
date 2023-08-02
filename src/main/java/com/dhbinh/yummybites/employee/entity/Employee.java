@@ -1,23 +1,9 @@
 package com.dhbinh.yummybites.employee.entity;
 
 import com.dhbinh.yummybites.restaurant.entity.Restaurant;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Pattern;
 
@@ -34,6 +20,7 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
     @Column
     @Pattern(regexp = "^[^0-9]*$")
     private String firstName;
@@ -46,7 +33,6 @@ public class Employee {
     private String address;
 
     @Column
-    @Pattern(regexp = "^[0-9]+$")
     private String phone;
 
     @Column

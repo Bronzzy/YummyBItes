@@ -9,6 +9,6 @@ import org.mapstruct.ReportingPolicy;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface EmployeeMapper extends BaseMapper<Employee, EmployeeDTO> {
-    @Mapping(target = "restaurantName",source = "restaurant.name")
+    @Mapping(target = "restaurantName", source = "restaurant.name")
     EmployeeDTO toDTO(Employee employee);
 }

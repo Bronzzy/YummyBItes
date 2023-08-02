@@ -1,8 +1,6 @@
 package com.dhbinh.yummybites.base.exception;
 
 import com.dhbinh.yummybites.restaurant.entity.Restaurant;
-import org.hibernate.PropertyValueException;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -17,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestControllerAdvice
-public class GlobalExceptionHandLing extends RuntimeException {
+public class GlobalExceptionHandling extends RuntimeException {
 
     @ExceptionHandler(ValidationException.class)
     public ResponseEntity<Object> RuntimeException(ValidationException exception,

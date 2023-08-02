@@ -1,6 +1,5 @@
 package com.dhbinh.yummybites.restaurant.service;
 
-import com.dhbinh.yummybites.base.exception.GlobalExceptionHandLing;
 import com.dhbinh.yummybites.base.exception.InputValidationException;
 import com.dhbinh.yummybites.restaurant.entity.Restaurant;
 import com.dhbinh.yummybites.restaurant.repository.RestaurantRepository;
@@ -14,12 +13,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class RestaurantService {
 
+    private final RestaurantMapper restaurantMapper;
     @Autowired
     private RestaurantRepository restaurantRepository;
 
-    private final RestaurantMapper restaurantMapper;
-
-    public RestaurantDTO createRestaurant(RestaurantDTO restaurantDTO){
+    public RestaurantDTO createRestaurant(RestaurantDTO restaurantDTO) {
 
         Restaurant restaurant = Restaurant.builder()
                 .name(restaurantDTO.getName())
@@ -32,7 +30,7 @@ public class RestaurantService {
         return restaurantMapper.toDTO(restaurantRepository.save(restaurant));
     }
 
-    public Restaurant findByName (String name){
+    public Restaurant findByName(String name) {
         return restaurantRepository.findByName(name)
                 .orElseThrow(() -> new InputValidationException("Restaurant not found"));
     }

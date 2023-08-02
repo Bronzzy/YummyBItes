@@ -2,7 +2,7 @@ package com.dhbinh.yummybites.base.service.mapper;
 
 import java.util.List;
 
-public interface BaseMapper <E, D>{
+public interface BaseMapper<E, D> {
 
     D toDTO(E entity);
 
