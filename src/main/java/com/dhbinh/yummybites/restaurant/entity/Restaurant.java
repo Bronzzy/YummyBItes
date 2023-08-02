@@ -1,8 +1,6 @@
 package com.dhbinh.yummybites.restaurant.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalTimeDeserializer;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -11,8 +9,11 @@ import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
 import java.time.LocalTime;
 
 @Entity
@@ -25,6 +26,9 @@ import java.time.LocalTime;
 public class Restaurant {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     @Column(nullable = false)
     private String name;
 
@@ -32,15 +36,12 @@ public class Restaurant {
     private String address;
 
     @Column(nullable = false)
+    @Pattern(regexp = "^[0-9]+$")
     private String phone;
 
-    @JsonDeserialize(using = LocalTimeDeserializer.class)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm:ss ")
     @Column(nullable = false)
     private LocalTime openHour;
 
-    @JsonDeserialize(using = LocalTimeDeserializer.class)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm:ss ")
     @Column(nullable = false)
     private LocalTime closingHour;
 }

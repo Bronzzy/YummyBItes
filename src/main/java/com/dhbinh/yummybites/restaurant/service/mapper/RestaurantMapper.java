@@ -1,17 +1,13 @@
 package com.dhbinh.yummybites.restaurant.service.mapper;
 
-import com.dhbinh.yummybites.base.mapper.BaseMapper;
-import com.dhbinh.yummybites.restaurant.entity.Restaurant;
-import com.dhbinh.yummybites.restaurant.service.model.RestaurantDTO;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.NullValuePropertyMappingStrategy;
 
-@Mapper(componentModel = "cdi", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+import com.dhbinh.yummybites.base.service.mapper.BaseMapper;
+import com.dhbinh.yummybites.restaurant.entity.Restaurant;
+import com.dhbinh.yummybites.restaurant.service.dto.RestaurantDTO;
+import org.mapstruct.Mapper;
+import org.mapstruct.ReportingPolicy;
+
+@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface RestaurantMapper extends BaseMapper<Restaurant, RestaurantDTO> {
 
-    @Override
-    @Mapping(source = "openHour", target = "openHour", dateFormat = "HH:mm:ss")
-    @Mapping(source = "closingHour", target = "closingHour", dateFormat = "HH:mm:ss")
-    RestaurantDTO toDTO(Restaurant entity);
 }

@@ -1,35 +1,39 @@
 package com.dhbinh.yummybites.restaurant.controller;
 
-import com.dhbinh.yummybites.restaurant.service.RestaurantService;
-import com.dhbinh.yummybites.restaurant.service.model.RestaurantDTO;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
-import javax.inject.Inject;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
+import com.dhbinh.yummybites.restaurant.entity.Restaurant;
+import com.dhbinh.yummybites.restaurant.service.RestaurantService;
+import com.dhbinh.yummybites.restaurant.service.dto.RestaurantDTO;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import javax.validation.Valid;
 import java.net.URI;
 
-@Path("/restaurants")
+@RestController
+@RequiredArgsConstructor
+@RequestMapping(value = "/api/restaurants")
 public class RestaurantResource {
 
-    @Inject
+    @Autowired
     private RestaurantService restaurantService;
 
-    @POST
-    @Produces({MediaType.APPLICATION_JSON})
-    @Consumes({MediaType.APPLICATION_JSON})
-    public Response create(RestaurantDTO restaurantDTO){
-
-        RestaurantDTO createdRestaurant = restaurantService.create(restaurantDTO);
-
-        return Response.created(URI.create("restaurants/" + createdRestaurant.getName()))
-                .entity(createdRestaurant)
-                .status(Response.Status.CREATED)
-                .build();
+    @PostMapping
+    public ResponseEntity<RestaurantDTO> createRestaurant(@Valid @RequestBody RestaurantDTO restaurantDTO){
+        RestaurantDTO dto = restaurantService.createRestaurant(restaurantDTO);
+        return ResponseEntity.created(URI.create("/api/restaurants" + dto.getId())).body(dto);
     }
 
+    @GetMapping(value = "/find-by-name")
+    public ResponseEntity<Restaurant> findByName(@RequestParam("name") String name){
+        return ResponseEntity.ok(restaurantService.findByName(name));
+    }
 }

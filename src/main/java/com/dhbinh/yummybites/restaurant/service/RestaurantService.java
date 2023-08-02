@@ -1,30 +1,39 @@
 package com.dhbinh.yummybites.restaurant.service;
 
-import com.dhbinh.yummybites.restaurant.dao.RestaurantDAO;
+import com.dhbinh.yummybites.base.exception.GlobalExceptionHandLing;
+import com.dhbinh.yummybites.base.exception.InputValidationException;
 import com.dhbinh.yummybites.restaurant.entity.Restaurant;
+import com.dhbinh.yummybites.restaurant.repository.RestaurantRepository;
+import com.dhbinh.yummybites.restaurant.service.dto.RestaurantDTO;
 import com.dhbinh.yummybites.restaurant.service.mapper.RestaurantMapper;
-import com.dhbinh.yummybites.restaurant.service.model.RestaurantDTO;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import javax.ejb.Stateless;
-import javax.inject.Inject;
-
-@Stateless
+@RequiredArgsConstructor
+@Service
 public class RestaurantService {
 
-    @Inject
-    private RestaurantDAO restaurantDAO;
+    @Autowired
+    private RestaurantRepository restaurantRepository;
 
-    @Inject
-    private RestaurantMapper restaurantMapper;
+    private final RestaurantMapper restaurantMapper;
 
-    public RestaurantDTO create(RestaurantDTO restaurantDTO) {
+    public RestaurantDTO createRestaurant(RestaurantDTO restaurantDTO){
+
         Restaurant restaurant = Restaurant.builder()
                 .name(restaurantDTO.getName())
-                .phone(restaurantDTO.getPhone())
                 .address(restaurantDTO.getAddress())
+                .phone(restaurantDTO.getPhone())
                 .openHour(restaurantDTO.getOpenHour())
                 .closingHour(restaurantDTO.getClosingHour())
                 .build();
-        return restaurantMapper.toDTO(restaurantDAO.create(restaurant));
+
+        return restaurantMapper.toDTO(restaurantRepository.save(restaurant));
+    }
+
+    public Restaurant findByName (String name){
+        return restaurantRepository.findByName(name)
+                .orElseThrow(() -> new InputValidationException("Restaurant not found"));
     }
 }

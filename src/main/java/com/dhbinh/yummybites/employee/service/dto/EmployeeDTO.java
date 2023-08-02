@@ -1,7 +1,8 @@
-package com.dhbinh.yummybites.employee.entity;
+package com.dhbinh.yummybites.employee.service.dto;
 
+import com.dhbinh.yummybites.employee.entity.RoleEnum;
+import com.dhbinh.yummybites.employee.entity.StatusEnum;
 import com.dhbinh.yummybites.restaurant.entity.Restaurant;
-import com.fasterxml.jackson.annotation.JsonCreator;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -12,61 +13,44 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Pattern;
 
-@Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(name = "employee")
-public class Employee {
+public class EmployeeDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
-    @Pattern(regexp = "^[^0-9]*$")
+    @Pattern(regexp = "^[^0-9]*$", message = "Name cannot contain number")
     private String firstName;
 
-    @Column
-    @Pattern(regexp = "^[^0-9]*$")
+
+    @Pattern(regexp = "^[^0-9]*$", message = "Name cannot contain number")
     private String lastName;
 
     @Column
     private String address;
 
     @Column
-    @Pattern(regexp = "^[0-9]+$")
+    @Pattern(regexp = "^[0-9]+$", message = "Phone number must contain only numbers")
     private String phone;
 
-    @Column
     @Min(value = 20000)
     private Double baseSalary;
 
-    @Column
-    @Pattern(regexp = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$")
+    @Pattern(regexp = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$", message = "Not a valid email format")
     private String email;
 
-
-    @Column
     @Enumerated(EnumType.STRING)
     private RoleEnum role;
 
-    @Column
     @Enumerated(EnumType.STRING)
     private StatusEnum status;
 
-    @ManyToOne
-    @JoinColumn(name = "restaurant", nullable = false)
-    private Restaurant restaurant;
+    private String restaurantName;
 }
