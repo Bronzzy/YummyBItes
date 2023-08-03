@@ -26,7 +26,7 @@ public class Restaurant {
     private String address;
 
     @Column(nullable = false)
-    @Pattern(regexp = "^[0-9]+$")
+    @Pattern(regexp = "^[0-9]+$", message = "Phone number must contain only numbers")
     private String phone;
 
     @Column(nullable = false)

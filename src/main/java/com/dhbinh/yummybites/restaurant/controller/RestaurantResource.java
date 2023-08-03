@@ -1,18 +1,22 @@
 package com.dhbinh.yummybites.restaurant.controller;
 
 
+import com.dhbinh.yummybites.base.exception.InputValidationException;
 import com.dhbinh.yummybites.restaurant.entity.Restaurant;
 import com.dhbinh.yummybites.restaurant.service.RestaurantService;
 import com.dhbinh.yummybites.restaurant.service.dto.RestaurantDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.net.URI;
 
 @RestController
+@Validated
 @RequestMapping(value = "/api/restaurants")
 public class RestaurantResource {
 
@@ -25,6 +29,8 @@ public class RestaurantResource {
         return ResponseEntity.created(URI.create("/api/restaurants" + dto.getID())).body(dto);
     }
 
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     @GetMapping(value = "/find-by-name")
     public ResponseEntity<Restaurant> findByName(@RequestParam("name") String name) {
         return ResponseEntity.ok(restaurantService.findByName(name));

@@ -1,5 +1,6 @@
 package com.dhbinh.yummybites.employee.service.dto;
 
+import com.dhbinh.yummybites.base.exception.ErrorMessage;
 import com.dhbinh.yummybites.employee.entity.RoleEnum;
 import com.dhbinh.yummybites.employee.entity.StatusEnum;
 import lombok.AllArgsConstructor;
@@ -8,11 +9,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
 import javax.persistence.Column;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 @Getter
@@ -24,22 +26,25 @@ public class EmployeeDTO {
 
     private Long ID;
 
-    @Pattern(regexp = "^[^0-9]*$", message = "Name cannot contain number")
+    @NotBlank(message = ErrorMessage.EMPLOYEE_FIRST_NAME_NULL_OR_BLANK)
+    @Pattern(regexp = "^[^0-9]*$", message = ErrorMessage.EMPLOYEE_NAME_CONTAIN_NUMBER)
     private String firstName;
 
-    @Pattern(regexp = "^[^0-9]*$", message = "Name cannot contain number")
+    @NotBlank(message = ErrorMessage.EMPLOYEE_FIRST_NAME_NULL_OR_BLANK)
+    @Pattern(regexp = "^[^0-9]*$", message = ErrorMessage.EMPLOYEE_NAME_CONTAIN_NUMBER)
     private String lastName;
 
-    @Column
+    @NotBlank(message = ErrorMessage.EMPLOYEE_ADDRESS_NULL_OR_BLANK)
     private String address;
 
-    @Column
-    @Pattern(regexp = "^[0-9]+$", message = "Phone number must contain only numbers")
+    @NotBlank(message = ErrorMessage.EMPLOYEE_PHONE_NULL_OR_BLANK)
+    @Pattern(regexp = "^[0-9]+$", message = ErrorMessage.EMPLOYEE_PHONE_WRONG_FORMAT)
     private String phone;
 
-    @Min(value = 20000, message = "Salary must be greater than 20000")
-    private Integer baseSalary;
+    @Min(value = 20000, message = ErrorMessage.EMPLOYEE_BASE_SALARY_LESS_THAN_20000)
+    private Double baseSalary;
 
+    @NotBlank
     @Pattern(regexp = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$", message = "Not a valid email format")
     private String email;
 
@@ -49,5 +54,6 @@ public class EmployeeDTO {
     @Enumerated(EnumType.STRING)
     private StatusEnum status;
 
+    @NotBlank
     private String restaurantName;
 }

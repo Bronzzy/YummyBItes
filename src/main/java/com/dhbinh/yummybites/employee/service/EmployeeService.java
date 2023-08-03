@@ -1,5 +1,6 @@
 package com.dhbinh.yummybites.employee.service;
 
+import com.dhbinh.yummybites.base.exception.ErrorMessage;
 import com.dhbinh.yummybites.base.exception.InputValidationException;
 import com.dhbinh.yummybites.employee.entity.Employee;
 import com.dhbinh.yummybites.employee.entity.StatusEnum;
@@ -40,14 +41,16 @@ public class EmployeeService {
     }
 
     public EmployeeDTO deleteEmployee(Long ID) {
-        Employee employee = employeeRepository.findById(ID).orElseThrow(() -> new InputValidationException("Employee not found"));
+        Employee employee = employeeRepository.findById(ID).orElseThrow(() -> new InputValidationException(ErrorMessage.KEY_RESTAURANT_NOT_FOUND,
+                ErrorMessage.RESTAURANT_NOT_FOUND));
         employee.setStatus(StatusEnum.STATUS_INACTIVE);
         return employeeMapper.toDTO(employee);
     }
 
     public EmployeeDTO findByID(Long ID){
-        return employeeMapper.toDTO((employeeRepository.findById(ID).
-                orElseThrow(() -> new InputValidationException("Employee not found"))));
+        return employeeMapper.toDTO((employeeRepository.findById(ID)).
+                orElseThrow(() -> new InputValidationException(ErrorMessage.KEY_RESTAURANT_NOT_FOUND,
+                        ErrorMessage.RESTAURANT_NOT_FOUND)));
     }
 
 }
