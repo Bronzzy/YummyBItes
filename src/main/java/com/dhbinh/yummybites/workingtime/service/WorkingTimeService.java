@@ -1,5 +1,6 @@
 package com.dhbinh.yummybites.workingtime.service;
 
+import com.dhbinh.yummybites.employee.entity.Employee;
 import com.dhbinh.yummybites.employee.service.EmployeeService;
 import com.dhbinh.yummybites.employee.service.dto.EmployeeDTO;
 import com.dhbinh.yummybites.employee.service.mapper.EmployeeMapper;
@@ -20,6 +21,7 @@ public class WorkingTimeService {
     @Autowired
     private WorkingTimeRepository workingTimeRepository;
 
+    private final int WORKING_HOUR = 8;
     @Autowired
     private EmployeeService employeeService;
 
@@ -27,7 +29,7 @@ public class WorkingTimeService {
 
     private final WorkingTimeMapper workingTimeMapper;
 
-    public WorkingTimeDTO checkin(Long ID){
+    public WorkingTimeDTO checkin(Long ID) {
         EmployeeDTO dto = employeeService.findByID(ID);
         WorkingTime workingTime = WorkingTime.builder()
                 .checkinHour(LocalDateTime.now())
@@ -37,11 +39,30 @@ public class WorkingTimeService {
         return workingTimeMapper.toDTO(workingTimeRepository.save(workingTime));
     }
 
-    public WorkingTimeDTO checkout(Long ID){
+    public WorkingTimeDTO checkout(Long ID) {
         EmployeeDTO dto = employeeService.findByID(ID);
         WorkingTime workingTime = workingTimeRepository.findByEmployee(employeeMapper.toEntity(dto));
         workingTime.setCheckoutHour(LocalDateTime.now());
 
         return workingTimeMapper.toDTO(workingTimeRepository.save(workingTime));
+    }
+
+    public String calculateWorkingTime(Long ID) {
+        Employee employee = employeeMapper.toEntity(employeeService.findByID(ID));
+        WorkingTime workingTime = workingTimeRepository.findByEmployee(employee);
+
+        if (isCheckinCheckoutInSameDay(workingTime)) {
+            double totalWorkingHour = workingTime.getCheckoutHour().getHour() - workingTime.getCheckinHour().getHour();
+            if (totalWorkingHour < WORKING_HOUR) {
+                return ("You're short " + (WORKING_HOUR - totalWorkingHour) + " hours.");
+            }
+        }
+        else {
+            System.out.println("You're short " + (WORKING_HOUR - totalWorkingHour) + " hours.");;
+        }
+    }
+
+    public boolean isCheckinCheckoutInSameDay(WorkingTime workingTime){
+        return workingTime.getCheckinHour().toLocalDate() == workingTime.getCheckoutHour().toLocalDate();
     }
 }

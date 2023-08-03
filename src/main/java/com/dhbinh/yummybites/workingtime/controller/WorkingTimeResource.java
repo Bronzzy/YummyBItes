@@ -4,6 +4,7 @@ import com.dhbinh.yummybites.workingtime.service.WorkingTimeService;
 import com.dhbinh.yummybites.workingtime.service.dto.WorkingTimeDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -28,5 +29,10 @@ public class WorkingTimeResource {
     @PutMapping(value = "{employee-id}")
     public ResponseEntity<WorkingTimeDTO> checkout(@PathVariable("employee-id") Long employeeID){
         return ResponseEntity.ok(workingTimeService.checkout(employeeID));
+    }
+
+    @GetMapping(value = "{employee-id}")
+    public ResponseEntity getWorkingTime(@PathVariable("employee-id") Long employeeID){
+        return ResponseEntity.ok(workingTimeService.calculateWorkingTime(employeeID));
     }
 }
