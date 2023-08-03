@@ -29,7 +29,7 @@ public class EmployeeResource {
     }
 
     @DeleteMapping(value = "/{employee-id}")
-    public ResponseEntity<EmployeeDTO> deleteEmployee(@PathVariable("employee-id") Long id) {
-        return ResponseEntity.ok(employeeService.deleteEmployee(id));
+    public ResponseEntity<EmployeeDTO> deleteEmployee(@PathVariable("employee-id") Long ID) {
+        return ResponseEntity.ok(employeeService.deleteEmployee(ID));
     }
 }

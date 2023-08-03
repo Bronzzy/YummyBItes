@@ -4,6 +4,7 @@ import com.dhbinh.yummybites.restaurant.entity.Restaurant;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Pattern;
 
@@ -37,7 +38,8 @@ public class Employee {
 
     @Column
     @Min(value = 20000)
-    private Integer baseSalary;
+    @Digits(fraction = 2, integer = 10)
+    private Double baseSalary;
 
     @Column
     @Pattern(regexp = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$")

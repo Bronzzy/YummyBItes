@@ -1,55 +1,67 @@
 package com.dhbinh.yummybites.base.exception;
 
-import com.dhbinh.yummybites.restaurant.entity.Restaurant;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.web.context.request.WebRequest;
 
-import javax.validation.ValidationException;
-import java.time.LocalDateTime;
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @RestControllerAdvice
 public class GlobalExceptionHandling extends RuntimeException {
 
-    @ExceptionHandler(ValidationException.class)
-    public ResponseEntity<Object> RuntimeException(ValidationException exception,
-                                                   WebRequest webRequest,
-                                                   BindingResult result) {
-        ResponseBody response = new ResponseBody();
-        response.setTimeStamp(LocalDateTime.now());
-        response.setMessageKey("ValidationException");
-
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public List<ResponseBody> handleMethodArgumentNotValidException(MethodArgumentNotValidException exception) {
+        List<ResponseBody> responseBodies = new ArrayList<>();
         List<String> errorMessages = new ArrayList<>();
+        BindingResult result = exception.getBindingResult();
         for (FieldError error : result.getFieldErrors()) {
-            errorMessages.add(error.getDefaultMessage());
+            ResponseBody responseBody = new ResponseBody
+                    (HttpStatus.BAD_REQUEST, ErrorMessage.errorKeyAndMessageMap().get(error.getDefaultMessage()), error.getDefaultMessage());
+            responseBodies.add(responseBody);
         }
-
-        response.setMessage(errorMessages);
-        return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+        return responseBodies;
     }
 
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(ConstraintViolationException.class)
+    public List<ResponseBody> handleConstraintViolationException(ConstraintViolationException exception) {
+        List<ResponseBody> responseBodies = new ArrayList<>();
+        List<String> errorMessages = new ArrayList<>();
+        Set<ConstraintViolation<?>> result = exception.getConstraintViolations();
+        for (ConstraintViolation<?> constraintViolation : result) {
+            ResponseBody responseBody = new ResponseBody
+                    (HttpStatus.BAD_REQUEST, ErrorMessage.errorKeyAndMessageMap().get(constraintViolation.getMessage()), constraintViolation.getMessage());
+            responseBodies.add(responseBody);
+        }
+        return responseBodies;
+    }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(MissingServletRequestParameterException.class)
+    public ResponseBody handleMissingServletRequestParameterException(MissingServletRequestParameterException exception) {
+        String message = "The parameter for " + exception.getParameterName() + " is missing";
+        return new ResponseBody(HttpStatus.BAD_REQUEST, ErrorMessage.KEY_MISSING_PARAMETER, message);
+    }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(InputValidationException.class)
-    public ResponseEntity<Object> InputValidationExceptions(InputValidationException exception,
-                                                            WebRequest webRequest) {
-        ResponseBody response = new ResponseBody();
-        response.setTimeStamp(LocalDateTime.now());
-        response.setMessageKey(Restaurant.class + ".NOT_FOUND");
-//        response.setMessage(exception.getMessage());
-        return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+    public ResponseBody handleInputValidationException(InputValidationException exception) {
+        return exception.getResponseBody();
     }
 
-    @ExceptionHandler(IllegalArgumentException.class)
-    public ResponseEntity<Object> IllegalArgumentException(IllegalArgumentException exception, WebRequest webRequest) {
-        ResponseBody response = new ResponseBody();
-        response.setTimeStamp(LocalDateTime.now());
-        response.setMessageKey(Restaurant.class + ".IllegalArgumentException");
-//        response.setMessage("IllegalArgumentException IllegalArgumentException");
-        return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseBody ResourceNotFoundException(ResourceNotFoundException exception) {
+        return exception.getResponseBody();
     }
 }

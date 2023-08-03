@@ -1,6 +1,8 @@
 package com.dhbinh.yummybites.restaurant.service;
 
+import com.dhbinh.yummybites.base.exception.ErrorMessage;
 import com.dhbinh.yummybites.base.exception.InputValidationException;
+import com.dhbinh.yummybites.base.exception.ResourceNotFoundException;
 import com.dhbinh.yummybites.restaurant.entity.Restaurant;
 import com.dhbinh.yummybites.restaurant.repository.RestaurantRepository;
 import com.dhbinh.yummybites.restaurant.service.dto.RestaurantDTO;
@@ -18,20 +20,21 @@ public class RestaurantService {
     private RestaurantRepository restaurantRepository;
 
     public RestaurantDTO createRestaurant(RestaurantDTO restaurantDTO) {
+            Restaurant restaurant = Restaurant.builder()
+                    .name(restaurantDTO.getName())
+                    .address(restaurantDTO.getAddress())
+                    .phone(restaurantDTO.getPhone())
+                    .openHour(restaurantDTO.getOpenHour())
+                    .closingHour(restaurantDTO.getClosingHour())
+                    .build();
 
-        Restaurant restaurant = Restaurant.builder()
-                .name(restaurantDTO.getName())
-                .address(restaurantDTO.getAddress())
-                .phone(restaurantDTO.getPhone())
-                .openHour(restaurantDTO.getOpenHour())
-                .closingHour(restaurantDTO.getClosingHour())
-                .build();
+            return restaurantMapper.toDTO(restaurantRepository.save(restaurant));
 
-        return restaurantMapper.toDTO(restaurantRepository.save(restaurant));
     }
 
     public Restaurant findByName(String name) {
         return restaurantRepository.findByName(name)
-                .orElseThrow(() -> new InputValidationException("Restaurant not found"));
+                .orElseThrow(() -> new ResourceNotFoundException
+                        (ErrorMessage.KEY_RESTAURANT_NOT_FOUND, ErrorMessage.RESTAURANT_NOT_FOUND));
     }
 }
