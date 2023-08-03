@@ -15,7 +15,7 @@ import java.time.LocalTime;
 @Builder
 public class RestaurantDTO {
 
-    private long id;
+    private Long ID;
 
     @NotBlank(message = "Name is required")
     private String name;

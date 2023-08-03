@@ -1,5 +1,6 @@
 package com.dhbinh.yummybites.employee.service;
 
+import com.dhbinh.yummybites.base.exception.InputValidationException;
 import com.dhbinh.yummybites.employee.entity.Employee;
 import com.dhbinh.yummybites.employee.entity.StatusEnum;
 import com.dhbinh.yummybites.employee.repository.EmployeeRepository;
@@ -14,11 +15,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class EmployeeService {
 
-    private final EmployeeMapper employeeMapper;
     @Autowired
     private EmployeeRepository employeeRepository;
+
     @Autowired
     private RestaurantService restaurantService;
+
+    private final EmployeeMapper employeeMapper;
 
     public EmployeeDTO createEmployee(EmployeeDTO employeeDTO) {
         Employee employee = Employee.builder()
@@ -34,6 +37,17 @@ public class EmployeeService {
                 .build();
 
         return employeeMapper.toDTO(employeeRepository.save(employee));
+    }
+
+    public EmployeeDTO deleteEmployee(Long ID) {
+        Employee employee = employeeRepository.findById(ID).orElseThrow(() -> new InputValidationException("Employee not found"));
+        employee.setStatus(StatusEnum.STATUS_INACTIVE);
+        return employeeMapper.toDTO(employee);
+    }
+
+    public EmployeeDTO findByID(Long ID){
+        return employeeMapper.toDTO((employeeRepository.findById(ID).
+                orElseThrow(() -> new InputValidationException("Employee not found"))));
     }
 
 }

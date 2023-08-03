@@ -13,7 +13,6 @@ import javax.validation.Valid;
 import java.net.URI;
 
 @RestController
-@RequiredArgsConstructor
 @RequestMapping(value = "/api/restaurants")
 public class RestaurantResource {
 
@@ -23,7 +22,7 @@ public class RestaurantResource {
     @PostMapping
     public ResponseEntity<RestaurantDTO> createRestaurant(@Valid @RequestBody RestaurantDTO restaurantDTO) {
         RestaurantDTO dto = restaurantService.createRestaurant(restaurantDTO);
-        return ResponseEntity.created(URI.create("/api/restaurants" + dto.getId())).body(dto);
+        return ResponseEntity.created(URI.create("/api/restaurants" + dto.getID())).body(dto);
     }
 
     @GetMapping(value = "/find-by-name")

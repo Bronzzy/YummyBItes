@@ -18,7 +18,7 @@ public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long ID;
 
 
     @Column
@@ -37,7 +37,7 @@ public class Employee {
 
     @Column
     @Min(value = 20000)
-    private Double baseSalary;
+    private Integer baseSalary;
 
     @Column
     @Pattern(regexp = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$")
