@@ -4,5 +4,5 @@ public enum RoleEnum {
 
     ROLE_OWNER,
     ROLE_WAITER,
-    ROLE_COOKER
+    ROLE_COOK
 }

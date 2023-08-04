@@ -24,11 +24,11 @@ public class RestaurantDTO {
     @NotBlank(message = ErrorMessage.RESTAURANT_NAME_NULL_OR_BLANK)
     private String name;
 
-    @NotBlank(message = ErrorMessage.RESTAURANT_ADDRESS_NULL_OR_BLANK)
+    @NotBlank(message = ErrorMessage.ADDRESS_NULL_OR_BLANK)
     private String address;
 
-    @NotBlank(message = ErrorMessage.RESTAURANT_PHONE_NULL_OR_BLANK)
-    @Pattern(regexp = "^[0-9]*$", message = ErrorMessage.RESTAURANT_PHONE_WRONG_FORMAT)
+    @NotBlank(message = ErrorMessage.PHONE_NULL_OR_BLANK)
+    @Pattern(regexp = "^[0-9]*$", message = ErrorMessage.PHONE_WRONG_FORMAT)
     private String phone;
 
     @NotNull

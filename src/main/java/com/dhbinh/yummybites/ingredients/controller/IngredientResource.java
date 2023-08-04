@@ -21,7 +21,7 @@ import java.net.URI;
 
 @RestController
 @Validated
-@RequestMapping(value = "/api/ingredients")
+@RequestMapping(value = "/ingredients")
 public class IngredientResource {
 
     @Autowired

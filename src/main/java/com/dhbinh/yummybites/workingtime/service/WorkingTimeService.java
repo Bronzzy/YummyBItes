@@ -51,15 +51,14 @@ public class WorkingTimeService {
         Employee employee = employeeMapper.toEntity(employeeService.findByID(ID));
         WorkingTime workingTime = workingTimeRepository.findByEmployee(employee);
 
+        String message = "";
         if (isCheckinCheckoutInSameDay(workingTime)) {
             double totalWorkingHour = workingTime.getCheckoutHour().getHour() - workingTime.getCheckinHour().getHour();
             if (totalWorkingHour < WORKING_HOUR) {
-                return ("You're short " + (WORKING_HOUR - totalWorkingHour) + " hours.");
+                message = ("You're short " + (WORKING_HOUR - totalWorkingHour) + " hours.");
             }
         }
-        else {
-            System.out.println("You're short " + (WORKING_HOUR - totalWorkingHour) + " hours.");;
-        }
+        return message;
     }
 
     public boolean isCheckinCheckoutInSameDay(WorkingTime workingTime){

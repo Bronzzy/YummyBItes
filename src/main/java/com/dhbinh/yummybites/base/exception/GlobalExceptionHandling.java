@@ -1,6 +1,7 @@
 package com.dhbinh.yummybites.base.exception;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -40,7 +41,9 @@ public class GlobalExceptionHandling extends RuntimeException {
         Set<ConstraintViolation<?>> result = exception.getConstraintViolations();
         for (ConstraintViolation<?> constraintViolation : result) {
             ResponseBody responseBody = new ResponseBody
-                    (HttpStatus.BAD_REQUEST, ErrorMessage.errorKeyAndMessageMap().get(constraintViolation.getMessage()), constraintViolation.getMessage());
+                    (HttpStatus.BAD_REQUEST,
+                            ErrorMessage.errorKeyAndMessageMap().get(constraintViolation.getMessage()),
+                            constraintViolation.getMessage());
             responseBodies.add(responseBody);
         }
         return responseBodies;
@@ -51,6 +54,14 @@ public class GlobalExceptionHandling extends RuntimeException {
     public ResponseBody handleMissingServletRequestParameterException(MissingServletRequestParameterException exception) {
         String message = "The parameter for " + exception.getParameterName() + " is missing";
         return new ResponseBody(HttpStatus.BAD_REQUEST, ErrorMessage.KEY_MISSING_PARAMETER, message);
+    }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseBody handleHttpMessageNotReadableException(HttpMessageNotReadableException exception){
+       return new ResponseBody(HttpStatus.BAD_REQUEST,
+               ErrorMessage.errorKeyAndMessageMap().get(ErrorMessage.ENUM_INVALID_VALUE),
+               ErrorMessage.ENUM_INVALID_VALUE);
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)

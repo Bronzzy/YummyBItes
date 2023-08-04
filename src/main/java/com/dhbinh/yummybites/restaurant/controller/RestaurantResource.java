@@ -1,11 +1,9 @@
 package com.dhbinh.yummybites.restaurant.controller;
 
 
-import com.dhbinh.yummybites.base.exception.InputValidationException;
 import com.dhbinh.yummybites.restaurant.entity.Restaurant;
 import com.dhbinh.yummybites.restaurant.service.RestaurantService;
 import com.dhbinh.yummybites.restaurant.service.dto.RestaurantDTO;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +15,7 @@ import java.net.URI;
 
 @RestController
 @Validated
-@RequestMapping(value = "/api/restaurants")
+@RequestMapping(value = "/restaurants")
 public class RestaurantResource {
 
     @Autowired
@@ -28,7 +26,6 @@ public class RestaurantResource {
         RestaurantDTO dto = restaurantService.createRestaurant(restaurantDTO);
         return ResponseEntity.created(URI.create("/api/restaurants" + dto.getID())).body(dto);
     }
-
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @GetMapping(value = "/find-by-name")

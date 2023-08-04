@@ -16,7 +16,7 @@ import javax.validation.Valid;
 import java.net.URI;
 
 @RestController
-@RequestMapping(value = "/api/employees")
+@RequestMapping(value = "/employees")
 public class EmployeeResource {
 
     @Autowired
