@@ -31,6 +31,8 @@ public class ErrorMessage {
     public static final String EMPLOYEE_BASE_SALARY_LESS_THAN_20000 = "Base Salary cannot be less than 20000";
     public static final String KEY_EMPLOYEE_BASE_SALARY_LESS_THAN_20000 = "exception.input.validation.base.salary.less.than.20000";
 
+    public static final String EMPLOYEE_ROLE_INVALID_VALUE = "Employee role can only be WAITER or COOK";
+    public static final String KEY_EMPLOYEE_ROLE_INVALID_VALUE = "exception.input.validation.employee.role.invalid.value";
 
     //INGREDIENTS
     public static final String INGREDIENT_NAME_NULL_OR_BLANK = "Ingredient name cannot be null or blank";
@@ -52,8 +54,27 @@ public class ErrorMessage {
     public static final String SUPPLIER_NAME_NULL_OR_BLANK = "Supplier name cannot be null or blank";
     public static final String KEY_SUPPLIER_NAME_NULL_OR_BLANK = "exception.input.validation.supplier.name.null.or.blank";
 
+    public static final String SUPPLIER_NOT_FOUND = "Supplier cannot be found";
+    public static final String KEY_SUPPLIER_NOT_FOUND = "exception.resource.not.found.supplier";
+
+    //MENU ITEMS
+    public static final String DESCRIPTION_NULL_OR_BLANK = "Description cannot be null or blank";
+    public static final String KEY_DESCRIPTION_NULL_OR_BLANK = "exception.input.validation.description.null.or.blank";
+
+    public static final String PRICE_LESS_THAN_ZERO = "Price cannot be less than 0";
+    public static final String KEY_PRICE_LESS_THAN_ZERO = "exception.input.validation.price.less.than.zero";
+
+    public static final String DISH_TYPE_NULL_OR_BLANK = "Dish type cannot be null or blank";
+    public static final String KEY_DISH_TYPE_NULL_OR_BLANK = "exception.input.validation.dish.type.null.or.blank";
+
+    public static final String DISH_TYPE_INVALID_VALUE = "Dish type can only be APPETIZERS, MAIN_DISH, DESSERTS or DRINKS";
+    public static final String KEY_DISH_TYPE_INVALID_VALUE = "exception.input.validation.dish.type.invalid.value";
+
     //UTILS
     public static final String KEY_MISSING_PARAMETER = "exception.missing.parameter";
+
+    public static final String NAME_NULL_OR_BLANK = "Name cannot be null or blank";
+    public static final String KEY_NAME_NULL_OR_BLANK = "exception.input.validation.name.null.or.blank";
 
     public static final String PHONE_WRONG_FORMAT = "Phone can only contains number";
     public static final String KEY_PHONE_WRONG_FORMAT = "exception.input.validation.phone.wrong.format";
@@ -73,7 +94,6 @@ public class ErrorMessage {
     public static final String ENUM_NULL_OR_BLANK = "Enum value cannot be null or blank";
     public static final String KEY_ENUM_NULL_OR_BLANK = "exception.input.validation.enum.null.or.blank";
 
-
     public static final String ENUM_INVALID_VALUE = "Enum value is invalid";
     public static final String KEY_ENUM_INVALID_VALUE = "exception.input.validation.enum.invalid.value";
 
@@ -89,7 +109,7 @@ public class ErrorMessage {
         errorMap.put(EMPLOYEE_FIRST_NAME_NULL_OR_BLANK, KEY_EMPLOYEE_NAME_NULL_OR_BLANK);
         errorMap.put(EMPLOYEE_LAST_NAME_NULL_OR_BLANK, KEY_EMPLOYEE_LAST_NAME_NULL_OR_BLANK);
         errorMap.put(EMPLOYEE_NAME_CONTAIN_NUMBER, KEY_EMPLOYEE_NAME_CONTAIN_NUMBER);
-
+        errorMap.put(EMPLOYEE_ROLE_INVALID_VALUE, KEY_EMPLOYEE_ROLE_INVALID_VALUE);
         errorMap.put(EMPLOYEE_BASE_SALARY_LESS_THAN_20000, KEY_EMPLOYEE_BASE_SALARY_LESS_THAN_20000);
 
         //INGREDIENTS
@@ -100,7 +120,14 @@ public class ErrorMessage {
         //SUPPLIER
         errorMap.put(SUPPLIER_NAME_NULL_OR_BLANK, KEY_SUPPLIER_NAME_NULL_OR_BLANK);
 
+        //MENU ITEMS
+        errorMap.put(DESCRIPTION_NULL_OR_BLANK, KEY_DESCRIPTION_NULL_OR_BLANK);
+        errorMap.put(PRICE_LESS_THAN_ZERO, KEY_PRICE_LESS_THAN_ZERO);
+        errorMap.put(DISH_TYPE_NULL_OR_BLANK,KEY_DISH_TYPE_NULL_OR_BLANK);
+        errorMap.put(DISH_TYPE_INVALID_VALUE, KEY_DISH_TYPE_INVALID_VALUE);
+
         //UTILS
+        errorMap.put(NAME_NULL_OR_BLANK, KEY_NAME_NULL_OR_BLANK);
         errorMap.put(PHONE_NULL_OR_BLANK, KEY_PHONE_NULL_OR_BLANK);
         errorMap.put(PHONE_WRONG_FORMAT, KEY_PHONE_WRONG_FORMAT);
         errorMap.put(ADDRESS_NULL_OR_BLANK, KEY_ADDRESS_NULL_OR_BLANK);

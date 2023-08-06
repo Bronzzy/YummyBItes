@@ -21,7 +21,6 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ID;
 
-
     @Column
     @Pattern(regexp = "^[^0-9]*$")
     private String firstName;
@@ -34,21 +33,16 @@ public class Employee {
     private String address;
 
     @Column
+    @Pattern(regexp = "^[0-9]+$")
     private String phone;
 
     @Column
     @Min(value = 20000)
-    @Digits(fraction = 2, integer = 10)
     private Double baseSalary;
 
     @Column
     @Pattern(regexp = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$")
     private String email;
-
-
-    @Column
-    @Enumerated(EnumType.STRING)
-    private RoleEnum role;
 
     @Column
     @Enumerated(EnumType.STRING)

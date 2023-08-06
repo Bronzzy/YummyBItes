@@ -1,5 +1,6 @@
 package com.dhbinh.yummybites.employee.service.dto;
 
+import com.dhbinh.yummybites.base.enumvalidate.ValueOfEnum;
 import com.dhbinh.yummybites.base.exception.ErrorMessage;
 import com.dhbinh.yummybites.employee.entity.RoleEnum;
 import com.dhbinh.yummybites.employee.entity.StatusEnum;
@@ -49,6 +50,7 @@ public class EmployeeDTO {
 
     @NotNull(message = ErrorMessage.ENUM_NULL_OR_BLANK)
     @Enumerated(EnumType.STRING)
+    @ValueOfEnum(enumClass = RoleEnum.class, message = ErrorMessage.EMPLOYEE_ROLE_INVALID_VALUE)
     private RoleEnum role;
 
     @Enumerated(EnumType.STRING)

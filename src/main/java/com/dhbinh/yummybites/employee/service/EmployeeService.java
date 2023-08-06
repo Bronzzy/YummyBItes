@@ -32,7 +32,6 @@ public class EmployeeService {
                 .baseSalary(employeeDTO.getBaseSalary() == null ? 20000 : employeeDTO.getBaseSalary())
                 .email(employeeDTO.getEmail())
                 .address(employeeDTO.getAddress())
-                .role(employeeDTO.getRole())
                 .status(StatusEnum.STATUS_ACTIVE)
                 .restaurant(restaurantService.findByName(employeeDTO.getRestaurantName()))
                 .build();
