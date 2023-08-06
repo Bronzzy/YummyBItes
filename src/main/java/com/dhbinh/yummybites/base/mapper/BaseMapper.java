@@ -1,4 +1,4 @@
-package com.dhbinh.yummybites.base.service.mapper;
+package com.dhbinh.yummybites.base.mapper;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package com.dhbinh.yummybites.workingtime.service.mapper;
 
-import com.dhbinh.yummybites.base.service.mapper.BaseMapper;
+import com.dhbinh.yummybites.base.mapper.BaseMapper;
 import com.dhbinh.yummybites.workingtime.entity.WorkingTime;
 import com.dhbinh.yummybites.workingtime.service.dto.WorkingTimeDTO;
 import org.mapstruct.Mapper;

@@ -1,6 +1,6 @@
 package com.dhbinh.yummybites.menuitem.service.mapper;
 
-import com.dhbinh.yummybites.base.service.mapper.BaseMapper;
+import com.dhbinh.yummybites.base.mapper.BaseMapper;
 import com.dhbinh.yummybites.menuitem.entity.MenuItem;
 import com.dhbinh.yummybites.menuitem.service.dto.MenuItemDTO;
 import org.mapstruct.Mapper;

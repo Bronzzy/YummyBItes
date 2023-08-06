@@ -1,7 +1,7 @@
 package com.dhbinh.yummybites.restaurant.service.mapper;
 
 
-import com.dhbinh.yummybites.base.service.mapper.BaseMapper;
+import com.dhbinh.yummybites.base.mapper.BaseMapper;
 import com.dhbinh.yummybites.restaurant.entity.Restaurant;
 import com.dhbinh.yummybites.restaurant.service.dto.RestaurantDTO;
 import org.mapstruct.Mapper;
