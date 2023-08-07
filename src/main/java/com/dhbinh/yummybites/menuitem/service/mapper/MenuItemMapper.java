@@ -5,9 +5,9 @@ import com.dhbinh.yummybites.menuitem.entity.MenuItem;
 import com.dhbinh.yummybites.menuitem.service.dto.MenuItemDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.ReportingPolicy;
+import org.mapstruct.NullValuePropertyMappingStrategy;
 
-@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
+@Mapper(componentModel = "spring", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
 public interface MenuItemMapper extends BaseMapper<MenuItem, MenuItemDTO> {
 
     @Mapping(target = "restaurantName", source = "restaurant.name")

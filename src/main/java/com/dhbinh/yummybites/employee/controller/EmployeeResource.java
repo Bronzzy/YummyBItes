@@ -4,6 +4,7 @@ import com.dhbinh.yummybites.employee.service.EmployeeService;
 import com.dhbinh.yummybites.employee.service.dto.EmployeeDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +17,7 @@ import java.net.URI;
 
 @RestController
 @RequestMapping(value = "/employees")
+@PreAuthorize("hasRole('OWNER')")
 public class EmployeeResource {
 
     @Autowired
@@ -24,7 +26,7 @@ public class EmployeeResource {
     @PostMapping
     public ResponseEntity<EmployeeDTO> createEmployee(@Valid @RequestBody EmployeeDTO employeeDTO) {
         EmployeeDTO dto = employeeService.createEmployee(employeeDTO);
-        return ResponseEntity.created(URI.create("/api/employees" + dto.getID())).body(dto);
+        return ResponseEntity.created(URI.create("/api/employees" + dto.getId())).body(dto);
     }
 
     @DeleteMapping(value = "/{employee-id}")

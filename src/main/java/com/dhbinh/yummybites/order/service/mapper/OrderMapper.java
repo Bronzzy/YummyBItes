@@ -6,9 +6,9 @@ import com.dhbinh.yummybites.order.service.dto.OrderDTO;
 import com.dhbinh.yummybites.orderdetail.service.mapper.OrderDetailMapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.ReportingPolicy;
+import org.mapstruct.NullValuePropertyMappingStrategy;
 
-@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE,uses = OrderDetailMapper.class)
+@Mapper(componentModel = "spring", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE, uses = OrderDetailMapper.class)
 public interface OrderMapper extends BaseMapper<Order, OrderDTO> {
 
     @Mapping(target = "employeeName", source = "employee.lastName")

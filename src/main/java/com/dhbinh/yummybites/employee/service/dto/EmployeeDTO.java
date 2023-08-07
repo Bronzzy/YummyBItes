@@ -20,7 +20,7 @@ import javax.validation.constraints.Pattern;
 @Builder
 public class EmployeeDTO {
 
-    private Long ID;
+    private Long id;
 
     @NotBlank(message = ErrorMessage.EMPLOYEE_FIRST_NAME_NULL_OR_BLANK)
     @Pattern(regexp = "^[^0-9]*$", message = ErrorMessage.EMPLOYEE_NAME_CONTAIN_NUMBER)

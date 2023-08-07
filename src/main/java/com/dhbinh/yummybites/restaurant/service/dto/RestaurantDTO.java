@@ -19,7 +19,7 @@ import java.time.LocalTime;
 @Builder
 public class RestaurantDTO {
 
-    private Long ID;
+    private Long id;
 
     @NotBlank(message = ErrorMessage.RESTAURANT_NAME_NULL_OR_BLANK)
     private String name;
