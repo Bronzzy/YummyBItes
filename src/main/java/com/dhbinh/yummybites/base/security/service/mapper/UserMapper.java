@@ -14,7 +14,6 @@ import org.mapstruct.ReportingPolicy;
 public interface UserMapper extends BaseMapper<User, UserDTO> {
 
     @Mapping(target = "password", ignore = true)
-    @Mapping(expression = "java(mapRoleEnumToString(user.getRole()))", target = "role")
     UserDTO toDTO(User user);
 
     default String mapRoleEnumToString(Role role) {

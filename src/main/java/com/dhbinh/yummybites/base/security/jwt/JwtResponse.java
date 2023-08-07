@@ -3,18 +3,17 @@ package com.dhbinh.yummybites.base.security.jwt;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.util.List;
 
 @Data
 public class JwtResponse implements Serializable {
     private String token;
     private String type = "Bearer";
     private String username;
-    private List<String> roles;
+    private String role;
 
-    public JwtResponse(String token, String username, List<String> roles) {
+    public JwtResponse(String token, String username, String role) {
         this.token = token;
         this.username = username;
-        this.roles = roles;
+        this.role = role;
     }
 }

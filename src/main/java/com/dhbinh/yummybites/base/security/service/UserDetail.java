@@ -29,7 +29,7 @@ public class UserDetail implements UserDetails {
 
     public static UserDetail build(User user) {
         Role roles = user.getRole();
-        GrantedAuthority authority = new SimpleGrantedAuthority(roles.name());
+        GrantedAuthority authority = new SimpleGrantedAuthority(roles.toString());
 
         return new UserDetail(
                 user.getId(),

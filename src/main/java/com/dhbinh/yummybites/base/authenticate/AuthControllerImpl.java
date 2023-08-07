@@ -12,7 +12,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,16 +21,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 import java.net.URI;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/auth")
-public class AuthControllerImpl implements AuthController {
+public class AuthControllerImpl{
 
     @Autowired
     private UserServices userServices;
@@ -41,8 +36,7 @@ public class AuthControllerImpl implements AuthController {
     private final JwtUtils jwtUtils;
 
     @PostMapping("/signin")
-    public ResponseEntity<?> authenticateUser(@Valid JwtRequest loginRequest) {
-
+    public ResponseEntity<?> authenticateUser(@Valid @RequestBody JwtRequest loginRequest) {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
 
@@ -51,11 +45,9 @@ public class AuthControllerImpl implements AuthController {
 
         UserDetail userDetails = (UserDetail) authentication.getPrincipal();
 
-        List<String> roles = new ArrayList<>();
-        if (userDetails.getAuthorities() != null) {
-            roles = userDetails.getAuthorities().stream()
-                    .map(GrantedAuthority::getAuthority)
-                    .collect(Collectors.toList());
+        String roles = "";
+        if (userDetails.getAuthority() != null) {
+            roles = userDetails.getAuthority().toString();
         }
 
         return ResponseEntity.ok(new JwtResponse(jwt,
