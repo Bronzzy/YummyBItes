@@ -23,8 +23,8 @@ public class IngredientDTO {
     @NotBlank(message = ErrorMessage.INGREDIENT_NAME_NULL_OR_BLANK)
     private String name;
 
-    @Min(value = 0, message = ErrorMessage.INGREDIENT_QUANTITY_LESS_THAN_ZERO)
     @NotNull(message = ErrorMessage.INGREDIENT_QUANTITY_NULL_OR_BLANK)
+    @Min(value = 0, message = ErrorMessage.INGREDIENT_QUANTITY_LESS_THAN_ZERO)
     private Double quantity;
 
     @NotBlank(message = ErrorMessage.RESTAURANT_NAME_NULL_OR_BLANK)

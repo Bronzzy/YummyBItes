@@ -61,6 +61,9 @@ public class ErrorMessage {
     public static final String DESCRIPTION_NULL_OR_BLANK = "Description cannot be null or blank";
     public static final String KEY_DESCRIPTION_NULL_OR_BLANK = "exception.input.validation.description.null.or.blank";
 
+    public static final String PRICE_NULL_OR_BLANK = "Price cannot be null or blank";
+    public static final String KEY_PRICE_NULL_OR_BLANK = "exception.input.validation.price.null.or.blank";
+
     public static final String PRICE_LESS_THAN_ZERO = "Price cannot be less than 0";
     public static final String KEY_PRICE_LESS_THAN_ZERO = "exception.input.validation.price.less.than.zero";
 
@@ -90,6 +93,12 @@ public class ErrorMessage {
 
     public static final String EMAIL_WRONG_FORMAT = "Email not the right format";
     public static final String KEY_EMAIL_WRONG_FORMAT = "exception.input.validation.email.wrong.format";
+
+    public static final String PASSWORD_NULL_OR_BLANK = "Password cannot be null or blank";
+    public static final String KEY_PASSWORD_NULL_OR_BLANK = "exception.input.validation.password.null.or.blank";
+
+    public static final String PASSWORD_NOT_MATCH_PATTERN = "Password must contains at least 1 uppercase character, 1 number and 1 special character";
+    public static final String KEY_PASSWORD_NOT_MATCH_PATTERN = "exception.input.validation.password.not.match.pattern";
 
     public static final String ENUM_NULL_OR_BLANK = "Enum value cannot be null or blank";
     public static final String KEY_ENUM_NULL_OR_BLANK = "exception.input.validation.enum.null.or.blank";
@@ -122,8 +131,9 @@ public class ErrorMessage {
 
         //MENU ITEMS
         errorMap.put(DESCRIPTION_NULL_OR_BLANK, KEY_DESCRIPTION_NULL_OR_BLANK);
+        errorMap.put(PRICE_NULL_OR_BLANK, KEY_PRICE_NULL_OR_BLANK);
         errorMap.put(PRICE_LESS_THAN_ZERO, KEY_PRICE_LESS_THAN_ZERO);
-        errorMap.put(DISH_TYPE_NULL_OR_BLANK,KEY_DISH_TYPE_NULL_OR_BLANK);
+        errorMap.put(DISH_TYPE_NULL_OR_BLANK, KEY_DISH_TYPE_NULL_OR_BLANK);
         errorMap.put(DISH_TYPE_INVALID_VALUE, KEY_DISH_TYPE_INVALID_VALUE);
 
         //UTILS
@@ -133,6 +143,8 @@ public class ErrorMessage {
         errorMap.put(ADDRESS_NULL_OR_BLANK, KEY_ADDRESS_NULL_OR_BLANK);
         errorMap.put(EMAIL_NULL_OR_BLANK, KEY_EMAIL_NULL_OR_BLANK);
         errorMap.put(EMAIL_WRONG_FORMAT, KEY_EMAIL_WRONG_FORMAT);
+        errorMap.put(PASSWORD_NULL_OR_BLANK, KEY_PASSWORD_NULL_OR_BLANK);
+        errorMap.put(PASSWORD_NOT_MATCH_PATTERN, KEY_PASSWORD_NOT_MATCH_PATTERN);
         errorMap.put(ENUM_INVALID_VALUE, KEY_ENUM_INVALID_VALUE);
         errorMap.put(ENUM_NULL_OR_BLANK, KEY_ENUM_NULL_OR_BLANK);
 

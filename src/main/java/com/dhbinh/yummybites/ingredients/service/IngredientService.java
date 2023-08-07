@@ -28,9 +28,9 @@ public class IngredientService {
         verifyIngredient(ingredientDTO);
 
         Ingredient ingredient = Ingredient.builder()
-                .name(ingredientDTO.getName())
+                .name(ingredientDTO.getName().trim())
                 .quantity(ingredientDTO.getQuantity())
-                .restaurant(restaurantService.findByName(ingredientDTO.getRestaurantName()))
+                .restaurant(restaurantService.findByNameIgnoreCase(ingredientDTO.getRestaurantName().trim()))
                 .build();
         return ingredientMapper.toDTO(ingredientRepository.save(ingredient));
     }
@@ -52,13 +52,13 @@ public class IngredientService {
     }
 
     public void verifyIngredient(IngredientDTO ingredientDTO) {
-        if (isIngredientExist(ingredientDTO.getName())) {
+        if (isIngredientExist(ingredientDTO.getName().trim())) {
             throw new InputValidationException
                     (ErrorMessage.KEY_INGREDIENT_ALREADY_EXIST, ErrorMessage.INGREDIENT_ALREADY_EXIST);
         }
     }
 
     public boolean isIngredientExist(String name) {
-        return ingredientRepository.findByNameIgnoreCase(name) != null;
+        return ingredientRepository.findByNameIgnoreCase(name.trim()) != null;
     }
 }

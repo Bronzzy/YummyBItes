@@ -8,43 +8,39 @@ import javax.validation.constraints.Digits;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Pattern;
 
-@Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Entity
 @Table(name = "employee")
 public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long ID;
+    private Long id;
 
-    @Column
+    @Column(nullable = false)
     @Pattern(regexp = "^[^0-9]*$")
     private String firstName;
 
-    @Column
+    @Column(nullable = false)
     @Pattern(regexp = "^[^0-9]*$")
     private String lastName;
 
-    @Column
+    @Column(nullable = false)
     private String address;
 
-    @Column
+    @Column(nullable = false)
     @Pattern(regexp = "^[0-9]+$")
     private String phone;
 
-    @Column
-    @Min(value = 20000)
-    private Double baseSalary;
-
-    @Column
+    @Column(nullable = false, unique = true)
     @Pattern(regexp = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$")
     private String email;
 
-    @Column
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private StatusEnum status;
 

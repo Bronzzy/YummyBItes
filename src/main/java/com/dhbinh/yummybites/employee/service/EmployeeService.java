@@ -26,14 +26,13 @@ public class EmployeeService {
 
     public EmployeeDTO createEmployee(EmployeeDTO employeeDTO) {
         Employee employee = Employee.builder()
-                .firstName(employeeDTO.getFirstName())
-                .lastName(employeeDTO.getLastName())
-                .phone(employeeDTO.getPhone())
-                .baseSalary(employeeDTO.getBaseSalary() == null ? 20000 : employeeDTO.getBaseSalary())
-                .email(employeeDTO.getEmail())
-                .address(employeeDTO.getAddress())
+                .firstName(employeeDTO.getFirstName().trim())
+                .lastName(employeeDTO.getLastName().trim())
+                .phone(employeeDTO.getPhone().trim())
+                .email(employeeDTO.getEmail().trim())
+                .address(employeeDTO.getAddress().trim())
                 .status(StatusEnum.STATUS_ACTIVE)
-                .restaurant(restaurantService.findByName(employeeDTO.getRestaurantName()))
+                .restaurant(restaurantService.findByNameIgnoreCase(employeeDTO.getRestaurantName().trim()))
                 .build();
 
         return employeeMapper.toDTO(employeeRepository.save(employee));

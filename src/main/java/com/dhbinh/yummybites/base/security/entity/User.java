@@ -1,7 +1,6 @@
-package com.dhbinh.yummybites.menuitem.entity;
+package com.dhbinh.yummybites.base.security.entity;
 
 import com.dhbinh.yummybites.base.exception.ErrorMessage;
-import com.dhbinh.yummybites.restaurant.entity.Restaurant;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -15,11 +14,9 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
+import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.Pattern;
 
 @Getter
 @Setter
@@ -27,28 +24,25 @@ import javax.validation.constraints.NotBlank;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table
-public class MenuItem {
+@Table(name = "users", uniqueConstraints = {
+        @UniqueConstraint(columnNames = "username")})
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
-    private String name;
+    @Pattern(regexp = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$", message = ErrorMessage.EMAIL_WRONG_FORMAT)
+    private String username;
 
     @Column(nullable = false)
-    private String description;
+    @Pattern(regexp = "^(?=.*\\d)(?=.*[a-zA-Z]).{6,}$", message = ErrorMessage.PASSWORD_NOT_MATCH_PATTERN)
+    private String password;
 
-    @Column(nullable = false)
-    @Min(0)
-    private Double price;
+    private Boolean active;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private DishType dishType;
-
-    @ManyToOne
-    @JoinColumn(name = "restaurant_id", nullable = false)
-    private Restaurant restaurant;
+    private Role role;
 }

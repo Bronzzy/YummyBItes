@@ -1,7 +1,6 @@
 package com.dhbinh.yummybites.restaurant.service;
 
 import com.dhbinh.yummybites.base.exception.ErrorMessage;
-import com.dhbinh.yummybites.base.exception.InputValidationException;
 import com.dhbinh.yummybites.base.exception.ResourceNotFoundException;
 import com.dhbinh.yummybites.restaurant.entity.Restaurant;
 import com.dhbinh.yummybites.restaurant.repository.RestaurantRepository;
@@ -21,19 +20,18 @@ public class RestaurantService {
 
     public RestaurantDTO createRestaurant(RestaurantDTO restaurantDTO) {
             Restaurant restaurant = Restaurant.builder()
-                    .name(restaurantDTO.getName())
-                    .address(restaurantDTO.getAddress())
-                    .phone(restaurantDTO.getPhone())
+                    .name(restaurantDTO.getName().trim())
+                    .address(restaurantDTO.getAddress().trim())
+                    .phone(restaurantDTO.getPhone().trim())
                     .openHour(restaurantDTO.getOpenHour())
                     .closingHour(restaurantDTO.getClosingHour())
                     .build();
 
             return restaurantMapper.toDTO(restaurantRepository.save(restaurant));
-
     }
 
-    public Restaurant findByName(String name) {
-        return restaurantRepository.findByName(name)
+    public Restaurant findByNameIgnoreCase(String name) {
+        return restaurantRepository.findByNameIgnoreCase(name.trim())
                 .orElseThrow(() -> new ResourceNotFoundException
                         (ErrorMessage.KEY_RESTAURANT_NOT_FOUND, ErrorMessage.RESTAURANT_NOT_FOUND));
     }

@@ -30,6 +30,6 @@ public class RestaurantResource {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @GetMapping(value = "/find-by-name")
     public ResponseEntity<Restaurant> findByName(@RequestParam("name") String name) {
-        return ResponseEntity.ok(restaurantService.findByName(name));
+        return ResponseEntity.ok(restaurantService.findByNameIgnoreCase(name));
     }
 }

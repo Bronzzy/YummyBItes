@@ -6,12 +6,12 @@ import javax.persistence.*;
 import javax.validation.constraints.Pattern;
 import java.time.LocalTime;
 
-@Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Entity
 @Table(name = "restaurant")
 public class Restaurant {
 
