@@ -26,17 +26,19 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.mapstruct:mapstruct:1.5.5.Final'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-security:2.7.11'
+	implementation group: 'org.hibernate.validator', name: 'hibernate-validator', version: '6.2.5.Final'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '2.4.5'
+	implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'org.postgresql:postgresql'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	implementation 'org.mapstruct:mapstruct:1.5.5.Final'
 	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
-	implementation group: 'org.hibernate.validator', name: 'hibernate-validator', version: '6.2.5.Final'
-	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '2.4.5'
 }
 
 tasks.named('test') {

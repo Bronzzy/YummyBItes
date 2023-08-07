@@ -2,7 +2,6 @@ package com.dhbinh.yummybites.employee.controller;
 
 import com.dhbinh.yummybites.employee.service.EmployeeService;
 import com.dhbinh.yummybites.employee.service.dto.EmployeeDTO;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,7 +15,7 @@ import javax.validation.Valid;
 import java.net.URI;
 
 @RestController
-@RequestMapping(value = "/api/employees")
+@RequestMapping(value = "/employees")
 public class EmployeeResource {
 
     @Autowired

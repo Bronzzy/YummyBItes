@@ -1,6 +1,6 @@
 package com.dhbinh.yummybites.employee.service.mapper;
 
-import com.dhbinh.yummybites.base.service.mapper.BaseMapper;
+import com.dhbinh.yummybites.base.mapper.BaseMapper;
 import com.dhbinh.yummybites.employee.entity.Employee;
 import com.dhbinh.yummybites.employee.service.dto.EmployeeDTO;
 import org.mapstruct.Mapper;
