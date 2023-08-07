@@ -1,6 +1,6 @@
 package com.dhbinh.yummybites.base.security.config;
 
-import com.dhbinh.yummybites.base.security.service.UserDetailService;
+import com.dhbinh.yummybites.base.security.service.UserDetailsServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -32,7 +32,7 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @RequiredArgsConstructor
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final UserDetailService userDetailsService;
+    private final UserDetailsServiceImpl userDetailsService;
 
     private final AuthEntryPointJwt unauthorizedHandler;
 

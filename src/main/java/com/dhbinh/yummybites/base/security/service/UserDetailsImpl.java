@@ -2,46 +2,51 @@ package com.dhbinh.yummybites.base.security.service;
 
 import com.dhbinh.yummybites.base.security.entity.Role;
 import com.dhbinh.yummybites.base.security.entity.User;
+import com.dhbinh.yummybites.base.security.entity.UserRoleAssignment;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
+@AllArgsConstructor
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
-public class UserDetail implements UserDetails {
+public class UserDetailsImpl implements UserDetails {
 
     private Long id;
 
     private String username;
 
+    @JsonIgnore
     private String password;
 
-    private GrantedAuthority authority;
+    private Collection<? extends GrantedAuthority> authorities;
 
-    public static UserDetail build(User user) {
-        Role roles = user.getRole();
-        GrantedAuthority authority = new SimpleGrantedAuthority(roles.toString());
+    public static UserDetailsImpl build(User user) {
+        List<Role> roles = user.getRoles()
+                .stream()
+                .map(UserRoleAssignment::getRole)
+                .collect(Collectors.toList());
+        List<GrantedAuthority> authorities = roles.stream()
+                .map(role -> new SimpleGrantedAuthority(role.name()))
+                .collect(Collectors.toList());
 
-        return new UserDetail(
+        return new UserDetailsImpl(
                 user.getId(),
                 user.getUsername(),
                 user.getPassword(),
-                authority);
+                authorities);
     }
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
-    }
 
     @Override
     public boolean isAccountNonExpired() {
@@ -69,7 +74,8 @@ public class UserDetail implements UserDetails {
             return true;
         if (o == null || getClass() != o.getClass())
             return false;
-        UserDetail user = (UserDetail) o;
+        UserDetailsImpl user = (UserDetailsImpl) o;
         return Objects.equals(id, user.id);
     }
+
 }

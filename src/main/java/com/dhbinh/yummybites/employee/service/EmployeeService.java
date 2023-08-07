@@ -2,6 +2,7 @@ package com.dhbinh.yummybites.employee.service;
 
 import com.dhbinh.yummybites.base.exception.ErrorMessage;
 import com.dhbinh.yummybites.base.exception.InputValidationException;
+import com.dhbinh.yummybites.base.exception.ResourceNotFoundException;
 import com.dhbinh.yummybites.employee.entity.Employee;
 import com.dhbinh.yummybites.employee.entity.StatusEnum;
 import com.dhbinh.yummybites.employee.repository.EmployeeRepository;
@@ -53,4 +54,9 @@ public class EmployeeService {
                         (ErrorMessage.KEY_RESTAURANT_NOT_FOUND, ErrorMessage.RESTAURANT_NOT_FOUND)));
     }
 
+    public EmployeeDTO findByEmail(String email){
+        return employeeMapper.toDTO((employeeRepository.findByEmail(email)).
+                orElseThrow(() -> new ResourceNotFoundException
+                        (ErrorMessage.KEY_EMPLOYEE_NOT_FOUND, ErrorMessage.EMPLOYEE_NOT_FOUND)));
+    }
 }

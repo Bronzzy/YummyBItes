@@ -22,6 +22,9 @@ public class ErrorMessage {
     public static final String EMPLOYEE_FIRST_NAME_NULL_OR_BLANK = "First name cannot be null or blank";
     public static final String KEY_EMPLOYEE_NAME_NULL_OR_BLANK = "exception.input.validation.first.name.null.or.blank";
 
+    public static final String EMPLOYEE_NOT_FOUND = "Employee cannot be found";
+    public static final String KEY_EMPLOYEE_NOT_FOUND="exception.resource.not.found.employee";
+
     public static final String EMPLOYEE_LAST_NAME_NULL_OR_BLANK = "Last name cannot be null or blank";
     public static final String KEY_EMPLOYEE_LAST_NAME_NULL_OR_BLANK = "exception.input.validation.last.name.null.or.blank";
 
@@ -72,6 +75,9 @@ public class ErrorMessage {
 
     public static final String DISH_TYPE_INVALID_VALUE = "Dish type can only be APPETIZERS, MAIN_DISH, DESSERTS or DRINKS";
     public static final String KEY_DISH_TYPE_INVALID_VALUE = "exception.input.validation.dish.type.invalid.value";
+
+    public static final String MENU_ITEM_NOT_FOUND = "Menu item cannot be found";
+    public static final String KEY_MENU_ITEM_NOT_FOUND = "exception.resource.not.found.menu.item";
 
     //UTILS
     public static final String KEY_MISSING_PARAMETER = "exception.missing.parameter";

@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import java.net.URI;
@@ -24,7 +23,7 @@ import java.net.URI;
 @RestController
 @Validated
 @RequestMapping(value = "/ingredients")
-@PreAuthorize("hasRole('COOK')")
+@PreAuthorize("hasAnyRole('OWNER','COOK')")
 public class IngredientResource {
 
     @Autowired

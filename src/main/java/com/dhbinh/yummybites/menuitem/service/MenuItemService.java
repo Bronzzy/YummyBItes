@@ -1,5 +1,7 @@
 package com.dhbinh.yummybites.menuitem.service;
 
+import com.dhbinh.yummybites.base.exception.ErrorMessage;
+import com.dhbinh.yummybites.base.exception.ResourceNotFoundException;
 import com.dhbinh.yummybites.menuitem.entity.DishType;
 import com.dhbinh.yummybites.menuitem.entity.MenuItem;
 import com.dhbinh.yummybites.menuitem.repository.MenuItemRepository;
@@ -9,6 +11,8 @@ import com.dhbinh.yummybites.restaurant.service.RestaurantService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 
 @Service
 @RequiredArgsConstructor
@@ -33,5 +37,10 @@ public class MenuItemService {
                 .build();
 
         return menuItemMapper.toDTO(menuItemRepository.save(menuItem));
+    }
+
+    public MenuItemDTO findByName(String name){
+        return menuItemMapper.toDTO(menuItemRepository.findByNameIgnoreCase(name)
+                .orElseThrow(() -> new ResourceNotFoundException(ErrorMessage.KEY_MENU_ITEM_NOT_FOUND,ErrorMessage.MENU_ITEM_NOT_FOUND)));
     }
 }
