@@ -38,7 +38,7 @@ public class ErrorMessage {
     public static final String KEY_EMPLOYEE_ROLE_INVALID_VALUE = "exception.input.validation.employee.role.invalid.value";
 
     //INGREDIENTS
-    public static final String INGREDIENT_NAME_NULL_OR_BLANK = "Ingredient name cannot be null or blank";
+    public static final String INGREDIENT_NULL_OR_BLANK = "Ingredient cannot be null or blank";
     public static final String KEY_INGREDIENT_NAME_NULL_OR_BLANK = "exception.input.validation.ingredient.name.null.or.blank";
 
     public static final String INGREDIENT_QUANTITY_NULL_OR_BLANK = "Ingredient quantity cannot be null or blank";
@@ -132,7 +132,7 @@ public class ErrorMessage {
 
     public static final String ENUM_INVALID_VALUE = "Enum value is invalid";
     public static final String KEY_ENUM_INVALID_VALUE = "exception.input.validation.enum.invalid.value";
-
+    public static final String INGREDIENT_NULL_OR_BLANK = ;
 
 
     static Map<String, String> errorKeyAndMessageMap() {
@@ -151,7 +151,7 @@ public class ErrorMessage {
         errorMap.put(EMPLOYEE_BASE_SALARY_LESS_THAN_20000, KEY_EMPLOYEE_BASE_SALARY_LESS_THAN_20000);
 
         //INGREDIENTS
-        errorMap.put(INGREDIENT_NAME_NULL_OR_BLANK, KEY_INGREDIENT_NAME_NULL_OR_BLANK);
+        errorMap.put(INGREDIENT_NULL_OR_BLANK, KEY_INGREDIENT_NAME_NULL_OR_BLANK);
         errorMap.put(INGREDIENT_QUANTITY_NULL_OR_BLANK, KEY_INGREDIENT_QUANTITY_NULL_OR_BLANK);
         errorMap.put(INGREDIENT_QUANTITY_LESS_THAN_ZERO, KEY_INGREDIENT_QUANTITY_LESS_THAN_ZERO);
 

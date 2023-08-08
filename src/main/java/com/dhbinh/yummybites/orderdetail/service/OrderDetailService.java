@@ -78,6 +78,7 @@ public class OrderDetailService {
                     .quantity(orderDetailDTO.getQuantity())
                     .price(menuItemMapper.toEntity(menuItemService.findByName(orderDetailDTO.getMenuItemName().trim())).getPrice() * orderDetailDTO.getQuantity())
                     .build();
+
             totalPrice += orderDetail.getPrice();
             detailList.add(orderDetail);
         }
