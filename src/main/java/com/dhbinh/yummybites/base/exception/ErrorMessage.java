@@ -83,6 +83,23 @@ public class ErrorMessage {
     public static final String DINING_TABLE_NOT_FOUND = "Dining table cannot be found";
     public static final String KEY_DINING_TABLE_NOT_FOUND = "exception.resource.not.found.dining.table";
 
+    public static final String KEY_TABLE_IS_OCCUPIED = "exception.input.validation.table.is.occupied";
+    public static final String TABLE_IS_OCCUPIED = "Table is occupied";
+
+    //ORDER
+    public static final String KEY_ORDER_NOT_FOUND = "exception.resource.not.found.order";
+    public static final String ORDER_NOT_FOUND = "Order cannot be found";
+
+    //ODER DETAILS
+    public static final String MENU_ITEM_NULL_OR_BLANK = "Menu item cannot be null or blank";
+    public static final String KEY_MENU_ITEM_NULL_OR_BLANK = "exception.input.validation.menu.item.null.or.blanks";
+
+    public static final String QUANTITY_NULL_OR_BLANK = "Quantity cannot be null or blank";
+    public static final String KEY_QUANTITY_NULL_OR_BLANK = "exception.input.validation.quantity.null.or.blank";
+
+    public static final String QUANTITY_LESS_THAN_ZERO = "Quantity cannot be less than 0";
+    public static final String KEY_QUANTITY_LESS_THAN_ZERO = "exception.input.validation.quantity.less.than.zero";
+
     //UTILS
     public static final String KEY_MISSING_PARAMETER = "exception.missing.parameter";
 
@@ -116,6 +133,8 @@ public class ErrorMessage {
     public static final String ENUM_INVALID_VALUE = "Enum value is invalid";
     public static final String KEY_ENUM_INVALID_VALUE = "exception.input.validation.enum.invalid.value";
 
+
+
     static Map<String, String> errorKeyAndMessageMap() {
         Map<String, String> errorMap = new HashMap<>();
 
@@ -145,6 +164,11 @@ public class ErrorMessage {
         errorMap.put(PRICE_LESS_THAN_ZERO, KEY_PRICE_LESS_THAN_ZERO);
         errorMap.put(DISH_TYPE_NULL_OR_BLANK, KEY_DISH_TYPE_NULL_OR_BLANK);
         errorMap.put(DISH_TYPE_INVALID_VALUE, KEY_DISH_TYPE_INVALID_VALUE);
+
+        //ORDER DETAILS
+        errorMap.put(MENU_ITEM_NULL_OR_BLANK, KEY_MENU_ITEM_NULL_OR_BLANK);
+        errorMap.put(QUANTITY_NULL_OR_BLANK, KEY_QUANTITY_NULL_OR_BLANK);
+        errorMap.put(QUANTITY_LESS_THAN_ZERO, KEY_QUANTITY_LESS_THAN_ZERO);
 
         //UTILS
         errorMap.put(NAME_NULL_OR_BLANK, KEY_NAME_NULL_OR_BLANK);

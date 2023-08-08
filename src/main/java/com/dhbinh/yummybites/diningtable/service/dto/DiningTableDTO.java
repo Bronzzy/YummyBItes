@@ -17,5 +17,5 @@ public class DiningTableDTO {
 
     private Integer number;
 
-    private boolean isOccupied;
+    private Boolean occupied;
 }

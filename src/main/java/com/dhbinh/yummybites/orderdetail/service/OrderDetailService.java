@@ -1,6 +1,8 @@
 package com.dhbinh.yummybites.orderdetail.service;
 
 import com.dhbinh.yummybites.base.security.jwt.JwtUtils;
+import com.dhbinh.yummybites.diningtable.service.DiningTableService;
+import com.dhbinh.yummybites.diningtable.service.mapper.DiningTableMapper;
 import com.dhbinh.yummybites.employee.entity.Employee;
 import com.dhbinh.yummybites.employee.service.EmployeeService;
 import com.dhbinh.yummybites.employee.service.mapper.EmployeeMapper;
@@ -14,11 +16,10 @@ import com.dhbinh.yummybites.orderdetail.entity.OrderDetail;
 import com.dhbinh.yummybites.orderdetail.repository.OrderDetailRepository;
 import com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO;
 import com.dhbinh.yummybites.orderdetail.service.mapper.OrderDetailMapper;
-import com.dhbinh.yummybites.diningtable.service.DiningTableService;
-import com.dhbinh.yummybites.diningtable.service.mapper.DiningTableMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import java.time.LocalDateTime;
@@ -27,6 +28,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class OrderDetailService {
 
     @Autowired
@@ -63,8 +65,16 @@ public class OrderDetailService {
 
         double totalPrice = 0;
 
+        Order order = Order.builder()
+                .employee(findEmployeeByUsername(getUserNameFromToken(token)))
+                .createdDate(LocalDateTime.now())
+                .isPaid(false)
+                .diningTable(diningTableMapper.toEntity(diningTableService.setOccupied(tableId)))
+                .build();
+
         for (OrderDetailDTO orderDetailDTO : orderDetailDTOList) {
             OrderDetail orderDetail = OrderDetail.builder()
+                    .order(order)
                     .menuItem(menuItemMapper.toEntity(menuItemService.findByName(orderDetailDTO.getMenuItemName().trim())))
                     .quantity(orderDetailDTO.getQuantity())
                     .price(menuItemMapper.toEntity(menuItemService.findByName(orderDetailDTO.getMenuItemName().trim())).getPrice() * orderDetailDTO.getQuantity())
@@ -73,14 +83,8 @@ public class OrderDetailService {
             detailList.add(orderDetail);
         }
 
-        Order order = Order.builder()
-                .orderDetails(detailList)
-                .employee(findEmployeeByUsername(getUserNameFromToken(token)))
-                .createdDate(LocalDateTime.now())
-                .isPaid(false)
-                .diningTable(diningTableMapper.toEntity(diningTableService.setIsOccupied(tableId)))
-                .totalPrice(totalPrice)
-                .build();
+        order.setOrderDetails(detailList);
+        order.setTotalPrice(totalPrice);
 
         orderRepository.save(order);
         OrderDTO orderDTO = orderMapper.toDTO(order);

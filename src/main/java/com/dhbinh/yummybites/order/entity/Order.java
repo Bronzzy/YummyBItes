@@ -3,6 +3,7 @@ package com.dhbinh.yummybites.order.entity;
 import com.dhbinh.yummybites.employee.entity.Employee;
 import com.dhbinh.yummybites.orderdetail.entity.OrderDetail;
 import com.dhbinh.yummybites.diningtable.entity.DiningTable;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

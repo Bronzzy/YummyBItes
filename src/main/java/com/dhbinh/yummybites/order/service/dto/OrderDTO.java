@@ -1,6 +1,7 @@
 package com.dhbinh.yummybites.order.service.dto;
 
 import com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -27,5 +28,7 @@ public class OrderDTO {
 
     private Double totalPrice;
 
+    private Boolean isPaid;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
     private LocalDateTime createdDate;
 }
