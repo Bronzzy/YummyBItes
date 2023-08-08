@@ -56,7 +56,6 @@ public class OrderDetailService {
 
     private final DiningTableMapper diningTableMapper;
 
-
     private final JwtUtils jwtUtils;
 
     public OrderDTO create(String token, List<OrderDetailDTO> orderDetailDTOList, Long tableId) {
