@@ -3,9 +3,7 @@ package com.dhbinh.yummybites.orderdetail.service;
 import com.dhbinh.yummybites.base.security.jwt.JwtUtils;
 import com.dhbinh.yummybites.employee.entity.Employee;
 import com.dhbinh.yummybites.employee.service.EmployeeService;
-import com.dhbinh.yummybites.employee.service.dto.EmployeeDTO;
 import com.dhbinh.yummybites.employee.service.mapper.EmployeeMapper;
-import com.dhbinh.yummybites.menuitem.entity.MenuItem;
 import com.dhbinh.yummybites.menuitem.service.MenuItemService;
 import com.dhbinh.yummybites.menuitem.service.mapper.MenuItemMapper;
 import com.dhbinh.yummybites.order.entity.Order;
@@ -16,6 +14,8 @@ import com.dhbinh.yummybites.orderdetail.entity.OrderDetail;
 import com.dhbinh.yummybites.orderdetail.repository.OrderDetailRepository;
 import com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO;
 import com.dhbinh.yummybites.orderdetail.service.mapper.OrderDetailMapper;
+import com.dhbinh.yummybites.diningtable.service.DiningTableService;
+import com.dhbinh.yummybites.diningtable.service.mapper.DiningTableMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,6 +41,9 @@ public class OrderDetailService {
     @Autowired
     private OrderRepository orderRepository;
 
+    @Autowired
+    private DiningTableService diningTableService;
+
     private final OrderDetailMapper orderDetailMapper;
 
     private final MenuItemMapper menuItemMapper;
@@ -49,10 +52,12 @@ public class OrderDetailService {
 
     private final OrderMapper orderMapper;
 
+    private final DiningTableMapper diningTableMapper;
+
 
     private final JwtUtils jwtUtils;
 
-    public OrderDTO create(String token, List<OrderDetailDTO> orderDetailDTOList) {
+    public OrderDTO create(String token, List<OrderDetailDTO> orderDetailDTOList, Long tableId) {
 
         List<OrderDetail> detailList = new ArrayList<>();
 
@@ -67,11 +72,13 @@ public class OrderDetailService {
             totalPrice += orderDetail.getPrice();
             detailList.add(orderDetail);
         }
+
         Order order = Order.builder()
                 .orderDetails(detailList)
                 .employee(findEmployeeByUsername(getUserNameFromToken(token)))
                 .createdDate(LocalDateTime.now())
                 .isPaid(false)
+                .diningTable(diningTableMapper.toEntity(diningTableService.setIsOccupied(tableId)))
                 .totalPrice(totalPrice)
                 .build();
 

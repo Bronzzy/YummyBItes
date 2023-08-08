@@ -21,6 +21,8 @@ public class OrderDTO {
 
     private List<OrderDetailDTO> orderDetails;
 
+    private Integer diningTableNumber;
+
     private String employeeName;
 
     private Double totalPrice;

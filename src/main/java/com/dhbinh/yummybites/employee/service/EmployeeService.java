@@ -42,7 +42,8 @@ public class EmployeeService {
     public EmployeeDTO deleteEmployee(Long ID) {
         Employee employee = employeeRepository.findById(ID).
                 orElseThrow(() -> new InputValidationException(
-                        ErrorMessage.KEY_RESTAURANT_NOT_FOUND, ErrorMessage.RESTAURANT_NOT_FOUND));
+                        ErrorMessage.KEY_RESTAURANT_NOT_FOUND,
+                        ErrorMessage.RESTAURANT_NOT_FOUND));
 
         employee.setStatus(StatusEnum.STATUS_INACTIVE);
         return employeeMapper.toDTO(employee);
@@ -50,13 +51,15 @@ public class EmployeeService {
 
     public EmployeeDTO findByID(Long ID){
         return employeeMapper.toDTO((employeeRepository.findById(ID)).
-                orElseThrow(() -> new InputValidationException
-                        (ErrorMessage.KEY_RESTAURANT_NOT_FOUND, ErrorMessage.RESTAURANT_NOT_FOUND)));
+                orElseThrow(() -> new InputValidationException(
+                                ErrorMessage.KEY_RESTAURANT_NOT_FOUND,
+                                ErrorMessage.RESTAURANT_NOT_FOUND)));
     }
 
     public EmployeeDTO findByEmail(String email){
         return employeeMapper.toDTO((employeeRepository.findByEmail(email)).
-                orElseThrow(() -> new ResourceNotFoundException
-                        (ErrorMessage.KEY_EMPLOYEE_NOT_FOUND, ErrorMessage.EMPLOYEE_NOT_FOUND)));
+                orElseThrow(() -> new ResourceNotFoundException(
+                                ErrorMessage.KEY_EMPLOYEE_NOT_FOUND,
+                                ErrorMessage.EMPLOYEE_NOT_FOUND)));
     }
 }

@@ -32,7 +32,8 @@ public class RestaurantService {
 
     public Restaurant findByNameIgnoreCase(String name) {
         return restaurantRepository.findByNameIgnoreCase(name.trim())
-                .orElseThrow(() -> new ResourceNotFoundException
-                        (ErrorMessage.KEY_RESTAURANT_NOT_FOUND, ErrorMessage.RESTAURANT_NOT_FOUND));
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        ErrorMessage.KEY_RESTAURANT_NOT_FOUND,
+                        ErrorMessage.RESTAURANT_NOT_FOUND));
     }
 }

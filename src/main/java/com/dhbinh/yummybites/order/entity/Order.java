@@ -2,6 +2,7 @@ package com.dhbinh.yummybites.order.entity;
 
 import com.dhbinh.yummybites.employee.entity.Employee;
 import com.dhbinh.yummybites.orderdetail.entity.OrderDetail;
+import com.dhbinh.yummybites.diningtable.entity.DiningTable;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -40,6 +41,10 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "employee_id",nullable = false)
     private Employee employee;
+
+    @ManyToOne
+    @JoinColumn(name = "table_id",nullable = false)
+    private DiningTable diningTable;
 
     private Double totalPrice;
 

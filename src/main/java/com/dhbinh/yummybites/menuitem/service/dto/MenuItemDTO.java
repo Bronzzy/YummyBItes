@@ -25,7 +25,7 @@ import javax.validation.constraints.NotNull;
 @Builder
 public class MenuItemDTO {
 
-    private Long ID;
+    private Long id;
 
     @NotBlank(message = ErrorMessage.NAME_NULL_OR_BLANK)
     private String name;

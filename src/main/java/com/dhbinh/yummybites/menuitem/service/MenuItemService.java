@@ -27,20 +27,21 @@ public class MenuItemService {
     private final MenuItemMapper menuItemMapper;
 
     public MenuItemDTO create(MenuItemDTO menuItemDTO) {
-        String PREFIX_DISH_TYPE = "DISH_TYPE";
         MenuItem menuItem = MenuItem.builder()
                 .name(menuItemDTO.getName().trim())
                 .description(menuItemDTO.getDescription().trim())
                 .price(menuItemDTO.getPrice())
-                .dishType(DishType.valueOf(PREFIX_DISH_TYPE + menuItemDTO.getDishType().trim()))
+                .dishType(DishType.valueOf(menuItemDTO.getDishType().trim()))
                 .restaurant(restaurantService.findByNameIgnoreCase(menuItemDTO.getRestaurantName().trim()))
                 .build();
 
         return menuItemMapper.toDTO(menuItemRepository.save(menuItem));
     }
 
-    public MenuItemDTO findByName(String name){
+    public MenuItemDTO findByName(String name) {
         return menuItemMapper.toDTO(menuItemRepository.findByNameIgnoreCase(name)
-                .orElseThrow(() -> new ResourceNotFoundException(ErrorMessage.KEY_MENU_ITEM_NOT_FOUND,ErrorMessage.MENU_ITEM_NOT_FOUND)));
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        ErrorMessage.KEY_MENU_ITEM_NOT_FOUND,
+                        ErrorMessage.MENU_ITEM_NOT_FOUND)));
     }
 }

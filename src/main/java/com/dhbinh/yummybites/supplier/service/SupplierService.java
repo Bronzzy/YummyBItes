@@ -40,7 +40,8 @@ public class SupplierService {
 
     public SupplierDTO findByID(Long ID){
         Supplier supplier = supplierRepository.findById(ID)
-                .orElseThrow(() -> new ResourceNotFoundException(ErrorMessage.KEY_SUPPLIER_NOT_FOUND,
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        ErrorMessage.KEY_SUPPLIER_NOT_FOUND,
                         ErrorMessage.SUPPLIER_NOT_FOUND));
 
         return supplierMapper.toDTO(supplier);

@@ -17,7 +17,7 @@ import javax.validation.constraints.Pattern;
 @NoArgsConstructor
 public class SupplierDTO {
 
-    private Long ID;
+    private Long id;
 
     @NotBlank(message = ErrorMessage.NAME_NULL_OR_BLANK)
     private String name;
@@ -26,7 +26,7 @@ public class SupplierDTO {
     private String address;
 
     @NotBlank(message = ErrorMessage.PHONE_NULL_OR_BLANK)
-    @Pattern(regexp = "^[0-9]+$", message = ErrorMessage.PHONE_WRONG_FORMAT)
+    @Pattern(regexp = "^[0-9-]+$", message = ErrorMessage.PHONE_WRONG_FORMAT)
     private String phone;
 
     @NotBlank(message = ErrorMessage.EMAIL_NULL_OR_BLANK)

@@ -1,7 +1,7 @@
-package com.dhbinh.yummybites.supplier.controller;
+package com.dhbinh.yummybites.diningtable.controller;
 
-import com.dhbinh.yummybites.supplier.service.SupplierService;
-import com.dhbinh.yummybites.supplier.service.dto.SupplierDTO;
+import com.dhbinh.yummybites.diningtable.service.DiningTableService;
+import com.dhbinh.yummybites.diningtable.service.dto.DiningTableDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -15,17 +15,17 @@ import javax.validation.Valid;
 import java.net.URI;
 
 @RestController
-@Validated
-@RequestMapping(value = "/suppliers")
 @PreAuthorize("hasRole('OWNER')")
-public class SupplierResource {
+@RequestMapping(value = "/diningtables")
+@Validated
+public class DiningTableResource {
 
     @Autowired
-    private SupplierService supplierService;
+    private DiningTableService diningTableService;
 
     @PostMapping
-    public ResponseEntity<SupplierDTO> createSupplier(@Valid @RequestBody SupplierDTO supplierDTO) {
-        SupplierDTO dto = supplierService.create(supplierDTO);
-        return ResponseEntity.created(URI.create("/api/suppliers" + dto.getId())).body(dto);
+    public ResponseEntity<DiningTableDTO> create(@Valid @RequestBody DiningTableDTO diningTableDTO) {
+        DiningTableDTO dto = diningTableService.create(diningTableDTO);
+        return ResponseEntity.created(URI.create("/api/tables" + dto.getId())).body(dto);
     }
 }

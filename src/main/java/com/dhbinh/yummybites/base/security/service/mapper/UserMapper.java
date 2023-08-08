@@ -14,8 +14,4 @@ public interface UserMapper extends BaseMapper<User, UserDTO> {
 
     @Mapping(target = "password", ignore = true)
     UserDTO toDTO(User user);
-
-    default String mapRoleEnumToString(Role role) {
-        return role != null ? role.toString() : null;
-    }
 }

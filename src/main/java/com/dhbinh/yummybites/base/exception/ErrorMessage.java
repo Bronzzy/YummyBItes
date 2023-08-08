@@ -79,6 +79,10 @@ public class ErrorMessage {
     public static final String MENU_ITEM_NOT_FOUND = "Menu item cannot be found";
     public static final String KEY_MENU_ITEM_NOT_FOUND = "exception.resource.not.found.menu.item";
 
+    //DINING TABLE
+    public static final String DINING_TABLE_NOT_FOUND = "Dining table cannot be found";
+    public static final String KEY_DINING_TABLE_NOT_FOUND = "exception.resource.not.found.dining.table";
+
     //UTILS
     public static final String KEY_MISSING_PARAMETER = "exception.missing.parameter";
 

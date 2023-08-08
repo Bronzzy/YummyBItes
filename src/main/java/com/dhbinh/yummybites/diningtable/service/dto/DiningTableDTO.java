@@ -1,4 +1,4 @@
-package com.dhbinh.yummybites.table.service.dto;
+package com.dhbinh.yummybites.diningtable.service.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,7 +11,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class TablesDTO {
+public class DiningTableDTO {
 
     private Long id;
 

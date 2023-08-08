@@ -12,6 +12,6 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 public interface OrderMapper extends BaseMapper<Order, OrderDTO> {
 
     @Mapping(target = "employeeName", source = "employee.lastName")
-//    @Mapping(target = "orderDetails.menuItem",source = "orderDetails.menuItem.name")
+    @Mapping(target = "diningTableNumber", source = "diningTable.number")
     OrderDTO toDTO(Order order);
 }

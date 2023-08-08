@@ -34,7 +34,7 @@ public class EmployeeDTO {
     private String address;
 
     @NotBlank(message = ErrorMessage.PHONE_NULL_OR_BLANK)
-    @Pattern(regexp = "^[0-9]+$", message = ErrorMessage.PHONE_WRONG_FORMAT)
+    @Pattern(regexp = "^[0-9-]+$", message = ErrorMessage.PHONE_WRONG_FORMAT)
     private String phone;
 
     @NotBlank(message = ErrorMessage.EMAIL_NULL_OR_BLANK)

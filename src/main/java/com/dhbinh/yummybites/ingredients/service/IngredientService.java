@@ -37,24 +37,29 @@ public class IngredientService {
 
     public IngredientDTO add(Long ID, Double quantity) {
         Ingredient ingredient = ingredientRepository.findById(ID).
-                orElseThrow(() -> new ResourceNotFoundException
-                        (ErrorMessage.INGREDIENT_NOT_FOUND, ErrorMessage.KEY_INGREDIENT_NOT_FOUND));
+                orElseThrow(() -> new ResourceNotFoundException(
+                        ErrorMessage.KEY_INGREDIENT_NOT_FOUND,
+                        ErrorMessage.INGREDIENT_NOT_FOUND));
+
         ingredient.setQuantity(ingredient.getQuantity() + quantity);
         return ingredientMapper.toDTO(ingredientRepository.save(ingredient));
     }
 
     public IngredientDTO deducted(Long ID, Double quantity) {
         Ingredient ingredient = ingredientRepository.findById(ID).
-                orElseThrow(() -> new ResourceNotFoundException
-                        (ErrorMessage.INGREDIENT_NOT_FOUND, ErrorMessage.KEY_INGREDIENT_NOT_FOUND));
+                orElseThrow(() -> new ResourceNotFoundException(
+                        ErrorMessage.KEY_INGREDIENT_NOT_FOUND,
+                        ErrorMessage.INGREDIENT_NOT_FOUND));
+
         ingredient.setQuantity(ingredient.getQuantity() - quantity);
         return ingredientMapper.toDTO(ingredientRepository.save(ingredient));
     }
 
     public void verifyIngredient(IngredientDTO ingredientDTO) {
         if (isIngredientExist(ingredientDTO.getName().trim())) {
-            throw new InputValidationException
-                    (ErrorMessage.KEY_INGREDIENT_ALREADY_EXIST, ErrorMessage.INGREDIENT_ALREADY_EXIST);
+            throw new InputValidationException(
+                    ErrorMessage.KEY_INGREDIENT_ALREADY_EXIST,
+                    ErrorMessage.INGREDIENT_ALREADY_EXIST);
         }
     }
 

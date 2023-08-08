@@ -1,4 +1,4 @@
-package com.dhbinh.yummybites.table.entity;
+package com.dhbinh.yummybites.diningtable.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,7 +19,7 @@ import javax.persistence.Table;
 @Builder
 @Entity
 @Table
-public class Tables {
+public class DiningTable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,5 +28,4 @@ public class Tables {
     private Integer number;
 
     private boolean isOccupied;
-
 }

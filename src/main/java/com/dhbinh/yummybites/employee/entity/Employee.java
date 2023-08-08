@@ -33,7 +33,7 @@ public class Employee {
     private String address;
 
     @Column(nullable = false)
-    @Pattern(regexp = "^[0-9]+$")
+    @Pattern(regexp = "^[0-9-]+$")
     private String phone;
 
     @Column(nullable = false, unique = true)
