@@ -11,6 +11,7 @@ import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -36,18 +37,20 @@ public class Bill {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "supplier_id")
+    @JoinColumn(name = "supplier_id", nullable = false)
     private Supplier supplier;
 
     @OneToMany(mappedBy = "bill",cascade = CascadeType.PERSIST)
     private List<BillDetail> billDetails;
 
+    @Column(nullable = false)
     private Double totalPrice;
 
     @ManyToOne
-    @JoinColumn(name = "employee_id")
+    @JoinColumn(name = "employee_id",nullable = false)
     private Employee employee;
 
     @CreationTimestamp
+    @Column(nullable = false)
     private LocalDateTime createdDate;
 }

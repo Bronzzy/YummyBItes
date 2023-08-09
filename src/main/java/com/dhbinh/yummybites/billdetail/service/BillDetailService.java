@@ -44,6 +44,7 @@ public class BillDetailService {
 
     @Autowired
     private IngredientRepository ingredientRepository;
+
     private final EmployeeMapper employeeMapper;
 
     private final SupplierMapper supplierMapper;

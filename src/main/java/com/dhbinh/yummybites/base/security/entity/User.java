@@ -1,6 +1,7 @@
 package com.dhbinh.yummybites.base.security.entity;
 
 import com.dhbinh.yummybites.base.exception.ErrorMessage;
+import com.dhbinh.yummybites.utils.CommonConstant;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -37,11 +38,9 @@ public class User {
     private Long id;
 
     @Column(nullable = false)
-    @Pattern(regexp = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$", message = ErrorMessage.EMAIL_WRONG_FORMAT)
     private String username;
 
     @Column(nullable = false)
-    @Pattern(regexp = "^(?=.*\\d)(?=.*[a-zA-Z]).{6,}$", message = ErrorMessage.PASSWORD_NOT_MATCH_PATTERN)
     private String password;
 
     private Boolean active;

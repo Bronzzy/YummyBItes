@@ -12,6 +12,7 @@ import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -47,10 +48,13 @@ public class Order {
     @JoinColumn(name = "table_id",nullable = false)
     private DiningTable diningTable;
 
+    @Column(nullable = false)
     private Double totalPrice;
 
+    @Column(nullable = false)
     private Boolean isPaid;
 
     @CreationTimestamp
+    @Column(nullable = false)
     private LocalDateTime createdDate;
 }

@@ -1,9 +1,15 @@
 package com.dhbinh.yummybites.base.exception;
 
+import com.dhbinh.yummybites.base.security.entity.Role;
+
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ErrorMessage {
+
+    private Role role;
 
     //RESTAURANT
     public static final String RESTAURANT_NOT_FOUND = "Restaurant not found";
@@ -101,6 +107,9 @@ public class ErrorMessage {
     public static final String KEY_TABLE_IS_OCCUPIED = "exception.input.validation.table.is.occupied";
     public static final String TABLE_IS_OCCUPIED = "Table is occupied";
 
+    public static final String KEY_DINING_TABLE_NUMBER_MIN = "exception.input.validation.dining.table.number.min";
+    public static final String DINING_TABLE_NUMBER_MIN = "Dining table number cannot be less than 1";
+
     //ORDER
     public static final String KEY_ORDER_NOT_FOUND = "exception.resource.not.found.order";
     public static final String ORDER_NOT_FOUND = "Order cannot be found";
@@ -160,6 +169,9 @@ public class ErrorMessage {
     public static final String ENUM_INVALID_VALUE = "Enum value is invalid";
     public static final String KEY_ENUM_INVALID_VALUE = "exception.input.validation.enum.invalid.value";
 
+    public static final String ENUM_VALID_VALUE = "valid value";
+
+
 
     static Map<String, String> errorKeyAndMessageMap() {
         Map<String, String> errorMap = new HashMap<>();
@@ -190,10 +202,17 @@ public class ErrorMessage {
         errorMap.put(DISH_TYPE_NULL_OR_BLANK, KEY_DISH_TYPE_NULL_OR_BLANK);
         errorMap.put(DISH_TYPE_INVALID_VALUE, KEY_DISH_TYPE_INVALID_VALUE);
 
+        //DINING TABLE
+        errorMap.put(DINING_TABLE_NOT_FOUND, KEY_DINING_TABLE_NOT_FOUND);
+
+        //ORDER
+
         //ORDER DETAILS
         errorMap.put(MENU_ITEM_NULL_OR_BLANK, KEY_MENU_ITEM_NULL_OR_BLANK);
         errorMap.put(QUANTITY_NULL_OR_BLANK, KEY_QUANTITY_NULL_OR_BLANK);
         errorMap.put(QUANTITY_LESS_THAN_ZERO, KEY_QUANTITY_LESS_THAN_ZERO);
+
+        //BILL
 
         //BILL DETAILS
         errorMap.put(ErrorMessage.PRICE_PER_UNIT_NULL_OR_BLANK, KEY_PRICE_PER_UNIT_NULL_OR_BLANK);

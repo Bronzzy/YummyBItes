@@ -22,22 +22,18 @@ public class Employee {
     private Long id;
 
     @Column(nullable = false)
-    @Pattern(regexp = "^[^0-9]*$")
     private String firstName;
 
     @Column(nullable = false)
-    @Pattern(regexp = "^[^0-9]*$")
     private String lastName;
 
     @Column(nullable = false)
     private String address;
 
     @Column(nullable = false)
-    @Pattern(regexp = "^[0-9-]+$")
     private String phone;
 
     @Column(nullable = false, unique = true)
-    @Pattern(regexp = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$")
     private String email;
 
     @Column(nullable = false)

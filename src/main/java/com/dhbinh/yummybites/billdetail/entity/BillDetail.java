@@ -29,20 +29,20 @@ public class BillDetail {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(nullable = false)
     private String ingredient;
 
-    @Column
+    @Column(nullable = false)
     private Double quantity;
 
-    @Column
+    @Column(nullable = false)
     private Double pricePerUnit;
 
-    @Column
+    @Column(nullable = false)
     private Double price;
 
     @ManyToOne
-    @JoinColumn(name = "bill_id")
+    @JoinColumn(name = "bill_id", nullable = false)
     private Bill bill;
 
 }

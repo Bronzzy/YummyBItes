@@ -1,6 +1,7 @@
 package com.dhbinh.yummybites.restaurant.service.dto;
 
 import com.dhbinh.yummybites.base.exception.ErrorMessage;
+import com.dhbinh.yummybites.utils.CommonConstant;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -28,7 +29,7 @@ public class RestaurantDTO {
     private String address;
 
     @NotBlank(message = ErrorMessage.PHONE_NULL_OR_BLANK)
-    @Pattern(regexp = "^[0-9]*$", message = ErrorMessage.PHONE_WRONG_FORMAT)
+    @Pattern(regexp = CommonConstant.PHONE_NUMBER_PATTERN, message = ErrorMessage.PHONE_WRONG_FORMAT)
     private String phone;
 
     @NotNull(message = ErrorMessage.RESTAURANT_OPEN_HOUR_NULL_OR_BLANK)

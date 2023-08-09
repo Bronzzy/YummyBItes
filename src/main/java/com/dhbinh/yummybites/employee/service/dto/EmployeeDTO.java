@@ -2,6 +2,7 @@ package com.dhbinh.yummybites.employee.service.dto;
 
 import com.dhbinh.yummybites.base.exception.ErrorMessage;
 import com.dhbinh.yummybites.employee.entity.StatusEnum;
+import com.dhbinh.yummybites.utils.CommonConstant;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -34,11 +35,11 @@ public class EmployeeDTO {
     private String address;
 
     @NotBlank(message = ErrorMessage.PHONE_NULL_OR_BLANK)
-    @Pattern(regexp = "^[0-9-]+$", message = ErrorMessage.PHONE_WRONG_FORMAT)
+    @Pattern(regexp = CommonConstant.PHONE_NUMBER_PATTERN, message = ErrorMessage.PHONE_WRONG_FORMAT)
     private String phone;
 
     @NotBlank(message = ErrorMessage.EMAIL_NULL_OR_BLANK)
-    @Pattern(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", message = ErrorMessage.EMAIL_WRONG_FORMAT)
+    @Pattern(regexp = CommonConstant.EMAIL_PATTERN, message = ErrorMessage.EMAIL_WRONG_FORMAT)
     private String email;
 
     @Enumerated(EnumType.STRING)
