@@ -39,8 +39,7 @@ public class UserDTO {
     private String password;
 
     @NotNull(message = ErrorMessage.ENUM_NULL_OR_BLANK)
-    @ValueOfEnum(enumClass = Role.class, message = Role.ENUM_VALID_VALUE)
-
+    @ValueOfEnum(enumClass = Role.class)
     @Enumerated(EnumType.STRING)
     private String role;
 }
