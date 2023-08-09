@@ -1,5 +1,8 @@
 package com.dhbinh.yummybites.billdetail.service;
 
+import com.dhbinh.yummybites.base.exception.ErrorMessage;
+import com.dhbinh.yummybites.base.exception.ResourceNotFoundException;
+import com.dhbinh.yummybites.base.security.jwt.JwtUtils;
 import com.dhbinh.yummybites.bill.entity.Bill;
 import com.dhbinh.yummybites.bill.repository.BillRepository;
 import com.dhbinh.yummybites.bill.service.dto.BillDTO;
@@ -8,9 +11,13 @@ import com.dhbinh.yummybites.billdetail.entity.BillDetail;
 import com.dhbinh.yummybites.billdetail.repository.BillDetailRepository;
 import com.dhbinh.yummybites.billdetail.service.dto.BillDetailDTO;
 import com.dhbinh.yummybites.billdetail.service.mapper.BillDetailMapper;
-import com.dhbinh.yummybites.orderdetail.service.OrderDetailService;
+import com.dhbinh.yummybites.employee.service.EmployeeService;
+import com.dhbinh.yummybites.employee.service.mapper.EmployeeMapper;
+import com.dhbinh.yummybites.ingredients.entity.Ingredient;
+import com.dhbinh.yummybites.ingredients.repository.IngredientRepository;
 import com.dhbinh.yummybites.supplier.service.SupplierService;
 import com.dhbinh.yummybites.supplier.service.mapper.SupplierMapper;
+import com.dhbinh.yummybites.utils.Utils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,49 +34,72 @@ public class BillDetailService {
     private BillDetailRepository billDetailRepository;
 
     @Autowired
-    private OrderDetailService orderDetailService;
+    private BillRepository billRepository;
 
     @Autowired
     private SupplierService supplierService;
 
     @Autowired
-    private BillRepository billRepository;
+    private EmployeeService employeeService;
 
-    private final BillDetailMapper billDetailMapper;
+    @Autowired
+    private IngredientRepository ingredientRepository;
+    private final EmployeeMapper employeeMapper;
 
     private final SupplierMapper supplierMapper;
 
     private final BillMapper billMapper;
 
-    public BillDTO save(String token, List<BillDetailDTO> billDetailDTOList, Long supplierId) {
-        List<BillDetail> billDetails = new ArrayList<>();
+    private final BillDetailMapper billDetailMapper;
 
-        double billTotalPrice = 0;
+    private final JwtUtils jwtUtils;
+
+    private final Utils utils;
+
+    public BillDTO create(String token, List<BillDetailDTO> billDetailDTOList, String supplierName) {
 
         Bill bill = Bill.builder()
-                .supplier(supplierMapper.toEntity(supplierService.findByID(supplierId)))
-                .employee(orderDetailService.findEmployeeByUsername(token))
+                .supplier(supplierMapper.toEntity(supplierService.findByNameIgnoreCase(supplierName.trim())))
+                .employee(employeeMapper.toEntity(employeeService.findByEmail(jwtUtils.getUserNameFromToken(token))))
                 .createdDate(LocalDateTime.now())
                 .build();
 
+        List<BillDetail> detailList = new ArrayList<>();
+        double billTotalPrice = 0;
         for (BillDetailDTO billDetailDTO : billDetailDTOList) {
+            Ingredient ingredient = ingredientRepository.findByNameIgnoreCase(billDetailDTO.getIngredient().trim()).
+                    orElseThrow(() -> new ResourceNotFoundException(
+                            ErrorMessage.KEY_INGREDIENT_NOT_FOUND,
+                            ErrorMessage.INGREDIENT_NOT_FOUND));
+
             BillDetail billDetail = BillDetail.builder()
-                    .ingredient(billDetailDTO.getIngredient())
+                    .bill(bill)
+                    .ingredient(utils.capitalizeFirstWordAndAfterWhitespace(billDetailDTO.getIngredient().trim()))
                     .quantity(billDetailDTO.getQuantity())
                     .pricePerUnit(billDetailDTO.getPricePerUnit())
                     .price(billDetailDTO.getPricePerUnit() * billDetailDTO.getQuantity())
                     .build();
 
+            ingredient.setQuantity(ingredient.getQuantity() + billDetailDTO.getQuantity());
+            ingredientRepository.save(ingredient);
             billTotalPrice += billDetail.getPrice();
-            billDetails.add(billDetail);
+            detailList.add(billDetail);
         }
 
+        bill.setBillDetails(detailList);
         bill.setTotalPrice(billTotalPrice);
 
-        billRepository.save(bill);
-        BillDTO billDTO = billMapper.toDTO(bill);
-        billDTO.setBillDetails(billDetailMapper.toDTOList(billDetails));
+        return billMapper.toDTO(billRepository.save(bill));
+    }
 
-        return billDTO;
+    public List<BillDetailDTO> findAll() {
+        return billDetailMapper.toDTOList(billDetailRepository.findAll());
+    }
+
+    public BillDetailDTO findById(Long id) {
+        return billDetailMapper.toDTO(billDetailRepository.findById(id).
+                orElseThrow(() -> new ResourceNotFoundException(
+                        ErrorMessage.KEY_BILL_DETAIL_NOT_FOUND,
+                        ErrorMessage.BILL_DETAIL_NOT_FOUND)));
     }
 }

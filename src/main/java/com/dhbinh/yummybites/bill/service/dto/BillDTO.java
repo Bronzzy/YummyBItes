@@ -22,12 +22,13 @@ public class BillDTO {
 
     private Long id;
 
+    private String supplierName;
+
     private List<BillDetailDTO> billDetails;
 
     private Double totalPrice;
 
     @NotBlank(message = ErrorMessage.EMPLOYEE_LAST_NAME_NULL_OR_BLANK)
-
     private String employeeLastName;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")

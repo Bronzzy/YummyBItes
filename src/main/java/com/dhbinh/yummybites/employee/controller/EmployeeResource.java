@@ -5,7 +5,9 @@ import com.dhbinh.yummybites.employee.service.dto.EmployeeDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,8 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 import java.net.URI;
+import java.util.List;
 
 @RestController
+@Validated
 @RequestMapping(value = "/employees")
 @PreAuthorize("hasRole('OWNER')")
 public class EmployeeResource {
@@ -29,8 +33,18 @@ public class EmployeeResource {
         return ResponseEntity.created(URI.create("/api/employees" + dto.getId())).body(dto);
     }
 
-    @DeleteMapping(value = "/{employee-id}")
-    public ResponseEntity<EmployeeDTO> deleteEmployee(@PathVariable("employee-id") Long ID) {
+    @GetMapping
+    public ResponseEntity<List<EmployeeDTO>>findAll(){
+        return ResponseEntity.ok(employeeService.findAll());
+    }
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<EmployeeDTO> findByID(@PathVariable("id") Long ID){
+        return ResponseEntity.ok(employeeService.findByID(ID));
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<EmployeeDTO> deleteEmployee(@PathVariable("id") Long ID) {
         return ResponseEntity.ok(employeeService.deleteEmployee(ID));
     }
 }

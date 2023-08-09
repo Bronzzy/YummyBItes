@@ -29,9 +29,9 @@ public class OrderDetailResource {
 
     @PostMapping
     public ResponseEntity<OrderDTO> create(@RequestHeader("Authorization") String token,
-                                           @Valid @RequestBody List<OrderDetailDTO> orderDTOList,
+                                           @Valid @RequestBody List<OrderDetailDTO> orderDetailDTOList,
                                            @RequestParam("tableNumber") long tableNumber) {
-        OrderDTO dto = orderDetailService.create(token, orderDTOList, tableNumber);
+        OrderDTO dto = orderDetailService.create(token, orderDetailDTOList, tableNumber);
         return ResponseEntity.created(URI.create("/api/orders" + dto.getId())).body(dto);
     }
 }

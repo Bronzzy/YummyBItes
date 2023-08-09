@@ -70,13 +70,13 @@ public class GlobalExceptionHandling extends RuntimeException {
     }
 
     //EXCEPTION HANDLING FOR INVALID ENUM VALUE
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ExceptionHandler(HttpMessageNotReadableException.class)
-    public ResponseBody handleHttpMessageNotReadableException(HttpMessageNotReadableException e) {
-        return new ResponseBody(HttpStatus.BAD_REQUEST,
-                ErrorMessage.errorKeyAndMessageMap().get(e.getMessage()),
-                e.getMessage());
-    }
+//    @ResponseStatus(HttpStatus.I_AM_A_TEAPOT)
+//    @ExceptionHandler(HttpMessageNotReadableException.class)
+//    public ResponseBody handleHttpMessageNotReadableException(HttpMessageNotReadableException e) {
+//        return new ResponseBody(HttpStatus.BAD_REQUEST,
+//                ErrorMessage.errorKeyAndMessageMap().get(e.getMessage()),
+//                e.getMessage());
+//    }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(InputValidationException.class)

@@ -8,6 +8,7 @@ import com.dhbinh.yummybites.ingredients.repository.IngredientRepository;
 import com.dhbinh.yummybites.ingredients.service.dto.IngredientDTO;
 import com.dhbinh.yummybites.ingredients.service.mapper.IngredientMapper;
 import com.dhbinh.yummybites.restaurant.service.RestaurantService;
+import com.dhbinh.yummybites.utils.Utils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,8 +25,10 @@ public class IngredientService {
 
     private final IngredientMapper ingredientMapper;
 
+    private final Utils utils;
+
     public IngredientDTO create(IngredientDTO ingredientDTO) {
-        verifyIngredient(ingredientDTO);
+        verify(ingredientDTO);
 
         Ingredient ingredient = Ingredient.builder()
                 .name(ingredientDTO.getName().trim())
@@ -55,8 +58,12 @@ public class IngredientService {
         return ingredientMapper.toDTO(ingredientRepository.save(ingredient));
     }
 
-    public void verifyIngredient(IngredientDTO ingredientDTO) {
-        if (isIngredientExist(ingredientDTO.getName().trim())) {
+    public void verify(IngredientDTO ingredientDTO) {
+        if (ingredientDTO.getName() != null) {
+            ingredientDTO.setName(utils.capitalizeFirstWordAndAfterWhitespace(ingredientDTO.getName().trim()));
+        }
+
+        if (isIngredientExist(ingredientDTO.getName())) {
             throw new InputValidationException(
                     ErrorMessage.KEY_INGREDIENT_ALREADY_EXIST,
                     ErrorMessage.INGREDIENT_ALREADY_EXIST);
@@ -64,6 +71,10 @@ public class IngredientService {
     }
 
     public boolean isIngredientExist(String name) {
-        return ingredientRepository.findByNameIgnoreCase(name.trim()) != null;
+        boolean isIngredientExist = false;
+        if (name != null) {
+            isIngredientExist = ingredientRepository.findByNameIgnoreCase(name.trim()).isPresent();
+        }
+        return isIngredientExist;
     }
 }

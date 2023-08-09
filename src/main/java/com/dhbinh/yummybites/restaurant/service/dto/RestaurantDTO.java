@@ -31,9 +31,9 @@ public class RestaurantDTO {
     @Pattern(regexp = "^[0-9]*$", message = ErrorMessage.PHONE_WRONG_FORMAT)
     private String phone;
 
-    @NotNull
+    @NotNull(message = ErrorMessage.RESTAURANT_OPEN_HOUR_NULL_OR_BLANK)
     private LocalTime openHour;
 
-    @NotNull
+    @NotNull(message = ErrorMessage.RESTAURANT_CLOSING_HOUR_NULL_OR_BLANK)
     private LocalTime closingHour;
 }

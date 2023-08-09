@@ -7,6 +7,9 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface RestaurantRepository extends JpaRepository<Restaurant, String> {
+public interface RestaurantRepository extends JpaRepository<Restaurant, Long> {
+
     Optional<Restaurant> findByNameIgnoreCase(String name);
+
+    Optional<Restaurant> findByAddressIgnoreCase(String address);
 }

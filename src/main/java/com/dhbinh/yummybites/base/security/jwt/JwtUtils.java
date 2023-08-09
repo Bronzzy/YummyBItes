@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -31,6 +32,14 @@ public class JwtUtils implements Serializable {
 
     public String getUserNameFromJwtToken(String token) {
         return Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody().getSubject();
+    }
+
+    public String getUserNameFromToken(String token) {
+        String nameToken = "";
+        if (StringUtils.hasText(token) && token.startsWith("Bearer ")) {
+            nameToken = token.substring(7);
+        }
+        return getUserNameFromJwtToken(nameToken);
     }
 
     public boolean validateJwtToken(String authToken) {
