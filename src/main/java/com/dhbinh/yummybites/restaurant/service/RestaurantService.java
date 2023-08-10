@@ -1,6 +1,7 @@
 package com.dhbinh.yummybites.restaurant.service;
 
 import com.dhbinh.yummybites.base.exception.ErrorMessage;
+import com.dhbinh.yummybites.base.exception.GlobalExceptionHandling;
 import com.dhbinh.yummybites.base.exception.InputValidationException;
 import com.dhbinh.yummybites.base.exception.ResourceNotFoundException;
 import com.dhbinh.yummybites.restaurant.entity.Restaurant;
@@ -9,7 +10,12 @@ import com.dhbinh.yummybites.restaurant.service.dto.RestaurantDTO;
 import com.dhbinh.yummybites.restaurant.service.mapper.RestaurantMapper;
 import com.dhbinh.yummybites.utils.Utils;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,8 +30,12 @@ public class RestaurantService {
 
     private final Utils utils;
 
+    private static final Logger logger = LoggerFactory.getLogger(Restaurant.class);
+
     public RestaurantDTO createRestaurant(RestaurantDTO restaurantDTO) {
         verify(restaurantDTO);
+
+        logger.info("create restaurant {}",restaurantDTO);
         Restaurant restaurant = Restaurant.builder()
                 .name(restaurantDTO.getName())
                 .address(restaurantDTO.getAddress())
@@ -39,7 +49,7 @@ public class RestaurantService {
 
     public RestaurantDTO update(Long id, RestaurantDTO restaurantDTO) {
         verify(restaurantDTO);
-
+        logger.info("update restaurant {}",restaurantDTO);
         Restaurant restaurant = restaurantRepository.findById(id).
                 orElseThrow(() -> new ResourceNotFoundException(
                         ErrorMessage.KEY_RESTAURANT_NOT_FOUND,
@@ -66,7 +76,7 @@ public class RestaurantService {
             restaurantDTO.setName(utils.capitalizeFirstWordAndAfterWhitespace(restaurantDTO.getName().trim()));
         }
 
-        if(restaurantDTO.getAddress() != null){
+        if (restaurantDTO.getAddress() != null) {
             restaurantDTO.setAddress(utils.capitalizeFirstWordAndAfterWhitespace(restaurantDTO.getAddress().trim()));
         }
 

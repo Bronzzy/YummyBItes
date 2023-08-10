@@ -23,6 +23,7 @@ public class BillResource {
     private BillService billService;
 
     @GetMapping
+    @PreAuthorize("@customSecurityService.hasRoleOrCustomCheck('ADMIN', principal)")
     public ResponseEntity<List<BillDTO>> findAll() {
         return ResponseEntity.ok(billService.findAll());
     }
