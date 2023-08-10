@@ -26,8 +26,6 @@ import java.util.Arrays;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserDTO {
 
-    static final String VALID_VALUE = ErrorMessage.ENUM_VALID_VALUE;
-
     private Long id;
 
     @NotBlank(message = ErrorMessage.EMAIL_NULL_OR_BLANK)

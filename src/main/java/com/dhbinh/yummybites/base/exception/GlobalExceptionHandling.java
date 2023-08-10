@@ -37,7 +37,9 @@ public class GlobalExceptionHandling extends RuntimeException {
         for (FieldError error : result.getFieldErrors()) {
             ResponseBody responseBody = new ResponseBody
                     (HttpStatus.BAD_REQUEST,
-                            ErrorMessage.errorKeyAndMessageMap().get(error.getDefaultMessage()),
+                            ErrorMessage.errorKeyAndMessageMap().get(error.getDefaultMessage()) == null ?
+                                    ErrorMessage.KEY_ENUM_INVALID_VALUE :
+                                    ErrorMessage.errorKeyAndMessageMap().get(error.getDefaultMessage()),
                             error.getDefaultMessage());
             responseBodies.add(responseBody);
         }
@@ -74,7 +76,7 @@ public class GlobalExceptionHandling extends RuntimeException {
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseBody handleHttpMessageNotReadableException(HttpMessageNotReadableException e) {
         return new ResponseBody(HttpStatus.BAD_REQUEST,
-                ErrorMessage.errorKeyAndMessageMap().get(e.getMessage()),
+                ErrorMessage.RESTAURANT_CLOSING_HOUR_NULL_OR_BLANK,
                 e.getMessage());
     }
 

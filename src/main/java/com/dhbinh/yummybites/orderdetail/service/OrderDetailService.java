@@ -14,6 +14,8 @@ import com.dhbinh.yummybites.order.service.mapper.OrderMapper;
 import com.dhbinh.yummybites.orderdetail.entity.OrderDetail;
 import com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -49,8 +51,10 @@ public class OrderDetailService {
 
     private final JwtUtils jwtUtils;
 
-    public OrderDTO create(String token, List<OrderDetailDTO> orderDetailDTOList, Long tableId) {
+    private static final Logger logger = LoggerFactory.getLogger(OrderDetailService.class);
 
+    public OrderDTO create(String token, List<OrderDetailDTO> orderDetailDTOList, Long tableId) {
+        logger.info("Create order detail{}", orderDetailDTOList);
         Order order = Order.builder()
                 .employee(employeeMapper.toEntity(employeeService.findByEmail(jwtUtils.getUserNameFromToken(token))))
                 .createdDate(LocalDateTime.now())
@@ -61,6 +65,7 @@ public class OrderDetailService {
         List<OrderDetail> detailList = new ArrayList<>();
         double orderTotalPrice = 0;
         for (OrderDetailDTO orderDetailDTO : orderDetailDTOList) {
+            logger.info("Order detail DTO {}", orderDetailDTO);
             OrderDetail orderDetail = OrderDetail.builder()
                     .order(order)
                     .menuItem(menuItemMapper.toEntity(menuItemService.findByName(orderDetailDTO.getMenuItemName().trim())))

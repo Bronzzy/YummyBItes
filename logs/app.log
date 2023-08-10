@@ -1,0 +1,22 @@
+2023-08-10 10:55:05,367 INFO com.dhbinh.yummybites.YummybitesApplication [restartedMain] Starting YummybitesApplication using Java 11.0.18 on AAVN-WS-380 with PID 18256 (D:\YummyBites\build\classes\java\main started by dhbinh in D:\YummyBites)
+2023-08-10 10:55:05,371 DEBUG com.dhbinh.yummybites.YummybitesApplication [restartedMain] Running with Spring Boot v2.7.14, Spring v5.3.29
+2023-08-10 10:55:05,372 INFO com.dhbinh.yummybites.YummybitesApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2023-08-10 10:55:12,439 DEBUG com.dhbinh.yummybites.base.security.config.AuthTokenFilter [restartedMain] Filter 'authenticationJwtTokenFilter' configured for use
+2023-08-10 10:55:14,789 INFO com.dhbinh.yummybites.YummybitesApplication [restartedMain] Started YummybitesApplication in 10.009 seconds (JVM running for 10.885)
+2023-08-10 10:56:07,853 INFO com.dhbinh.yummybites.YummybitesApplication [restartedMain] Starting YummybitesApplication using Java 11.0.18 on AAVN-WS-380 with PID 19744 (D:\YummyBites\build\classes\java\main started by dhbinh in D:\YummyBites)
+2023-08-10 10:56:07,862 DEBUG com.dhbinh.yummybites.YummybitesApplication [restartedMain] Running with Spring Boot v2.7.14, Spring v5.3.29
+2023-08-10 10:56:07,863 INFO com.dhbinh.yummybites.YummybitesApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2023-08-10 10:56:15,311 DEBUG com.dhbinh.yummybites.base.security.config.AuthTokenFilter [restartedMain] Filter 'authenticationJwtTokenFilter' configured for use
+2023-08-10 10:56:16,677 INFO com.dhbinh.yummybites.YummybitesApplication [restartedMain] Started YummybitesApplication in 9.634 seconds (JVM running for 11.07)
+2023-08-10 10:56:18,708 INFO com.dhbinh.yummybites.orderdetail.service.OrderDetailService [http-nio-8080-exec-2] Create order detail[com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@6e9391d, com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@52e68dc8]
+2023-08-10 10:56:45,542 INFO com.dhbinh.yummybites.YummybitesApplication [restartedMain] Starting YummybitesApplication using Java 11.0.18 on AAVN-WS-380 with PID 19624 (D:\YummyBites\build\classes\java\main started by dhbinh in D:\YummyBites)
+2023-08-10 10:56:45,547 INFO com.dhbinh.yummybites.YummybitesApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2023-08-10 10:56:56,043 INFO com.dhbinh.yummybites.YummybitesApplication [restartedMain] Started YummybitesApplication in 11.151 seconds (JVM running for 12.038)
+2023-08-10 10:56:58,901 INFO com.dhbinh.yummybites.orderdetail.service.OrderDetailService [http-nio-8080-exec-9] Create order detail[com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@464ecb17, com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@2cff3a22]
+2023-08-10 10:57:59,228 INFO com.dhbinh.yummybites.orderdetail.service.OrderDetailService [http-nio-8080-exec-8] Create order detail[com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@61552c94, com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@620f3671]
+2023-08-10 10:59:20,319 INFO com.dhbinh.yummybites.YummybitesApplication [restartedMain] Starting YummybitesApplication using Java 11.0.18 on AAVN-WS-380 with PID 9408 (D:\YummyBites\build\classes\java\main started by dhbinh in D:\YummyBites)
+2023-08-10 10:59:20,324 INFO com.dhbinh.yummybites.YummybitesApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2023-08-10 10:59:29,078 INFO com.dhbinh.yummybites.YummybitesApplication [restartedMain] Started YummybitesApplication in 9.375 seconds (JVM running for 10.391)
+2023-08-10 10:59:46,718 INFO com.dhbinh.yummybites.orderdetail.service.OrderDetailService [http-nio-8080-exec-1] Create order detail[com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@612167b8, com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@3ea46aff]
+2023-08-10 10:59:46,776 INFO com.dhbinh.yummybites.orderdetail.service.OrderDetailService [http-nio-8080-exec-1] Order detail DTO com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@612167b8
+2023-08-10 10:59:46,797 INFO com.dhbinh.yummybites.orderdetail.service.OrderDetailService [http-nio-8080-exec-1] Order detail DTO com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@3ea46aff

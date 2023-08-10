@@ -2,14 +2,12 @@ package com.dhbinh.yummybites.base.exception;
 
 import com.dhbinh.yummybites.base.security.entity.Role;
 
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class ErrorMessage {
 
-    private Role role;
+
 
     //RESTAURANT
     public static final String RESTAURANT_NOT_FOUND = "Restaurant not found";
@@ -166,10 +164,11 @@ public class ErrorMessage {
     public static final String ENUM_NULL_OR_BLANK = "Enum value cannot be null or blank";
     public static final String KEY_ENUM_NULL_OR_BLANK = "exception.input.validation.enum.null.or.blank";
 
-    public static final String ENUM_INVALID_VALUE = "Enum value is invalid";
     public static final String KEY_ENUM_INVALID_VALUE = "exception.input.validation.enum.invalid.value";
 
-    public static final String ENUM_VALID_VALUE = "valid value";
+    //USER
+    public static final String KEY_USERNAME_EXIST = "exception.input.validation.username.exist";
+    public static final String USERNAME_EXIST = "Username already exist";
 
 
 
@@ -226,7 +225,6 @@ public class ErrorMessage {
         errorMap.put(EMAIL_WRONG_FORMAT, KEY_EMAIL_WRONG_FORMAT);
         errorMap.put(PASSWORD_NULL_OR_BLANK, KEY_PASSWORD_NULL_OR_BLANK);
         errorMap.put(PASSWORD_NOT_MATCH_PATTERN, KEY_PASSWORD_NOT_MATCH_PATTERN);
-        errorMap.put(ENUM_INVALID_VALUE, KEY_ENUM_INVALID_VALUE);
         errorMap.put(ENUM_NULL_OR_BLANK, KEY_ENUM_NULL_OR_BLANK);
 
         return errorMap;

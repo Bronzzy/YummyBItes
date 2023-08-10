@@ -38,7 +38,7 @@ public class MenuItemDTO {
     private Double price;
 
     @NotNull(message = ErrorMessage.DISH_TYPE_NULL_OR_BLANK)
-    @ValueOfEnum(enumClass = DishType.class, message = ErrorMessage.DISH_TYPE_INVALID_VALUE)
+    @ValueOfEnum(enumClass = DishType.class)
     @Enumerated(EnumType.STRING)
     private String dishType;
 

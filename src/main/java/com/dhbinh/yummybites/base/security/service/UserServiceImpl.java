@@ -1,6 +1,8 @@
 package com.dhbinh.yummybites.base.security.service;
 
 
+import com.dhbinh.yummybites.base.exception.ErrorMessage;
+import com.dhbinh.yummybites.base.exception.InputValidationException;
 import com.dhbinh.yummybites.base.security.entity.Role;
 import com.dhbinh.yummybites.base.security.entity.User;
 import com.dhbinh.yummybites.base.security.entity.UserRoleAssignment;
@@ -31,6 +33,7 @@ public class UserServiceImpl {
     }
 
     public UserDTO create(UserDTO userDTO) {
+        verify(userDTO);
         User user = User.builder()
                 .username(userDTO.getUsername().trim())
                 .password(encoder.encode(userDTO.getPassword()))
@@ -44,5 +47,17 @@ public class UserServiceImpl {
         userRoleAssignmentRepository.save(assignment);
 
         return userMapper.toDTO(user);
+    }
+
+    private void verify(UserDTO userDTO) {
+        if(isUserExist(userDTO.getUsername())) {
+            throw new InputValidationException(
+                    ErrorMessage.KEY_USERNAME_EXIST,
+                    ErrorMessage.USERNAME_EXIST);
+        }
+    }
+
+    private boolean isUserExist(String user){
+        return userRepository.findByUsername(user).isPresent();
     }
 }
