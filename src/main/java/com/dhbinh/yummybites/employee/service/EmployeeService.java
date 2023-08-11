@@ -11,9 +11,16 @@ import com.dhbinh.yummybites.employee.service.mapper.EmployeeMapper;
 import com.dhbinh.yummybites.restaurant.service.RestaurantService;
 import com.dhbinh.yummybites.utils.Utils;
 import lombok.RequiredArgsConstructor;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import java.io.FileOutputStream;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -65,6 +72,46 @@ public class EmployeeService {
 
         employee.setStatus(StatusEnum.STATUS_INACTIVE);
         return employeeMapper.toDTO(employee);
+    }
+
+    @Scheduled(cron = " 0 11 16 * * *")
+    public void exportEmployeeList() {
+        List<Employee> employees = employeeRepository.findAll();
+        try (Workbook workbook = new XSSFWorkbook()) {
+            Sheet sheet = workbook.createSheet("Employee Data");
+
+            int rowIdx = 0;
+            for (Employee employee : employees) {
+                Row row = sheet.createRow(rowIdx++);
+
+                Cell cellFirstName = row.createCell(0);
+                cellFirstName.setCellValue(employee.getFirstName());
+
+                Cell cellLastName = row.createCell(1);
+                cellLastName.setCellValue(employee.getLastName());
+
+                Cell cellAddress = row.createCell(2);
+                cellAddress.setCellValue(employee.getAddress());
+
+                Cell cellPhone = row.createCell(3);
+                cellPhone.setCellValue(employee.getPhone());
+
+                Cell cellEmail = row.createCell(4);
+                cellEmail.setCellValue(employee.getEmail());
+
+                Cell cellRestaurant = row.createCell(5);
+                cellRestaurant.setCellValue(employee.getRestaurant().getName());
+            }
+
+            // Write the workbook to an Excel file
+            try (FileOutputStream fileOut = new FileOutputStream("employee_data.xlsx")) {
+                workbook.write(fileOut);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
     }
 
     public void verify(EmployeeDTO employeeDTO) {

@@ -9,6 +9,7 @@ import com.dhbinh.yummybites.diningtable.service.dto.DiningTableDTO;
 import com.dhbinh.yummybites.diningtable.service.mapper.DiningTableMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

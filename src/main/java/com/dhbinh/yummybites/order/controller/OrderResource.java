@@ -16,7 +16,7 @@ import java.util.List;
 
 @RestController
 @Validated
-@PreAuthorize("hasRole('WAITER')")
+@PreAuthorize("hasRole('WAITER','OWNER')")
 @RequestMapping(value = "/orders")
 public class OrderResource {
 

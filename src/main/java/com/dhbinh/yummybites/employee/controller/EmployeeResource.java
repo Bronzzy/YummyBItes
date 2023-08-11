@@ -43,6 +43,11 @@ public class EmployeeResource {
         return ResponseEntity.ok(employeeService.findByID(ID));
     }
 
+    @PostMapping(value = "/export-employee-list")
+    public void exportEmployeeList(){
+        employeeService.exportEmployeeList();
+    }
+
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<EmployeeDTO> deleteEmployee(@PathVariable("id") Long ID) {
         return ResponseEntity.ok(employeeService.deleteEmployee(ID));

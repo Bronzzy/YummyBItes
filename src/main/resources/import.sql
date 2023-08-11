@@ -4,6 +4,7 @@ INSERT INTO restaurant (address,closing_hour,"name",open_hour,phone) values ('40
 
 
 -----INSERT DATA INTO EMPLOYEE-----
+INSERT INTO employee (address,email,first_name,last_name,phone,status,restaurant) VALUES('1318 Prentice Circle','hoabinh0911@gmail.com','Dao','Binh','932-524-1590','STATUS_ACTIVE',1);
 INSERT INTO employee (address,email,first_name,last_name,phone,status,restaurant) VALUES('77210 Transport Court','bjowitt@friendfeed.com','Berny','Jowitt','673-264-9952','STATUS_ACTIVE',1);
 INSERT INTO employee (address,email,first_name,last_name,phone,status,restaurant) VALUES('75 Sundown Pass','mjudron@aol.com','Myrilla','Judron','332-671-9443','STATUS_ACTIVE',1);
 INSERT INTO employee (address,email,first_name,last_name,phone,status,restaurant) VALUES('415 Columbus Plac','pstores@gmpg.org','Paco','Stores','790-839-5818','STATUS_ACTIVE',1);
