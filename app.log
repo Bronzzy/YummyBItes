@@ -1,0 +1,22 @@
+2023-08-10 11:12:43,334 INFO [restartedMain] c.d.y.YummybitesApplication [StartupInfoLogger.java:55] Starting YummybitesApplication using Java 11.0.18 on AAVN-WS-380 with PID 8184 (D:\YummyBites\build\classes\java\main started by dhbinh in D:\YummyBites)
+2023-08-10 11:12:43,339 INFO [background-preinit] o.h.v.i.u.Version [Version.java:21] HV000001: Hibernate Validator 6.2.5.Final
+2023-08-10 11:12:43,342 INFO [restartedMain] c.d.y.YummybitesApplication [SpringApplication.java:631] No active profile set, falling back to 1 default profile: "default"
+2023-08-10 11:12:47,674 INFO [restartedMain] o.a.c.h.Http11NioProtocol [DirectJDKLog.java:173] Initializing ProtocolHandler ["http-nio-8080"]
+2023-08-10 11:12:47,678 INFO [restartedMain] o.a.c.c.StandardService [DirectJDKLog.java:173] Starting service [Tomcat]
+2023-08-10 11:12:47,679 INFO [restartedMain] o.a.c.c.StandardEngine [DirectJDKLog.java:173] Starting Servlet engine: [Apache Tomcat/9.0.78]
+2023-08-10 11:12:47,894 INFO [restartedMain] o.a.c.c.C.[.[.[/api] [DirectJDKLog.java:173] Initializing Spring embedded WebApplicationContext
+2023-08-10 11:12:48,330 INFO [restartedMain] o.h.j.i.u.LogHelper [LogHelper.java:31] HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-08-10 11:12:48,459 INFO [restartedMain] o.h.Version [Version.java:44] HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-08-10 11:12:48,864 INFO [restartedMain] o.h.a.c.Version [JavaReflectionManager.java:56] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-08-10 11:12:49,131 INFO [restartedMain] c.z.h.HikariDataSource [HikariDataSource.java:110] HikariPool-1 - Starting...
+2023-08-10 11:12:49,461 INFO [restartedMain] c.z.h.HikariDataSource [HikariDataSource.java:123] HikariPool-1 - Start completed.
+2023-08-10 11:12:49,502 INFO [restartedMain] o.h.d.Dialect [Dialect.java:175] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2023-08-10 11:12:51,589 INFO [restartedMain] o.h.t.s.i.SchemaCreatorImpl [AbstractScriptSourceInput.java:33] HHH000476: Executing import script 'file:/D:/YummyBites/build/resources/main/import.sql'
+2023-08-10 11:12:51,742 INFO [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator [JtaPlatformInitiator.java:52] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-10 11:12:53,634 INFO [restartedMain] o.a.c.h.Http11NioProtocol [DirectJDKLog.java:173] Starting ProtocolHandler ["http-nio-8080"]
+2023-08-10 11:12:53,671 INFO [restartedMain] c.d.y.YummybitesApplication [StartupInfoLogger.java:61] Started YummybitesApplication in 11.083 seconds (JVM running for 12.236)
+2023-08-10 11:13:14,215 INFO [http-nio-8080-exec-2] o.a.c.c.C.[.[.[/api] [DirectJDKLog.java:173] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-08-10 11:13:14,996 INFO [http-nio-8080-exec-2] c.d.y.o.s.OrderDetailService [OrderDetailService.java:57] Create order detail[com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@3917438e, com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@7e506eb7]
+2023-08-10 11:13:15,041 INFO [http-nio-8080-exec-2] c.d.y.o.s.OrderDetailService [OrderDetailService.java:68] Order detail DTO com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@3917438e
+2023-08-10 11:13:15,058 INFO [http-nio-8080-exec-2] c.d.y.o.s.OrderDetailService [OrderDetailService.java:68] Order detail DTO com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@7e506eb7
+2023-08-10 11:13:42,176 INFO [http-nio-8080-exec-3] c.d.y.o.s.OrderDetailService [OrderDetailService.java:57] Create order detail[com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@5fd928ba, com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@12859139]

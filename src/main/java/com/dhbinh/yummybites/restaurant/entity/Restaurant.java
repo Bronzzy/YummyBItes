@@ -1,9 +1,17 @@
 package com.dhbinh.yummybites.restaurant.entity;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import javax.persistence.*;
-import javax.validation.constraints.Pattern;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.time.LocalTime;
 
 @Getter
@@ -17,16 +25,15 @@ public class Restaurant {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long ID;
+    private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String name;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String address;
 
     @Column(nullable = false)
-    @Pattern(regexp = "^[0-9]+$", message = "Phone number must contain only numbers")
     private String phone;
 
     @Column(nullable = false)

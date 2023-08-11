@@ -1,6 +1,5 @@
 package com.dhbinh.yummybites.menuitem.entity;
 
-import com.dhbinh.yummybites.base.exception.ErrorMessage;
 import com.dhbinh.yummybites.restaurant.entity.Restaurant;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,8 +17,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
 
 @Getter
 @Setter
@@ -34,14 +31,13 @@ public class MenuItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String name;
 
     @Column(nullable = false)
     private String description;
 
     @Column(nullable = false)
-    @Min(0)
     private Double price;
 
     @Column(nullable = false)

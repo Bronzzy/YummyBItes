@@ -2,6 +2,8 @@ package com.dhbinh.yummybites.order.entity;
 
 import com.dhbinh.yummybites.employee.entity.Employee;
 import com.dhbinh.yummybites.orderdetail.entity.OrderDetail;
+import com.dhbinh.yummybites.diningtable.entity.DiningTable;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -10,6 +12,7 @@ import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -41,10 +44,17 @@ public class Order {
     @JoinColumn(name = "employee_id",nullable = false)
     private Employee employee;
 
+    @ManyToOne
+    @JoinColumn(name = "table_id",nullable = false)
+    private DiningTable diningTable;
+
+    @Column(nullable = false)
     private Double totalPrice;
 
+    @Column(nullable = false)
     private Boolean isPaid;
 
     @CreationTimestamp
+    @Column(nullable = false)
     private LocalDateTime createdDate;
 }

@@ -18,9 +18,9 @@ import javax.validation.constraints.NotNull;
 @Builder
 public class IngredientDTO {
 
-    private Long ID;
+    private Long id;
 
-    @NotBlank(message = ErrorMessage.INGREDIENT_NAME_NULL_OR_BLANK)
+    @NotBlank(message = ErrorMessage.INGREDIENT_NULL_OR_BLANK)
     private String name;
 
     @NotNull(message = ErrorMessage.INGREDIENT_QUANTITY_NULL_OR_BLANK)

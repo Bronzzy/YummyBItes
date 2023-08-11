@@ -32,7 +32,7 @@ public class IngredientResource {
     @PostMapping
     public ResponseEntity<IngredientDTO> create(@Valid @RequestBody IngredientDTO ingredientDTO) {
         IngredientDTO dto = ingredientService.create(ingredientDTO);
-        return ResponseEntity.created(URI.create("/api/ingredients" + dto.getID())).body(dto);
+        return ResponseEntity.created(URI.create("/api/ingredients" + dto.getId())).body(dto);
     }
 
     @PutMapping("/{ingredient-id}/add")
