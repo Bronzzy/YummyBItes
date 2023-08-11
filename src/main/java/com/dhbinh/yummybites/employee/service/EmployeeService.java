@@ -21,6 +21,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.io.FileOutputStream;
+import java.time.LocalDate;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -74,13 +75,21 @@ public class EmployeeService {
         return employeeMapper.toDTO(employee);
     }
 
-    @Scheduled(cron = " 0 11 16 * * *")
+    @Scheduled(cron = "00 00 17 * * *")
     public void exportEmployeeList() {
         List<Employee> employees = employeeRepository.findAll();
         try (Workbook workbook = new XSSFWorkbook()) {
             Sheet sheet = workbook.createSheet("Employee Data");
 
             int rowIdx = 0;
+            Row titleRow = sheet.createRow(rowIdx++);
+            titleRow.createCell(0).setCellValue("First Name");
+            titleRow.createCell(1).setCellValue("Last Name");
+            titleRow.createCell(2).setCellValue("Address");
+            titleRow.createCell(3).setCellValue("Phone");
+            titleRow.createCell(4).setCellValue("Email");
+            titleRow.createCell(5).setCellValue("Restaurant");
+
             for (Employee employee : employees) {
                 Row row = sheet.createRow(rowIdx++);
 
@@ -102,16 +111,12 @@ public class EmployeeService {
                 Cell cellRestaurant = row.createCell(5);
                 cellRestaurant.setCellValue(employee.getRestaurant().getName());
             }
-
-            // Write the workbook to an Excel file
             try (FileOutputStream fileOut = new FileOutputStream("employee_data.xlsx")) {
                 workbook.write(fileOut);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
     }
 
     public void verify(EmployeeDTO employeeDTO) {
