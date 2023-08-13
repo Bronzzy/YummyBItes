@@ -32,6 +32,9 @@ public class ErrorMessage {
     public static final String KEY_EMPLOYEE_NAME_NULL_OR_BLANK = "exception.input.validation.first.name.null.or.blank";
     public static final String EMPLOYEE_FIRST_NAME_NULL_OR_BLANK = "First name cannot be null or blank";
 
+    public static final String KEY_EMPLOYEE_NULL_OR_BLANK = "exception.input.validation.employee.null.or.blank";
+    public static final String EMPLOYEE_NULL_OR_BLANK = "Employee cannot be null or blank";
+
     public static final String KEY_EMPLOYEE_NOT_FOUND = "exception.resource.not.found.employee";
     public static final String EMPLOYEE_NOT_FOUND = "Employee cannot be found";
 
@@ -66,6 +69,9 @@ public class ErrorMessage {
     //SUPPLIER
     public static final String KEY_SUPPLIER_NAME_EXIST = "exception.input.validation.supplier.name.exist";
     public static final String SUPPLIER_NAME_EXIST = "Supplier name already existed";
+
+    public static final String KEY_SUPPLIER_NULL_OR_BLANK = "exception.input.validation.supplier.null.or.blank";
+    public static final String SUPPLIER_NULL_OR_BLANK = "Supplier cannot be null or blank";
 
     public static final String KEY_SUPPLIER_NAME_NULL_OR_BLANK = "exception.input.validation.supplier.name.null.or.blank";
     public static final String SUPPLIER_NAME_NULL_OR_BLANK = "Supplier name cannot be null or blank";
@@ -102,6 +108,9 @@ public class ErrorMessage {
     public static final String KEY_DINING_TABLE_NOT_FOUND = "exception.resource.not.found.dining.table";
     public static final String DINING_TABLE_NOT_FOUND = "Dining table cannot be found";
 
+    public static final String KEY_DINING_TABLE_NULL_OR_BLANK = "exception.input.validation.dining.table.null.or.blank";
+    public static final String DINING_TABLE_NULL_OR_BLANK = "Dining table cannot be null or blank";
+
     public static final String KEY_TABLE_IS_OCCUPIED = "exception.input.validation.table.is.occupied";
     public static final String TABLE_IS_OCCUPIED = "Table is occupied";
 
@@ -134,6 +143,9 @@ public class ErrorMessage {
 
     public static final String KEY_BILL_DETAIL_NOT_FOUND = "exception.resource.not.found.bill.detail";
     public static final String BILL_DETAIL_NOT_FOUND = "Bill detail cannot be found";
+
+    public static final String KEY_BILL_DETAIL_NULL_OR_BLANK = "exception.input.validation.bill.detail.null.or.blank";
+    public static final String BILL_DETAIL_NULL_OR_BLANK = "Bill detail cannot be null or blank";
 
     //USER
     public static final String KEY_USERNAME_EXIST = "exception.input.validation.username.exist";
@@ -191,6 +203,7 @@ public class ErrorMessage {
         errorMap.put(RESTAURANT_CLOSING_HOUR_NULL_OR_BLANK, KEY_RESTAURANT_CLOSING_HOUR_NULL_OR_BLANK);
 
         //EMPLOYEE
+        errorMap.put(EMPLOYEE_NULL_OR_BLANK, KEY_EMPLOYEE_NULL_OR_BLANK);
         errorMap.put(EMPLOYEE_FIRST_NAME_NULL_OR_BLANK, KEY_EMPLOYEE_NAME_NULL_OR_BLANK);
         errorMap.put(EMPLOYEE_LAST_NAME_NULL_OR_BLANK, KEY_EMPLOYEE_LAST_NAME_NULL_OR_BLANK);
         errorMap.put(EMPLOYEE_NAME_CONTAIN_NUMBER, KEY_EMPLOYEE_NAME_CONTAIN_NUMBER);
@@ -203,6 +216,7 @@ public class ErrorMessage {
 
         //SUPPLIER
         errorMap.put(SUPPLIER_NAME_NULL_OR_BLANK, KEY_SUPPLIER_NAME_NULL_OR_BLANK);
+        errorMap.put(SUPPLIER_NULL_OR_BLANK, KEY_SUPPLIER_NULL_OR_BLANK);
 
         //MENU ITEMS
         errorMap.put(DESCRIPTION_NULL_OR_BLANK, KEY_DESCRIPTION_NULL_OR_BLANK);
@@ -212,8 +226,10 @@ public class ErrorMessage {
         errorMap.put(DISH_TYPE_INVALID_VALUE, KEY_DISH_TYPE_INVALID_VALUE);
 
         //DINING TABLE
+        errorMap.put(DINING_TABLE_NULL_OR_BLANK, KEY_DINING_TABLE_NULL_OR_BLANK);
         errorMap.put(DINING_TABLE_NOT_FOUND, KEY_DINING_TABLE_NOT_FOUND);
         errorMap.put(DINING_TABLE_NUMBER_MIN,KEY_DINING_TABLE_NUMBER_MIN);
+
         //ORDER
 
         //ORDER DETAILS
@@ -225,6 +241,7 @@ public class ErrorMessage {
 
         //BILL DETAILS
         errorMap.put(ErrorMessage.PRICE_PER_UNIT_NULL_OR_BLANK, KEY_PRICE_PER_UNIT_NULL_OR_BLANK);
+        errorMap.put(ErrorMessage.BILL_DETAIL_NULL_OR_BLANK, KEY_BILL_DETAIL_NULL_OR_BLANK);
 
         //RESERVATION
         errorMap.put(KEY_RESERVATION_NULL, RESERVATION_NULL);

@@ -74,7 +74,7 @@ public class OrderService {
                 Row row = sheet.createRow(rowIdx++);
 
                 Cell cellOrderNumber = row.createCell(0);
-                cellOrderNumber.setCellValue(rowIdx - 1);
+                cellOrderNumber.setCellValue(order.getId());
 
                 Cell cellItemName = row.createCell(1);
                 cellItemName.setCellValue(order.getOrderDetails().stream()
@@ -90,7 +90,7 @@ public class OrderService {
             resultRow.createCell(2).setCellValue(orderList.stream().
                     mapToDouble(Order::getTotalPrice).sum());
 
-            try (FileOutputStream fileOut = new FileOutputStream("D:/Code/YummyBites/report/income/income_" + LocalDate.now() + ".xlsx")) {
+            try (FileOutputStream fileOut = new FileOutputStream("D:/Code/YummyBites/report/daily-report/report_" + LocalDate.now() + ".xlsx")) {
                 workbook.write(fileOut);
             }
         } catch (Exception e) {

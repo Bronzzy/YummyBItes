@@ -1,6 +1,7 @@
 package com.dhbinh.yummybites.billdetail.entity;
 
 import com.dhbinh.yummybites.bill.entity.Bill;
+import com.dhbinh.yummybites.ingredients.entity.Ingredient;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -29,8 +30,9 @@ public class BillDetail {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private String ingredient;
+    @ManyToOne
+    @JoinColumn(name = "ingredient_id", nullable = false)
+    private Ingredient ingredient;
 
     @Column(nullable = false)
     private Double quantity;

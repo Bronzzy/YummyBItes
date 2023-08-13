@@ -72,14 +72,14 @@ public class BillDetailService {
         List<BillDetail> detailList = new ArrayList<>();
         double billTotalPrice = 0;
         for (BillDetailDTO billDetailDTO : billDetailDTOList) {
-            Ingredient ingredient = ingredientRepository.findByNameIgnoreCase(billDetailDTO.getIngredient().trim()).
+            Ingredient ingredient = ingredientRepository.findByNameIgnoreCase((billDetailDTO.getIngredientName().trim())).
                     orElseThrow(() -> new ResourceNotFoundException(
                             ErrorMessage.KEY_INGREDIENT_NOT_FOUND,
                             ErrorMessage.INGREDIENT_NOT_FOUND));
 
             BillDetail billDetail = BillDetail.builder()
                     .bill(bill)
-                    .ingredient(utils.capitalizeFirstWordAndAfterWhitespace(billDetailDTO.getIngredient().trim()))
+                    .ingredient(ingredient)
                     .quantity(billDetailDTO.getQuantity())
                     .pricePerUnit(billDetailDTO.getPricePerUnit())
                     .price(billDetailDTO.getPricePerUnit() * billDetailDTO.getQuantity())

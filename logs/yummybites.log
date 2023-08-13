@@ -1,27 +1,196 @@
-| 2023-08-13 00:27:59 |  INFO |  | Starting YummybitesApplication using Java 11.0.17 on DESKTOP-HJRVAG0 with PID 5012 (D:\Code\YummyBites\build\classes\java\main started by hoabi in D:\Code\YummyBites)
-| 2023-08-13 00:27:59 |  INFO |  | No active profile set, falling back to 1 default profile: "default"
-| 2023-08-13 00:28:16 |  INFO |  | Started YummybitesApplication in 18.406 seconds (JVM running for 20.827)
-| 2023-08-13 00:28:59 |  INFO | hoabinh0911 | Create order detail[com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@1c81dadb, com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@16aef148]
-| 2023-08-13 00:28:59 |  INFO | hoabinh0911 | Order detail DTO com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@1c81dadb
-| 2023-08-13 00:28:59 |  INFO | hoabinh0911 | Order detail DTO com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@16aef148
-| 2023-08-13 00:29:07 |  INFO | hoabinh0911 | Create order detail[com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@409539ff, com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@36d22578]
-| 2023-08-13 00:29:07 |  INFO | hoabinh0911 | Order detail DTO com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@409539ff
-| 2023-08-13 00:29:07 |  INFO | hoabinh0911 | Order detail DTO com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@36d22578
-| 2023-08-13 00:29:11 |  INFO | hoabinh0911 | Create order detail[com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@5e4b2b2a, com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@14a5a5af]
-| 2023-08-13 00:29:11 |  INFO | hoabinh0911 | Order detail DTO com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@5e4b2b2a
-| 2023-08-13 00:29:11 |  INFO | hoabinh0911 | Order detail DTO com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@14a5a5af
-| 2023-08-13 00:31:38 |  INFO |  | Starting YummybitesApplication using Java 11.0.17 on DESKTOP-HJRVAG0 with PID 19780 (D:\Code\YummyBites\build\classes\java\main started by hoabi in D:\Code\YummyBites)
-| 2023-08-13 00:31:38 |  INFO |  | No active profile set, falling back to 1 default profile: "default"
-| 2023-08-13 00:31:52 |  INFO |  | Started YummybitesApplication in 14.435 seconds (JVM running for 16.07)
-| 2023-08-13 00:32:18 |  INFO | hoabinh0911 | Create order detail[com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@5a38fb89, com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@38f551da]
-| 2023-08-13 00:32:18 |  INFO | hoabinh0911 | Order detail DTO com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@5a38fb89
-| 2023-08-13 00:32:18 |  INFO | hoabinh0911 | Order detail DTO com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@38f551da
-| 2023-08-13 00:32:22 |  INFO | hoabinh0911 | Create order detail[com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@7585bb76, com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@5e0ca06]
-| 2023-08-13 00:32:22 |  INFO | hoabinh0911 | Order detail DTO com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@7585bb76
-| 2023-08-13 00:32:22 |  INFO | hoabinh0911 | Order detail DTO com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@5e0ca06
-| 2023-08-13 00:32:24 |  INFO | hoabinh0911 | Create order detail[com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@255d6e4d, com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@2cea2d05]
-| 2023-08-13 00:32:24 |  INFO | hoabinh0911 | Order detail DTO com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@255d6e4d
-| 2023-08-13 00:32:24 |  INFO | hoabinh0911 | Order detail DTO com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@2cea2d05
-| 2023-08-13 00:40:51 |  INFO |  | Starting YummybitesApplication using Java 11.0.17 on DESKTOP-HJRVAG0 with PID 11788 (D:\Code\YummyBites\build\classes\java\main started by hoabi in D:\Code\YummyBites)
-| 2023-08-13 00:40:51 |  INFO |  | No active profile set, falling back to 1 default profile: "default"
-| 2023-08-13 00:41:04 |  INFO |  | Started YummybitesApplication in 14.025 seconds (JVM running for 15.218)
+| 2023-08-14 00:00:45 |  INFO |  | Starting YummybitesApplication using Java 11.0.17 on DESKTOP-HJRVAG0 with PID 6928 (D:\Code\YummyBites\build\classes\java\main started by hoabi in D:\Code\YummyBites)
+| 2023-08-14 00:00:45 |  INFO |  | No active profile set, falling back to 1 default profile: "default"
+| 2023-08-14 00:01:06 |  INFO |  | Starting YummybitesApplication using Java 11.0.17 on DESKTOP-HJRVAG0 with PID 15964 (D:\Code\YummyBites\build\classes\java\main started by hoabi in D:\Code\YummyBites)
+| 2023-08-14 00:01:06 |  INFO |  | No active profile set, falling back to 1 default profile: "default"
+| 2023-08-14 00:01:17 |  INFO |  | Started YummybitesApplication in 12.254 seconds (JVM running for 13.616)
+| 2023-08-14 00:05:58 |  INFO |  | Starting YummybitesApplication using Java 11.0.17 on DESKTOP-HJRVAG0 with PID 1984 (D:\Code\YummyBites\build\classes\java\main started by hoabi in D:\Code\YummyBites)
+| 2023-08-14 00:05:58 |  INFO |  | No active profile set, falling back to 1 default profile: "default"
+| 2023-08-14 00:06:08 |  INFO |  | Started YummybitesApplication in 10.836 seconds (JVM running for 11.742)
+| 2023-08-14 00:06:22 | ERROR |  | JWT token is expired: JWT expired at 2023-08-13T04:10:34Z. Current time: 2023-08-14T00:06:22Z, a difference of 71748628 milliseconds.  Allowed clock skew: 0 milliseconds.
+| 2023-08-14 00:06:22 | ERROR |  | Unauthorized error: Full authentication is required to access this resource
+| 2023-08-14 00:06:30 | ERROR |  | JWT token is expired: JWT expired at 2023-08-13T04:10:34Z. Current time: 2023-08-14T00:06:30Z, a difference of 71756096 milliseconds.  Allowed clock skew: 0 milliseconds.
+| 2023-08-14 00:06:30 | ERROR |  | Unauthorized error: Full authentication is required to access this resource
+| 2023-08-14 00:06:45 |  INFO | hoabinh0911 | Create order detail[com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@586c5e7, com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@793d3f2]
+| 2023-08-14 00:06:45 |  INFO | hoabinh0911 | Order detail DTO com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@586c5e7
+| 2023-08-14 00:06:45 |  INFO | hoabinh0911 | Order detail DTO com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@793d3f2
+| 2023-08-14 00:06:51 | ERROR |  | JWT token is expired: JWT expired at 2023-08-13T04:17:00Z. Current time: 2023-08-14T00:06:51Z, a difference of 71391874 milliseconds.  Allowed clock skew: 0 milliseconds.
+| 2023-08-14 00:06:51 | ERROR |  | Unauthorized error: Full authentication is required to access this resource
+| 2023-08-14 00:12:38 |  INFO |  | Starting YummybitesApplication using Java 11.0.17 on DESKTOP-HJRVAG0 with PID 8936 (D:\Code\YummyBites\build\classes\java\main started by hoabi in D:\Code\YummyBites)
+| 2023-08-14 00:12:38 |  INFO |  | No active profile set, falling back to 1 default profile: "default"
+| 2023-08-14 00:12:53 |  INFO |  | Started YummybitesApplication in 15.878 seconds (JVM running for 17.043)
+| 2023-08-14 00:13:03 |  INFO |  | Starting YummybitesApplication using Java 11.0.17 on DESKTOP-HJRVAG0 with PID 12920 (D:\Code\YummyBites\build\classes\java\main started by hoabi in D:\Code\YummyBites)
+| 2023-08-14 00:13:03 |  INFO |  | No active profile set, falling back to 1 default profile: "default"
+| 2023-08-14 00:13:14 |  INFO |  | Started YummybitesApplication in 12.446 seconds (JVM running for 13.735)
+| 2023-08-14 00:23:47 |  INFO |  | Starting YummybitesApplication using Java 11.0.17 on DESKTOP-HJRVAG0 with PID 14972 (D:\Code\YummyBites\build\classes\java\main started by hoabi in D:\Code\YummyBites)
+| 2023-08-14 00:23:47 |  INFO |  | No active profile set, falling back to 1 default profile: "default"
+| 2023-08-14 00:23:54 | ERROR |  | Failed to initialize JPA EntityManagerFactory: @OneToOne or @ManyToOne on com.dhbinh.yummybites.billdetail.entity.BillDetail.ingredient references an unknown entity: java.lang.String
+| 2023-08-14 00:23:54 | ERROR |  | Error starting Tomcat context. Exception: org.springframework.beans.factory.UnsatisfiedDependencyException. Message: Error creating bean with name 'webSecurityConfig' defined in file [D:\Code\YummyBites\build\classes\java\main\com\dhbinh\yummybites\base\security\config\WebSecurityConfig.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'userDetailsServiceImpl' defined in file [D:\Code\YummyBites\build\classes\java\main\com\dhbinh\yummybites\base\security\service\UserDetailsServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userRepository' defined in com.dhbinh.yummybites.base.security.repository.UserRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Cannot create inner bean '(inner bean)#5fbb74aa' of type [org.springframework.orm.jpa.SharedEntityManagerCreator] while setting bean property 'entityManager'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name '(inner bean)#5fbb74aa': Cannot resolve reference to bean 'entityManagerFactory' while setting constructor argument; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is org.hibernate.AnnotationException: @OneToOne or @ManyToOne on com.dhbinh.yummybites.billdetail.entity.BillDetail.ingredient references an unknown entity: java.lang.String
+| 2023-08-14 00:23:54 | ERROR |  | Application run failed
+org.springframework.context.ApplicationContextException: Unable to start web server; nested exception is org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:165)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:577)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:731)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292)
+	at com.dhbinh.yummybites.YummybitesApplication.main(YummybitesApplication.java:13)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:142)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.<init>(TomcatWebServer.java:104)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getTomcatWebServer(TomcatServletWebServerFactory.java:481)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getWebServer(TomcatServletWebServerFactory.java:211)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.createWebServer(ServletWebServerApplicationContext.java:184)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:162)
+	... 13 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'webSecurityConfig' defined in file [D:\Code\YummyBites\build\classes\java\main\com\dhbinh\yummybites\base\security\config\WebSecurityConfig.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'userDetailsServiceImpl' defined in file [D:\Code\YummyBites\build\classes\java\main\com\dhbinh\yummybites\base\security\service\UserDetailsServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userRepository' defined in com.dhbinh.yummybites.base.security.repository.UserRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Cannot create inner bean '(inner bean)#5fbb74aa' of type [org.springframework.orm.jpa.SharedEntityManagerCreator] while setting bean property 'entityManager'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name '(inner bean)#5fbb74aa': Cannot resolve reference to bean 'entityManagerFactory' while setting constructor argument; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is org.hibernate.AnnotationException: @OneToOne or @ManyToOne on com.dhbinh.yummybites.billdetail.entity.BillDetail.ingredient references an unknown entity: java.lang.String
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:800)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:229)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1372)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1222)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:410)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1352)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1195)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:213)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:213)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:176)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:171)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAdaptableBeans(ServletContextInitializerBeans.java:156)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.<init>(ServletContextInitializerBeans.java:87)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.getServletContextInitializerBeans(ServletWebServerApplicationContext.java:262)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.selfInitialize(ServletWebServerApplicationContext.java:236)
+	at org.springframework.boot.web.embedded.tomcat.TomcatStarter.onStartup(TomcatStarter.java:53)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4936)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1328)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1318)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:140)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:866)
+	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:795)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1328)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1318)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:140)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:866)
+	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:249)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:428)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:922)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.startup.Tomcat.start(Tomcat.java:486)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:123)
+	... 18 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'userDetailsServiceImpl' defined in file [D:\Code\YummyBites\build\classes\java\main\com\dhbinh\yummybites\base\security\service\UserDetailsServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userRepository' defined in com.dhbinh.yummybites.base.security.repository.UserRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Cannot create inner bean '(inner bean)#5fbb74aa' of type [org.springframework.orm.jpa.SharedEntityManagerCreator] while setting bean property 'entityManager'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name '(inner bean)#5fbb74aa': Cannot resolve reference to bean 'entityManagerFactory' while setting constructor argument; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is org.hibernate.AnnotationException: @OneToOne or @ManyToOne on com.dhbinh.yummybites.billdetail.entity.BillDetail.ingredient references an unknown entity: java.lang.String
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:800)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:229)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1372)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1222)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1391)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:887)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 68 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userRepository' defined in com.dhbinh.yummybites.base.security.repository.UserRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Cannot create inner bean '(inner bean)#5fbb74aa' of type [org.springframework.orm.jpa.SharedEntityManagerCreator] while setting bean property 'entityManager'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name '(inner bean)#5fbb74aa': Cannot resolve reference to bean 'entityManagerFactory' while setting constructor argument; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is org.hibernate.AnnotationException: @OneToOne or @ManyToOne on com.dhbinh.yummybites.billdetail.entity.BillDetail.ingredient references an unknown entity: java.lang.String
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveInnerBean(BeanDefinitionValueResolver.java:389)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:134)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyPropertyValues(AbstractAutowireCapableBeanFactory.java:1707)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1452)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:619)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1391)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:887)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 82 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name '(inner bean)#5fbb74aa': Cannot resolve reference to bean 'entityManagerFactory' while setting constructor argument; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is org.hibernate.AnnotationException: @OneToOne or @ManyToOne on com.dhbinh.yummybites.billdetail.entity.BillDetail.ingredient references an unknown entity: java.lang.String
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:342)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:113)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveConstructorArguments(ConstructorResolver.java:693)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:510)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1352)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1195)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveInnerBean(BeanDefinitionValueResolver.java:374)
+	... 96 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is org.hibernate.AnnotationException: @OneToOne or @ManyToOne on com.dhbinh.yummybites.billdetail.entity.BillDetail.ingredient references an unknown entity: java.lang.String
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1804)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:330)
+	... 104 common frames omitted
+Caused by: org.hibernate.AnnotationException: @OneToOne or @ManyToOne on com.dhbinh.yummybites.billdetail.entity.BillDetail.ingredient references an unknown entity: java.lang.String
+	at org.hibernate.cfg.ToOneFkSecondPass.doSecondPass(ToOneFkSecondPass.java:100)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.processEndOfQueue(InFlightMetadataCollectorImpl.java:1750)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.processFkSecondPassesInOrder(InFlightMetadataCollectorImpl.java:1694)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.processSecondPasses(InFlightMetadataCollectorImpl.java:1623)
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:295)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1460)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1494)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800)
+	... 111 common frames omitted
+| 2023-08-14 00:29:09 |  INFO |  | Starting YummybitesApplication using Java 11.0.17 on DESKTOP-HJRVAG0 with PID 16748 (D:\Code\YummyBites\build\classes\java\main started by hoabi in D:\Code\YummyBites)
+| 2023-08-14 00:29:09 |  INFO |  | No active profile set, falling back to 1 default profile: "default"
+| 2023-08-14 00:29:22 |  INFO |  | Started YummybitesApplication in 14.311 seconds (JVM running for 15.416)
+| 2023-08-14 00:29:48 |  WARN | hoabinh0911 | Constraint violation: Property 'create.billDetailDTOList[1].ingredientName' in com.dhbinh.yummybites.billdetail.controller.BillDetailResource, invalid value: null, message: Ingredient cannot be null or blank
+| 2023-08-14 00:29:48 |  WARN | hoabinh0911 | Constraint violation: Property 'create.billDetailDTOList[0].ingredientName' in com.dhbinh.yummybites.billdetail.controller.BillDetailResource, invalid value: null, message: Ingredient cannot be null or blank
+| 2023-08-14 00:31:23 |  INFO |  | Starting YummybitesApplication using Java 11.0.17 on DESKTOP-HJRVAG0 with PID 12824 (D:\Code\YummyBites\build\classes\java\main started by hoabi in D:\Code\YummyBites)
+| 2023-08-14 00:31:23 |  INFO |  | No active profile set, falling back to 1 default profile: "default"
+| 2023-08-14 00:31:36 |  INFO |  | Started YummybitesApplication in 13.788 seconds (JVM running for 14.65)
+| 2023-08-14 00:31:38 |  WARN | hoabinh0911 | Constraint violation: Property 'create.billDetailDTOList[1].ingredientName' in com.dhbinh.yummybites.billdetail.controller.BillDetailResource, invalid value: null, message: Ingredient cannot be null or blank
+| 2023-08-14 00:31:38 |  WARN | hoabinh0911 | Constraint violation: Property 'create.billDetailDTOList[0].ingredientName' in com.dhbinh.yummybites.billdetail.controller.BillDetailResource, invalid value: null, message: Ingredient cannot be null or blank
+| 2023-08-14 00:32:44 |  INFO |  | Starting YummybitesApplication using Java 11.0.17 on DESKTOP-HJRVAG0 with PID 944 (D:\Code\YummyBites\build\classes\java\main started by hoabi in D:\Code\YummyBites)
+| 2023-08-14 00:32:44 |  INFO |  | No active profile set, falling back to 1 default profile: "default"
+| 2023-08-14 00:33:00 |  INFO |  | Started YummybitesApplication in 17.266 seconds (JVM running for 18.172)
+| 2023-08-14 00:33:02 | ERROR |  | JWT token is expired: JWT expired at 2023-08-11T21:14:59Z. Current time: 2023-08-14T00:33:02Z, a difference of 184683013 milliseconds.  Allowed clock skew: 0 milliseconds.
+| 2023-08-14 00:33:02 | ERROR |  | Unauthorized error: Full authentication is required to access this resource
+| 2023-08-14 00:34:14 |  INFO |  | Starting YummybitesApplication using Java 11.0.17 on DESKTOP-HJRVAG0 with PID 12192 (D:\Code\YummyBites\build\classes\java\main started by hoabi in D:\Code\YummyBites)
+| 2023-08-14 00:34:14 |  INFO |  | No active profile set, falling back to 1 default profile: "default"
+| 2023-08-14 00:34:31 |  INFO |  | Started YummybitesApplication in 17.837 seconds (JVM running for 20.673)
+| 2023-08-14 00:34:53 |  INFO |  | Starting YummybitesApplication using Java 11.0.17 on DESKTOP-HJRVAG0 with PID 10468 (D:\Code\YummyBites\build\classes\java\main started by hoabi in D:\Code\YummyBites)
+| 2023-08-14 00:34:53 |  INFO |  | No active profile set, falling back to 1 default profile: "default"
+| 2023-08-14 00:35:11 |  INFO |  | Started YummybitesApplication in 19.891 seconds (JVM running for 21.053)

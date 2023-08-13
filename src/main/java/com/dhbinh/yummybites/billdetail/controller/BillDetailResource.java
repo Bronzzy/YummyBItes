@@ -11,7 +11,8 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 import java.net.URI;
 import java.util.List;
 
@@ -26,7 +27,10 @@ public class BillDetailResource {
 
     @PostMapping
     public ResponseEntity<BillDTO> create(@RequestHeader("Authorization") String token,
-                                          @Valid @RequestBody List<BillDetailDTO> billDetailDTOList,
+                                          @Valid
+                                          @NotEmpty(message = ErrorMessage.BILL_DETAIL_NULL_OR_BLANK)
+                                          @RequestBody
+                                          List<BillDetailDTO> billDetailDTOList,
                                           @RequestParam("supplierName") String supplierName) {
         BillDTO dto = billDetailService.create(token, billDetailDTOList, supplierName);
         return ResponseEntity.created(URI.create("/api/bills" + dto.getId())).body(dto);

@@ -21,7 +21,7 @@ public class BillDetailDTO {
     private Long id;
 
     @NotBlank(message = ErrorMessage.INGREDIENT_NULL_OR_BLANK)
-    private String ingredient;
+    private String ingredientName;
 
     @NotNull(message = ErrorMessage.QUANTITY_NULL_OR_BLANK)
     @Min(value = 0, message = ErrorMessage.QUANTITY_LESS_THAN_ZERO)
