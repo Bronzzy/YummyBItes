@@ -18,7 +18,6 @@ import com.dhbinh.yummybites.ingredients.repository.IngredientRepository;
 import com.dhbinh.yummybites.supplier.service.SupplierService;
 import com.dhbinh.yummybites.supplier.service.mapper.SupplierMapper;
 import com.dhbinh.yummybites.utils.Utils;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +26,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class BillDetailService {
 
     @Autowired
@@ -45,17 +43,23 @@ public class BillDetailService {
     @Autowired
     private IngredientRepository ingredientRepository;
 
-    private final EmployeeMapper employeeMapper;
+    @Autowired
+    private EmployeeMapper employeeMapper;
 
-    private final SupplierMapper supplierMapper;
+    @Autowired
+    private SupplierMapper supplierMapper;
 
-    private final BillMapper billMapper;
+    @Autowired
+    private BillMapper billMapper;
 
-    private final BillDetailMapper billDetailMapper;
+    @Autowired
+    private BillDetailMapper billDetailMapper;
 
-    private final JwtUtils jwtUtils;
+    @Autowired
+    private JwtUtils jwtUtils;
 
-    private final Utils utils;
+    @Autowired
+    private Utils utils;
 
     public BillDTO create(String token, List<BillDetailDTO> billDetailDTOList, String supplierName) {
 

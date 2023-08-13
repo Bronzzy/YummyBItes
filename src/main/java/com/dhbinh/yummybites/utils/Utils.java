@@ -1,20 +1,15 @@
 package com.dhbinh.yummybites.utils;
 
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 @Component
 public class Utils {
 
     public String capitalizeFirstWord(String input) {
-        if (input == null || input.isEmpty()) {
-            return input;
-        }
-
-        String firstLetter = input.substring(0, 1).toUpperCase();
-        String remainingLetters = input.substring(1);
-
-        return firstLetter + remainingLetters;
+        return StringUtils.capitalize(input);
     }
+
     public String capitalizeFirstWordAndAfterWhitespace(String input) {
         StringBuilder sb = new StringBuilder();
         String[] words = input.toLowerCase().split("\\s+");

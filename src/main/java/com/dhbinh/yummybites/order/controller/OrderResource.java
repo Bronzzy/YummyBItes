@@ -6,17 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @Validated
-@PreAuthorize("hasRole('WAITER','OWNER')")
+@PreAuthorize("hasAnyRole('OWNER','WAITER')")
 @RequestMapping(value = "/orders")
 public class OrderResource {
 
@@ -36,5 +32,10 @@ public class OrderResource {
     @PutMapping("/{id}")
     public ResponseEntity<OrderDTO> checkout(@PathVariable("id") Long id){
         return ResponseEntity.ok(orderService.checkout(id));
+    }
+
+    @PostMapping("/export-order-by-date")
+    public void exportOrderByDate(){
+        orderService.exportOrderByDate();
     }
 }

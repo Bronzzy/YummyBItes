@@ -21,7 +21,7 @@ import java.util.List;
 @RestController
 @Validated
 @RequestMapping(value = "/suppliers")
-@PreAuthorize("hasRole('OWNER')")
+@PreAuthorize("hasAnyRole('OWNER','COOK')")
 public class SupplierResource {
 
     @Autowired

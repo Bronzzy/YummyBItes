@@ -10,7 +10,6 @@ import com.dhbinh.yummybites.employee.service.dto.EmployeeDTO;
 import com.dhbinh.yummybites.employee.service.mapper.EmployeeMapper;
 import com.dhbinh.yummybites.restaurant.service.RestaurantService;
 import com.dhbinh.yummybites.utils.Utils;
-import lombok.RequiredArgsConstructor;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -21,10 +20,8 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.io.FileOutputStream;
-import java.time.LocalDate;
 import java.util.List;
 
-@RequiredArgsConstructor
 @Service
 public class EmployeeService {
 
@@ -34,12 +31,14 @@ public class EmployeeService {
     @Autowired
     private RestaurantService restaurantService;
 
-    private final EmployeeMapper employeeMapper;
+    @Autowired
+    private EmployeeMapper employeeMapper;
 
-    private final Utils utils;
+    @Autowired
+    private Utils utils;
 
     public EmployeeDTO createEmployee(EmployeeDTO employeeDTO) {
-        verify(employeeDTO);
+        verifyAndModify(employeeDTO);
 
         Employee employee = Employee.builder()
                 .firstName(employeeDTO.getFirstName())
@@ -67,9 +66,9 @@ public class EmployeeService {
 
     public EmployeeDTO deleteEmployee(Long ID) {
         Employee employee = employeeRepository.findById(ID).
-                orElseThrow(() -> new InputValidationException(
-                        ErrorMessage.KEY_RESTAURANT_NOT_FOUND,
-                        ErrorMessage.RESTAURANT_NOT_FOUND));
+                orElseThrow(() -> new ResourceNotFoundException(
+                        ErrorMessage.KEY_EMPLOYEE_NOT_FOUND,
+                        ErrorMessage.EMPLOYEE_NOT_FOUND));
 
         employee.setStatus(StatusEnum.STATUS_INACTIVE);
         return employeeMapper.toDTO(employee);
@@ -119,7 +118,7 @@ public class EmployeeService {
         }
     }
 
-    public void verify(EmployeeDTO employeeDTO) {
+    public void verifyAndModify(EmployeeDTO employeeDTO) {
 
         if (employeeDTO.getFirstName() != null) {
             employeeDTO.setFirstName(utils.capitalizeFirstWordAndAfterWhitespace(employeeDTO.getFirstName().trim()));

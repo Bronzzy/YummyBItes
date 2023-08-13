@@ -1,7 +1,6 @@
 package com.dhbinh.yummybites.restaurant.service;
 
 import com.dhbinh.yummybites.base.exception.ErrorMessage;
-import com.dhbinh.yummybites.base.exception.GlobalExceptionHandling;
 import com.dhbinh.yummybites.base.exception.InputValidationException;
 import com.dhbinh.yummybites.base.exception.ResourceNotFoundException;
 import com.dhbinh.yummybites.restaurant.entity.Restaurant;
@@ -12,10 +11,7 @@ import com.dhbinh.yummybites.utils.Utils;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.slf4j.MDC;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,16 +20,18 @@ import java.util.List;
 @Service
 public class RestaurantService {
 
-    private final RestaurantMapper restaurantMapper;
+    @Autowired
+    private RestaurantMapper restaurantMapper;
     @Autowired
     private RestaurantRepository restaurantRepository;
 
-    private final Utils utils;
+    @Autowired
+    private Utils utils;
 
     private static final Logger logger = LoggerFactory.getLogger(Restaurant.class);
 
     public RestaurantDTO createRestaurant(RestaurantDTO restaurantDTO) {
-        verify(restaurantDTO);
+        verifyAndModify(restaurantDTO);
 
         logger.info("create restaurant {}",restaurantDTO);
         Restaurant restaurant = Restaurant.builder()
@@ -48,7 +46,7 @@ public class RestaurantService {
     }
 
     public RestaurantDTO update(Long id, RestaurantDTO restaurantDTO) {
-        verify(restaurantDTO);
+        verifyAndModify(restaurantDTO);
         logger.info("update restaurant {}",restaurantDTO);
         Restaurant restaurant = restaurantRepository.findById(id).
                 orElseThrow(() -> new ResourceNotFoundException(
@@ -71,7 +69,7 @@ public class RestaurantService {
                         ErrorMessage.RESTAURANT_NOT_FOUND)));
     }
 
-    public void verify(RestaurantDTO restaurantDTO) {
+    public void verifyAndModify(RestaurantDTO restaurantDTO) {
         if (restaurantDTO.getName() != null) {
             restaurantDTO.setName(utils.capitalizeFirstWordAndAfterWhitespace(restaurantDTO.getName().trim()));
         }

@@ -10,14 +10,12 @@ import com.dhbinh.yummybites.menuitem.service.dto.MenuItemDTO;
 import com.dhbinh.yummybites.menuitem.service.mapper.MenuItemMapper;
 import com.dhbinh.yummybites.restaurant.service.RestaurantService;
 import com.dhbinh.yummybites.utils.Utils;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class MenuItemService {
 
     @Autowired
@@ -26,12 +24,14 @@ public class MenuItemService {
     @Autowired
     private RestaurantService restaurantService;
 
-    private final MenuItemMapper menuItemMapper;
+    @Autowired
+    private MenuItemMapper menuItemMapper;
 
-    private final Utils utils;
+    @Autowired
+    private Utils utils;
 
     public MenuItemDTO create(MenuItemDTO menuItemDTO) {
-        verify(menuItemDTO);
+        verifyAndModify(menuItemDTO);
 
         MenuItem menuItem = MenuItem.builder()
                 .name(menuItemDTO.getName())
@@ -57,7 +57,7 @@ public class MenuItemService {
     }
 
     public MenuItemDTO update(Long id, MenuItemDTO menuItemDTO) {
-        verify(menuItemDTO);
+        verifyAndModify(menuItemDTO);
 
         MenuItem menuItem = menuItemRepository.findById(id).
                 orElseThrow(() -> new ResourceNotFoundException(
@@ -68,7 +68,7 @@ public class MenuItemService {
         return menuItemMapper.toDTO(menuItemRepository.save(menuItem));
     }
 
-    public void verify(MenuItemDTO menuItemDTO) {
+    public void verifyAndModify(MenuItemDTO menuItemDTO) {
         if (menuItemDTO.getName() != null) {
             menuItemDTO.setName(utils.capitalizeFirstWordAndAfterWhitespace(menuItemDTO.getName().trim()));
         }

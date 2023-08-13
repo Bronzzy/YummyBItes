@@ -7,21 +7,19 @@ import com.dhbinh.yummybites.diningtable.entity.DiningTable;
 import com.dhbinh.yummybites.diningtable.repository.DiningTableRepository;
 import com.dhbinh.yummybites.diningtable.service.dto.DiningTableDTO;
 import com.dhbinh.yummybites.diningtable.service.mapper.DiningTableMapper;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
-public class DiningTableService {
+public class    DiningTableService {
 
     @Autowired
     private DiningTableRepository diningTableRepository;
 
-    private final DiningTableMapper diningTableMapper;
+    @Autowired
+    private DiningTableMapper diningTableMapper;
 
     public DiningTableDTO create(DiningTableDTO tableDTO) {
         DiningTable table = DiningTable.builder()

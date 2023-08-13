@@ -56,5 +56,6 @@ public class Order {
 
     @CreationTimestamp
     @Column(nullable = false)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm")
     private LocalDateTime createdDate;
 }

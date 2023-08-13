@@ -16,14 +16,13 @@ import java.util.List;
 @RestController
 @Validated
 @RequestMapping(value = "/bills")
-@PreAuthorize("hasRole('OWNER')")
+@PreAuthorize("hasRole('OWNER','COOK')")
 public class BillResource {
 
     @Autowired
     private BillService billService;
 
     @GetMapping
-    @PreAuthorize("@customSecurityService.hasRoleOrCustomCheck('ADMIN', principal)")
     public ResponseEntity<List<BillDTO>> findAll() {
         return ResponseEntity.ok(billService.findAll());
     }

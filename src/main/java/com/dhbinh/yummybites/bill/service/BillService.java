@@ -5,20 +5,19 @@ import com.dhbinh.yummybites.base.exception.ResourceNotFoundException;
 import com.dhbinh.yummybites.bill.repository.BillRepository;
 import com.dhbinh.yummybites.bill.service.dto.BillDTO;
 import com.dhbinh.yummybites.bill.service.mapper.BillMapper;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class BillService {
 
     @Autowired
     private BillRepository billRepository;
 
-    private final BillMapper billMapper;
+    @Autowired
+    private BillMapper billMapper;
 
     public List<BillDTO> findAll() {
         return billMapper.toDTOList(billRepository.findAll());

@@ -4,7 +4,6 @@ import com.dhbinh.yummybites.reservation.entity.Reservation;
 import com.dhbinh.yummybites.reservation.repository.ReservationRepository;
 import com.dhbinh.yummybites.reservation.service.dto.ReservationDTO;
 import com.dhbinh.yummybites.reservation.service.mapper.ReservationMapper;
-import lombok.RequiredArgsConstructor;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -16,18 +15,16 @@ import org.springframework.stereotype.Service;
 
 import java.io.FileOutputStream;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class ReservationService {
 
     @Autowired
     private ReservationRepository reservationRepository;
 
-    private final ReservationMapper reservationMapper;
+    @Autowired
+    private ReservationMapper reservationMapper;
 
     public ReservationDTO save(ReservationDTO reservationDTO) {
 
@@ -41,9 +38,13 @@ public class ReservationService {
         return reservationMapper.toDTO(reservationRepository.save(reservation));
     }
 
-    @Scheduled(cron = "0 38 18 * * *")
+    public List<ReservationDTO> findAll() {
+        return reservationMapper.toDTOList(reservationRepository.findAll());
+    }
+
+    @Scheduled(cron = "0 33 00 * * *")
     public void exportReservationTodayToExcel() {
-        List<Reservation> reservationList = reservationRepository.findByReservationDate(LocalDate.now());
+        List<Reservation> reservationList = reservationRepository.findByReservationDate(LocalDate.now().getDayOfMonth());
         try (Workbook workbook = new XSSFWorkbook()) {
             Sheet sheet = workbook.createSheet("Reservation");
 
@@ -57,19 +58,27 @@ public class ReservationService {
             for (Reservation reservation : reservationList) {
                 Row row = sheet.createRow(rowIdx++);
 
-                Cell cellFirstName = row.createCell(0);
-                cellFirstName.setCellValue(reservation.getReservationDate());
+                Cell cellReservationHour = row.createCell(0);
+                cellReservationHour.setCellValue(reservation.getReservationDate().getHour() + ":" + reservation.getReservationDate().getMinute());
 
-                Cell cellLastName = row.createCell(1);
-                cellLastName.setCellValue(reservation.getName());
+                Cell cellName = row.createCell(1);
+                cellName.setCellValue(reservation.getName());
 
-                Cell cellAddress = row.createCell(2);
-                cellAddress.setCellValue(reservation.getNumberOfGuests());
+                Cell cellNumberOfGuests = row.createCell(2);
+                cellNumberOfGuests.setCellValue(reservation.getNumberOfGuests());
 
-                Cell cellPhone = row.createCell(3);
-                cellPhone.setCellValue(reservation.getNote());
+                Cell cellNote = row.createCell(3);
+                cellNote.setCellValue(reservation.getNote());
             }
-            try (FileOutputStream fileOut = new FileOutputStream("reservation_" + LocalDate.now() + ".xlsx")) {
+
+            Row resultRow = sheet.createRow(rowIdx++);
+            resultRow.createCell(0).setCellValue("Total Hour");
+            resultRow.createCell(1).setCellValue("Total Name");
+            resultRow.createCell(2).setCellValue(reservationList.stream().
+                    mapToInt(Reservation::getNumberOfGuests).sum());
+            resultRow.createCell(3).setCellValue("Total Note");
+
+            try (FileOutputStream fileOut = new FileOutputStream("D:/Code/YummyBites/report/reservation/reservation_" + LocalDate.now() + ".xlsx")) {
                 workbook.write(fileOut);
             }
         } catch (Exception e) {

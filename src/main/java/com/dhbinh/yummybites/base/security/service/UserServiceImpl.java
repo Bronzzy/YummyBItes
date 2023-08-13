@@ -33,7 +33,7 @@ public class UserServiceImpl {
     }
 
     public UserDTO create(UserDTO userDTO) {
-        verify(userDTO);
+        verifyAndModify(userDTO);
         User user = User.builder()
                 .username(userDTO.getUsername().trim())
                 .password(encoder.encode(userDTO.getPassword()))
@@ -49,7 +49,7 @@ public class UserServiceImpl {
         return userMapper.toDTO(user);
     }
 
-    private void verify(UserDTO userDTO) {
+    private void verifyAndModify(UserDTO userDTO) {
         if(isUserExist(userDTO.getUsername())) {
             throw new InputValidationException(
                     ErrorMessage.KEY_USERNAME_EXIST,

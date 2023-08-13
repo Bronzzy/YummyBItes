@@ -24,7 +24,6 @@ public class RestaurantResource {
     @Autowired
     private RestaurantService restaurantService;
 
-    @PreAuthorize("hasAnyRole('COOK', 'OWNER')")
     @PostMapping
     public ResponseEntity<RestaurantDTO> createRestaurant(@Valid @RequestBody RestaurantDTO restaurantDTO) {
         RestaurantDTO dto = restaurantService.createRestaurant(restaurantDTO);

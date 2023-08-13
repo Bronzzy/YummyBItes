@@ -8,25 +8,25 @@ import com.dhbinh.yummybites.supplier.repository.SupplierRepository;
 import com.dhbinh.yummybites.supplier.service.dto.SupplierDTO;
 import com.dhbinh.yummybites.supplier.service.mapper.SupplierMapper;
 import com.dhbinh.yummybites.utils.Utils;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class SupplierService {
 
     @Autowired
     private SupplierRepository supplierRepository;
 
-    private final SupplierMapper supplierMapper;
+    @Autowired
+    private SupplierMapper supplierMapper;
 
-    private final Utils utils;
+    @Autowired
+    private Utils utils;
 
     public SupplierDTO create(SupplierDTO supplierDTO) {
-        verify(supplierDTO);
+        verifyAndModify(supplierDTO);
 
         Supplier supplier = Supplier.builder()
                 .name(supplierDTO.getName())
@@ -52,7 +52,7 @@ public class SupplierService {
     }
 
     public SupplierDTO update(Long id, SupplierDTO supplierDTO) {
-        verify(supplierDTO);
+        verifyAndModify(supplierDTO);
 
         Supplier supplier = supplierRepository.findById(id).
                 orElseThrow(() -> new ResourceNotFoundException(
@@ -64,7 +64,7 @@ public class SupplierService {
         return supplierMapper.toDTO(supplier);
     }
 
-    public void verify(SupplierDTO supplierDTO) {
+    public void verifyAndModify(SupplierDTO supplierDTO) {
 
         if (supplierDTO.getName() != null) {
             supplierDTO.setName(utils.capitalizeFirstWordAndAfterWhitespace(supplierDTO.getName().trim()));
