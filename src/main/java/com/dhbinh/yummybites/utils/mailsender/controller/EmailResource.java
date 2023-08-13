@@ -25,7 +25,6 @@ public class EmailResource {
 
     @PostMapping("/sendMailWithAttachment")
     public String sendMailWithAttachment(@RequestBody EmailDetail details) {
-
         return emailService.sendMailWithAttachment(details);
     }
 }

@@ -10,7 +10,6 @@ import com.dhbinh.yummybites.employee.service.dto.EmployeeDTO;
 import com.dhbinh.yummybites.employee.service.mapper.EmployeeMapper;
 import com.dhbinh.yummybites.restaurant.service.RestaurantService;
 import com.dhbinh.yummybites.utils.Utils;
-import lombok.RequiredArgsConstructor;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -23,7 +22,6 @@ import org.springframework.stereotype.Service;
 import java.io.FileOutputStream;
 import java.util.List;
 
-@RequiredArgsConstructor
 @Service
 public class EmployeeService {
 
@@ -33,12 +31,14 @@ public class EmployeeService {
     @Autowired
     private RestaurantService restaurantService;
 
-    private final EmployeeMapper employeeMapper;
+    @Autowired
+    private EmployeeMapper employeeMapper;
 
-    private final Utils utils;
+    @Autowired
+    private Utils utils;
 
     public EmployeeDTO createEmployee(EmployeeDTO employeeDTO) {
-        verify(employeeDTO);
+        verifyAndModify(employeeDTO);
 
         Employee employee = Employee.builder()
                 .firstName(employeeDTO.getFirstName())
@@ -66,21 +66,29 @@ public class EmployeeService {
 
     public EmployeeDTO deleteEmployee(Long ID) {
         Employee employee = employeeRepository.findById(ID).
-                orElseThrow(() -> new InputValidationException(
-                        ErrorMessage.KEY_RESTAURANT_NOT_FOUND,
-                        ErrorMessage.RESTAURANT_NOT_FOUND));
+                orElseThrow(() -> new ResourceNotFoundException(
+                        ErrorMessage.KEY_EMPLOYEE_NOT_FOUND,
+                        ErrorMessage.EMPLOYEE_NOT_FOUND));
 
         employee.setStatus(StatusEnum.STATUS_INACTIVE);
         return employeeMapper.toDTO(employee);
     }
 
-    @Scheduled(cron = " 0 11 16 * * *")
+    @Scheduled(cron = "00 00 17 * * *")
     public void exportEmployeeList() {
         List<Employee> employees = employeeRepository.findAll();
         try (Workbook workbook = new XSSFWorkbook()) {
             Sheet sheet = workbook.createSheet("Employee Data");
 
             int rowIdx = 0;
+            Row titleRow = sheet.createRow(rowIdx++);
+            titleRow.createCell(0).setCellValue("First Name");
+            titleRow.createCell(1).setCellValue("Last Name");
+            titleRow.createCell(2).setCellValue("Address");
+            titleRow.createCell(3).setCellValue("Phone");
+            titleRow.createCell(4).setCellValue("Email");
+            titleRow.createCell(5).setCellValue("Restaurant");
+
             for (Employee employee : employees) {
                 Row row = sheet.createRow(rowIdx++);
 
@@ -102,19 +110,15 @@ public class EmployeeService {
                 Cell cellRestaurant = row.createCell(5);
                 cellRestaurant.setCellValue(employee.getRestaurant().getName());
             }
-
-            // Write the workbook to an Excel file
             try (FileOutputStream fileOut = new FileOutputStream("employee_data.xlsx")) {
                 workbook.write(fileOut);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
     }
 
-    public void verify(EmployeeDTO employeeDTO) {
+    public void verifyAndModify(EmployeeDTO employeeDTO) {
 
         if (employeeDTO.getFirstName() != null) {
             employeeDTO.setFirstName(utils.capitalizeFirstWordAndAfterWhitespace(employeeDTO.getFirstName().trim()));

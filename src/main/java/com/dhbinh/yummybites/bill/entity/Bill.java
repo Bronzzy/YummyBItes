@@ -1,5 +1,6 @@
 package com.dhbinh.yummybites.bill.entity;
 
+import com.dhbinh.yummybites.base.exception.ErrorMessage;
 import com.dhbinh.yummybites.billdetail.entity.BillDetail;
 import com.dhbinh.yummybites.employee.entity.Employee;
 import com.dhbinh.yummybites.supplier.entity.Supplier;
@@ -20,6 +21,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -38,6 +40,7 @@ public class Bill {
 
     @ManyToOne
     @JoinColumn(name = "supplier_id", nullable = false)
+    @NotNull(message = ErrorMessage..)
     private Supplier supplier;
 
     @OneToMany(mappedBy = "bill",cascade = CascadeType.PERSIST)

@@ -40,16 +40,21 @@ public class OrderDetailService {
 
     @Autowired
     private DiningTableService diningTableService;
+    
+    @Autowired
+    private MenuItemMapper menuItemMapper;
 
-    private final MenuItemMapper menuItemMapper;
+    @Autowired
+    private EmployeeMapper employeeMapper;
 
-    private final EmployeeMapper employeeMapper;
+    @Autowired
+    private OrderMapper orderMapper;
 
-    private final OrderMapper orderMapper;
+    @Autowired
+    private DiningTableMapper diningTableMapper;
 
-    private final DiningTableMapper diningTableMapper;
-
-    private final JwtUtils jwtUtils;
+    @Autowired
+    private JwtUtils jwtUtils;
 
     private static final Logger logger = LoggerFactory.getLogger(OrderDetailService.class);
 
@@ -57,7 +62,6 @@ public class OrderDetailService {
         logger.info("Create order detail{}", orderDetailDTOList);
         Order order = Order.builder()
                 .employee(employeeMapper.toEntity(employeeService.findByEmail(jwtUtils.getUserNameFromToken(token))))
-                .createdDate(LocalDateTime.now())
                 .isPaid(false)
                 .diningTable(diningTableMapper.toEntity(diningTableService.setOccupied(tableId)))
                 .build();

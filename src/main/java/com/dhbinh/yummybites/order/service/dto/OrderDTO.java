@@ -29,6 +29,7 @@ public class OrderDTO {
     private Double totalPrice;
 
     private Boolean isPaid;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm")
     private LocalDateTime createdDate;
 }
