@@ -1,5 +1,6 @@
 package com.dhbinh.yummybites.diningtable.entity;
 
+import com.dhbinh.yummybites.base.exception.ErrorMessage;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -12,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
 
 @Getter
 @Setter
@@ -27,6 +29,7 @@ public class DiningTable {
     private Long id;
 
     @Column(nullable = false, unique = true)
+    @Min(value = 1,message = ErrorMessage.DINING_TABLE_MIN_NUMBER)
     private Integer number;
 
     @Column(nullable = false)

@@ -54,7 +54,7 @@ public class Order {
     private DiningTable diningTable;
 
     @Column(nullable = false)
-    @Min(value = 0, message = ErrorMessage.PRICE_LESS_THAN_ZERO)
+    @Min(value = 1, message = ErrorMessage.PRICE_LESS_THAN_ONE)
     private Double totalPrice;
 
     @Column(nullable = false)

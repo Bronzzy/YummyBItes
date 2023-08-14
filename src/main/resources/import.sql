@@ -23,7 +23,7 @@ INSERT INTO users (active,"password",username) VALUES(true,'$2a$10$6Yn6mO4kQvgA1
 
 
 -----INSERT DATA INTO USER ROLE ASSIGMENTS-----
-INSERT INTO user_role_assignment (assigned_date,"role",modified_date,user_id) VALUES('2023-08-08 17:12:33.970','ROLE_OWNER','2023-08-08 17:12:33.970',1);
+INSERT INTO user_role_assignment (assigned_date,"role",modified_date,user_id) VALUES('2023-08-08 17:12:33.970','ROLE_OWNER',CURRENT_TIMESTAMP,1);
 INSERT INTO user_role_assignment (assigned_date,"role",modified_date,user_id) VALUES('2023-08-08 17:13:45.880','ROLE_WAITER','2023-08-08 17:13:45.880',2);
 INSERT INTO user_role_assignment (assigned_date,"role",modified_date,user_id) VALUES('2023-08-08 17:13:58.121','ROLE_WAITER','2023-08-08 17:13:58.121',3);
 INSERT INTO user_role_assignment (assigned_date,"role",modified_date,user_id) VALUES('2023-08-08 17:14:17.055','ROLE_WAITER','2023-08-08 17:14:17.055',4);
@@ -80,3 +80,21 @@ INSERT INTO menu_item (description,dish_type,"name",price,restaurant_id) VALUES(
 INSERT INTO menu_item (description,dish_type,"name",price,restaurant_id) VALUES('Crispy shrimp and potato chunks nestled in warm tortillas, topped with a zesty coleslaw and salsa.','DISH_TYPE_MAINDISH','Shrimp and Potato Tacos',270000.0,1);
 INSERT INTO menu_item (description,dish_type,"name",price,restaurant_id) VALUES('Grilled tortillas stuffed with seasoned chicken, melted cheese, and sautéed onions, served with sour cream and guacamole.','DISH_TYPE_MAINDISH','Chicken and Cheese Quesadillas',170000.0,1);
 INSERT INTO menu_item (description,dish_type,"name",price,restaurant_id) VALUES('Wholesome frittata loaded with caramelized onions and sliced potatoes, perfect for breakfast or brunch.','DISH_TYPE_MAINDISH','Onion and Potato Frittata',150000.0,1);
+
+
+
+-----INSERT DATA INTO ORDER-----
+INSERT INTO orders (created_date,is_paid,total_price,table_id,employee_id) VALUES(CURRENT_TIMESTAMP,true,780000.0,1,2);
+INSERT INTO orders (created_date,is_paid,total_price,table_id,employee_id) VALUES(CURRENT_TIMESTAMP,true,1020000.0,2,2);
+INSERT INTO orders (created_date,is_paid,total_price,table_id,employee_id) VALUES(CURRENT_TIMESTAMP,true,1150000.0,3,2);
+
+
+
+-----INSERT DATA INTO ORDER-DETAILS-----
+INSERT INTO public.order_detail (price,quantity,menu_item_id,order_id) VALUES(510000.0,3,9,1);
+INSERT INTO public.order_detail (price,quantity,menu_item_id,order_id) VALUES(270000.0,1,8,1);
+INSERT INTO public.order_detail (price,quantity,menu_item_id,order_id) VALUES(600000.0,4,6,2);
+INSERT INTO public.order_detail (price,quantity,menu_item_id,order_id) VALUES(420000.0,1,7,2);
+INSERT INTO public.order_detail (price,quantity,menu_item_id,order_id) VALUES(300000.0,2,10,3);
+INSERT INTO public.order_detail (price,quantity,menu_item_id,order_id) VALUES(850000.0,5,9,3);
+

@@ -18,7 +18,7 @@ public class DiningTableDTO {
 
     private Long id;
 
-    @Min(value = 1, message = ErrorMessage.DINING_TABLE_NUMBER_MIN)
+    @Min(value = 1, message = ErrorMessage.DINING_TABLE_MIN_NUMBER)
     private Integer number;
 
     private Boolean occupied;

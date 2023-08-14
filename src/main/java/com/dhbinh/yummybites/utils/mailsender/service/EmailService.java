@@ -27,9 +27,7 @@ public class EmailService {
 
     public String sendSimpleMail(EmailDetail details) {
         try {
-
             SimpleMailMessage mailMessage = new SimpleMailMessage();
-
             mailMessage.setFrom(sender);
             mailMessage.setTo(details.getRecipient());
             mailMessage.setText(details.getMsgBody());
@@ -85,14 +83,14 @@ public class EmailService {
         }
     }
 
-    @Scheduled(cron = "00 01 00 * * *")
+    @Scheduled(cron = "00 10 00 * * *")
     public String sendMailWithDailyIncome() {
         MimeMessage mimeMessage = javaMailSender.createMimeMessage();
         MimeMessageHelper mimeMessageHelper;
         try {
             mimeMessageHelper = new MimeMessageHelper(mimeMessage, true);
             mimeMessageHelper.setFrom(sender);
-            mimeMessageHelper.setTo("hoabinh0911@gmail.com");
+            mimeMessageHelper.setTo(sender);
             mimeMessageHelper.setText("Report for YummyBites daily income of " + LocalDate.now());
             mimeMessageHelper.setSubject("YummyBites daily income " + LocalDate.now());
 

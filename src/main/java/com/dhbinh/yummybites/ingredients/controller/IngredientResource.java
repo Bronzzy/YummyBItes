@@ -6,7 +6,6 @@ import com.dhbinh.yummybites.ingredients.service.dto.IngredientDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,14 +37,14 @@ public class IngredientResource {
     @PutMapping("/{ingredient-id}/add")
     public ResponseEntity<IngredientDTO> add(@PathVariable("ingredient-id") Long ID,
                                              @RequestParam("quantity")
-                                             @Min(value = 0, message = ErrorMessage.INGREDIENT_QUANTITY_LESS_THAN_ZERO)
+                                             @Min(value = 1, message = ErrorMessage.INGREDIENT_QUANTITY_LESS_THAN_ONE)
                                              Double quantity) {
         return ResponseEntity.ok(ingredientService.add(ID, quantity));
     }
 
     @PutMapping("/{ingredient-id}/deducted")
     public ResponseEntity<IngredientDTO> deducted(@PathVariable("ingredient-id") Long ID,
-                                                  @RequestParam("quantity") @Min(value = 0, message = ErrorMessage.INGREDIENT_QUANTITY_LESS_THAN_ZERO)
+                                                  @RequestParam("quantity") @Min(value = 1, message = ErrorMessage.INGREDIENT_QUANTITY_LESS_THAN_ONE)
                                                   Double quantity) {
         return ResponseEntity.ok(ingredientService.deducted(ID, quantity));
     }

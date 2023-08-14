@@ -9,9 +9,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -30,6 +29,7 @@ public class BillDTO {
     @NotBlank(message = ErrorMessage.BILL_DETAIL_NULL_OR_BLANK)
     private List<@NotBlank(message = ErrorMessage.BILL_DETAIL_NULL_OR_BLANK ) BillDetailDTO> billDetails;
 
+    @Min(value = 1, message = ErrorMessage.PRICE_LESS_THAN_ONE)
     private Double totalPrice;
 
     @NotBlank(message = ErrorMessage.EMPLOYEE_LAST_NAME_NULL_OR_BLANK)

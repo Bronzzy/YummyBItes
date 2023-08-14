@@ -22,6 +22,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -44,11 +45,12 @@ public class Bill {
     @NotNull(message = ErrorMessage.SUPPLIER_NULL_OR_BLANK)
     private Supplier supplier;
 
+    @NotEmpty(message = ErrorMessage.BILL_DETAIL_NULL_OR_BLANK)
     @OneToMany(mappedBy = "bill",cascade = CascadeType.PERSIST)
     private List<BillDetail> billDetails;
 
     @Column(nullable = false)
-    @Min(value = 0, message = ErrorMessage.PRICE_LESS_THAN_ZERO)
+    @Min(value = 1, message = ErrorMessage.PRICE_LESS_THAN_ONE)
     private Double totalPrice;
 
     @ManyToOne

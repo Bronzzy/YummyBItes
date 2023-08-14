@@ -8,6 +8,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -30,7 +31,7 @@ public class BillResource {
     }
 
     @PostMapping(value = "/export-bill-by-date")
-    public void exportBillByDate() {
+    public void exportBillByDate() throws IOException {
         billService.exportBillByDate();
     }
 }

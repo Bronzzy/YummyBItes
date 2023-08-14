@@ -24,11 +24,11 @@ public class EmployeeDTO {
     private Long id;
 
     @NotBlank(message = ErrorMessage.EMPLOYEE_FIRST_NAME_NULL_OR_BLANK)
-    @Pattern(regexp = "^[^0-9]*$", message = ErrorMessage.EMPLOYEE_NAME_CONTAIN_NUMBER)
+    @Pattern(regexp = CommonConstant.VALID_NAME_PATTERN, message = ErrorMessage.EMPLOYEE_NAME_CONTAIN_NUMBER)
     private String firstName;
 
     @NotBlank(message = ErrorMessage.EMPLOYEE_LAST_NAME_NULL_OR_BLANK)
-    @Pattern(regexp = "^[^0-9]*$", message = ErrorMessage.EMPLOYEE_NAME_CONTAIN_NUMBER)
+    @Pattern(regexp = CommonConstant.VALID_NAME_PATTERN, message = ErrorMessage.EMPLOYEE_NAME_CONTAIN_NUMBER)
     private String lastName;
 
     @NotBlank(message = ErrorMessage.ADDRESS_NULL_OR_BLANK)

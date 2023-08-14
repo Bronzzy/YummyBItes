@@ -8,7 +8,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.validation.constraints.*;
+
+import javax.validation.constraints.Future;
+import javax.validation.constraints.FutureOrPresent;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Getter
@@ -20,7 +25,7 @@ public class ReservationDTO {
 
     private Long id;
 
-    @FutureOrPresent(message = ErrorMessage.RESERVATION_DATE_MUST_BE_IN_FUTURE)
+    @Future(message = ErrorMessage.RESERVATION_DATE_MUST_BE_IN_FUTURE)
     @NotNull(message = ErrorMessage.RESERVATION_NULL)
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime reservationDate;

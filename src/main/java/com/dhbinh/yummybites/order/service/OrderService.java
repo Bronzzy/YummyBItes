@@ -14,9 +14,11 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.time.LocalDate;
 import java.util.List;
@@ -34,6 +36,9 @@ public class OrderService {
 
     @Autowired
     private OrderMapper orderMapper;
+
+    @Value("${excel.file.location}")
+    private String excelFileLocation;
 
     public List<OrderDTO> findAll() {
         return orderMapper.toDTOList(orderRepository.findAll());
@@ -58,10 +63,12 @@ public class OrderService {
         return orderMapper.toDTO(orderRepository.save(order));
     }
 
-    @Scheduled(cron = "00 00 00 * * *")
+    @Scheduled(cron = "00 05 00 * * *")
     public void exportOrderByDate() {
         List<Order> orderList = orderRepository.findAllOrderByDate(LocalDate.now().getDayOfMonth());
-        try (Workbook workbook = new XSSFWorkbook()) {
+//        try (Workbook workbook = new XSSFWorkbook()) {
+        try (FileInputStream fileInputStream = new FileInputStream("D:/Code/YummyBites/report/daily-report/report_" + LocalDate.now() + ".xlsx");
+             Workbook workbook = new XSSFWorkbook(fileInputStream)) {
             Sheet sheet = workbook.createSheet("Daily Income");
 
             int rowIdx = 0;
@@ -90,7 +97,7 @@ public class OrderService {
             resultRow.createCell(2).setCellValue(orderList.stream().
                     mapToDouble(Order::getTotalPrice).sum());
 
-            try (FileOutputStream fileOut = new FileOutputStream("D:/Code/YummyBites/report/daily-report/report_" + LocalDate.now() + ".xlsx")) {
+            try (FileOutputStream fileOut = new FileOutputStream(excelFileLocation + LocalDate.now() + ".xlsx")) {
                 workbook.write(fileOut);
             }
         } catch (Exception e) {

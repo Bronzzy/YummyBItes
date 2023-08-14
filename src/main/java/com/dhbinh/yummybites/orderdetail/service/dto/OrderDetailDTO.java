@@ -26,9 +26,10 @@ public class OrderDetailDTO {
     private String menuItemName;
 
     @NotNull(message = ErrorMessage.QUANTITY_NULL_OR_BLANK)
-    @Min(value = 1, message = ErrorMessage.QUANTITY_LESS_THAN_ZERO)
+    @Min(value = 1, message = ErrorMessage.QUANTITY_LESS_THAN_ONE)
     private Integer quantity;
 
+    @Min(value = 1, message = ErrorMessage.PRICE_LESS_THAN_ONE)
     private Double price;
 
     private Long orderId;

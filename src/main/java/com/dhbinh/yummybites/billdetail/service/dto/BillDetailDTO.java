@@ -24,14 +24,14 @@ public class BillDetailDTO {
     private String ingredientName;
 
     @NotNull(message = ErrorMessage.QUANTITY_NULL_OR_BLANK)
-    @Min(value = 0, message = ErrorMessage.QUANTITY_LESS_THAN_ZERO)
+    @Min(value = 1, message = ErrorMessage.QUANTITY_LESS_THAN_ONE)
     private Double quantity;
 
     @NotNull(message = ErrorMessage.PRICE_PER_UNIT_NULL_OR_BLANK)
-    @Min(value = 0, message = ErrorMessage.PRICE_LESS_THAN_ZERO)
+    @Min(value = 1, message = ErrorMessage.PRICE_LESS_THAN_ONE)
     private Double pricePerUnit;
 
-    @Min(value = 0, message = ErrorMessage.PRICE_LESS_THAN_ZERO)
+    @Min(value = 1, message = ErrorMessage.PRICE_LESS_THAN_ONE)
     private Double price;
 
     private Long billId;
