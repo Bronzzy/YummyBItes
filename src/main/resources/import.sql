@@ -42,16 +42,27 @@ INSERT INTO supplier (address,email,"name",phone) VALUES('80 Mcbride Hill','gjoi
 
 
 -----INSERT DATA INTO INGREDIENT-----
-INSERT INTO ingredient ("name",quantity,restaurant) VALUES('Potato',146.0,1);
-INSERT INTO ingredient ("name",quantity,restaurant) VALUES('Cheese',226.0,1);
-INSERT INTO ingredient ("name",quantity,restaurant) VALUES('Salmon',431.0,1);
+--INSERT INTO ingredient ("name",quantity,restaurant) VALUES('Potato',146.0,1);
+--INSERT INTO ingredient ("name",quantity,restaurant) VALUES('Cheese',226.0,1);
+--INSERT INTO ingredient ("name",quantity,restaurant) VALUES('Salmon',431.0,1);
+--INSERT INTO ingredient ("name",quantity,restaurant) VALUES('Shrimp',155.0,1);
+--INSERT INTO ingredient ("name",quantity,restaurant) VALUES('Pasta',371.0,1);
+--INSERT INTO ingredient ("name",quantity,restaurant) VALUES('Beef',470.0,1);
+--INSERT INTO ingredient ("name",quantity,restaurant) VALUES('Chicken',342.0,1);
+--INSERT INTO ingredient ("name",quantity,restaurant) VALUES('Lamb',456.0,1);
+--INSERT INTO ingredient ("name",quantity,restaurant) VALUES('Veal',145.0,1);
+--INSERT INTO ingredient ("name",quantity,restaurant) VALUES('Onion',56.0,1);
+INSERT INTO ingredient ("name",quantity,restaurant) VALUES('Potato',346.0,1);
+INSERT INTO ingredient ("name",quantity,restaurant) VALUES('Cheese',236.0,1);
+INSERT INTO ingredient ("name",quantity,restaurant) VALUES('Salmon',581.0,1);
 INSERT INTO ingredient ("name",quantity,restaurant) VALUES('Shrimp',155.0,1);
-INSERT INTO ingredient ("name",quantity,restaurant) VALUES('Pasta',371.0,1);
+INSERT INTO ingredient ("name",quantity,restaurant) VALUES('Pasta',571.0,1);
 INSERT INTO ingredient ("name",quantity,restaurant) VALUES('Beef',470.0,1);
 INSERT INTO ingredient ("name",quantity,restaurant) VALUES('Chicken',342.0,1);
 INSERT INTO ingredient ("name",quantity,restaurant) VALUES('Lamb',456.0,1);
-INSERT INTO ingredient ("name",quantity,restaurant) VALUES('Veal',145.0,1);
-INSERT INTO ingredient ("name",quantity,restaurant) VALUES('Onions',56.0,1);
+INSERT INTO ingredient ("name",quantity,restaurant) VALUES('Veal',245.0,1);
+INSERT INTO ingredient ("name",quantity,restaurant) VALUES('Onion',156.0,1);
+
 
 
 
@@ -98,3 +109,19 @@ INSERT INTO public.order_detail (price,quantity,menu_item_id,order_id) VALUES(42
 INSERT INTO public.order_detail (price,quantity,menu_item_id,order_id) VALUES(300000.0,2,10,3);
 INSERT INTO public.order_detail (price,quantity,menu_item_id,order_id) VALUES(850000.0,5,9,3);
 
+
+
+-----INSERT DATA INTO BILL-----
+INSERT INTO public.bill (created_date,total_price,employee_id,supplier_id) VALUES('2023-08-15 09:45:42.573',9000000.0,5,1);
+INSERT INTO public.bill (created_date,total_price,employee_id,supplier_id) VALUES('2023-08-15 09:49:42.181',64000000,5,5);
+INSERT INTO public.bill (created_date,total_price,employee_id,supplier_id) VALUES('2023-08-15 09:51:08.615',80000000,5,3);
+
+
+
+-----INSERT DATA INTO BILL DETAILS-----
+INSERT INTO public.bill_detail (price,price_per_unit,quantity,bill_id,ingredient_id) VALUES(8000000.0,40000.0,200.0,1,1);
+INSERT INTO public.bill_detail (price,price_per_unit,quantity,bill_id,ingredient_id) VALUES(1000000.0,10000.0,100.0,1,10);
+INSERT INTO public.bill_detail (price,price_per_unit,quantity,bill_id,ingredient_id) VALUES(14000000,1400000.0,10.0,2,2);
+INSERT INTO public.bill_detail (price,price_per_unit,quantity,bill_id,ingredient_id) VALUES(50000000,500000.0,100.0,2,9);
+INSERT INTO public.bill_detail (price,price_per_unit,quantity,bill_id,ingredient_id) VALUES(20000000,100000.0,200.0,3,5);
+INSERT INTO public.bill_detail (price,price_per_unit,quantity,bill_id,ingredient_id) VALUES(60000000,400000.0,150.0,3,3);
