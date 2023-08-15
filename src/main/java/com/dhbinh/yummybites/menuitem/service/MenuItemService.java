@@ -83,10 +83,10 @@ public class MenuItemService {
                     ErrorMessage.MENU_ITEM_ALREADY_EXIST);
         }
 
-        if(menuItemDTO.getPrice() < 0){
+        if(menuItemDTO.getPrice() < 1){
             throw new InputValidationException(
-                    ErrorMessage.KEY_PRICE_LESS_THAN_ZERO,
-                    ErrorMessage.PRICE_LESS_THAN_ZERO);
+                    ErrorMessage.KEY_PRICE_LESS_THAN_ONE,
+                    ErrorMessage.PRICE_LESS_THAN_ONE);
         }
     }
 

@@ -25,11 +25,18 @@ public class EmailService {
     @Value("${spring.mail.username}")
     private String sender;
 
+    @Value("${excel.file.location}")
+    private String excelFileLocation;
+
+    @Value("${spring.mail.default.text}")
+    private String mailDefaultText;
+
+    @Value("${spring.mail.default.subject}")
+    private String mailDefaultSubject;
+
     public String sendSimpleMail(EmailDetail details) {
         try {
-
             SimpleMailMessage mailMessage = new SimpleMailMessage();
-
             mailMessage.setFrom(sender);
             mailMessage.setTo(details.getRecipient());
             mailMessage.setText(details.getMsgBody());
@@ -85,19 +92,18 @@ public class EmailService {
         }
     }
 
-    @Scheduled(cron = "00 01 00 * * *")
+    @Scheduled(cron = "00 10 00 * * *")
     public String sendMailWithDailyIncome() {
         MimeMessage mimeMessage = javaMailSender.createMimeMessage();
         MimeMessageHelper mimeMessageHelper;
         try {
             mimeMessageHelper = new MimeMessageHelper(mimeMessage, true);
             mimeMessageHelper.setFrom(sender);
-            mimeMessageHelper.setTo("hoabinh0911@gmail.com");
-            mimeMessageHelper.setText("Report for YummyBites daily income of " + LocalDate.now());
-            mimeMessageHelper.setSubject("YummyBites daily income " + LocalDate.now());
+            mimeMessageHelper.setTo(sender);
+            mimeMessageHelper.setText(mailDefaultText + LocalDate.now());
+            mimeMessageHelper.setSubject(mailDefaultSubject + LocalDate.now());
 
-            String filePath = "D:/Code/YummyBites/report/income/income_" + LocalDate.now() + ".xlsx";
-            FileSystemResource file = new FileSystemResource(new File(filePath));
+            FileSystemResource file = new FileSystemResource(new File(excelFileLocation + LocalDate.now() + ".xlsx"));
             mimeMessageHelper.addAttachment(Objects.requireNonNull(file.getFilename()), file);
             javaMailSender.send(mimeMessage);
             return "Mail sent Successfully";

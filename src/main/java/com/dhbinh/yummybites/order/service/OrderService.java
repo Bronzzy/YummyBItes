@@ -7,6 +7,7 @@ import com.dhbinh.yummybites.order.entity.Order;
 import com.dhbinh.yummybites.order.repository.OrderRepository;
 import com.dhbinh.yummybites.order.service.dto.OrderDTO;
 import com.dhbinh.yummybites.order.service.mapper.OrderMapper;
+import com.dhbinh.yummybites.orderdetail.entity.OrderDetail;
 import lombok.RequiredArgsConstructor;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -14,9 +15,11 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.time.LocalDate;
 import java.util.List;
@@ -34,6 +37,9 @@ public class OrderService {
 
     @Autowired
     private OrderMapper orderMapper;
+
+    @Value("${excel.file.location}")
+    private String excelFileLocation;
 
     public List<OrderDTO> findAll() {
         return orderMapper.toDTOList(orderRepository.findAll());
@@ -58,39 +64,42 @@ public class OrderService {
         return orderMapper.toDTO(orderRepository.save(order));
     }
 
-    @Scheduled(cron = "00 00 00 * * *")
+    @Scheduled(cron = "00 45 10 * * *")
     public void exportOrderByDate() {
         List<Order> orderList = orderRepository.findAllOrderByDate(LocalDate.now().getDayOfMonth());
-        try (Workbook workbook = new XSSFWorkbook()) {
+        try (FileInputStream fileInputStream = new FileInputStream(excelFileLocation + LocalDate.now() + ".xlsx");
+             Workbook workbook = new XSSFWorkbook(fileInputStream)) {
             Sheet sheet = workbook.createSheet("Daily Income");
 
             int rowIdx = 0;
             Row titleRow = sheet.createRow(rowIdx++);
             titleRow.createCell(0).setCellValue("Order Number");
             titleRow.createCell(1).setCellValue("Item Name");
-            titleRow.createCell(2).setCellValue("Order Price");
+            titleRow.createCell(2).setCellValue("Quantity");
+            titleRow.createCell(3).setCellValue("Price");
+            titleRow.createCell(4).setCellValue("Total Price");
 
             for (Order order : orderList) {
                 Row row = sheet.createRow(rowIdx++);
 
-                Cell cellOrderNumber = row.createCell(0);
-                cellOrderNumber.setCellValue(rowIdx - 1);
+                row.createCell(0).setCellValue(order.getId());
+                row.createCell(4).setCellValue(order.getTotalPrice());
 
-                Cell cellItemName = row.createCell(1);
-                cellItemName.setCellValue(order.getOrderDetails().stream()
-                        .map(o -> o.getMenuItem().getName())
-                        .collect(Collectors.joining(", ")));
+                List<OrderDetail> orderDetailList = order.getOrderDetails();
+                for (OrderDetail orderDetail : orderDetailList) {
+                    Row rowDetail = sheet.createRow(rowIdx++);
 
-                Cell cellOrderPrice = row.createCell(2);
-                cellOrderPrice.setCellValue(order.getTotalPrice());
+                    rowDetail.createCell(1).setCellValue(orderDetail.getMenuItem().getName());
+                    rowDetail.createCell(2).setCellValue(orderDetail.getQuantity());
+                    rowDetail.createCell(3).setCellValue(orderDetail.getPrice());
+                }
             }
-
             Row resultRow = sheet.createRow(rowIdx++);
-            resultRow.createCell(0).setCellValue("Total");
-            resultRow.createCell(2).setCellValue(orderList.stream().
-                    mapToDouble(Order::getTotalPrice).sum());
+            resultRow.createCell(3).setCellValue("Total");
+            resultRow.createCell(4).setCellValue(orderList.stream()
+                            .mapToDouble(Order::getTotalPrice).sum());
 
-            try (FileOutputStream fileOut = new FileOutputStream("D:/Code/YummyBites/report/income/income_" + LocalDate.now() + ".xlsx")) {
+            try (FileOutputStream fileOut = new FileOutputStream(excelFileLocation + LocalDate.now() + ".xlsx")) {
                 workbook.write(fileOut);
             }
         } catch (Exception e) {

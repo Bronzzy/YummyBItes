@@ -1,5 +1,6 @@
 package com.dhbinh.yummybites.order.entity;
 
+import com.dhbinh.yummybites.base.exception.ErrorMessage;
 import com.dhbinh.yummybites.employee.entity.Employee;
 import com.dhbinh.yummybites.orderdetail.entity.OrderDetail;
 import com.dhbinh.yummybites.diningtable.entity.DiningTable;
@@ -21,6 +22,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -42,13 +45,16 @@ public class Order {
 
     @ManyToOne
     @JoinColumn(name = "employee_id",nullable = false)
+    @NotNull(message = ErrorMessage.EMPLOYEE_NULL_OR_BLANK)
     private Employee employee;
 
     @ManyToOne
     @JoinColumn(name = "table_id",nullable = false)
+    @NotNull(message = ErrorMessage.DINING_TABLE_NULL_OR_BLANK)
     private DiningTable diningTable;
 
     @Column(nullable = false)
+    @Min(value = 1, message = ErrorMessage.PRICE_LESS_THAN_ONE)
     private Double totalPrice;
 
     @Column(nullable = false)

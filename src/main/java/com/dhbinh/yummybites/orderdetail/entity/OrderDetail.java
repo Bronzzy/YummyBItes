@@ -1,5 +1,6 @@
 package com.dhbinh.yummybites.orderdetail.entity;
 
+import com.dhbinh.yummybites.base.exception.ErrorMessage;
 import com.dhbinh.yummybites.menuitem.entity.MenuItem;
 import com.dhbinh.yummybites.order.entity.Order;
 import lombok.AllArgsConstructor;
@@ -16,6 +17,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
@@ -32,15 +35,19 @@ public class OrderDetail {
 
     @ManyToOne
     @JoinColumn(name = "menu_item_id", nullable = false)
+    @NotNull(message = ErrorMessage.MENU_ITEM_NULL_OR_BLANK)
     private MenuItem menuItem;
 
     @Column(nullable = false)
+    @Min(value = 1, message = ErrorMessage.QUANTITY_LESS_THAN_ONE)
     private Integer quantity;
 
     @Column(nullable = false)
+    @Min(value = 1, message = ErrorMessage.PRICE_LESS_THAN_ONE)
     private Double price;
 
     @ManyToOne
     @JoinColumn(name = "order_id", nullable = false)
+    @NotNull(message = ErrorMessage.ORDER_NULL_OR_BLANK)
     private Order order;
 }

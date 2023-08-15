@@ -1,7 +1,5 @@
 package com.dhbinh.yummybites.base.exception;
 
-import com.dhbinh.yummybites.base.security.entity.Role;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,6 +30,9 @@ public class ErrorMessage {
     public static final String KEY_EMPLOYEE_NAME_NULL_OR_BLANK = "exception.input.validation.first.name.null.or.blank";
     public static final String EMPLOYEE_FIRST_NAME_NULL_OR_BLANK = "First name cannot be null or blank";
 
+    public static final String KEY_EMPLOYEE_NULL_OR_BLANK = "exception.input.validation.employee.null.or.blank";
+    public static final String EMPLOYEE_NULL_OR_BLANK = "Employee cannot be null or blank";
+
     public static final String KEY_EMPLOYEE_NOT_FOUND = "exception.resource.not.found.employee";
     public static final String EMPLOYEE_NOT_FOUND = "Employee cannot be found";
 
@@ -54,8 +55,8 @@ public class ErrorMessage {
     public static final String KEY_INGREDIENT_QUANTITY_NULL_OR_BLANK = "exception.input.validation.ingredient.quantity.null.or.blank";
     public static final String INGREDIENT_QUANTITY_NULL_OR_BLANK = "Ingredient quantity cannot be null or blank";
 
-    public static final String KEY_INGREDIENT_QUANTITY_LESS_THAN_ZERO = "exception.input.validation.ingredient.quantity.less.than.zero";
-    public static final String INGREDIENT_QUANTITY_LESS_THAN_ZERO = "Ingredient quantity cannot be less than 0";
+    public static final String KEY_INGREDIENT_QUANTITY_LESS_THAN_ONE = "exception.input.validation.ingredient.quantity.less.than.one";
+    public static final String INGREDIENT_QUANTITY_LESS_THAN_ONE = "Ingredient quantity cannot be less than 1";
 
     public static final String KEY_INGREDIENT_ALREADY_EXIST = "exception.input.validation.ingredient.already.existed";
     public static final String INGREDIENT_ALREADY_EXIST = "Ingredient is already existed";
@@ -66,6 +67,9 @@ public class ErrorMessage {
     //SUPPLIER
     public static final String KEY_SUPPLIER_NAME_EXIST = "exception.input.validation.supplier.name.exist";
     public static final String SUPPLIER_NAME_EXIST = "Supplier name already existed";
+
+    public static final String KEY_SUPPLIER_NULL_OR_BLANK = "exception.input.validation.supplier.null.or.blank";
+    public static final String SUPPLIER_NULL_OR_BLANK = "Supplier cannot be null or blank";
 
     public static final String KEY_SUPPLIER_NAME_NULL_OR_BLANK = "exception.input.validation.supplier.name.null.or.blank";
     public static final String SUPPLIER_NAME_NULL_OR_BLANK = "Supplier name cannot be null or blank";
@@ -83,8 +87,8 @@ public class ErrorMessage {
     public static final String KEY_PRICE_NULL_OR_BLANK = "exception.input.validation.price.null.or.blank";
     public static final String PRICE_NULL_OR_BLANK = "Price cannot be null or blank";
 
-    public static final String KEY_PRICE_LESS_THAN_ZERO = "exception.input.validation.price.less.than.zero";
-    public static final String PRICE_LESS_THAN_ZERO = "Price cannot be less than 0";
+    public static final String KEY_PRICE_LESS_THAN_ONE = "exception.input.validation.price.less.than.one";
+    public static final String PRICE_LESS_THAN_ONE = "Price cannot be less than 1";
 
     public static final String KEY_DISH_TYPE_NULL_OR_BLANK = "exception.input.validation.dish.type.null.or.blank";
     public static final String DISH_TYPE_NULL_OR_BLANK = "Dish type cannot be null or blank";
@@ -102,30 +106,42 @@ public class ErrorMessage {
     public static final String KEY_DINING_TABLE_NOT_FOUND = "exception.resource.not.found.dining.table";
     public static final String DINING_TABLE_NOT_FOUND = "Dining table cannot be found";
 
+    public static final String KEY_DINING_TABLE_NULL_OR_BLANK = "exception.input.validation.dining.table.null.or.blank";
+    public static final String DINING_TABLE_NULL_OR_BLANK = "Dining table cannot be null or blank";
+
     public static final String KEY_TABLE_IS_OCCUPIED = "exception.input.validation.table.is.occupied";
     public static final String TABLE_IS_OCCUPIED = "Table is occupied";
 
     public static final String KEY_DINING_TABLE_NUMBER_MIN = "exception.input.validation.dining.table.number.min";
-    public static final String DINING_TABLE_NUMBER_MIN = "Dining table number cannot be less than 1";
+    public static final String DINING_TABLE_MIN_NUMBER = "Dining table number cannot be less than 1";
 
     //ORDER
     public static final String KEY_ORDER_NOT_FOUND = "exception.resource.not.found.order";
     public static final String ORDER_NOT_FOUND = "Order cannot be found";
 
+    public static final String KEY_ORDER_NULL_OR_BLANK = "exception.input.validation.order.null.or.blank";
+    public static final String ORDER_NULL_OR_BLANK = "Order cannot be null or blank";
+
     //ODER DETAILS
+    public static final String KEY_ORDER_DETAILS_NULL_OR_BLANK = "exception.input.validation.order.details.null.or.blank";
+    public static final String ORDER_DETAILS_NULL_OR_BLANK = "Order details cannot be null or blank";
+
     public static final String KEY_MENU_ITEM_NULL_OR_BLANK = "exception.input.validation.menu.item.null.or.blanks";
     public static final String MENU_ITEM_NULL_OR_BLANK = "Menu item cannot be null or blank";
 
     public static final String KEY_QUANTITY_NULL_OR_BLANK = "exception.input.validation.quantity.null.or.blank";
     public static final String QUANTITY_NULL_OR_BLANK = "Quantity cannot be null or blank";
 
-    public static final String KEY_QUANTITY_LESS_THAN_ZERO = "exception.input.validation.quantity.less.than.zero";
+    public static final String KEY_QUANTITY_LESS_THAN_ONE = "exception.input.validation.quantity.less.than.one";
 
-    public static final String QUANTITY_LESS_THAN_ZERO = "Quantity cannot be less than 0";
+    public static final String QUANTITY_LESS_THAN_ONE = "Quantity cannot be less than 1";
 
     //BILL
     public static final String KEY_BILL_NOT_FOUND = "exception.resource.not.found.bill";
     public static final String BILL_NOT_FOUND = "Bill cannot be found";
+
+    public static final String KEY_BILL_NULL_OR_BLANK = "exception.input.validation.bill.null.or.blank";
+    public static final String BILL_NULL_OR_BLANK = "Bill cannot be null or blank";
 
     //BILL DETAIL
 
@@ -134,6 +150,9 @@ public class ErrorMessage {
 
     public static final String KEY_BILL_DETAIL_NOT_FOUND = "exception.resource.not.found.bill.detail";
     public static final String BILL_DETAIL_NOT_FOUND = "Bill detail cannot be found";
+
+    public static final String KEY_BILL_DETAIL_NULL_OR_BLANK = "exception.input.validation.bill.detail.null.or.blank";
+    public static final String BILL_DETAIL_NULL_OR_BLANK = "Bill detail cannot be null or blank";
 
     //USER
     public static final String KEY_USERNAME_EXIST = "exception.input.validation.username.exist";
@@ -180,6 +199,8 @@ public class ErrorMessage {
 
     public static final String KEY_ENUM_INVALID_VALUE = "exception.input.validation.enum.invalid.value";
 
+    public static final String KEY_FILE_NOT_FOUND = "exception.resource.not.found.file";
+    public static final String FILE_NOT_FOUND = "File cannot be found";
 
 
     static Map<String, String> errorKeyAndMessageMap() {
@@ -191,6 +212,7 @@ public class ErrorMessage {
         errorMap.put(RESTAURANT_CLOSING_HOUR_NULL_OR_BLANK, KEY_RESTAURANT_CLOSING_HOUR_NULL_OR_BLANK);
 
         //EMPLOYEE
+        errorMap.put(EMPLOYEE_NULL_OR_BLANK, KEY_EMPLOYEE_NULL_OR_BLANK);
         errorMap.put(EMPLOYEE_FIRST_NAME_NULL_OR_BLANK, KEY_EMPLOYEE_NAME_NULL_OR_BLANK);
         errorMap.put(EMPLOYEE_LAST_NAME_NULL_OR_BLANK, KEY_EMPLOYEE_LAST_NAME_NULL_OR_BLANK);
         errorMap.put(EMPLOYEE_NAME_CONTAIN_NUMBER, KEY_EMPLOYEE_NAME_CONTAIN_NUMBER);
@@ -199,32 +221,40 @@ public class ErrorMessage {
         //INGREDIENTS
         errorMap.put(INGREDIENT_NULL_OR_BLANK, KEY_INGREDIENT_NAME_NULL_OR_BLANK);
         errorMap.put(INGREDIENT_QUANTITY_NULL_OR_BLANK, KEY_INGREDIENT_QUANTITY_NULL_OR_BLANK);
-        errorMap.put(INGREDIENT_QUANTITY_LESS_THAN_ZERO, KEY_INGREDIENT_QUANTITY_LESS_THAN_ZERO);
+        errorMap.put(INGREDIENT_QUANTITY_LESS_THAN_ONE, KEY_INGREDIENT_QUANTITY_LESS_THAN_ONE);
 
         //SUPPLIER
         errorMap.put(SUPPLIER_NAME_NULL_OR_BLANK, KEY_SUPPLIER_NAME_NULL_OR_BLANK);
+        errorMap.put(SUPPLIER_NULL_OR_BLANK, KEY_SUPPLIER_NULL_OR_BLANK);
 
         //MENU ITEMS
         errorMap.put(DESCRIPTION_NULL_OR_BLANK, KEY_DESCRIPTION_NULL_OR_BLANK);
         errorMap.put(PRICE_NULL_OR_BLANK, KEY_PRICE_NULL_OR_BLANK);
-        errorMap.put(PRICE_LESS_THAN_ZERO, KEY_PRICE_LESS_THAN_ZERO);
+        errorMap.put(PRICE_LESS_THAN_ONE, KEY_PRICE_LESS_THAN_ONE);
         errorMap.put(DISH_TYPE_NULL_OR_BLANK, KEY_DISH_TYPE_NULL_OR_BLANK);
         errorMap.put(DISH_TYPE_INVALID_VALUE, KEY_DISH_TYPE_INVALID_VALUE);
 
         //DINING TABLE
+        errorMap.put(DINING_TABLE_NULL_OR_BLANK, KEY_DINING_TABLE_NULL_OR_BLANK);
         errorMap.put(DINING_TABLE_NOT_FOUND, KEY_DINING_TABLE_NOT_FOUND);
-        errorMap.put(DINING_TABLE_NUMBER_MIN,KEY_DINING_TABLE_NUMBER_MIN);
+        errorMap.put(DINING_TABLE_MIN_NUMBER,KEY_DINING_TABLE_NUMBER_MIN);
+
         //ORDER
+        errorMap.put(ORDER_NULL_OR_BLANK, KEY_ORDER_NULL_OR_BLANK);
 
         //ORDER DETAILS
         errorMap.put(MENU_ITEM_NULL_OR_BLANK, KEY_MENU_ITEM_NULL_OR_BLANK);
         errorMap.put(QUANTITY_NULL_OR_BLANK, KEY_QUANTITY_NULL_OR_BLANK);
-        errorMap.put(QUANTITY_LESS_THAN_ZERO, KEY_QUANTITY_LESS_THAN_ZERO);
+        errorMap.put(QUANTITY_LESS_THAN_ONE, KEY_QUANTITY_LESS_THAN_ONE);
+        errorMap.put(ORDER_DETAILS_NULL_OR_BLANK, KEY_ORDER_DETAILS_NULL_OR_BLANK);
 
         //BILL
+        errorMap.put(KEY_BILL_NOT_FOUND, KEY_BILL_NOT_FOUND);
+        errorMap.put(BILL_NULL_OR_BLANK, KEY_BILL_NULL_OR_BLANK);
 
         //BILL DETAILS
-        errorMap.put(ErrorMessage.PRICE_PER_UNIT_NULL_OR_BLANK, KEY_PRICE_PER_UNIT_NULL_OR_BLANK);
+        errorMap.put(PRICE_PER_UNIT_NULL_OR_BLANK, KEY_PRICE_PER_UNIT_NULL_OR_BLANK);
+        errorMap.put(BILL_DETAIL_NULL_OR_BLANK, KEY_BILL_DETAIL_NULL_OR_BLANK);
 
         //RESERVATION
         errorMap.put(KEY_RESERVATION_NULL, RESERVATION_NULL);
@@ -241,6 +271,7 @@ public class ErrorMessage {
         errorMap.put(PASSWORD_NULL_OR_BLANK, KEY_PASSWORD_NULL_OR_BLANK);
         errorMap.put(PASSWORD_NOT_MATCH_PATTERN, KEY_PASSWORD_NOT_MATCH_PATTERN);
         errorMap.put(ENUM_NULL_OR_BLANK, KEY_ENUM_NULL_OR_BLANK);
+        errorMap.put(FILE_NOT_FOUND, KEY_FILE_NOT_FOUND);
 
         return errorMap;
     }

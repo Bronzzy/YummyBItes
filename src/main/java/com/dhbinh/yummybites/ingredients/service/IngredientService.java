@@ -13,6 +13,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class IngredientService {
@@ -40,6 +42,9 @@ public class IngredientService {
         return ingredientMapper.toDTO(ingredientRepository.save(ingredient));
     }
 
+    public List<IngredientDTO> findAll(){
+        return ingredientMapper.toDTOList(ingredientRepository.findAll());
+    }
     public IngredientDTO add(Long ID, Double quantity) {
         Ingredient ingredient = ingredientRepository.findById(ID).
                 orElseThrow(() -> new ResourceNotFoundException(

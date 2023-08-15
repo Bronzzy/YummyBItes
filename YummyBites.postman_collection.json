@@ -1,0 +1,1039 @@
+{
+	"info": {
+		"_postman_id": "c3b5ae39-a4d2-4048-8738-15a5640b3fac",
+		"name": "YummyBites",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "27093810"
+	},
+	"item": [
+		{
+			"name": "RESTAURANT",
+			"item": [
+				{
+					"name": "CREATE",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"YummyBites 1\",\r\n    \"address\":\"390 Nguyen Thi Thap\",\r\n    \"phone\":\"089312342\",\r\n    \"openHour\":\"11:00:00\",\r\n    \"closingHour\":\"22:00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/restaurants"
+					},
+					"response": []
+				},
+				{
+					"name": "FIND BY ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{url}}/restaurants/1"
+					},
+					"response": []
+				},
+				{
+					"name": "FIND ALL",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{url}}/restaurants"
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"YummyBites 3\",\r\n    \"address\":\"1 Nguyen Thi Thap\",\r\n    \"phone\":\"089312342\",\r\n    \"openHour\":\"11:00:00\",\r\n    \"closingHour\":\"22:00:00\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/restaurants/1"
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": {
+					"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJiam93aXR0QGZyaWVuZGZlZWQuY29tIiwiaWF0IjoxNjkxNjU5MDEyLCJleHAiOjE2OTE3MDIyMTJ9.bdP4k5g6AhWsQAUbq8QSEFgODXYCgvg-ocoOrdPtoH3AkW3Y91AV6C9tFHp8uUYp54IWhcY1n_0cLOp8X-lH1Q"
+				}
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "EMPLOYEES",
+			"item": [
+				{
+					"name": "CREATE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJob2FiaW5oMDkxMUBnbWFpbC5jb20iLCJpYXQiOjE2OTE2MzQ1NjgsImV4cCI6MTY5MTY3Nzc2OH0._o_A2cHn7_yEJtuiQZbr9wp9an_htvPybw0zA73S2YLDodmAOK5kgti3DxMVFfGrV2-LxURz1iSJBJWX5pELfw"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\":\"Georg\",\r\n    \"lastName\":\"Jinda\",\r\n    \"address\":\"27430 cArDiNaL pLaCe\",\r\n    \"phone\":\"174-405-4165\",\r\n    \"email\":\"gjinda0@shop-pro.jp\",\r\n    \"restaurantName\":\"YummyBites\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/employees"
+					},
+					"response": []
+				},
+				{
+					"name": "FIND ALL",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{url}}/employees"
+					},
+					"response": []
+				},
+				{
+					"name": "FIND BY ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "/employees/2"
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{url}}/employees/1"
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE EXCEL FILE WITH EMPLOYEE LIST",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": "{{url}}/employees/export-employee-list"
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": {
+					"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJob2FiaW5oMDkxMUBnbWFpbC5jb20iLCJpYXQiOjE2OTE4MzI0MDYsImV4cCI6MTY5MTg3NTYwNn0.q3XHPHJG-m4OAGrbQEOMp4NdtNrXEid0cuEGQDxvSeUp-5xa-4PYXaUNcB2fcb9BEOu7RGDeJ63oPgfBLR9RlA"
+				}
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "USER",
+			"item": [
+				{
+					"name": "REGISTER",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"gjinda0@shop-pro.jp\",\r\n    \"password\":\"gjinda0.123@\",\r\n    \"role\":\"ROLE_COOK\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/auth/signup"
+					},
+					"response": []
+				},
+				{
+					"name": "OWNER SIGN IN",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"hoabinh0911@gmail.com\",\r\n    \"password\":\"hoabinh0911.123@\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/auth/signin"
+					},
+					"response": []
+				},
+				{
+					"name": "WAITER SIGN IN",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"bjowitt@friendfeed.com\",\r\n    \"password\":\"bjowitt.123@\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/auth/signin"
+					},
+					"response": []
+				},
+				{
+					"name": "COOK SIGN IN",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"ggavagan@paypal.com\",\r\n    \"password\":\"ggavagan.123@\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/auth/signin"
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": {
+					"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJnamluZGEwQHNob3AtcHJvLmpwIiwiaWF0IjoxNjkxNzIyNTk1LCJleHAiOjE2OTE3NjU3OTV9.Uz7HKUxX8QNCrf9d0fVjor5HIGo1g23AP3tmYpGVFsaGTPKlyC9bV-2JHKN6PeCtqWccf4XOA89CDgKCWZ6SNA"
+				}
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "INGREDIENTS",
+			"item": [
+				{
+					"name": "CREATE INGREDIENT",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Onions\",\r\n    \"quantity\":\"-1\",\r\n    \"restaurantName\":\"Yummy\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/ingredients"
+					},
+					"response": []
+				},
+				{
+					"name": "FIND ALL",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{url}}/ingredients"
+					},
+					"response": []
+				},
+				{
+					"name": "ADD INGREDIENTS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJob2FiaW5oNEBnbWFpbC5jb20iLCJpYXQiOjE2OTEzOTc5MzMsImV4cCI6MTY5MTQ0MTEzM30.VqLKdv-9zgF11BiY-uxHS19dfZ0sIF-UHbUUPq2Xojg"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/ingredients/2/add?quantity=100",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"ingredients",
+								"2",
+								"add"
+							],
+							"query": [
+								{
+									"key": "quantity",
+									"value": "100"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DEDUCTED INGREDIENTS",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/ingredients/2/deducted?quantity=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"ingredients",
+								"2",
+								"deducted"
+							],
+							"query": [
+								{
+									"key": "quantity",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "MENU ITEM",
+			"item": [
+				{
+					"name": "CREATE",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"cHiCkEn fRiEd rIcE\",\r\n    \"description\":\"just a normal chicken fried rice dish. It's in the name.\",\r\n    \"price\":\"150000\",\r\n    \"dishType\":\"DISH_TYPE_MAINDISH\",\r\n    \"restaurantName\":\"YummyBites\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/menuitems"
+					},
+					"response": []
+				},
+				{
+					"name": "FIND ALL",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{url}}/menuitems"
+					},
+					"response": []
+				},
+				{
+					"name": "FIND BY ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{url}}/menuitems/11"
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    // \"name\":\"pork fRiEd rIcE\",\r\n    // \"description\":\"just a normal pork fried rice dish. It's in the name.\",\r\n    \"price\":90000,\r\n    \"dishType\":\"DISH_TYPE_MAIN_DISH\",\r\n    \"restaurantName\":\"YummyBites\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/menuitems/11"
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "ORDER",
+			"item": [
+				{
+					"name": "FIND ALL",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{url}}/orders"
+					},
+					"response": []
+				},
+				{
+					"name": "FIND BY ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{url}}/orders/1"
+					},
+					"response": []
+				},
+				{
+					"name": "CHECKOUT",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": "{{url}}/orders/2"
+					},
+					"response": []
+				},
+				{
+					"name": "EXPORT ORDER BY DATE",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": "{{url}}/orders/export-order-by-date"
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "ORDER DETAILS",
+			"item": [
+				{
+					"name": "CREATE",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"menuItemName\": \"Chicken and Cheese Quesadillas\",\r\n        \"quantity\":3\r\n    },\r\n    {\r\n        \"menuItemName\": \"Shrimp and Potato Tacos\",\r\n        \"quantity\":1\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/orderdetails?tableNumber=3",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"orderdetails"
+							],
+							"query": [
+								{
+									"key": "tableNumber",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "SUPPLIER",
+			"item": [
+				{
+					"name": "CREATE",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"vUaN and bRaNdy Inc\",\r\n    \"address\":\"100 mcBridE hiLl\",\r\n    \"phone\":\"744-784-1225\",\r\n    \"email\":\"gjoist1@artisteer.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/suppliers"
+					},
+					"response": []
+				},
+				{
+					"name": "FIND ALL",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{url}}/suppliers"
+					},
+					"response": []
+				},
+				{
+					"name": "FIND BY ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{url}}/suppliers/6"
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Vuan Inc\",\r\n    \"address\":\"80 Jonh Street\",\r\n    \"phone\":\"744-784-1225\",\r\n    \"email\":\"gjoist@artisteer.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/suppliers/3"
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "BILL",
+			"item": [
+				{
+					"name": "FIND ALL",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{url}}/bills"
+					},
+					"response": []
+				},
+				{
+					"name": "FIND BY ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{url}}/bills/0"
+					},
+					"response": []
+				},
+				{
+					"name": "EXPORT BILL BY DATE",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": "{{url}}/bills/export-bill-by-date"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "BILL DETAIL",
+			"item": [
+				{
+					"name": "CREATE",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n{\r\n    \"ingredientName\":\"cHiCkEn\",\r\n    \"quantity\":200,\r\n    \"pricePerUnit\":70000\r\n},\r\n{\r\n    \"ingredientName\":\"bEeF\",\r\n    \"quantity\":100,\r\n    \"pricePerUnit\":150000\r\n}\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/billdetails?supplierName=Mante Group",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"billdetails"
+							],
+							"query": [
+								{
+									"key": "supplierName",
+									"value": "Mante Group"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FIND ALL",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{url}}/billdetails"
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "DINING TABLE",
+			"item": [
+				{
+					"name": "CREATE",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"number\":11\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/diningtables"
+					},
+					"response": []
+				},
+				{
+					"name": "GET ALL",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{url}}/diningtables"
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": {
+					"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJob2FiaW5oMDkxMUBnbWFpbC5jb20iLCJpYXQiOjE2OTE3Mzg4NTgsImV4cCI6MTY5MTc4MjA1OH0.HV7YFNKO1SWJWOHMfXwm4hI1gWHqPrWSXNsnnQrL-4yXhdXOxbtwajT-fzl5sEMfhc14zQ4NeMgmz6Lmt99qUw"
+				}
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "RESERVATION",
+			"item": [
+				{
+					"name": "CREATE",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"reservationDate\":\"2023-08-11 17:30\",\r\n    \"name\":\"Vu\",\r\n    \"numberOfGuests\":\"4\",\r\n    \"note\":\"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/reservations",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"reservations"
+							],
+							"query": [
+								{
+									"key": "time",
+									"value": "00:45",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ALL",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/reservations"
+					},
+					"response": []
+				},
+				{
+					"name": "EXPORT RESERVATION LIST",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": "{{url}}/reservations/export-today-reservation"
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "MAIL",
+			"item": [
+				{
+					"name": "SEND MAIL",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"recipient\":\"chuong.thekiet95@gmail.com\",\r\n    \"msgBody\":\"This is an example for Java Mail Sender\",\r\n    \"subject\":\"Simple Email\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/email/send"
+					},
+					"response": []
+				},
+				{
+					"name": "SEND MAIL WITH ATTACHMENT",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"recipient\":\"hoabinh_0911@yahoo.com.vn\",\r\n    \"msgBody\":\"Hey you! Stop bullying me\",\r\n    \"subject\":\"Simple Email\",\r\n    \"attachment\":\"D:/YummyBites/employee_data.xlsx\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/email/send-mail-with-attachment"
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": {
+					"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJob2FiaW5oMDkxMUBnbWFpbC5jb20iLCJpYXQiOjE2OTE3NDA3NjQsImV4cCI6MTY5MTc4Mzk2NH0.E1UjinysQJwxVT1ZeItC7ff1XxdQ34QuqadoQlChKYkLD99KrqHulrVLn90rtjFM5GhcIbxMcx8HB29gHg19VA"
+				}
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": {
+			"token": "{{owner-token}}"
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "localhost:8080/api",
+			"type": "string"
+		},
+		{
+			"key": "owner-token",
+			"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJob2FiaW5oMDkxMUBnbWFpbC5jb20iLCJpYXQiOjE2OTE5ODE5OTgsImV4cCI6MTY5MjAyNTE5OH0.FjsR078vja5ya6kxzx99441wzu8nAaNKpGxXJJcKUuWT0xIF-o762DDAgO3Djtn4S43PO_vsX_4kP9O2fQ7Hrw",
+			"type": "string"
+		},
+		{
+			"key": "cook-token",
+			"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJnZ2F2YWdhbkBwYXlwYWwuY29tIiwiaWF0IjoxNjkxOTgzMzAyLCJleHAiOjE2OTIwMjY1MDJ9.V0VcKVFlALaeI7itNwhZEmAir5U91QA1yLHvj2MUZK5YXMnzg_YfiTUfSDr-STc5_C_O-G8e6JkMuzlxlUueCA",
+			"type": "string"
+		},
+		{
+			"key": "waiter-token",
+			"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJiam93aXR0QGZyaWVuZGZlZWQuY29tIiwiaWF0IjoxNjkxOTgzMjg3LCJleHAiOjE2OTIwMjY0ODd9.M6EaUOfU2Gy-0x6hmDs9ozI1aL4qtn5z_qXYshYFWhx2gHeyJ7fOg8XjqbsdEdcU487ZXJFUoaZ7gxsusvFGqg",
+			"type": "string"
+		}
+	]
+}

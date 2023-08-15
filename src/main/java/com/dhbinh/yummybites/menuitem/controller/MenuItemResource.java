@@ -34,11 +34,13 @@ public class MenuItemResource {
     }
 
     @GetMapping
+    @PreAuthorize("hasAnyRole('OWNER','COOK','WAITER')")
     public ResponseEntity<List<MenuItemDTO>> findAll(){
         return ResponseEntity.ok(menuItemService.findAll());
     }
 
     @GetMapping(value = "/{id}")
+    @PreAuthorize("hasAnyRole('OWNER','COOK','WAITER')")
     public ResponseEntity<MenuItemDTO> findByID(@PathVariable("id") Long id){
         return ResponseEntity.ok(menuItemService.findById(id));
     }

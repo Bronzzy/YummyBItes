@@ -1,27 +1,44 @@
-| 2023-08-13 00:27:59 |  INFO |  | Starting YummybitesApplication using Java 11.0.17 on DESKTOP-HJRVAG0 with PID 5012 (D:\Code\YummyBites\build\classes\java\main started by hoabi in D:\Code\YummyBites)
-| 2023-08-13 00:27:59 |  INFO |  | No active profile set, falling back to 1 default profile: "default"
-| 2023-08-13 00:28:16 |  INFO |  | Started YummybitesApplication in 18.406 seconds (JVM running for 20.827)
-| 2023-08-13 00:28:59 |  INFO | hoabinh0911 | Create order detail[com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@1c81dadb, com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@16aef148]
-| 2023-08-13 00:28:59 |  INFO | hoabinh0911 | Order detail DTO com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@1c81dadb
-| 2023-08-13 00:28:59 |  INFO | hoabinh0911 | Order detail DTO com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@16aef148
-| 2023-08-13 00:29:07 |  INFO | hoabinh0911 | Create order detail[com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@409539ff, com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@36d22578]
-| 2023-08-13 00:29:07 |  INFO | hoabinh0911 | Order detail DTO com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@409539ff
-| 2023-08-13 00:29:07 |  INFO | hoabinh0911 | Order detail DTO com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@36d22578
-| 2023-08-13 00:29:11 |  INFO | hoabinh0911 | Create order detail[com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@5e4b2b2a, com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@14a5a5af]
-| 2023-08-13 00:29:11 |  INFO | hoabinh0911 | Order detail DTO com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@5e4b2b2a
-| 2023-08-13 00:29:11 |  INFO | hoabinh0911 | Order detail DTO com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@14a5a5af
-| 2023-08-13 00:31:38 |  INFO |  | Starting YummybitesApplication using Java 11.0.17 on DESKTOP-HJRVAG0 with PID 19780 (D:\Code\YummyBites\build\classes\java\main started by hoabi in D:\Code\YummyBites)
-| 2023-08-13 00:31:38 |  INFO |  | No active profile set, falling back to 1 default profile: "default"
-| 2023-08-13 00:31:52 |  INFO |  | Started YummybitesApplication in 14.435 seconds (JVM running for 16.07)
-| 2023-08-13 00:32:18 |  INFO | hoabinh0911 | Create order detail[com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@5a38fb89, com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@38f551da]
-| 2023-08-13 00:32:18 |  INFO | hoabinh0911 | Order detail DTO com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@5a38fb89
-| 2023-08-13 00:32:18 |  INFO | hoabinh0911 | Order detail DTO com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@38f551da
-| 2023-08-13 00:32:22 |  INFO | hoabinh0911 | Create order detail[com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@7585bb76, com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@5e0ca06]
-| 2023-08-13 00:32:22 |  INFO | hoabinh0911 | Order detail DTO com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@7585bb76
-| 2023-08-13 00:32:22 |  INFO | hoabinh0911 | Order detail DTO com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@5e0ca06
-| 2023-08-13 00:32:24 |  INFO | hoabinh0911 | Create order detail[com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@255d6e4d, com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@2cea2d05]
-| 2023-08-13 00:32:24 |  INFO | hoabinh0911 | Order detail DTO com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@255d6e4d
-| 2023-08-13 00:32:24 |  INFO | hoabinh0911 | Order detail DTO com.dhbinh.yummybites.orderdetail.service.dto.OrderDetailDTO@2cea2d05
-| 2023-08-13 00:40:51 |  INFO |  | Starting YummybitesApplication using Java 11.0.17 on DESKTOP-HJRVAG0 with PID 11788 (D:\Code\YummyBites\build\classes\java\main started by hoabi in D:\Code\YummyBites)
-| 2023-08-13 00:40:51 |  INFO |  | No active profile set, falling back to 1 default profile: "default"
-| 2023-08-13 00:41:04 |  INFO |  | Started YummybitesApplication in 14.025 seconds (JVM running for 15.218)
+| 2023-08-15 09:38:08 |  INFO |  | Starting YummybitesApplication using Java 11.0.18 on AAVN-WS-380 with PID 20696 (D:\Code\YummyBites\build\classes\java\main started by dhbinh in D:\Code\YummyBites)
+| 2023-08-15 09:38:08 |  INFO |  | No active profile set, falling back to 1 default profile: "default"
+| 2023-08-15 09:38:17 |  INFO |  | Started YummybitesApplication in 9.705 seconds (JVM running for 10.492)
+| 2023-08-15 09:38:50 | ERROR |  | JWT token is expired: JWT expired at 2023-08-11T21:56:35Z. Current time: 2023-08-15T09:38:50Z, a difference of 301335402 milliseconds.  Allowed clock skew: 0 milliseconds.
+| 2023-08-15 09:39:38 | ERROR |  | JWT token is expired: JWT expired at 2023-08-14T21:59:58Z. Current time: 2023-08-15T09:39:38Z, a difference of 41980247 milliseconds.  Allowed clock skew: 0 milliseconds.
+| 2023-08-15 09:39:38 | ERROR |  | Unauthorized error: Full authentication is required to access this resource
+| 2023-08-15 09:39:53 | ERROR |  | JWT token is expired: JWT expired at 2023-08-11T21:56:35Z. Current time: 2023-08-15T09:39:53Z, a difference of 301398188 milliseconds.  Allowed clock skew: 0 milliseconds.
+| 2023-08-15 09:44:43 |  INFO |  | Starting YummybitesApplication using Java 11.0.18 on AAVN-WS-380 with PID 10448 (D:\Code\YummyBites\build\classes\java\main started by dhbinh in D:\Code\YummyBites)
+| 2023-08-15 09:44:43 |  INFO |  | No active profile set, falling back to 1 default profile: "default"
+| 2023-08-15 09:44:52 |  INFO |  | Started YummybitesApplication in 9.633 seconds (JVM running for 10.414)
+| 2023-08-15 09:55:30 |  INFO |  | Starting YummybitesApplication using Java 11.0.18 on AAVN-WS-380 with PID 25460 (D:\Code\YummyBites\build\classes\java\main started by dhbinh in D:\Code\YummyBites)
+| 2023-08-15 09:55:30 |  INFO |  | No active profile set, falling back to 1 default profile: "default"
+| 2023-08-15 09:55:37 |  INFO |  | Started YummybitesApplication in 7.979 seconds (JVM running for 8.753)
+| 2023-08-15 09:58:27 | ERROR |  | JWT token is expired: JWT expired at 2023-08-14T21:59:58Z. Current time: 2023-08-15T09:58:27Z, a difference of 43109624 milliseconds.  Allowed clock skew: 0 milliseconds.
+| 2023-08-15 09:58:27 | ERROR |  | Unauthorized error: Full authentication is required to access this resource
+| 2023-08-15 09:58:35 | ERROR |  | JWT token is expired: JWT expired at 2023-08-14T21:59:58Z. Current time: 2023-08-15T09:58:35Z, a difference of 43117104 milliseconds.  Allowed clock skew: 0 milliseconds.
+| 2023-08-15 09:58:35 | ERROR |  | Unauthorized error: Full authentication is required to access this resource
+| 2023-08-15 09:59:00 | ERROR |  | JWT token is expired: JWT expired at 2023-08-14T21:59:58Z. Current time: 2023-08-15T09:59:00Z, a difference of 43142980 milliseconds.  Allowed clock skew: 0 milliseconds.
+| 2023-08-15 09:59:00 | ERROR |  | Unauthorized error: Full authentication is required to access this resource
+| 2023-08-15 09:59:01 | ERROR |  | JWT token is expired: JWT expired at 2023-08-14T21:59:58Z. Current time: 2023-08-15T09:59:01Z, a difference of 43143819 milliseconds.  Allowed clock skew: 0 milliseconds.
+| 2023-08-15 09:59:01 | ERROR |  | Unauthorized error: Full authentication is required to access this resource
+| 2023-08-15 09:59:04 | ERROR | ggavagan | JWT token is expired: JWT expired at 2023-08-14T21:59:58Z. Current time: 2023-08-15T09:59:04Z, a difference of 43146449 milliseconds.  Allowed clock skew: 0 milliseconds.
+| 2023-08-15 09:59:04 | ERROR | ggavagan | Unauthorized error: Full authentication is required to access this resource
+| 2023-08-15 10:13:01 |  INFO |  | Starting YummybitesApplication using Java 11.0.18 on AAVN-WS-380 with PID 23616 (D:\Code\YummyBites\build\classes\java\main started by dhbinh in D:\Code\YummyBites)
+| 2023-08-15 10:13:01 |  INFO |  | No active profile set, falling back to 1 default profile: "default"
+| 2023-08-15 10:13:09 |  INFO |  | Started YummybitesApplication in 8.116 seconds (JVM running for 8.895)
+| 2023-08-15 10:18:24 |  INFO |  | Starting YummybitesApplication using Java 11.0.18 on AAVN-WS-380 with PID 18668 (D:\Code\YummyBites\build\classes\java\main started by dhbinh in D:\Code\YummyBites)
+| 2023-08-15 10:18:24 |  INFO |  | No active profile set, falling back to 1 default profile: "default"
+| 2023-08-15 10:18:32 |  INFO |  | Started YummybitesApplication in 8.382 seconds (JVM running for 9.786)
+| 2023-08-15 10:20:36 |  INFO |  | Starting YummybitesApplication using Java 11.0.18 on AAVN-WS-380 with PID 10332 (D:\Code\YummyBites\build\classes\java\main started by dhbinh in D:\Code\YummyBites)
+| 2023-08-15 10:20:36 |  INFO |  | No active profile set, falling back to 1 default profile: "default"
+| 2023-08-15 10:20:46 |  INFO |  | Started YummybitesApplication in 11.177 seconds (JVM running for 12.07)
+| 2023-08-15 10:23:51 |  INFO |  | Starting YummybitesApplication using Java 11.0.18 on AAVN-WS-380 with PID 16664 (D:\Code\YummyBites\build\classes\java\main started by dhbinh in D:\Code\YummyBites)
+| 2023-08-15 10:23:51 |  INFO |  | No active profile set, falling back to 1 default profile: "default"
+| 2023-08-15 10:24:03 |  INFO |  | Started YummybitesApplication in 11.733 seconds (JVM running for 12.482)
+| 2023-08-15 10:25:37 |  INFO |  | Starting YummybitesApplication using Java 11.0.18 on AAVN-WS-380 with PID 18848 (D:\Code\YummyBites\build\classes\java\main started by dhbinh in D:\Code\YummyBites)
+| 2023-08-15 10:25:37 |  INFO |  | No active profile set, falling back to 1 default profile: "default"
+| 2023-08-15 10:25:48 |  INFO |  | Started YummybitesApplication in 10.926 seconds (JVM running for 11.837)
+| 2023-08-15 10:27:51 |  INFO |  | Starting YummybitesApplication using Java 11.0.18 on AAVN-WS-380 with PID 9364 (D:\Code\YummyBites\build\classes\java\main started by dhbinh in D:\Code\YummyBites)
+| 2023-08-15 10:27:51 |  INFO |  | No active profile set, falling back to 1 default profile: "default"
+| 2023-08-15 10:27:59 |  INFO |  | Started YummybitesApplication in 8.712 seconds (JVM running for 10.075)
+| 2023-08-15 10:30:14 |  INFO |  | Starting YummybitesApplication using Java 11.0.18 on AAVN-WS-380 with PID 25096 (D:\Code\YummyBites\build\classes\java\main started by dhbinh in D:\Code\YummyBites)
+| 2023-08-15 10:30:14 |  INFO |  | No active profile set, falling back to 1 default profile: "default"
+| 2023-08-15 10:30:23 |  INFO |  | Started YummybitesApplication in 9.055 seconds (JVM running for 10.111)

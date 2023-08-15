@@ -131,4 +131,18 @@ public class GlobalExceptionHandling extends RuntimeException {
         return e.getResponseBody();
     }
 
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler(IOException.class)
+    public ResponseBody handleIOException(IOException e) {
+        StackTraceElement[] stackTraceArray = e.getStackTrace();
+        String logMessage = String.format("%s:%d - %s",
+                stackTraceArray[0].getClassName(),
+                stackTraceArray[0].getLineNumber(),
+                e.getMessage());
+        logger.warn(logMessage);
+        return new ResponseBody(HttpStatus.NOT_FOUND,
+                ErrorMessage.errorKeyAndMessageMap().get(e.getMessage()),
+                e.getMessage());
+    }
+
 }
