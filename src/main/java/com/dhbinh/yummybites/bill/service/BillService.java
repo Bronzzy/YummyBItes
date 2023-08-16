@@ -4,22 +4,21 @@ import com.dhbinh.yummybites.base.exception.ErrorMessage;
 import com.dhbinh.yummybites.base.exception.ResourceNotFoundException;
 import com.dhbinh.yummybites.bill.entity.Bill;
 import com.dhbinh.yummybites.bill.repository.BillRepository;
+import com.dhbinh.yummybites.bill.specification.BillSpecification;
 import com.dhbinh.yummybites.bill.service.dto.BillDTO;
 import com.dhbinh.yummybites.bill.service.mapper.BillMapper;
 import com.dhbinh.yummybites.billdetail.entity.BillDetail;
 import com.fasterxml.jackson.core.exc.InputCoercionException;
-import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.time.LocalDate;
@@ -48,7 +47,12 @@ public class BillService {
                         ErrorMessage.BILL_NOT_FOUND)));
     }
 
-    @Scheduled(cron = "00 40 10 * * *")
+    public List<BillDTO> findByDate(String day, String month, String year, String priceLessThan, String priceGreaterThan) {
+        Specification<Bill> spec = BillSpecification.findWithDateSpecification(day, month, year, priceLessThan, priceGreaterThan);
+        return billMapper.toDTOList(billRepository.findAll(spec));
+    }
+
+    @Scheduled(cron = "00 00 17 * * *")
     public void exportBillByDate() throws IOException {
         List<Bill> billList = billRepository.findAllOrderByDate(LocalDate.now().getDayOfMonth());
         try (Workbook workbook = new XSSFWorkbook()) {

@@ -92,7 +92,7 @@ public class EmailService {
         }
     }
 
-    @Scheduled(cron = "00 10 00 * * *")
+    @Scheduled(cron = "00 10 17 * * *")
     public String sendMailWithDailyIncome() {
         MimeMessage mimeMessage = javaMailSender.createMimeMessage();
         MimeMessageHelper mimeMessageHelper;
