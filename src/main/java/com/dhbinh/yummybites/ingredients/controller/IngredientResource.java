@@ -48,4 +48,11 @@ public class IngredientResource {
                                                   Double quantity) {
         return ResponseEntity.ok(ingredientService.deducted(ID, quantity));
     }
+
+    @GetMapping("/with-specification")
+    public ResponseEntity<List<IngredientDTO>> findByNameLikeOrQuantityLessThanOrEqualTo(@RequestParam("name") String name,
+                                                                                         @RequestParam("quantity") String quantityString) {
+
+        return ResponseEntity.ok(ingredientService.findByNameLikeOrQuantityLessThanOrEqualTo(name, quantityString));
+    }
 }

@@ -5,15 +5,18 @@ import com.dhbinh.yummybites.base.exception.InputValidationException;
 import com.dhbinh.yummybites.base.exception.ResourceNotFoundException;
 import com.dhbinh.yummybites.ingredients.entity.Ingredient;
 import com.dhbinh.yummybites.ingredients.repository.IngredientRepository;
+import com.dhbinh.yummybites.ingredients.repository.IngredientSpecification;
 import com.dhbinh.yummybites.ingredients.service.dto.IngredientDTO;
 import com.dhbinh.yummybites.ingredients.service.mapper.IngredientMapper;
 import com.dhbinh.yummybites.restaurant.service.RestaurantService;
 import com.dhbinh.yummybites.utils.Utils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 
 @Service
 @RequiredArgsConstructor
@@ -42,9 +45,10 @@ public class IngredientService {
         return ingredientMapper.toDTO(ingredientRepository.save(ingredient));
     }
 
-    public List<IngredientDTO> findAll(){
+    public List<IngredientDTO> findAll() {
         return ingredientMapper.toDTOList(ingredientRepository.findAll());
     }
+
     public IngredientDTO add(Long ID, Double quantity) {
         Ingredient ingredient = ingredientRepository.findById(ID).
                 orElseThrow(() -> new ResourceNotFoundException(
@@ -83,5 +87,21 @@ public class IngredientService {
             isIngredientExist = ingredientRepository.findByNameIgnoreCase(name.trim()).isPresent();
         }
         return isIngredientExist;
+    }
+
+    public List<IngredientDTO> findByNameLikeOrQuantityLessThanOrEqualTo(String name, String quantityString) {
+        double quantity = 0.0;
+        if (!quantityString.isEmpty())
+            quantity = Double.parseDouble(quantityString);
+
+        Specification<Ingredient> spec;
+        if (quantity <= 0) {
+            spec = IngredientSpecification.withNameIgnoreCae(name);
+        } else {
+            spec = IngredientSpecification.withNameIgnoreCae(name)
+                    .and(IngredientSpecification.withQuantityLessThanOrEqualTo(quantity));
+        }
+
+        return ingredientMapper.toDTOList(ingredientRepository.findAll(spec));
     }
 }
