@@ -53,8 +53,7 @@ public class BillService {
         return billMapper.toDTOList(billRepository.findAll(spec));
     }
 
-    //    @Scheduled(cron = "00 28 18 * * *")
-    @Scheduled(fixedRate = 30000)
+    @Scheduled(cron = "00 05 00 * * *")
     public void exportBillByDate() throws IOException {
         List<Bill> billList = billRepository.findAllOrderByDate(LocalDate.now().getDayOfMonth());
         try (Workbook workbook = new XSSFWorkbook()) {
@@ -72,40 +71,32 @@ public class BillService {
             for (Bill bill : billList) {
                 Row row = sheet.createRow(rowIdx++);
 
-                Cell cellNumber = row.createCell(0);
-                cellNumber.setCellValue(bill.getId());
-
-                Cell cellSupplier = row.createCell(1);
-                cellSupplier.setCellValue(bill.getSupplier().getName());
-
-                Cell cellTotalPrice = row.createCell(5);
-                cellTotalPrice.setCellValue(bill.getTotalPrice());
+                row.createCell(0).setCellValue(bill.getId());
+                row.createCell(1).setCellValue(bill.getSupplier().getName());
+                row.createCell(5).setCellValue(bill.getTotalPrice());
 
                 List<BillDetail> detailList = bill.getBillDetails();
-//                for (BillDetail billDetail : detailList) {
-//                    Row rowDetail = sheet.createRow(rowIdx++);
-//
-//                    rowDetail.createCell(2).setCellValue(billDetail.getIngredient().getName());
-//
-//                    rowDetail.createCell(3).setCellValue(billDetail.getQuantity());
-//
-//                    rowDetail.createCell(4).setCellValue(billDetail.getPricePerUnit());
-//
-//                    rowDetail.createCell(5).setCellValue(billDetail.getPrice());
-//                }
+                for (BillDetail billDetail : detailList) {
+                    Row rowDetail = sheet.createRow(rowIdx++);
+
+                    rowDetail.createCell(2).setCellValue(billDetail.getIngredient().getName());
+                    rowDetail.createCell(3).setCellValue(billDetail.getQuantity());
+                    rowDetail.createCell(4).setCellValue(billDetail.getPricePerUnit());
+                    rowDetail.createCell(5).setCellValue(billDetail.getPrice());
+                }
             }
-            System.out.println("Loop done");
             Row resultRow = sheet.createRow(rowIdx++);
             resultRow.createCell(4).setCellValue("Total");
             resultRow.createCell(5).setCellValue(billList.stream()
                     .mapToDouble(Bill::getTotalPrice).sum());
 
-            FileOutputStream fileOutputStream = new FileOutputStream(excelFileLocation + LocalDate.now() + ".xlsx");
-            workbook.write(fileOutputStream);
-            System.out.println("WRITE FILE" + fileOutputStream);
+            try (FileOutputStream fileOutputStream = new FileOutputStream(excelFileLocation + LocalDate.now() + ".xlsx")) {
+                workbook.write(fileOutputStream);
+                fileOutputStream.close();
 
-        } catch (FileNotFoundException e) {
-            throw new FileNotFoundException(e.getMessage());
+            } catch (FileNotFoundException e) {
+                throw new FileNotFoundException(e.getMessage());
+            }
         }
     }
 }

@@ -70,14 +70,14 @@ public class EmailService {
         }
     }
 
-    @Scheduled(cron = "00 35 17 * * *")
-    public String sendMailWithDailyIncome() {
+    @Scheduled(cron = "00 10 00 * * *")
+    public String sendMailWithDailyReport() {
         MimeMessage mimeMessage = javaMailSender.createMimeMessage();
         MimeMessageHelper mimeMessageHelper;
         try {
             mimeMessageHelper = new MimeMessageHelper(mimeMessage, true);
             mimeMessageHelper.setFrom(sender);
-            mimeMessageHelper.setTo(sender);
+            mimeMessageHelper.setTo(sender+"@gmail.com");
             mimeMessageHelper.setText(mailDefaultText + LocalDate.now());
             mimeMessageHelper.setSubject(mailDefaultSubject + LocalDate.now());
 

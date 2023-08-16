@@ -1,27 +1,14 @@
 package com.dhbinh.yummybites.order.entity;
 
 import com.dhbinh.yummybites.base.exception.ErrorMessage;
+import com.dhbinh.yummybites.diningtable.entity.DiningTable;
 import com.dhbinh.yummybites.employee.entity.Employee;
 import com.dhbinh.yummybites.orderdetail.entity.OrderDetail;
-import com.dhbinh.yummybites.diningtable.entity.DiningTable;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
@@ -40,16 +27,16 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany(mappedBy = "order",cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "order", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private List<OrderDetail> orderDetails;
 
     @ManyToOne
-    @JoinColumn(name = "employee_id",nullable = false)
+    @JoinColumn(name = "employee_id", nullable = false)
     @NotNull(message = ErrorMessage.EMPLOYEE_NULL_OR_BLANK)
     private Employee employee;
 
     @ManyToOne
-    @JoinColumn(name = "table_id",nullable = false)
+    @JoinColumn(name = "table_id", nullable = false)
     @NotNull(message = ErrorMessage.DINING_TABLE_NULL_OR_BLANK)
     private DiningTable diningTable;
 

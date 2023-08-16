@@ -27,4 +27,9 @@ public class EmailResource {
     public String sendMailWithAttachment(@RequestBody EmailDetail details) {
         return emailService.sendMailWithAttachment(details);
     }
+
+    @PostMapping("/send-mail-with-daily-report")
+    public void sendMailWithDailyReport() {
+        emailService.sendMailWithDailyReport();
+    }
 }

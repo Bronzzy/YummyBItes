@@ -65,7 +65,7 @@ public class OrderService {
         return orderMapper.toDTO(orderRepository.save(order));
     }
 
-    @Scheduled(cron = "00 27 18 * * *")
+    @Scheduled(cron = "00 06 00 * * *")
     public void exportOrderByDate() {
         List<Order> orderList = orderRepository.findAllOrderByDate(LocalDate.now().getDayOfMonth());
         try (FileInputStream fileInputStream = new FileInputStream(excelFileLocation + LocalDate.now() + ".xlsx");
