@@ -4,6 +4,7 @@ import com.dhbinh.yummybites.order.service.OrderService;
 import com.dhbinh.yummybites.order.service.dto.OrderDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +21,7 @@ public class OrderResource {
     private OrderService orderService;
 
     @GetMapping
+    @Scheduled(cron = "00 22 18 * * *")
     public ResponseEntity<List<OrderDTO>> findAll(){
         return ResponseEntity.ok(orderService.findAll());
     }

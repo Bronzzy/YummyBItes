@@ -6,7 +6,7 @@ import org.springframework.data.jpa.domain.Specification;
 import javax.persistence.criteria.Predicate;
 
 public class IngredientSpecification {
-    public static Specification<Ingredient> findWithNameAndQuantitySpecification(String name, String quantity) {
+    public static Specification<Ingredient> findWithNameAndQuantitySpecification(String name, double quantity) {
         return (root, query, criteriaBuilder) -> {
             Predicate predicate = criteriaBuilder.conjunction();
 
@@ -14,9 +14,8 @@ public class IngredientSpecification {
                 predicate = criteriaBuilder.and(predicate, criteriaBuilder.like(criteriaBuilder.lower(root.get("name")), "%" + name.toLowerCase() + "%"));
             }
 
-            if (!quantity.isEmpty()) {
-                double quantityValue = Double.parseDouble(quantity);
-                predicate = criteriaBuilder.and(predicate, criteriaBuilder.lessThanOrEqualTo(root.get("quantity"), quantityValue));
+            if (quantity > 0) {
+                predicate = criteriaBuilder.and(predicate, criteriaBuilder.lessThanOrEqualTo(root.get("quantity"), quantity));
             }
             return predicate;
         };

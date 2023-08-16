@@ -89,7 +89,7 @@ public class IngredientService {
         return isIngredientExist;
     }
 
-    public List<IngredientDTO> findByNameLikeOrQuantityLessThanOrEqualTo(String name, String quantityString) {
+    public List<IngredientDTO> findByNameLikeOrQuantityLessThanOrEqualTo(String name, double quantityString) {
         Specification<Ingredient> spec = IngredientSpecification.findWithNameAndQuantitySpecification(name, quantityString);
         return ingredientMapper.toDTOList(ingredientRepository.findAll(spec));
     }

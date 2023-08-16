@@ -6,7 +6,7 @@ import org.springframework.data.jpa.domain.Specification;
 import javax.persistence.criteria.Predicate;
 
 public class BillSpecification {
-    public static Specification<Bill> findWithDateSpecification(String day, String month, String year, String priceLessThan, String priceGreaterThan) {
+    public static Specification<Bill> findWithSpecification(String day, String month, String year, double priceLessThan, double priceGreaterThan) {
         return (root, query, criteriaBuilder) -> {
             Predicate predicate = criteriaBuilder.conjunction();
 
@@ -24,13 +24,13 @@ public class BillSpecification {
                 int yearValue = Integer.parseInt(year);
                 predicate = criteriaBuilder.and(predicate, criteriaBuilder.equal(criteriaBuilder.function("year", String.class, root.get("createdDate")), yearValue));
             }
-            if (!priceLessThan.isEmpty()) {
-                double priceLessThanValue = Double.parseDouble(priceLessThan);
-                predicate = criteriaBuilder.and(predicate, criteriaBuilder.lessThanOrEqualTo(root.get("totalPrice"), priceLessThanValue));
+
+            if(priceLessThan > 0){
+                predicate = criteriaBuilder.and(predicate, criteriaBuilder.lessThanOrEqualTo(root.get("totalPrice"), priceLessThan));
             }
-            if(!priceGreaterThan.isEmpty()){
-                double priceGreaterThanValue = Double.parseDouble(priceGreaterThan);
-                predicate = criteriaBuilder.and(predicate, criteriaBuilder.greaterThanOrEqualTo(root.get("totalPrice"), priceGreaterThanValue));
+
+            if(priceGreaterThan > 0){
+                predicate = criteriaBuilder.and(predicate, criteriaBuilder.greaterThanOrEqualTo(root.get("totalPrice"), priceGreaterThan));
             }
             return predicate;
         };

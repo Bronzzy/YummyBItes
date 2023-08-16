@@ -102,9 +102,9 @@ INSERT INTO public.order_detail (price,quantity,menu_item_id,order_id) VALUES(85
 
 
 -----INSERT DATA INTO BILL-----
-INSERT INTO public.bill (created_date,total_price,employee_id,supplier_id) VALUES('2023-08-09 09:45:42.573',9000000.0,5,1);
-INSERT INTO public.bill (created_date,total_price,employee_id,supplier_id) VALUES('2023-08-10 09:49:42.181',64000000,5,5);
-INSERT INTO public.bill (created_date,total_price,employee_id,supplier_id) VALUES('2023-08-11 09:51:08.615',80000000,5,3);
+INSERT INTO public.bill (created_date,total_price,employee_id,supplier_id) VALUES(CURRENT_TIMESTAMP,9000000.0,5,1);
+INSERT INTO public.bill (created_date,total_price,employee_id,supplier_id) VALUES(CURRENT_TIMESTAMP,64000000,5,5);
+INSERT INTO public.bill (created_date,total_price,employee_id,supplier_id) VALUES(CURRENT_TIMESTAMP,80000000,5,3);
 
 
 

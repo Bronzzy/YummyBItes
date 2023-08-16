@@ -74,7 +74,7 @@ public class EmployeeService {
         return employeeMapper.toDTO(employee);
     }
 
-    @Scheduled(cron = "00 00 17 * * *")
+    @Scheduled(cron = "00 47 18 * * *")
     public void exportEmployeeList() {
         List<Employee> employees = employeeRepository.findAll();
         try (Workbook workbook = new XSSFWorkbook()) {

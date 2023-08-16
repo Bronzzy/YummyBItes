@@ -38,13 +38,13 @@ public class BillResource {
         billService.exportBillByDate();
     }
 
-    @GetMapping(value = "/with-date-specification")
-    public ResponseEntity<List<BillDTO>> findWithDate(@RequestParam("day") String day,
-                                                      @RequestParam("month") String month,
-                                                      @RequestParam("year") String year,
-                                                      @RequestParam("priceLessThan") String priceLessThan,
-                                                      @RequestParam("priceGreaterThan") String priceGreaterThan) {
-        return ResponseEntity.ok(billService.findByDate(day, month, year, priceLessThan, priceGreaterThan));
-
-    }
+//    @GetMapping(value = "/with-date-specification")
+//    public ResponseEntity<List<BillDTO>> findWithDate(@RequestParam("day") String day,
+//                                                      @RequestParam("month") String month,
+//                                                      @RequestParam("year") String year,
+//                                                      @RequestParam(value = "priceLessThan", defaultValue = "0") double priceLessThan,
+//                                                      @RequestParam(value = "priceGreaterThan", defaultValue = "0") double priceGreaterThan) {
+//        return ResponseEntity.ok(billService.findByDate(day, month, year, priceLessThan, priceGreaterThan));
+//
+//    }
 }

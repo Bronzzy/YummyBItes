@@ -49,7 +49,6 @@ public class EmailService {
         }
     }
 
-
     public String sendMailWithAttachment(EmailDetail details) {
         MimeMessage mimeMessage = javaMailSender.createMimeMessage();
         MimeMessageHelper mimeMessageHelper;
@@ -71,28 +70,7 @@ public class EmailService {
         }
     }
 
-    @Scheduled(cron = "10 11 16 * * *")
-    public String sendMailWithAttachment() throws MessagingException {
-        MimeMessage mimeMessage = javaMailSender.createMimeMessage();
-        MimeMessageHelper mimeMessageHelper;
-        try {
-            mimeMessageHelper = new MimeMessageHelper(mimeMessage, true);
-            mimeMessageHelper.setFrom(sender);
-            mimeMessageHelper.setTo("huyhoangvu091295@gmail.com");
-            mimeMessageHelper.setText("Hello");
-            mimeMessageHelper.setSubject("Hello");
-
-            String hardcodedFilePath = "D:/YummyBites/employee_data.xlsx";
-            FileSystemResource file = new FileSystemResource(new File(hardcodedFilePath));
-            mimeMessageHelper.addAttachment(Objects.requireNonNull(file.getFilename()), file);
-            javaMailSender.send(mimeMessage);
-            return "Mail sent Successfully";
-        } catch (MessagingException e) {
-            return "Error while sending mail!!!";
-        }
-    }
-
-    @Scheduled(cron = "00 10 17 * * *")
+    @Scheduled(cron = "00 35 17 * * *")
     public String sendMailWithDailyIncome() {
         MimeMessage mimeMessage = javaMailSender.createMimeMessage();
         MimeMessageHelper mimeMessageHelper;
