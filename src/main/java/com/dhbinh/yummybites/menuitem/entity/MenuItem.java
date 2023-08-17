@@ -46,12 +46,11 @@ public class MenuItem {
 
     @Column(nullable = false)
     @NotNull(message = ErrorMessage.PRICE_NULL_OR_BLANK)
-    @Min(value = 1,message = ErrorMessage.PRICE_LESS_THAN_ONE)
+    @Min(value = 1, message = ErrorMessage.PRICE_LESS_THAN_ONE)
     private Double price;
 
     @Column(nullable = false)
     @NotNull(message = ErrorMessage.DISH_TYPE_NULL_OR_BLANK)
-    @ValueOfEnum(enumClass = DishType.class)
     @Enumerated(EnumType.STRING)
     private DishType dishType;
 

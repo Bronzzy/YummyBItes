@@ -33,7 +33,7 @@ public class RestaurantService {
     public RestaurantDTO createRestaurant(RestaurantDTO restaurantDTO) {
         verifyAndModify(restaurantDTO);
 
-        logger.info("create restaurant {}",restaurantDTO);
+        logger.info("create restaurant {}", restaurantDTO);
         Restaurant restaurant = Restaurant.builder()
                 .name(restaurantDTO.getName())
                 .address(restaurantDTO.getAddress())
@@ -47,7 +47,7 @@ public class RestaurantService {
 
     public RestaurantDTO update(Long id, RestaurantDTO restaurantDTO) {
         verifyAndModify(restaurantDTO);
-        logger.info("update restaurant {}",restaurantDTO);
+        logger.info("update restaurant {}", restaurantDTO);
         Restaurant restaurant = restaurantRepository.findById(id).
                 orElseThrow(() -> new ResourceNotFoundException(
                         ErrorMessage.KEY_RESTAURANT_NOT_FOUND,

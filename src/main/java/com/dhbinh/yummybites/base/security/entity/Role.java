@@ -1,7 +1,5 @@
 package com.dhbinh.yummybites.base.security.entity;
 
-import com.dhbinh.yummybites.base.exception.ErrorMessage;
-
 public enum Role {
 
     ROLE_OWNER("ROLE_OWNER"),

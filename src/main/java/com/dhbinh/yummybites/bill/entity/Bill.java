@@ -11,7 +11,16 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -37,7 +46,7 @@ public class Bill {
     private Supplier supplier;
 
     @NotEmpty(message = ErrorMessage.BILL_DETAIL_NULL_OR_BLANK)
-    @OneToMany(mappedBy = "bill",cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "bill", cascade = CascadeType.PERSIST)
     private List<BillDetail> billDetails;
 
     @Column(nullable = false)
@@ -45,7 +54,7 @@ public class Bill {
     private Double totalPrice;
 
     @ManyToOne
-    @JoinColumn(name = "employee_id",nullable = false)
+    @JoinColumn(name = "employee_id", nullable = false)
     @NotNull(message = ErrorMessage.EMPLOYEE_NULL_OR_BLANK)
     private Employee employee;
 

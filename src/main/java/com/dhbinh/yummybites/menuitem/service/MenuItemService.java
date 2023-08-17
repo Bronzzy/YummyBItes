@@ -8,9 +8,11 @@ import com.dhbinh.yummybites.menuitem.entity.MenuItem;
 import com.dhbinh.yummybites.menuitem.repository.MenuItemRepository;
 import com.dhbinh.yummybites.menuitem.service.dto.MenuItemDTO;
 import com.dhbinh.yummybites.menuitem.service.mapper.MenuItemMapper;
+import com.dhbinh.yummybites.menuitem.specification.MenuItemSpecification;
 import com.dhbinh.yummybites.restaurant.service.RestaurantService;
 import com.dhbinh.yummybites.utils.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -56,6 +58,11 @@ public class MenuItemService {
         return menuItemMapper.toDTOList(menuItemRepository.findAll());
     }
 
+    public List<MenuItemDTO> findWithSpecification(String name, double priceLessThan, double priceGreaterThan, String type){
+        Specification<MenuItem> spec = MenuItemSpecification.findWithSpecification(name, priceLessThan, priceGreaterThan, type);
+        return menuItemMapper.toDTOList(menuItemRepository.findAll(spec));
+    }
+
     public MenuItemDTO update(Long id, MenuItemDTO menuItemDTO) {
         verifyAndModify(menuItemDTO);
 
@@ -73,30 +80,31 @@ public class MenuItemService {
             menuItemDTO.setName(utils.capitalizeFirstWordAndAfterWhitespace(menuItemDTO.getName().trim()));
         }
 
-        if (menuItemDTO.getDescription() != null){
+        if (menuItemDTO.getDescription() != null) {
             menuItemDTO.setDescription(utils.capitalizeFirstWord(menuItemDTO.getDescription().trim()));
         }
 
-        if(isNameExisted(menuItemDTO.getName())){
+        if (isNameExisted(menuItemDTO.getName())) {
             throw new ResourceNotFoundException(
                     ErrorMessage.KEY_MENU_ITEM_ALREADY_EXIST,
                     ErrorMessage.MENU_ITEM_ALREADY_EXIST);
         }
 
-        if(menuItemDTO.getPrice() < 1){
+        if (menuItemDTO.getPrice() < 1) {
             throw new InputValidationException(
                     ErrorMessage.KEY_PRICE_LESS_THAN_ONE,
                     ErrorMessage.PRICE_LESS_THAN_ONE);
         }
     }
 
-    private boolean isNameExisted(String name){
+    private boolean isNameExisted(String name) {
         boolean isExist = false;
-        if(name != null){
+        if (name != null) {
             isExist = menuItemRepository.findByNameIgnoreCase(name.trim()).isPresent();
         }
         return isExist;
     }
+
     public MenuItemDTO findByName(String name) {
         return menuItemMapper.toDTO(menuItemRepository.findByNameIgnoreCase(name.trim())
                 .orElseThrow(() -> new ResourceNotFoundException(

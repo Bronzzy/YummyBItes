@@ -29,7 +29,7 @@ public class DiningTable {
     private Long id;
 
     @Column(nullable = false, unique = true)
-    @Min(value = 1,message = ErrorMessage.DINING_TABLE_MIN_NUMBER)
+    @Min(value = 1, message = ErrorMessage.DINING_TABLE_MIN_NUMBER)
     private Integer number;
 
     @Column(nullable = false)

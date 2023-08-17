@@ -8,6 +8,7 @@ import com.dhbinh.yummybites.employee.entity.StatusEnum;
 import com.dhbinh.yummybites.employee.repository.EmployeeRepository;
 import com.dhbinh.yummybites.employee.service.dto.EmployeeDTO;
 import com.dhbinh.yummybites.employee.service.mapper.EmployeeMapper;
+import com.dhbinh.yummybites.employee.specification.EmployeeSpecification;
 import com.dhbinh.yummybites.restaurant.service.RestaurantService;
 import com.dhbinh.yummybites.utils.Utils;
 import org.apache.poi.ss.usermodel.Cell;
@@ -16,6 +17,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
@@ -62,6 +64,11 @@ public class EmployeeService {
 
     public List<EmployeeDTO> findAll() {
         return employeeMapper.toDTOList(employeeRepository.findAll());
+    }
+
+    public List<EmployeeDTO> findWithSpecification(String firstName, String lastName, String address, int day, int month, int year, int ageLessThan, int ageGreaterThan) {
+        Specification<Employee> spec = EmployeeSpecification.findWithSpecification(firstName, lastName, address, day, month, year, ageLessThan, ageGreaterThan);
+        return employeeMapper.toDTOList(employeeRepository.findAll(spec));
     }
 
     public EmployeeDTO deleteEmployee(Long ID) {

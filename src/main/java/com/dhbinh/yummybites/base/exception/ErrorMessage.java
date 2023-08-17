@@ -6,7 +6,6 @@ import java.util.Map;
 public class ErrorMessage {
 
 
-
     //RESTAURANT
     public static final String KEY_RESTAURANT_NOT_FOUND = "exception.resource.not.found.restaurant";
     public static final String RESTAURANT_NOT_FOUND = "Restaurant not found";
@@ -42,8 +41,8 @@ public class ErrorMessage {
     public static final String KEY_EMPLOYEE_NAME_CONTAIN_NUMBER = "exception.input.validation.employee.name.contain.numbers";
     public static final String EMPLOYEE_NAME_CONTAIN_NUMBER = "Name cannot contain numbers";
 
-    public static final String KEY_EMPLOYEE_BASE_SALARY_LESS_THAN_20000 = "exception.input.validation.base.salary.less.than.20000";
-    public static final String EMPLOYEE_BASE_SALARY_LESS_THAN_20000 = "Base Salary cannot be less than 20000";
+    public static final String KEY_DATE_OF_BIRTH_NULL_OR_BLANK = "exception.input.validation.date.of.birth.null.or.blank";
+    public static final String DATE_OF_BIRTH_NULL_OR_BLANK = "Date of Birth cannot be null or blank";
 
     public static final String KEY_EMPLOYEE_EMAIL_ALREADY_EXISTED = "exception.input.validation.employee.email.already.existed";
     public static final String EMPLOYEE_EMAIL_ALREADY_EXISTED = "Employee email already existed";
@@ -215,8 +214,8 @@ public class ErrorMessage {
         errorMap.put(EMPLOYEE_NULL_OR_BLANK, KEY_EMPLOYEE_NULL_OR_BLANK);
         errorMap.put(EMPLOYEE_FIRST_NAME_NULL_OR_BLANK, KEY_EMPLOYEE_NAME_NULL_OR_BLANK);
         errorMap.put(EMPLOYEE_LAST_NAME_NULL_OR_BLANK, KEY_EMPLOYEE_LAST_NAME_NULL_OR_BLANK);
+        errorMap.put(DATE_OF_BIRTH_NULL_OR_BLANK, KEY_DATE_OF_BIRTH_NULL_OR_BLANK);
         errorMap.put(EMPLOYEE_NAME_CONTAIN_NUMBER, KEY_EMPLOYEE_NAME_CONTAIN_NUMBER);
-        errorMap.put(EMPLOYEE_BASE_SALARY_LESS_THAN_20000, KEY_EMPLOYEE_BASE_SALARY_LESS_THAN_20000);
 
         //INGREDIENTS
         errorMap.put(INGREDIENT_NULL_OR_BLANK, KEY_INGREDIENT_NAME_NULL_OR_BLANK);
@@ -237,7 +236,7 @@ public class ErrorMessage {
         //DINING TABLE
         errorMap.put(DINING_TABLE_NULL_OR_BLANK, KEY_DINING_TABLE_NULL_OR_BLANK);
         errorMap.put(DINING_TABLE_NOT_FOUND, KEY_DINING_TABLE_NOT_FOUND);
-        errorMap.put(DINING_TABLE_MIN_NUMBER,KEY_DINING_TABLE_NUMBER_MIN);
+        errorMap.put(DINING_TABLE_MIN_NUMBER, KEY_DINING_TABLE_NUMBER_MIN);
 
         //ORDER
         errorMap.put(ORDER_NULL_OR_BLANK, KEY_ORDER_NULL_OR_BLANK);

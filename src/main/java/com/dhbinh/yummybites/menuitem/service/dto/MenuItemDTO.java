@@ -31,7 +31,7 @@ public class MenuItemDTO {
     private String description;
 
     @NotNull(message = ErrorMessage.PRICE_NULL_OR_BLANK)
-    @Min(value = 1,message = ErrorMessage.PRICE_LESS_THAN_ONE)
+    @Min(value = 1, message = ErrorMessage.PRICE_LESS_THAN_ONE)
     private Double price;
 
     @NotNull(message = ErrorMessage.DISH_TYPE_NULL_OR_BLANK)

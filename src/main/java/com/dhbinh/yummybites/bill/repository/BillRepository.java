@@ -13,7 +13,7 @@ import java.util.List;
 public interface BillRepository extends JpaRepository<Bill, Long>, JpaSpecificationExecutor<Bill> {
 
     @Query("SELECT b " +
-            "FROM Bill b " +
+            "FROM Bill b LEFT JOIN FETCH b.billDetails " +
             "WHERE FUNCTION('DAY', b.createdDate) = :day")
-    List<Bill> findAllOrderByDate(@Param("day") int day);
+    List<Bill> findAllBillByDate(@Param("day") int day);
 }

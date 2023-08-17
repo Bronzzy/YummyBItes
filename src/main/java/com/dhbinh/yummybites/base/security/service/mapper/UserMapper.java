@@ -2,7 +2,6 @@ package com.dhbinh.yummybites.base.security.service.mapper;
 
 
 import com.dhbinh.yummybites.base.mapper.BaseMapper;
-import com.dhbinh.yummybites.base.security.entity.Role;
 import com.dhbinh.yummybites.base.security.entity.User;
 import com.dhbinh.yummybites.base.security.service.dto.UserDTO;
 import org.mapstruct.Mapper;

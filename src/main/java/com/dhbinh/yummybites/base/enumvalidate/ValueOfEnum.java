@@ -20,7 +20,10 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Constraint(validatedBy = EnumValidator.class)
 public @interface ValueOfEnum {
     Class<? extends Enum<?>> enumClass();
+
     String message() default "must be any of enum {enumClassValues}";
+
     Class<?>[] groups() default {};
+
     Class<? extends Payload>[] payload() default {};
 }

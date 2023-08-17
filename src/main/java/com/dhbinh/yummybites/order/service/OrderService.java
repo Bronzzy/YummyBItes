@@ -7,15 +7,16 @@ import com.dhbinh.yummybites.order.entity.Order;
 import com.dhbinh.yummybites.order.repository.OrderRepository;
 import com.dhbinh.yummybites.order.service.dto.OrderDTO;
 import com.dhbinh.yummybites.order.service.mapper.OrderMapper;
+import com.dhbinh.yummybites.order.specification.OrderSpecification;
 import com.dhbinh.yummybites.orderdetail.entity.OrderDetail;
 import lombok.RequiredArgsConstructor;
-import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +24,6 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -53,6 +53,11 @@ public class OrderService {
                         ErrorMessage.ORDER_NOT_FOUND)));
     }
 
+    public List<OrderDTO> findWithSpecification(String employeeName, int tableNumber, double priceLessThan, double priceGreaterThan, int day, int month, int year){
+        Specification<Order> spec = OrderSpecification.findWithSpecification(employeeName, tableNumber, priceLessThan, priceGreaterThan, day, month, year);
+        return orderMapper.toDTOList(orderRepository.findAll(spec));
+    }
+
     public OrderDTO checkout(Long id) {
         Order order = orderRepository.findById(id).
                 orElseThrow(() -> new ResourceNotFoundException(
@@ -65,7 +70,7 @@ public class OrderService {
         return orderMapper.toDTO(orderRepository.save(order));
     }
 
-    @Scheduled(cron = "00 06 00 * * *")
+    @Scheduled(cron = "00 37 11 * * *")
     public void exportOrderByDate() {
         List<Order> orderList = orderRepository.findAllOrderByDate(LocalDate.now().getDayOfMonth());
         try (FileInputStream fileInputStream = new FileInputStream(excelFileLocation + LocalDate.now() + ".xlsx");
@@ -78,7 +83,7 @@ public class OrderService {
             titleRow.createCell(1).setCellValue("Item Name");
             titleRow.createCell(2).setCellValue("Quantity");
             titleRow.createCell(3).setCellValue("Price");
-            titleRow.createCell(4).setCellValue("Total Price");
+            titleRow.createCell(4).setCellValue("Total Bill");
 
             for (Order order : orderList) {
                 Row row = sheet.createRow(rowIdx++);
@@ -98,7 +103,7 @@ public class OrderService {
             Row resultRow = sheet.createRow(rowIdx++);
             resultRow.createCell(3).setCellValue("Total");
             resultRow.createCell(4).setCellValue(orderList.stream()
-                            .mapToDouble(Order::getTotalPrice).sum());
+                    .mapToDouble(Order::getTotalPrice).sum());
 
             try (FileOutputStream fileOut = new FileOutputStream(excelFileLocation + LocalDate.now() + ".xlsx")) {
                 workbook.write(fileOut);

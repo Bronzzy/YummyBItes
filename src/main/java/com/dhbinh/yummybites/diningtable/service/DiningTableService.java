@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class    DiningTableService {
+public class DiningTableService {
 
     @Autowired
     private DiningTableRepository diningTableRepository;
@@ -55,7 +55,7 @@ public class    DiningTableService {
                     ErrorMessage.KEY_TABLE_IS_OCCUPIED,
                     ErrorMessage.TABLE_IS_OCCUPIED);
         }
-            diningTable.setOccupied(true);
+        diningTable.setOccupied(true);
 
         return diningTableMapper.toDTO(diningTableRepository.save(diningTable));
     }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
@@ -34,22 +35,34 @@ public class EmployeeResource {
     }
 
     @GetMapping
-    public ResponseEntity<List<EmployeeDTO>>findAll(){
+    public ResponseEntity<List<EmployeeDTO>> findAll() {
         return ResponseEntity.ok(employeeService.findAll());
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<EmployeeDTO> findByID(@PathVariable("id") Long ID){
+    public ResponseEntity<EmployeeDTO> findByID(@PathVariable("id") Long ID) {
         return ResponseEntity.ok(employeeService.findByID(ID));
     }
 
+    @GetMapping(value = "/find-with-specification")
+    public ResponseEntity<List<EmployeeDTO>> findWithSpecification(@RequestParam("firstName") String firstName,
+                                                                   @RequestParam("lastName") String lastName,
+                                                                   @RequestParam("address") String address,
+                                                                   @RequestParam(value = "day", defaultValue = "0") int day,
+                                                                   @RequestParam(value = "month", defaultValue = "0") int month,
+                                                                   @RequestParam(value = "year", defaultValue = "0") int year,
+                                                                   @RequestParam(value = "ageLessThan", defaultValue = "0") int ageLessThan,
+                                                                   @RequestParam(value = "ageGreaterThan", defaultValue = "0") int ageGreaterThan) {
+        return ResponseEntity.ok(employeeService.findWithSpecification(firstName, lastName, address, day, month, year, ageLessThan, ageGreaterThan));
+    }
+
     @PostMapping(value = "/export-employee-list")
-    public void exportEmployeeList(){
+    public void exportEmployeeList() {
         employeeService.exportEmployeeList();
     }
 
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<EmployeeDTO> deleteEmployee(@PathVariable("id") Long ID) {
-        return ResponseEntity.ok(employeeService.deleteEmployee(ID));
+    public ResponseEntity<EmployeeDTO> deleteEmployee(@PathVariable("id") Long id) {
+        return ResponseEntity.ok(employeeService.deleteEmployee(id));
     }
 }

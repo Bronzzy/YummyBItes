@@ -4,7 +4,6 @@ import com.dhbinh.yummybites.base.security.entity.Role;
 import com.dhbinh.yummybites.base.security.entity.User;
 import com.dhbinh.yummybites.base.security.entity.UserRoleAssignment;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;

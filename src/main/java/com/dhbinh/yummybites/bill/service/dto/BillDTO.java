@@ -27,7 +27,7 @@ public class BillDTO {
     private String supplierName;
 
     @NotBlank(message = ErrorMessage.BILL_DETAIL_NULL_OR_BLANK)
-    private List<@NotBlank(message = ErrorMessage.BILL_DETAIL_NULL_OR_BLANK ) BillDetailDTO> billDetails;
+    private List<@NotBlank(message = ErrorMessage.BILL_DETAIL_NULL_OR_BLANK) BillDetailDTO> billDetails;
 
     @Min(value = 1, message = ErrorMessage.PRICE_LESS_THAN_ONE)
     private Double totalPrice;

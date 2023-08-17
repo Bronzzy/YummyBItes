@@ -8,7 +8,6 @@ import com.dhbinh.yummybites.bill.service.dto.BillDTO;
 import com.dhbinh.yummybites.bill.service.mapper.BillMapper;
 import com.dhbinh.yummybites.bill.specification.BillSpecification;
 import com.dhbinh.yummybites.billdetail.entity.BillDetail;
-import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -48,14 +47,14 @@ public class BillService {
                         ErrorMessage.BILL_NOT_FOUND)));
     }
 
-    public List<BillDTO> findByDate(String day, String month, String year, double priceLessThan, double priceGreaterThan) {
-        Specification<Bill> spec = BillSpecification.findWithSpecification(day, month, year, priceLessThan, priceGreaterThan);
+    public List<BillDTO> findByDate(String employeeName, String supplierName, int day, int month, int year, double priceLessThan, double priceGreaterThan) {
+        Specification<Bill> spec = BillSpecification.findWithSpecification(employeeName, supplierName, day, month, year, priceLessThan, priceGreaterThan);
         return billMapper.toDTOList(billRepository.findAll(spec));
     }
 
-    @Scheduled(cron = "00 05 00 * * *")
+    @Scheduled(cron = "00 36 11 * * *")
     public void exportBillByDate() throws IOException {
-        List<Bill> billList = billRepository.findAllOrderByDate(LocalDate.now().getDayOfMonth());
+        List<Bill> billList = billRepository.findAllBillByDate(LocalDate.now().getDayOfMonth());
         try (Workbook workbook = new XSSFWorkbook()) {
             Sheet sheet = workbook.createSheet("Daily Ingredient Import");
 
@@ -66,7 +65,7 @@ public class BillService {
             titleRow.createCell(2).setCellValue("Item");
             titleRow.createCell(3).setCellValue("Quantity");
             titleRow.createCell(4).setCellValue("Price per Unit");
-            titleRow.createCell(5).setCellValue("Total Price");
+            titleRow.createCell(5).setCellValue("Total Bill");
 
             for (Bill bill : billList) {
                 Row row = sheet.createRow(rowIdx++);

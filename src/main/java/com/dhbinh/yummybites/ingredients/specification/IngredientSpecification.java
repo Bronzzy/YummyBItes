@@ -6,7 +6,7 @@ import org.springframework.data.jpa.domain.Specification;
 import javax.persistence.criteria.Predicate;
 
 public class IngredientSpecification {
-    public static Specification<Ingredient> findWithNameAndQuantitySpecification(String name, double quantity) {
+    public static Specification<Ingredient> findWithSpecifications(String name, double quantity) {
         return (root, query, criteriaBuilder) -> {
             Predicate predicate = criteriaBuilder.conjunction();
 

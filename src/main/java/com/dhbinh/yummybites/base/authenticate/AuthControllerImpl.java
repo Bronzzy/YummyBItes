@@ -29,7 +29,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/auth")
-public class AuthControllerImpl{
+public class AuthControllerImpl {
 
     @Autowired
     private UserServiceImpl userServices;
@@ -56,6 +56,7 @@ public class AuthControllerImpl{
                 userDetails.getUsername(),
                 roles.toString()));
     }
+
     @PostMapping("/signup")
     public ResponseEntity<UserDTO> createUser(@Valid @RequestBody UserDTO userDTO) {
         UserDTO dto = userServices.create(userDTO);

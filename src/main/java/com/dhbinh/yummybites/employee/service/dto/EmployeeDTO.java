@@ -3,6 +3,7 @@ package com.dhbinh.yummybites.employee.service.dto;
 import com.dhbinh.yummybites.base.exception.ErrorMessage;
 import com.dhbinh.yummybites.employee.entity.StatusEnum;
 import com.dhbinh.yummybites.utils.CommonConstant;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -12,7 +13,10 @@ import lombok.Setter;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -30,6 +34,11 @@ public class EmployeeDTO {
     @NotBlank(message = ErrorMessage.EMPLOYEE_LAST_NAME_NULL_OR_BLANK)
     @Pattern(regexp = CommonConstant.VALID_NAME_PATTERN, message = ErrorMessage.EMPLOYEE_NAME_CONTAIN_NUMBER)
     private String lastName;
+
+    @Past
+    @NotNull(message = ErrorMessage.DATE_OF_BIRTH_NULL_OR_BLANK)
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate dob;
 
     @NotBlank(message = ErrorMessage.ADDRESS_NULL_OR_BLANK)
     private String address;

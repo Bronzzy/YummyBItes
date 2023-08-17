@@ -11,6 +11,6 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 public interface BillDetailMapper extends BaseMapper<BillDetail, BillDetailDTO> {
 
     @Mapping(target = "billId", source = "bill.id")
-    @Mapping(target= "ingredientName", source = "ingredient.name")
+    @Mapping(target = "ingredientName", source = "ingredient.name")
     BillDetailDTO toDTO(BillDetail entity);
 }

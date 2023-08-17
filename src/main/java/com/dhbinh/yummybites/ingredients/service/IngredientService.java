@@ -5,9 +5,9 @@ import com.dhbinh.yummybites.base.exception.InputValidationException;
 import com.dhbinh.yummybites.base.exception.ResourceNotFoundException;
 import com.dhbinh.yummybites.ingredients.entity.Ingredient;
 import com.dhbinh.yummybites.ingredients.repository.IngredientRepository;
-import com.dhbinh.yummybites.ingredients.specification.IngredientSpecification;
 import com.dhbinh.yummybites.ingredients.service.dto.IngredientDTO;
 import com.dhbinh.yummybites.ingredients.service.mapper.IngredientMapper;
+import com.dhbinh.yummybites.ingredients.specification.IngredientSpecification;
 import com.dhbinh.yummybites.restaurant.service.RestaurantService;
 import com.dhbinh.yummybites.utils.Utils;
 import lombok.RequiredArgsConstructor;
@@ -89,8 +89,8 @@ public class IngredientService {
         return isIngredientExist;
     }
 
-    public List<IngredientDTO> findByNameLikeOrQuantityLessThanOrEqualTo(String name, double quantityString) {
-        Specification<Ingredient> spec = IngredientSpecification.findWithNameAndQuantitySpecification(name, quantityString);
+    public List<IngredientDTO> findWithSpecifications(String name, double quantityString) {
+        Specification<Ingredient> spec = IngredientSpecification.findWithSpecifications(name, quantityString);
         return ingredientMapper.toDTOList(ingredientRepository.findAll(spec));
     }
 }

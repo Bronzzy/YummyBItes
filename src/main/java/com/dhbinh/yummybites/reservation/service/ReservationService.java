@@ -15,6 +15,8 @@ import org.springframework.stereotype.Service;
 
 import java.io.FileOutputStream;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
 @Service
@@ -25,6 +27,9 @@ public class ReservationService {
 
     @Autowired
     private ReservationMapper reservationMapper;
+
+    private static final LocalTime RUSH_HOUR_START = LocalTime.parse("17:30:00");
+    private static final LocalTime RUSH_HOUR_END = LocalTime.parse("20:30:00");
 
     public ReservationDTO save(ReservationDTO reservationDTO) {
 

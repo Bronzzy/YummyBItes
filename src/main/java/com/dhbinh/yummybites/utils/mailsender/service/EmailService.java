@@ -70,16 +70,16 @@ public class EmailService {
         }
     }
 
-    @Scheduled(cron = "00 10 00 * * *")
+    @Scheduled(cron = "00 27 09 * * *")
     public String sendMailWithDailyReport() {
         MimeMessage mimeMessage = javaMailSender.createMimeMessage();
         MimeMessageHelper mimeMessageHelper;
         try {
             mimeMessageHelper = new MimeMessageHelper(mimeMessage, true);
             mimeMessageHelper.setFrom(sender);
-            mimeMessageHelper.setTo(sender+"@gmail.com");
-            mimeMessageHelper.setText(mailDefaultText + LocalDate.now());
-            mimeMessageHelper.setSubject(mailDefaultSubject + LocalDate.now());
+            mimeMessageHelper.setTo(sender + "@gmail.com");
+            mimeMessageHelper.setText(mailDefaultText + " " + LocalDate.now());
+            mimeMessageHelper.setSubject(mailDefaultSubject + " " + LocalDate.now());
 
             FileSystemResource file = new FileSystemResource(new File(excelFileLocation + LocalDate.now() + ".xlsx"));
             mimeMessageHelper.addAttachment(Objects.requireNonNull(file.getFilename()), file);

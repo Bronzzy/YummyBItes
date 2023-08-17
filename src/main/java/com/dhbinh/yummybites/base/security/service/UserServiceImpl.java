@@ -50,14 +50,14 @@ public class UserServiceImpl {
     }
 
     private void verifyAndModify(UserDTO userDTO) {
-        if(isUserExist(userDTO.getUsername())) {
+        if (isUserExist(userDTO.getUsername())) {
             throw new InputValidationException(
                     ErrorMessage.KEY_USERNAME_EXIST,
                     ErrorMessage.USERNAME_EXIST);
         }
     }
 
-    private boolean isUserExist(String user){
+    private boolean isUserExist(String user) {
         return userRepository.findByUsername(user).isPresent();
     }
 }

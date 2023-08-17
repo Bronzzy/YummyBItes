@@ -14,9 +14,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Future;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -34,7 +36,8 @@ public class Reservation {
 
     @Column(nullable = false)
     @NotNull(message = ErrorMessage.RESERVATION_NULL)
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @Future
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime reservationDate;
 
     @Column(nullable = false)

@@ -7,7 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
@@ -35,11 +42,11 @@ public class IngredientResource {
     }
 
     @PutMapping("/{ingredient-id}/add")
-    public ResponseEntity<IngredientDTO> add(@PathVariable("ingredient-id") Long ID,
+    public ResponseEntity<IngredientDTO> add(@PathVariable("ingredient-id") Long id,
                                              @RequestParam("quantity")
                                              @Min(value = 1, message = ErrorMessage.INGREDIENT_QUANTITY_LESS_THAN_ONE)
                                              Double quantity) {
-        return ResponseEntity.ok(ingredientService.add(ID, quantity));
+        return ResponseEntity.ok(ingredientService.add(id, quantity));
     }
 
     @PutMapping("/{ingredient-id}/deducted")
@@ -52,6 +59,6 @@ public class IngredientResource {
     @GetMapping("/with-specification")
     public ResponseEntity<List<IngredientDTO>> findByNameLikeOrQuantityLessThanOrEqualTo(@RequestParam("name") String name,
                                                                                          @RequestParam(value = "quantity", defaultValue = "0") double quantityString) {
-        return ResponseEntity.ok(ingredientService.findByNameLikeOrQuantityLessThanOrEqualTo(name, quantityString));
+        return ResponseEntity.ok(ingredientService.findWithSpecifications(name, quantityString));
     }
 }
