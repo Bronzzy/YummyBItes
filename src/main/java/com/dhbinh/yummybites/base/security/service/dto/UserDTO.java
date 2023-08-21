@@ -35,6 +35,9 @@ public class UserDTO {
     @Pattern(regexp = CommonConstant.PASSWORD_PATTERN, message = ErrorMessage.PASSWORD_NOT_MATCH_PATTERN)
     private String password;
 
+    @Pattern(regexp = CommonConstant.EMAIL_PATTERN, message = ErrorMessage.EMAIL_WRONG_FORMAT)
+    private String employeeEmail;
+
     @NotNull(message = ErrorMessage.ENUM_NULL_OR_BLANK)
     @ValueOfEnum(enumClass = Role.class)
     @Enumerated(EnumType.STRING)

@@ -47,8 +47,8 @@ public class BillService {
                         ErrorMessage.BILL_NOT_FOUND)));
     }
 
-    public List<BillDTO> findByDate(String employeeName, String supplierName, int day, int month, int year, double priceLessThan, double priceGreaterThan) {
-        Specification<Bill> spec = BillSpecification.findWithSpecification(employeeName, supplierName, day, month, year, priceLessThan, priceGreaterThan);
+    public List<BillDTO> findWithSpecifications(String employeeName, String supplierName, int day, int month, int year, double priceLessThan, double priceGreaterThan) {
+        Specification<Bill> spec = BillSpecification.findWithSpecifications(employeeName, supplierName, day, month, year, priceLessThan, priceGreaterThan);
         return billMapper.toDTOList(billRepository.findAll(spec));
     }
 

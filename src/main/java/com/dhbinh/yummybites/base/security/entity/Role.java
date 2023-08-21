@@ -7,7 +7,6 @@ public enum Role {
     ROLE_MANAGER("ROLE_MANAGER"),
     ROLE_COOK("ROLE_COOK"),
     ROLE_JANITOR("ROLE_JANITOR"),
-    ROLE_MAID("ROLE_MAID"),
     ;
 
     final String roleName;

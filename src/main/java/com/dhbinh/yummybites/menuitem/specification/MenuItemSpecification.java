@@ -6,7 +6,7 @@ import org.springframework.data.jpa.domain.Specification;
 import javax.persistence.criteria.Predicate;
 
 public class MenuItemSpecification {
-    public static Specification<MenuItem> findWithSpecification(String name, double priceLessThan, double priceGreaterThan, String type) {
+    public static Specification<MenuItem> findWithSpecifications(String name, double priceLessThan, double priceGreaterThan, String type) {
         return (root, query, criteriaBuilder) -> {
             Predicate predicate = criteriaBuilder.conjunction();
 
@@ -29,6 +29,7 @@ public class MenuItemSpecification {
             if (!type.isEmpty()) {
                 predicate = criteriaBuilder.and(predicate, criteriaBuilder.like(criteriaBuilder.lower(root.get("dishType").as(String.class)), "%" + type.toLowerCase().trim() + "%"));
             }
+
             return predicate;
         };
     }

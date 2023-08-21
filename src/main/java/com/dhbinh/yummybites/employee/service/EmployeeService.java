@@ -18,7 +18,6 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.io.FileOutputStream;
@@ -66,8 +65,8 @@ public class EmployeeService {
         return employeeMapper.toDTOList(employeeRepository.findAll());
     }
 
-    public List<EmployeeDTO> findWithSpecification(String firstName, String lastName, String address, int day, int month, int year, int ageLessThan, int ageGreaterThan) {
-        Specification<Employee> spec = EmployeeSpecification.findWithSpecification(firstName, lastName, address, day, month, year, ageLessThan, ageGreaterThan);
+    public List<EmployeeDTO> findWithSpecifications(String firstName, String lastName, String address, int day, int month, int year, int ageLessThan, int ageGreaterThan) {
+        Specification<Employee> spec = EmployeeSpecification.findWithSpecifications(firstName, lastName, address, day, month, year, ageLessThan, ageGreaterThan);
         return employeeMapper.toDTOList(employeeRepository.findAll(spec));
     }
 
@@ -81,7 +80,6 @@ public class EmployeeService {
         return employeeMapper.toDTO(employee);
     }
 
-    @Scheduled(cron = "00 47 18 * * *")
     public void exportEmployeeList() {
         List<Employee> employees = employeeRepository.findAll();
         try (Workbook workbook = new XSSFWorkbook()) {

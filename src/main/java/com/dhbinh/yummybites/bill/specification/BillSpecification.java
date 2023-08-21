@@ -9,7 +9,7 @@ import javax.persistence.criteria.Join;
 import javax.persistence.criteria.Predicate;
 
 public class BillSpecification {
-    public static Specification<Bill> findWithSpecification(String employeeName, String supplierName, int day, int month, int year, double priceLessThan, double priceGreaterThan) {
+    public static Specification<Bill> findWithSpecifications(String employeeName, String supplierName, int day, int month, int year, double priceLessThan, double priceGreaterThan) {
         return (root, query, criteriaBuilder) -> {
             Predicate predicate = criteriaBuilder.conjunction();
 

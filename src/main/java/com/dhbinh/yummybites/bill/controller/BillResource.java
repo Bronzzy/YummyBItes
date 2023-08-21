@@ -35,20 +35,20 @@ public class BillResource {
         return ResponseEntity.ok(billService.findById(id));
     }
 
+    @GetMapping(value = "/with-date-specification")
+    public ResponseEntity<List<BillDTO>> findWithSpecifications(@RequestParam(value = "employeeName") String employeeName,
+                                                                @RequestParam(value = "supplierName") String supplierName,
+                                                                @RequestParam(value = "day", defaultValue = "0") int day,
+                                                                @RequestParam(value = "month", defaultValue = "0") int month,
+                                                                @RequestParam(value = "year", defaultValue = "0") int year,
+                                                                @RequestParam(value = "priceLessThan", defaultValue = "0") double priceLessThan,
+                                                                @RequestParam(value = "priceGreaterThan", defaultValue = "0") double priceGreaterThan) {
+
+        return ResponseEntity.ok(billService.findWithSpecifications(employeeName, supplierName, day, month, year, priceLessThan, priceGreaterThan));
+    }
+
     @PostMapping(value = "/export-bill-by-date")
     public void exportBillByDate() throws IOException {
         billService.exportBillByDate();
-    }
-
-    @GetMapping(value = "/with-date-specification")
-    public ResponseEntity<List<BillDTO>> findWithDate(@RequestParam(value = "employeeName") String employeeName,
-                                                      @RequestParam(value = "supplierName") String supplierName,
-                                                      @RequestParam(value = "day", defaultValue = "0") int day,
-                                                      @RequestParam(value = "month", defaultValue = "0") int month,
-                                                      @RequestParam(value = "year", defaultValue = "0") int year,
-                                                      @RequestParam(value = "priceLessThan", defaultValue = "0") double priceLessThan,
-                                                      @RequestParam(value = "priceGreaterThan", defaultValue = "0") double priceGreaterThan) {
-        return ResponseEntity.ok(billService.findByDate(employeeName, supplierName, day, month, year, priceLessThan, priceGreaterThan));
-
     }
 }

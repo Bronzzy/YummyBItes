@@ -53,8 +53,8 @@ public class OrderService {
                         ErrorMessage.ORDER_NOT_FOUND)));
     }
 
-    public List<OrderDTO> findWithSpecification(String employeeName, int tableNumber, double priceLessThan, double priceGreaterThan, int day, int month, int year){
-        Specification<Order> spec = OrderSpecification.findWithSpecification(employeeName, tableNumber, priceLessThan, priceGreaterThan, day, month, year);
+    public List<OrderDTO> findWithSpecifications(String employeeName, int tableNumber, double priceLessThan, double priceGreaterThan, int day, int month, int year){
+        Specification<Order> spec = OrderSpecification.findWithSpecifications(employeeName, tableNumber, priceLessThan, priceGreaterThan, day, month, year);
         return orderMapper.toDTOList(orderRepository.findAll(spec));
     }
 
@@ -70,7 +70,7 @@ public class OrderService {
         return orderMapper.toDTO(orderRepository.save(order));
     }
 
-    @Scheduled(cron = "00 37 11 * * *")
+    @Scheduled(cron = "00 00 00 * * *")
     public void exportOrderByDate() {
         List<Order> orderList = orderRepository.findAllOrderByDate(LocalDate.now().getDayOfMonth());
         try (FileInputStream fileInputStream = new FileInputStream(excelFileLocation + LocalDate.now() + ".xlsx");

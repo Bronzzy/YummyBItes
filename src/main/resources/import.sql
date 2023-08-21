@@ -24,42 +24,43 @@ INSERT INTO employee (address,dob,email,first_name,last_name,phone,status,restau
 
 
 -----INSERT DATA INTO USER-----
-INSERT INTO users (active,"password",username) VALUES(true,'$2a$10$.vs0WjuKzW4kSFmfoHi5oOi5IEhzEf63LzSr3VC4o.q1JjbeaWdjK','hoabinh0911@gmail.com');
-INSERT INTO users (active,"password",username) VALUES(true,'$2a$10$UK4NJhuXPGNTN0jggSOCEu3.Bxy0osxn5gDzhPBx9PEPHhUmqU9ji','john.doe@gmail.com');
-INSERT INTO users (active,"password",username) VALUES(true,'$2a$10$stI7bmsovKv3U1Ad76Ab8uGSTKjmO1MZKA6N9NXtpNFUeTO.DIwpS','jane.smith@yahoo.com');
-INSERT INTO users (active,"password",username) VALUES(true,'$2a$10$/iz77VjkGsEbsMeWcvSnfeKwKG/0aw5WLgeMmJZPIafeI7rVRppy.','michael.johnson@hotmail.com');
-INSERT INTO users (active,"password",username) VALUES(true,'$2a$10$yfsU5gqXOV8VH4g5gbnVQegCIeIOxAyEzJyGpXhnPTi0hy2D/o8dm','emily.williams@outlook.com');
-INSERT INTO users (active,"password",username) VALUES(true,'$2a$10$J09ZYOcmu4Z51/QZAD.dTOUKM2t7EUTdjSK4jb6Q5DpCguyMdJVHO','robert.brown@gmail.com');
-INSERT INTO users (active,"password",username) VALUES(true,'$2a$10$1PIGsseiaIIXNelkLN.U/esxghaUWx2j38cjCsneI6hAzGIoTNMWS','mary.jones@yahoo.com');
-INSERT INTO users (active,"password",username) VALUES(true,'$2a$10$pOwbGTyFcsUVEm9/5U5A4eFkzMDfKmhleauvgSi5ELd2nyVspWDli','david.miller@hotmail.com');
-INSERT INTO users (active,"password",username) VALUES(true,'$2a$10$sBmNXJgYlMA.eUtEfw9Pk.s2HB9Jme/LsB7lT5pbRFxbBUzDDSkMW','linda.davis@gmail.com');
-INSERT INTO users (active,"password",username) VALUES(true,'$2a$10$IuQANN1bFTbo1eNkRPiBeuWSECcQbg84kAWfUgOWxF1Yd9sj27tRK','james.wilson@yahoo.com');
-INSERT INTO users (active,"password",username) VALUES(true,'$2a$10$lCKOHCCAVB.CrC82UYV4ZedMCbhry34nn7HvtBWLxTLrLvgd6JEx2','susan.anderson@outlook.com');
-INSERT INTO users (active,"password",username) VALUES(true,'$2a$10$zxPEFUmpBEKOhc8K2IA4Xesc5GDCpYWPO1RobpRzG2ShRbEHJ.7Cm','william.jackson@gmail.com');
-INSERT INTO users (active,"password",username) VALUES(true,'$2a$10$LAuZFcki6EoZYiN33AbsXu85MaKjJ3V.gfYQUJSGI9LduKIvfA0Xq','patricia.moore@yahoo.com');
-INSERT INTO users (active,"password",username) VALUES(true,'$2a$10$TdYARIrLO5MYSa5/mG9Wn.kGr7O2./OsPg0mqA1kFlEQO.YdbcxL.','richard.martin@hotmail.com');
-INSERT INTO users (active,"password",username) VALUES(true,'$2a$10$s/9Elo1OXaFYmkHJHen5K.T875vDXUOQ4rB4jw4mBzpAz1KQH78na','jennifer.wilson@gmail.com');
-INSERT INTO users (active,"password",username) VALUES(true,'$2a$10$fhMzE7W4xydP8KUyHyczN.ZGviH02L.jHwuF.es/EqOtjmcugnK0m','charles.thompson@yahoo.com');
+INSERT INTO users (active,"password",username,employee_id) VALUES(true,'$2a$10$pqOhvZAlb9u4/YopxQ4w7OP99t62tOR1mBTX6zuJcBtBKz8y7y06y','hoabinh0911@gmail.com',1);
+INSERT INTO users (active,"password",username,employee_id) VALUES(true,'$2a$10$n7d6AZ32SAoKr3Vq4Cit/e9vDjdGsJILGYnUrdtanZoUGCqbIL7XW','john.doe@gmail.com',2);
+INSERT INTO users (active,"password",username,employee_id) VALUES(true,'$2a$10$fWRYNts7oTISHGW0V4srmeQPmSCFswhYNeIskF99SkYdeitsZ1h6S','jane.smith@yahoo.com',3);
+INSERT INTO users (active,"password",username,employee_id) VALUES(true,'$2a$10$vpN8.BIZwM7uLVUBZIbJ1.tkKUBhi/CMnCMNkfQdt1CASu6oR1k.i','michael.johnson@hotmail.com',4);
+INSERT INTO users (active,"password",username,employee_id) VALUES(true,'$2a$10$Y2rjxtcU.u0UffSVUOFj0udjd0qGD8K0A9dBMfvRMOZGF4T.w0FWq','emily.williams@outlook.com',5);
+INSERT INTO users (active,"password",username,employee_id) VALUES(true,'$2a$10$i.D.TwTybUSRI/kjB490b.GqKSeuFBMpcqqZae.remw5tCE1CLyk2','robert.brown@gmail.com',6);
+INSERT INTO users (active,"password",username,employee_id) VALUES(true,'$2a$10$ZmrHcGbbd3gKYPFla2veKOnWDclpSLcvRx1d3IGXu829WUgQ0urjO','mary.jones@yahoo.com',7);
+INSERT INTO users (active,"password",username,employee_id) VALUES(true,'$2a$10$fDhEP0DceiIihv0m/QZ1XusBRAI22TE7ij2WOFnFWkjdHezYfy6vK','david.miller@hotmail.com',8);
+INSERT INTO users (active,"password",username,employee_id) VALUES(true,'$2a$10$gWiRgaq5lVH8WjAs8xI./eAp9Epjy8QqhvwBGOQMzyndcV4P9B5oO','linda.davis@gmail.com',9);
+INSERT INTO users (active,"password",username,employee_id) VALUES(true,'$2a$10$tOLwFLm9pHUmg/bCDlEWYeYzX1t4j5rZrI6bX9WuyP.PJVdZmnHzK','james.wilson@yahoo.com',10);
+INSERT INTO users (active,"password",username,employee_id) VALUES(true,'$2a$10$WgroL1rfofS5B3/pGpGxg.9y45Ltvka5N2sK8iSrBDsfLRHPAlJQC','susan.anderson@outlook.com',11);
+INSERT INTO users (active,"password",username,employee_id) VALUES(true,'$2a$10$fS/bT56f/OjDv4kqkJv2Nue0FfdVBz5JxmDAQLNKAS8Cs.gyglX1S','william.jackson@gmail.com',12);
+INSERT INTO users (active,"password",username,employee_id) VALUES(true,'$2a$10$xUCdM9yHu7W7D.7uUXj05e.g45eRebchUKkRsUh5Ybrg6o84ZVKjy','patricia.moore@yahoo.com',13);
+INSERT INTO users (active,"password",username,employee_id) VALUES(true,'$2a$10$fQ36t2wp4kHaBHOk3bgVU.KP7qGUoC5HOIukX8tF9ht3sNr7DXO/2','richard.martin@hotmail.com',14);
+INSERT INTO users (active,"password",username,employee_id) VALUES(true,'$2a$10$NigfQvmqvCmO5Kn3FepjiueXt5oyTzSm9IwHEOCLh2SI9ZeN01a1W','jennifer.wilson@gmail.com',15);
+INSERT INTO users (active,"password",username,employee_id) VALUES(true,'$2a$10$bGFVocDgCN2bld4amfUCLOrt6Z.qz2IiZOqOPORxnA8vD6fa0BaI2','charles.thompson@yahoo.com',16);
 
 
 
 -----INSERT DATA INTO USER ROLE ASSIGNMENTS-----
-INSERT INTO user_role_assignment (assigned_date,"role",modified_date,user_id) VALUES('2020-01-01 17:12:33.970','ROLE_OWNER','2023-08-17 10:08:15.590',1);
-INSERT INTO user_role_assignment (assigned_date,"role",modified_date,user_id) VALUES('2020-02-15 08:30:45.000','ROLE_WAITER','2020-02-15 08:30:45.000',2);
-INSERT INTO user_role_assignment (assigned_date,"role",modified_date,user_id) VALUES('2020-04-10 12:45:18.000','ROLE_WAITER','2021-04-10 12:45:18.000',3);
-INSERT INTO user_role_assignment (assigned_date,"role",modified_date,user_id) VALUES('2020-08-20 15:23:09.000','ROLE_WAITER','2021-08-20 15:23:09.000',4);
-INSERT INTO user_role_assignment (assigned_date,"role",modified_date,user_id) VALUES('2021-03-05 09:10:30.000','ROLE_WAITER','2022-03-05 09:10:30.000',5);
-INSERT INTO user_role_assignment (assigned_date,"role",modified_date,user_id) VALUES('2021-06-18 17:55:42.000','ROLE_WAITER','2022-06-18 17:55:42.000',6);
-INSERT INTO user_role_assignment (assigned_date,"role",modified_date,user_id) VALUES('2021-11-27 22:40:51.000','ROLE_WAITER','2022-11-27 22:40:51.000',7);
-INSERT INTO user_role_assignment (assigned_date,"role",modified_date,user_id) VALUES('2022-01-10 13:20:16.000','ROLE_WAITER','2023-01-10 13:20:16.000',8);
-INSERT INTO user_role_assignment (assigned_date,"role",modified_date,user_id) VALUES('2022-04-25 06:08:35.000','ROLE_WAITER','2023-04-25 06:08:35.000',9);
-INSERT INTO user_role_assignment (assigned_date,"role",modified_date,user_id) VALUES('2022-06-15 19:29:55.000','ROLE_COOK','2023-06-15 19:29:55.000',10);
-INSERT INTO user_role_assignment (assigned_date,"role",modified_date,user_id) VALUES('2022-06-28 08:15:20.000','ROLE_COOK','2023-06-28 08:15:20.000',11);
-INSERT INTO user_role_assignment (assigned_date,"role",modified_date,user_id) VALUES('2022-07-05 14:37:40.000','ROLE_COOK','2023-07-05 14:37:40.000',12);
-INSERT INTO user_role_assignment (assigned_date,"role",modified_date,user_id) VALUES('2023-07-18 09:05:03.000','ROLE_COOK','2023-07-18 09:05:03.000',13);
-INSERT INTO user_role_assignment (assigned_date,"role",modified_date,user_id) VALUES('2023-07-28 11:50:22.000','ROLE_JANITOR','2023-07-28 11:50:22.000',14);
-INSERT INTO user_role_assignment (assigned_date,"role",modified_date,user_id) VALUES('2023-07-31 16:25:48.000','ROLE_JANITOR','2023-07-31 16:25:48.000',15);
-INSERT INTO user_role_assignment (assigned_date,"role",modified_date,user_id) VALUES('2023-08-05 09:05:03.000','ROLE_JANITOR','2023-08-05 09:05:03.000',16);
+INSERT INTO user_role_assignment (assigned_date, "role", modified_date, user_id) VALUES ('2020-05-15 08:30:17.446', 'ROLE_OWNER', '2022-05-15 08:30:17.446', 1);
+INSERT INTO user_role_assignment (assigned_date, "role", modified_date, user_id) VALUES ('2021-07-10 14:20:35.448', 'ROLE_WAITER', '2021-07-10 14:20:35.448', 2);
+INSERT INTO user_role_assignment (assigned_date, "role", modified_date, user_id) VALUES ('2020-11-25 18:45:56.451', 'ROLE_WAITER', '2020-11-25 18:45:56.451', 3);
+INSERT INTO user_role_assignment (assigned_date, "role", modified_date, user_id) VALUES ('2023-02-17 09:55:23.408', 'ROLE_WAITER', '2023-02-17 09:55:23.408', 4);
+INSERT INTO user_role_assignment (assigned_date, "role", modified_date, user_id) VALUES ('2021-07-20 14:30:08.123', 'ROLE_WAITER', '2021-07-20 14:30:08.123', 5);
+INSERT INTO user_role_assignment (assigned_date, "role", modified_date, user_id) VALUES ('2020-09-08 17:12:16.386', 'ROLE_WAITER', '2020-09-08 17:12:16.386', 6);
+INSERT INTO user_role_assignment (assigned_date, "role", modified_date, user_id) VALUES ('2021-03-12 10:38:25.668', 'ROLE_WAITER', '2021-03-12 10:38:25.668', 7);
+INSERT INTO user_role_assignment (assigned_date, "role", modified_date, user_id) VALUES ('2022-06-28 08:15:56.135', 'ROLE_WAITER', '2022-06-28 08:15:56.135', 8);
+INSERT INTO user_role_assignment (assigned_date, "role", modified_date, user_id) VALUES ('2020-08-25 22:40:45.246', 'ROLE_WAITER', '2020-08-25 22:40:45.246', 9);
+INSERT INTO user_role_assignment (assigned_date, "role", modified_date, user_id) VALUES ('2023-01-05 19:59:25.556', 'ROLE_COOK', '2023-01-05 19:59:25.556', 10);
+INSERT INTO user_role_assignment (assigned_date, "role", modified_date, user_id) VALUES ('2022-11-14 16:05:24.302', 'ROLE_COOK', '2022-11-14 16:05:24.302', 11);
+INSERT INTO user_role_assignment (assigned_date, "role", modified_date, user_id) VALUES ('2021-09-30 08:20:43.015', 'ROLE_COOK', '2021-09-30 08:20:43.015', 12);
+INSERT INTO user_role_assignment (assigned_date, "role", modified_date, user_id) VALUES ('2023-06-07 09:22:48.270', 'ROLE_COOK', '2023-06-07 09:22:48.270', 13);
+INSERT INTO user_role_assignment (assigned_date, "role", modified_date, user_id) VALUES ('2020-11-30 10:18:23.554', 'ROLE_JANITOR', '2020-11-30 10:18:23.554', 14);
+INSERT INTO user_role_assignment (assigned_date, "role", modified_date, user_id) VALUES ('2021-08-15 13:45:50.926', 'ROLE_JANITOR', '2021-08-15 13:45:50.926', 15);
+INSERT INTO user_role_assignment (assigned_date, "role", modified_date, user_id) VALUES ('2022-04-28 07:56:29.658', 'ROLE_JANITOR', '2022-04-28 07:56:29.658', 16);
+
 
 
 -----INSERT DATA INTO SUPPLIER-----
@@ -70,7 +71,6 @@ INSERT INTO supplier (address,email,"name",phone) VALUES('28 Welch Place','dbrei
 INSERT INTO supplier (address,email,"name",phone) VALUES('80 Mcbride Hill','gjoist1@artisteer.com','Reichel Inc','744-784-1225');
 INSERT INTO supplier (address,email,"name",phone) VALUES('1357 Woodland Avenue','jandras5@twitter.com','Hirthe and Sons','512-699-3458');
 INSERT INTO supplier (address,email,"name",phone) VALUES('746 Oak Lane','mmacronald6@pinterest.com','Glover, Schneider and Rutherford','625-830-9782');
-
 
 
 
@@ -134,26 +134,27 @@ INSERT INTO menu_item (description,dish_type,"name",price,restaurant_id) VALUES(
 
 
 -----INSERT DATA INTO ORDER-----
-INSERT INTO orders (created_date,is_paid,total_price,table_id,employee_id) VALUES('2023-08-17 11:01:12.446',true,780000.0,1,2);
-INSERT INTO orders (created_date,is_paid,total_price,table_id,employee_id) VALUES('2023-08-17 11:01:12.448',true,1020000.0,2,2);
-INSERT INTO orders (created_date,is_paid,total_price,table_id,employee_id) VALUES('2023-08-17 11:01:12.451',true,1150000.0,3,2);
-INSERT INTO orders (created_date,is_paid,total_price,table_id,employee_id) VALUES('2023-08-17 11:01:31.408',true,800000.0,5,9);
-INSERT INTO orders (created_date,is_paid,total_price,table_id,employee_id) VALUES('2023-08-17 11:02:16.386',true,720000.0,6,9);
-INSERT INTO orders (created_date,is_paid,total_price,table_id,employee_id) VALUES('2023-08-17 11:04:08.123',true,720000.0,10,8);
-INSERT INTO orders (created_date,is_paid,total_price,table_id,employee_id) VALUES('2023-08-17 11:05:05.806',true,455000.0,3,8);
-INSERT INTO orders (created_date,is_paid,total_price,table_id,employee_id) VALUES('2023-08-17 11:09:25.668',true,790000.0,3,7);
-INSERT INTO orders (created_date,is_paid,total_price,table_id,employee_id) VALUES('2023-08-17 11:10:56.135',true,595000.0,1,7);
-INSERT INTO orders (created_date,is_paid,total_price,table_id,employee_id) VALUES('2023-08-17 11:13:25.556',true,1465000.0,2,6);
-INSERT INTO orders (created_date,is_paid,total_price,table_id,employee_id) VALUES('2023-08-17 11:14:19.749',true,285000.0,2,6);
-INSERT INTO orders (created_date,is_paid,total_price,table_id,employee_id) VALUES('2023-08-17 11:15:43.015',true,725000.0,7,5);
-INSERT INTO orders (created_date,is_paid,total_price,table_id,employee_id) VALUES('2023-08-17 11:16:24.302',true,540000.0,7,5);
-INSERT INTO orders (created_date,is_paid,total_price,table_id,employee_id) VALUES('2023-08-17 11:19:45.246',true,650000.0,8,4);
-INSERT INTO orders (created_date,is_paid,total_price,table_id,employee_id) VALUES('2023-08-17 11:20:48.506',true,695000.0,8,4);
-INSERT INTO orders (created_date,is_paid,total_price,table_id,employee_id) VALUES('2023-08-17 11:22:03.110',true,1150000.0,8,3);
-INSERT INTO orders (created_date,is_paid,total_price,table_id,employee_id) VALUES('2023-08-17 11:22:48.270',true,480000.0,1,3);
-INSERT INTO orders (created_date,is_paid,total_price,table_id,employee_id) VALUES('2023-08-17 11:24:23.554',true,1380000.0,5,2);
-INSERT INTO orders (created_date,is_paid,total_price,table_id,employee_id) VALUES('2023-08-17 11:25:50.926',true,540000.0,6,2);
-INSERT INTO orders (created_date,is_paid,total_price,table_id,employee_id) VALUES('2023-08-17 11:26:29.658',true,570000.0,6,2);
+INSERT INTO orders (created_date,is_paid,total_price,table_id,employee_id) VALUES(CURRENT_TIMESTAMP,true,780000.0,1,2);
+INSERT INTO orders (created_date,is_paid,total_price,table_id,employee_id) VALUES(CURRENT_TIMESTAMP,true,1020000.0,2,2);
+INSERT INTO orders (created_date,is_paid,total_price,table_id,employee_id) VALUES(CURRENT_TIMESTAMP,true,1150000.0,3,2);
+INSERT INTO orders (created_date,is_paid,total_price,table_id,employee_id) VALUES('2020-09-09 19:12:16.386',true,285000.0,2,6);
+INSERT INTO orders (created_date,is_paid,total_price,table_id,employee_id) VALUES('2021-07-20 15:30:08.123',true,725000.0,7,5);
+INSERT INTO orders (created_date,is_paid,total_price,table_id,employee_id) VALUES('2021-07-20 13:45:08.123',true,540000.0,7,5);
+INSERT INTO orders (created_date,is_paid,total_price,table_id,employee_id) VALUES('2023-02-18 16:55:23.408',true,650000.0,8,4);
+INSERT INTO orders (created_date,is_paid,total_price,table_id,employee_id) VALUES('2023-02-18 20:20:35.448',true,695000.0,8,4);
+INSERT INTO orders (created_date,is_paid,total_price,table_id,employee_id) VALUES('2020-11-26 18:45:56.451',true,1150000.0,8,3);
+INSERT INTO orders (created_date,is_paid,total_price,table_id,employee_id) VALUES('2020-11-26 11:45:56.451',true,480000.0,1,3);
+INSERT INTO orders (created_date,is_paid,total_price,table_id,employee_id) VALUES('2021-07-11 14:20:35.448',true,1380000.0,5,2);
+INSERT INTO orders (created_date,is_paid,total_price,table_id,employee_id) VALUES('2021-07-11 15:12:35.448',true,540000.0,6,2);
+INSERT INTO orders (created_date,is_paid,total_price,table_id,employee_id) VALUES('2021-07-11 18:32:35.448',true,570000.0,6,2);
+INSERT INTO orders (created_date,is_paid,total_price,table_id,employee_id) VALUES('2020-08-26 14:20:35.448',true,800000.0,5,9);
+INSERT INTO orders (created_date,is_paid,total_price,table_id,employee_id) VALUES('2020-08-26 17:30:35.448',true,720000.0,6,9);
+INSERT INTO orders (created_date,is_paid,total_price,table_id,employee_id) VALUES('2022-06-29 12:20:35.448',true,720000.0,10,8);
+INSERT INTO orders (created_date,is_paid,total_price,table_id,employee_id) VALUES('2022-06-29 15:17:35.448',true,455000.0,3,8);
+INSERT INTO orders (created_date,is_paid,total_price,table_id,employee_id) VALUES('2021-03-13 10:38:25.668',true,790000.0,3,7);
+INSERT INTO orders (created_date,is_paid,total_price,table_id,employee_id) VALUES('2021-03-13 14:50:25.668',true,595000.0,1,7);
+INSERT INTO orders (created_date,is_paid,total_price,table_id,employee_id) VALUES('2020-09-09 20:30:16.386',true,1465000.0,2,6);
+
 
 
 
@@ -237,17 +238,18 @@ INSERT INTO order_detail (price,quantity,menu_item_id,order_id) VALUES(150000.0,
 INSERT INTO order_detail (price,quantity,menu_item_id,order_id) VALUES(220000.0,1,14,20);
 
 
+
 -----INSERT DATA INTO BILL-----
-INSERT INTO public.bill (created_date,total_price,employee_id,supplier_id) VALUES(CURRENT_TIMESTAMP,9000000.0,5,1);
-INSERT INTO public.bill (created_date,total_price,employee_id,supplier_id) VALUES(CURRENT_TIMESTAMP,64000000,5,5);
-INSERT INTO public.bill (created_date,total_price,employee_id,supplier_id) VALUES(CURRENT_TIMESTAMP,80000000,5,3);
+INSERT INTO bill (created_date,total_price,employee_id,supplier_id) VALUES(CURRENT_TIMESTAMP,9000000.0,5,1);
+INSERT INTO bill (created_date,total_price,employee_id,supplier_id) VALUES(CURRENT_TIMESTAMP,64000000,5,5);
+INSERT INTO bill (created_date,total_price,employee_id,supplier_id) VALUES(CURRENT_TIMESTAMP,80000000,5,3);
 
 
 
 -----INSERT DATA INTO BILL DETAILS-----
-INSERT INTO public.bill_detail (price,price_per_unit,quantity,bill_id,ingredient_id) VALUES(8000000.0,40000.0,200.0,1,1);
-INSERT INTO public.bill_detail (price,price_per_unit,quantity,bill_id,ingredient_id) VALUES(1000000.0,10000.0,100.0,1,10);
-INSERT INTO public.bill_detail (price,price_per_unit,quantity,bill_id,ingredient_id) VALUES(14000000,1400000.0,10.0,2,2);
-INSERT INTO public.bill_detail (price,price_per_unit,quantity,bill_id,ingredient_id) VALUES(50000000,500000.0,100.0,2,9);
-INSERT INTO public.bill_detail (price,price_per_unit,quantity,bill_id,ingredient_id) VALUES(20000000,100000.0,200.0,3,5);
-INSERT INTO public.bill_detail (price,price_per_unit,quantity,bill_id,ingredient_id) VALUES(60000000,400000.0,150.0,3,3);
+INSERT INTO bill_detail (price,price_per_unit,quantity,bill_id,ingredient_id) VALUES(8000000.0,40000.0,200.0,1,1);
+INSERT INTO bill_detail (price,price_per_unit,quantity,bill_id,ingredient_id) VALUES(1000000.0,10000.0,100.0,1,10);
+INSERT INTO bill_detail (price,price_per_unit,quantity,bill_id,ingredient_id) VALUES(14000000,1400000.0,10.0,2,2);
+INSERT INTO bill_detail (price,price_per_unit,quantity,bill_id,ingredient_id) VALUES(50000000,500000.0,100.0,2,9);
+INSERT INTO bill_detail (price,price_per_unit,quantity,bill_id,ingredient_id) VALUES(20000000,100000.0,200.0,3,5);
+INSERT INTO bill_detail (price,price_per_unit,quantity,bill_id,ingredient_id) VALUES(60000000,400000.0,150.0,3,3);

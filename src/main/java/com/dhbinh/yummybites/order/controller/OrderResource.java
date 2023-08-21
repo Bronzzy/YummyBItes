@@ -38,14 +38,14 @@ public class OrderResource {
     }
 
     @GetMapping(value = "/find-with-specification")
-    public ResponseEntity<List<OrderDTO>> findWithSpecification(@RequestParam("employeeName") String employeeName,
+    public ResponseEntity<List<OrderDTO>> findWithSpecifications(@RequestParam("employeeName") String employeeName,
                                                                 @RequestParam(value = "tableNumber", defaultValue = "0") int tableNumber,
                                                                 @RequestParam(value = "priceLessThan",defaultValue = "0") double priceLessThan,
                                                                 @RequestParam(value = "priceGreaterThan",defaultValue = "0") double priceGreaterThan,
                                                                 @RequestParam(value = "day",defaultValue = "0") int day,
                                                                 @RequestParam(value = "month",defaultValue = "0") int month,
                                                                 @RequestParam(value = "year",defaultValue = "0") int year) {
-        return ResponseEntity.ok(orderService.findWithSpecification(employeeName, tableNumber, priceLessThan, priceGreaterThan, day, month, year));
+        return ResponseEntity.ok(orderService.findWithSpecifications(employeeName, tableNumber, priceLessThan, priceGreaterThan, day, month, year));
     }
 
 
@@ -59,3 +59,4 @@ public class OrderResource {
         orderService.exportOrderByDate();
     }
 }
+

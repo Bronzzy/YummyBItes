@@ -28,16 +28,15 @@ public class ReservationService {
     @Autowired
     private ReservationMapper reservationMapper;
 
-    private static final LocalTime RUSH_HOUR_START = LocalTime.parse("17:30:00");
-    private static final LocalTime RUSH_HOUR_END = LocalTime.parse("20:30:00");
-
     public ReservationDTO save(ReservationDTO reservationDTO) {
 
         Reservation reservation = Reservation.builder()
                 .reservationDate((reservationDTO.getReservationDate()))
                 .name(reservationDTO.getName())
+                .email(reservationDTO.getEmail())
                 .numberOfGuests(reservationDTO.getNumberOfGuests())
                 .note(reservationDTO.getNote())
+                .enabled(false)
                 .build();
 
         return reservationMapper.toDTO(reservationRepository.save(reservation));

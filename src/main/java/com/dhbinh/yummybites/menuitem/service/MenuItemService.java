@@ -58,8 +58,8 @@ public class MenuItemService {
         return menuItemMapper.toDTOList(menuItemRepository.findAll());
     }
 
-    public List<MenuItemDTO> findWithSpecification(String name, double priceLessThan, double priceGreaterThan, String type){
-        Specification<MenuItem> spec = MenuItemSpecification.findWithSpecification(name, priceLessThan, priceGreaterThan, type);
+    public List<MenuItemDTO> findWithSpecifications(String name, double priceLessThan, double priceGreaterThan, String type){
+        Specification<MenuItem> spec = MenuItemSpecification.findWithSpecifications(name, priceLessThan, priceGreaterThan, type);
         return menuItemMapper.toDTOList(menuItemRepository.findAll(spec));
     }
 

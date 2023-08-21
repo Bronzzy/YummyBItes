@@ -14,7 +14,7 @@ public class EnumValidator implements ConstraintValidator<ValueOfEnum, CharSeque
     @Override
     public boolean isValid(CharSequence value, ConstraintValidatorContext context) {
         if (value == null) {
-            return true;
+            return false;
         }
 
         for (Enum<?> enumValue : enumClass.getEnumConstants()) {

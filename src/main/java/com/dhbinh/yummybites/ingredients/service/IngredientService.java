@@ -69,6 +69,11 @@ public class IngredientService {
         return ingredientMapper.toDTO(ingredientRepository.save(ingredient));
     }
 
+    public List<IngredientDTO> findWithSpecifications(String name, double quantityString) {
+        Specification<Ingredient> spec = IngredientSpecification.findWithSpecifications(name, quantityString);
+        return ingredientMapper.toDTOList(ingredientRepository.findAll(spec));
+    }
+
     public void verifyAndModify(IngredientDTO ingredientDTO) {
         if (ingredientDTO.getName() != null) {
             ingredientDTO.setName(utils.capitalizeFirstWordAndAfterWhitespace(ingredientDTO.getName().trim()));
@@ -89,8 +94,4 @@ public class IngredientService {
         return isIngredientExist;
     }
 
-    public List<IngredientDTO> findWithSpecifications(String name, double quantityString) {
-        Specification<Ingredient> spec = IngredientSpecification.findWithSpecifications(name, quantityString);
-        return ingredientMapper.toDTOList(ingredientRepository.findAll(spec));
-    }
 }

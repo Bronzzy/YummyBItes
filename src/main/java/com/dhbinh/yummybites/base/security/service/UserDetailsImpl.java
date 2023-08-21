@@ -30,8 +30,8 @@ public class UserDetailsImpl implements UserDetails {
 
     private Collection<? extends GrantedAuthority> authorities;
 
-    public static UserDetailsImpl build(User user) {
-        List<Role> roles = user.getRoles()
+    public static UserDetailsImpl build(User newUser) {
+        List<Role> roles = newUser.getRoles()
                 .stream()
                 .map(UserRoleAssignment::getRole)
                 .collect(Collectors.toList());
@@ -40,12 +40,11 @@ public class UserDetailsImpl implements UserDetails {
                 .collect(Collectors.toList());
 
         return new UserDetailsImpl(
-                user.getId(),
-                user.getUsername(),
-                user.getPassword(),
+                newUser.getId(),
+                newUser.getUsername(),
+                newUser.getPassword(),
                 authorities);
     }
-
 
     @Override
     public boolean isAccountNonExpired() {

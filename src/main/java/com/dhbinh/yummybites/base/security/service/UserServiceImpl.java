@@ -10,26 +10,39 @@ import com.dhbinh.yummybites.base.security.repository.UserRepository;
 import com.dhbinh.yummybites.base.security.repository.UserRoleAssignmentRepository;
 import com.dhbinh.yummybites.base.security.service.dto.UserDTO;
 import com.dhbinh.yummybites.base.security.service.mapper.UserMapper;
-import lombok.RequiredArgsConstructor;
+import com.dhbinh.yummybites.employee.service.EmployeeService;
+import com.dhbinh.yummybites.employee.service.mapper.EmployeeMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
+
 public class UserServiceImpl {
-    private final UserRepository userRepository;
 
-    private final UserMapper userMapper;
+    @Autowired
+    private UserRepository userRepository;
 
-    private final PasswordEncoder encoder;
+    @Autowired
+    private UserMapper userMapper;
 
-    private final UserRoleAssignmentRepository userRoleAssignmentRepository;
+    @Autowired
+    private EmployeeService employeeService;
+
+    @Autowired
+    private EmployeeMapper employeeMapper;
+
+    @Autowired
+    private PasswordEncoder encoder;
+
+    @Autowired
+    private UserRoleAssignmentRepository userRoleAssignmentRepository;
+
 
     public List<UserDTO> getUsers() {
         return userMapper.toDTOList(userRepository.findAll());
-
     }
 
     public UserDTO create(UserDTO userDTO) {
@@ -37,6 +50,7 @@ public class UserServiceImpl {
         User user = User.builder()
                 .username(userDTO.getUsername().trim())
                 .password(encoder.encode(userDTO.getPassword()))
+                .employee(employeeMapper.toEntity(employeeService.findByEmail(userDTO.getEmployeeEmail())))
                 .active(true)
                 .build();
         userRepository.save(user);

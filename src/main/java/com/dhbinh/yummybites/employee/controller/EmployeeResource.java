@@ -45,15 +45,15 @@ public class EmployeeResource {
     }
 
     @GetMapping(value = "/find-with-specification")
-    public ResponseEntity<List<EmployeeDTO>> findWithSpecification(@RequestParam("firstName") String firstName,
-                                                                   @RequestParam("lastName") String lastName,
-                                                                   @RequestParam("address") String address,
-                                                                   @RequestParam(value = "day", defaultValue = "0") int day,
-                                                                   @RequestParam(value = "month", defaultValue = "0") int month,
-                                                                   @RequestParam(value = "year", defaultValue = "0") int year,
-                                                                   @RequestParam(value = "ageLessThan", defaultValue = "0") int ageLessThan,
-                                                                   @RequestParam(value = "ageGreaterThan", defaultValue = "0") int ageGreaterThan) {
-        return ResponseEntity.ok(employeeService.findWithSpecification(firstName, lastName, address, day, month, year, ageLessThan, ageGreaterThan));
+    public ResponseEntity<List<EmployeeDTO>> findWithSpecifications(@RequestParam("firstName") String firstName,
+                                                                    @RequestParam("lastName") String lastName,
+                                                                    @RequestParam("address") String address,
+                                                                    @RequestParam(value = "day", defaultValue = "0") int day,
+                                                                    @RequestParam(value = "month", defaultValue = "0") int month,
+                                                                    @RequestParam(value = "year", defaultValue = "0") int year,
+                                                                    @RequestParam(value = "ageLessThan", defaultValue = "0") int ageLessThan,
+                                                                    @RequestParam(value = "ageGreaterThan", defaultValue = "0") int ageGreaterThan) {
+        return ResponseEntity.ok(employeeService.findWithSpecifications(firstName, lastName, address, day, month, year, ageLessThan, ageGreaterThan));
     }
 
     @PostMapping(value = "/export-employee-list")

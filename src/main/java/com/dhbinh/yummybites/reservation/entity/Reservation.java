@@ -1,6 +1,7 @@
 package com.dhbinh.yummybites.reservation.entity;
 
 import com.dhbinh.yummybites.base.exception.ErrorMessage;
+import com.dhbinh.yummybites.utils.CommonConstant;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,6 +19,7 @@ import javax.validation.constraints.Future;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -45,11 +47,17 @@ public class Reservation {
     private String name;
 
     @Column(nullable = false)
+    @NotBlank(message = ErrorMessage.EMAIL_NULL_OR_BLANK)
+    @Pattern(regexp = CommonConstant.EMAIL_PATTERN, message = ErrorMessage.EMAIL_WRONG_FORMAT)
+    private String email;
+
+    @Column(nullable = false)
     @Min(value = 1, message = ErrorMessage.GUESTS_NUMBER_LESS_THAN_ONE)
     private Integer numberOfGuests;
 
     @Column(nullable = false)
     private String note;
 
-
+    @Column
+    private boolean enabled;
 }

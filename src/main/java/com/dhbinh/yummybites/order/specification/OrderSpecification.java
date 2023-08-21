@@ -10,7 +10,7 @@ import javax.persistence.criteria.Predicate;
 
 public class OrderSpecification {
 
-    public static Specification<Order> findWithSpecification(String employeeName, int tableNumber, double priceLessThan, double priceGreaterThan, int day, int month, int year){
+    public static Specification<Order> findWithSpecifications(String employeeName, int tableNumber, double priceLessThan, double priceGreaterThan, int day, int month, int year){
         return (root, query, criteriaBuilder) -> {
             Predicate predicate = criteriaBuilder.conjunction();
 
