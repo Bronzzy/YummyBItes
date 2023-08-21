@@ -8,6 +8,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,7 +21,6 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -59,5 +59,9 @@ public class Reservation {
     private String note;
 
     @Column
-    private boolean enabled;
+    @CreationTimestamp
+    private LocalDateTime createdDate;
+
+    @Column
+    private boolean verified;
 }

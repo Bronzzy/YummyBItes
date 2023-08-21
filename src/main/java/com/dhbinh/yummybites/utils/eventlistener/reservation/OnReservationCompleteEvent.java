@@ -1,4 +1,4 @@
-package com.dhbinh.yummybites.reservation.entity;
+package com.dhbinh.yummybites.utils.eventlistener.reservation;
 
 import com.dhbinh.yummybites.reservation.service.dto.ReservationDTO;
 import lombok.Getter;

@@ -1,26 +1,35 @@
 package com.dhbinh.yummybites.reservation.controller;
 
-import com.dhbinh.yummybites.reservation.entity.OnReservationCompleteEvent;
+
+import com.dhbinh.yummybites.reservation.entity.Reservation;
+import com.dhbinh.yummybites.reservation.entity.VerificationToken;
+import com.dhbinh.yummybites.reservation.repository.ReservationRepository;
 import com.dhbinh.yummybites.reservation.service.ReservationService;
 import com.dhbinh.yummybites.reservation.service.dto.ReservationDTO;
+import com.dhbinh.yummybites.utils.eventlistener.reservation.OnReservationCompleteEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.context.MessageSource;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.context.request.WebRequest;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.net.URI;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 @RestController
-@PreAuthorize("hasAnyRole('OWNER','WAITER')")
 @RequestMapping("/reservations")
 public class ReservationResource {
 
@@ -29,6 +38,12 @@ public class ReservationResource {
 
     @Autowired
     private ApplicationEventPublisher applicationEventPublisher;
+
+    @Autowired
+    private MessageSource messageSource;
+
+    @Autowired
+    private ReservationRepository reservationRepository;
 
     @PostMapping
     public ResponseEntity<ReservationDTO> create(@Valid @RequestBody @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) ReservationDTO reservation,
@@ -40,13 +55,43 @@ public class ReservationResource {
         return ResponseEntity.created(URI.create("/api/reservations" + dto.getId())).body(dto);
     }
 
+    @GetMapping("/reservation-confirm")
+    public String confirmReservation(WebRequest request, Model model, @RequestParam("token") String token){
+        Locale locale = request.getLocale();
+
+        VerificationToken verificationToken = reservationService.getVerificationToken(token);
+        if (verificationToken == null) {
+            String message = messageSource.getMessage("auth.message.invalidToken", null, locale);
+            model.addAttribute("message", message);
+            return "redirect:/badUser.html?lang=" + locale.getLanguage();
+//            return "bad user";
+        }
+
+        Calendar cal = Calendar.getInstance();
+        if ((verificationToken.getExpiryDate().getTime() - cal.getTime().getTime()) <= 0) {
+            String messageValue = messageSource.getMessage("auth.message.expired", null, locale);
+            model.addAttribute("message", messageValue);
+            return "redirect:/badUser.html?lang=" + locale.getLanguage();
+//            return "bad user";
+        }
+
+        Reservation reservation = verificationToken.getReservation();
+        reservation.setVerified(true);
+        reservationRepository.save(reservation);
+//        return "redirect:/login.html?lang=" + request.getLocale().getLanguage();
+        return "Verify success";
+    }
+
     @GetMapping
+    @PreAuthorize("hasAnyRole('OWNER','WAITER')")
     public ResponseEntity<List<ReservationDTO>> findAll() {
         return ResponseEntity.ok(reservationService.findAll());
     }
 
     @PostMapping(value = "/export-today-reservation")
     public void exportTodayReservation() {
-        reservationService.exportReservationTodayToExcel();
+        reservationService.exportTodayReservation();
     }
+
+
 }

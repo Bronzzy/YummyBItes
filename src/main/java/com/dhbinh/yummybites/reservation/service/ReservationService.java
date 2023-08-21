@@ -1,7 +1,9 @@
 package com.dhbinh.yummybites.reservation.service;
 
 import com.dhbinh.yummybites.reservation.entity.Reservation;
+import com.dhbinh.yummybites.reservation.entity.VerificationToken;
 import com.dhbinh.yummybites.reservation.repository.ReservationRepository;
+import com.dhbinh.yummybites.reservation.repository.VerifyTokenRepository;
 import com.dhbinh.yummybites.reservation.service.dto.ReservationDTO;
 import com.dhbinh.yummybites.reservation.service.mapper.ReservationMapper;
 import org.apache.poi.ss.usermodel.Cell;
@@ -16,7 +18,7 @@ import org.springframework.stereotype.Service;
 import java.io.FileOutputStream;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 @Service
@@ -28,6 +30,9 @@ public class ReservationService {
     @Autowired
     private ReservationMapper reservationMapper;
 
+    @Autowired
+    private VerifyTokenRepository verifyTokenRepository;
+
     public ReservationDTO save(ReservationDTO reservationDTO) {
 
         Reservation reservation = Reservation.builder()
@@ -36,7 +41,7 @@ public class ReservationService {
                 .email(reservationDTO.getEmail())
                 .numberOfGuests(reservationDTO.getNumberOfGuests())
                 .note(reservationDTO.getNote())
-                .enabled(false)
+                .verified(false)
                 .build();
 
         return reservationMapper.toDTO(reservationRepository.save(reservation));
@@ -46,8 +51,29 @@ public class ReservationService {
         return reservationMapper.toDTOList(reservationRepository.findAll());
     }
 
+    public void createVerificationForReservation(Reservation reservation, String token) {
+        VerificationToken myToken = new VerificationToken(reservation, token);
+        verifyTokenRepository.save(myToken);
+    }
+
+    public VerificationToken getVerificationToken(String verificationToken) {
+        return verifyTokenRepository.findByToken(verificationToken);
+    }
+
+    @Scheduled(cron = "0 1 * ? * *")
+    public void deleteReservationNotVerify() {
+        List<Reservation> reservationList = reservationRepository.findAll();
+
+        LocalDateTime current = LocalDateTime.now();
+        for (Reservation reservation : reservationList) {
+            if (ChronoUnit.MINUTES.between(current, reservation.getCreatedDate()) > 60 && !reservation.isVerified()) {
+                reservationRepository.delete(reservation);
+            }
+        }
+    }
+
     @Scheduled(cron = "0 33 00 * * *")
-    public void exportReservationTodayToExcel() {
+    public void exportTodayReservation() {
         List<Reservation> reservationList = reservationRepository.findByReservationDate(LocalDate.now().getDayOfMonth());
         try (Workbook workbook = new XSSFWorkbook()) {
             Sheet sheet = workbook.createSheet("Reservation");

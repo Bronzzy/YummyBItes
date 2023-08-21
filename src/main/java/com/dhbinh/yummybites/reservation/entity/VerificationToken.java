@@ -1,5 +1,10 @@
 package com.dhbinh.yummybites.reservation.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,11 +16,15 @@ import java.util.Calendar;
 import java.util.Date;
 
 @Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class VerificationToken {
     private static final int EXPIRATION = 60 * 1;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String token;
@@ -31,5 +40,13 @@ public class VerificationToken {
         cal.setTime(new Timestamp(cal.getTime().getTime()));
         cal.add(Calendar.MINUTE, expiryTimeInMinutes);
         return new Date(cal.getTime().getTime());
+    }
+
+    public VerificationToken(Reservation reservation, String token) {
+        super();
+
+        this.token = token;
+        this.reservation = reservation;
+        this.expiryDate = calculateExpiryDate(EXPIRATION);
     }
 }
