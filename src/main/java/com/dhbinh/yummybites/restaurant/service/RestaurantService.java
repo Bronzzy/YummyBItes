@@ -37,7 +37,7 @@ public class RestaurantService {
         Restaurant restaurant = Restaurant.builder()
                 .name(restaurantDTO.getName())
                 .address(restaurantDTO.getAddress())
-                .phone(restaurantDTO.getPhone().trim())
+                .phone(restaurantDTO.getPhone())
                 .openHour(restaurantDTO.getOpenHour())
                 .closingHour(restaurantDTO.getClosingHour())
                 .build();
@@ -71,11 +71,11 @@ public class RestaurantService {
 
     public void verifyAndModify(RestaurantDTO restaurantDTO) {
         if (restaurantDTO.getName() != null) {
-            restaurantDTO.setName(utils.capitalizeFirstWordAndAfterWhitespace(restaurantDTO.getName().trim()));
+            restaurantDTO.setName(Utils.capitalizeFirstWordAndAfterWhitespace(restaurantDTO.getName().trim()));
         }
 
         if (restaurantDTO.getAddress() != null) {
-            restaurantDTO.setAddress(utils.capitalizeFirstWordAndAfterWhitespace(restaurantDTO.getAddress().trim()));
+            restaurantDTO.setAddress(Utils.capitalizeFirstWordAndAfterWhitespace(restaurantDTO.getAddress().trim()));
         }
 
         if (isNameExisted(restaurantDTO.getName())) {
@@ -113,7 +113,7 @@ public class RestaurantService {
 
     private boolean isPhoneValidFormat(String phone) {
         boolean isPhoneWrongFormat = false;
-        String pattern = "^[0-9]+$";
+        String pattern = "^[0-9\\s()-]+$";
         if (phone != null)
             isPhoneWrongFormat = phone.matches(pattern);
 
@@ -126,4 +126,6 @@ public class RestaurantService {
                         ErrorMessage.KEY_RESTAURANT_NOT_FOUND,
                         ErrorMessage.RESTAURANT_NOT_FOUND));
     }
+
+
 }

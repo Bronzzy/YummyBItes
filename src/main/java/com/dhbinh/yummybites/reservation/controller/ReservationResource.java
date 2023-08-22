@@ -55,31 +55,9 @@ public class ReservationResource {
         return ResponseEntity.created(URI.create("/api/reservations" + dto.getId())).body(dto);
     }
 
-    @GetMapping("/reservation-confirm")
-    public String confirmReservation(WebRequest request, Model model, @RequestParam("token") String token){
-        Locale locale = request.getLocale();
-
-        VerificationToken verificationToken = reservationService.getVerificationToken(token);
-        if (verificationToken == null) {
-            String message = messageSource.getMessage("auth.message.invalidToken", null, locale);
-            model.addAttribute("message", message);
-            return "redirect:/badUser.html?lang=" + locale.getLanguage();
-//            return "bad user";
-        }
-
-        Calendar cal = Calendar.getInstance();
-        if ((verificationToken.getExpiryDate().getTime() - cal.getTime().getTime()) <= 0) {
-            String messageValue = messageSource.getMessage("auth.message.expired", null, locale);
-            model.addAttribute("message", messageValue);
-            return "redirect:/badUser.html?lang=" + locale.getLanguage();
-//            return "bad user";
-        }
-
-        Reservation reservation = verificationToken.getReservation();
-        reservation.setVerified(true);
-        reservationRepository.save(reservation);
-//        return "redirect:/login.html?lang=" + request.getLocale().getLanguage();
-        return "Verify success";
+    @GetMapping(value = "/reservation-confirm")
+    public String confirmReservation(WebRequest webRequest, Model model, @RequestParam("token") String token){
+        return reservationService.confirmReservation(webRequest, model, token);
     }
 
     @GetMapping

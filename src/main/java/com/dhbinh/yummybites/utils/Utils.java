@@ -6,11 +6,11 @@ import org.springframework.util.StringUtils;
 @Component
 public class Utils {
 
-    public String capitalizeFirstWord(String input) {
+    public static String capitalizeFirstWord(String input) {
         return StringUtils.capitalize(input);
     }
 
-    public String capitalizeFirstWordAndAfterWhitespace(String input) {
+    public static String capitalizeFirstWordAndAfterWhitespace(String input) {
         StringBuilder sb = new StringBuilder();
         String[] words = input.toLowerCase().split("\\s+");
 
@@ -30,7 +30,7 @@ public class Utils {
         return sb.toString().trim();
     }
 
-    private boolean isExcludedWord(String word) {
+    private static boolean isExcludedWord(String word) {
         String[] excludedWords = {"and", "of", "the", "a", "an", "to", "is", "are", "in", "for", "on", "with", "at", "by", "from"};
         for (String excludedWord : excludedWords) {
             if (word.equals(excludedWord)) {

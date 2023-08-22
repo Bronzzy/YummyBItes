@@ -38,7 +38,12 @@ dependencies {
 	implementation group: 'org.apache.poi', name: 'poi', version: '4.1.2'
 	implementation group: 'org.apache.poi', name: 'poi-ooxml', version: '4.1.2'
     implementation 'org.jetbrains:annotations:23.0.0'
-    testImplementation 'junit:junit:4.13.1'
+
+//	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+//	testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+//	testImplementation 'org.junit.jupiter:junit-jupiter-params:5.8.2'
+
+
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'org.postgresql:postgresql'
@@ -48,6 +53,7 @@ dependencies {
 	annotationProcessor 'org.hibernate:hibernate-jpamodelgen'
 }
 
-tasks.named('test') {
+test{
 	useJUnitPlatform()
+	testLogging.showStandardStreams = true
 }

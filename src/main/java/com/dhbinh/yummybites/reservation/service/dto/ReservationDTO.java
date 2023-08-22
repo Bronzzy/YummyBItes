@@ -43,5 +43,5 @@ public class ReservationDTO {
 
     private String note;
 
-    private boolean enabled;
+    private boolean verified;
 }

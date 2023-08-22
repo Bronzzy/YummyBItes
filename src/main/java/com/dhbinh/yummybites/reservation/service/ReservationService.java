@@ -14,12 +14,16 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
+import org.springframework.web.context.request.WebRequest;
 
 import java.io.FileOutputStream;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 @Service
 public class ReservationService {
@@ -70,6 +74,25 @@ public class ReservationService {
                 reservationRepository.delete(reservation);
             }
         }
+    }
+
+    public String confirmReservation(WebRequest request, Model model, String token) {
+        Locale locale = request.getLocale();
+
+        VerificationToken verificationToken = getVerificationToken(token);
+        if (verificationToken == null) {
+            return "bad user";
+        }
+
+        Calendar cal = Calendar.getInstance();
+        if ((verificationToken.getExpiryDate().getTime() - cal.getTime().getTime()) <= 0){
+            return "bad user";
+        }
+
+        Reservation reservation = verificationToken.getReservation();
+        reservation.setVerified(true);
+        reservationRepository.save(reservation);
+        return "verify success";
     }
 
     @Scheduled(cron = "0 33 00 * * *")

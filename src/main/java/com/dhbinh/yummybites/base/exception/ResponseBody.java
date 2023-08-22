@@ -2,6 +2,7 @@ package com.dhbinh.yummybites.base.exception;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.http.HttpStatus;
 
 import java.time.LocalDateTime;
@@ -29,5 +30,4 @@ public class ResponseBody {
         this.statusMessage = status.name();
         this.timeStamp = LocalDateTime.now();
     }
-
 }

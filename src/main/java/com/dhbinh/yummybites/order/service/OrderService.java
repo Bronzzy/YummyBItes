@@ -41,7 +41,6 @@ public class OrderService {
     @Value("${excel.file.location}")
     private String excelFileLocation;
 
-    @Scheduled(cron = "00 21 16 8 * *")
     public List<OrderDTO> findAll() {
         return orderMapper.toDTOList(orderRepository.findAll());
     }

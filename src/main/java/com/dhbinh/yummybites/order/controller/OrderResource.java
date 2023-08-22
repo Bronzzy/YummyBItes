@@ -27,7 +27,6 @@ public class OrderResource {
     private OrderService orderService;
 
     @GetMapping
-    @Scheduled(cron = "00 22 18 * * *")
     public ResponseEntity<List<OrderDTO>> findAll() {
         return ResponseEntity.ok(orderService.findAll());
     }

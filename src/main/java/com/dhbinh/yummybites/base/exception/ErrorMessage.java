@@ -201,6 +201,13 @@ public class ErrorMessage {
     public static final String KEY_FILE_NOT_FOUND = "exception.resource.not.found.file";
     public static final String FILE_NOT_FOUND = "File cannot be found";
 
+    public static final String KEY_FORBIDDEN = "insufficient.authentication.exception.forbidden";
+
+    public static final String KEY_UNAUTHORIZED = "access.denied.exception.unauthorized";
+
+    public static final String DATE_TIME_WRONG_FORMAT = "Date time not the right format";
+    public static final String KEY_DATE_TIME_WRONG_FORMAT = "exception.input.validation.date.time.wrong.format";
+
 
     static Map<String, String> errorKeyAndMessageMap() {
         Map<String, String> errorMap = new HashMap<>();
@@ -271,6 +278,7 @@ public class ErrorMessage {
         errorMap.put(PASSWORD_NOT_MATCH_PATTERN, KEY_PASSWORD_NOT_MATCH_PATTERN);
         errorMap.put(ENUM_NULL_OR_BLANK, KEY_ENUM_NULL_OR_BLANK);
         errorMap.put(FILE_NOT_FOUND, KEY_FILE_NOT_FOUND);
+        errorMap.put(DATE_TIME_WRONG_FORMAT, KEY_DATE_TIME_WRONG_FORMAT);
 
         return errorMap;
     }

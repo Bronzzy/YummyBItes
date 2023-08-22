@@ -44,7 +44,6 @@ public class BillSpecification {
                 predicate = criteriaBuilder.and(predicate, criteriaBuilder.greaterThanOrEqualTo(root.get("totalPrice"), priceGreaterThan));
             }
 
-
             return predicate;
         };
     }

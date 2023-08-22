@@ -1,9 +1,12 @@
 package com.dhbinh.yummybites.base.exception;
 
+import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.authentication.InsufficientAuthenticationException;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import java.io.IOException;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -45,6 +49,7 @@ public class GlobalExceptionHandling extends RuntimeException {
                             error.getDefaultMessage());
             responseBodies.add(responseBody);
         }
+
         return responseBodies;
     }
 
@@ -67,6 +72,7 @@ public class GlobalExceptionHandling extends RuntimeException {
                             constraintViolation.getMessage());
             responseBodies.add(responseBody);
         }
+
         return responseBodies;
     }
 
@@ -81,6 +87,7 @@ public class GlobalExceptionHandling extends RuntimeException {
                 stackTraceArray[0].getLineNumber(),
                 message);
         logger.warn(logMessage);
+
         return new ResponseBody(HttpStatus.BAD_REQUEST, ErrorMessage.KEY_MISSING_PARAMETER, message);
     }
 
@@ -94,6 +101,7 @@ public class GlobalExceptionHandling extends RuntimeException {
                 stackTraceArray[0].getLineNumber(),
                 e.getMessage());
         logger.warn(logMessage);
+
         return new ResponseBody(HttpStatus.BAD_REQUEST,
                 ErrorMessage.errorKeyAndMessageMap().get(e.getMessage()),
                 e.getMessage());
@@ -108,6 +116,7 @@ public class GlobalExceptionHandling extends RuntimeException {
                 stackTraceArray[0].getLineNumber(),
                 e.getResponseBody().getErrorMessage());
         logger.warn(logMessage);
+
         return e.getResponseBody();
     }
 
@@ -120,6 +129,7 @@ public class GlobalExceptionHandling extends RuntimeException {
                 stackTraceArray[0].getLineNumber(),
                 e.getResponseBody().getErrorMessage());
         logger.warn(logMessage);
+
         return e.getResponseBody();
     }
 
@@ -132,9 +142,9 @@ public class GlobalExceptionHandling extends RuntimeException {
                 stackTraceArray[0].getLineNumber(),
                 e.getMessage());
         logger.warn(logMessage);
+
         return new ResponseBody(HttpStatus.NOT_FOUND,
                 ErrorMessage.errorKeyAndMessageMap().get(e.getMessage()),
                 e.getMessage());
     }
-
 }
