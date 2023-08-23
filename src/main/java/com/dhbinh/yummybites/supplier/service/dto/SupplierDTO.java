@@ -3,6 +3,7 @@ package com.dhbinh.yummybites.supplier.service.dto;
 import com.dhbinh.yummybites.base.exception.ErrorMessage;
 import com.dhbinh.yummybites.utils.CommonConstant;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,6 +15,7 @@ import javax.validation.constraints.Pattern;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class SupplierDTO {
 
     private Long id;

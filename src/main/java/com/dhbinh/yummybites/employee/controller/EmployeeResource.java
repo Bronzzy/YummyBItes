@@ -41,7 +41,7 @@ public class EmployeeResource {
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<EmployeeDTO> findByID(@PathVariable("id") Long ID) {
-        return ResponseEntity.ok(employeeService.findByID(ID));
+        return ResponseEntity.ok(employeeService.findById(ID));
     }
 
     @GetMapping(value = "/find-with-specification")

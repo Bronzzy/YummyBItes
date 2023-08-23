@@ -54,11 +54,11 @@ public class EmployeeService {
         return employeeMapper.toDTO(employeeRepository.save(employee));
     }
 
-    public EmployeeDTO findByID(Long ID) {
-        return employeeMapper.toDTO((employeeRepository.findById(ID)).
-                orElseThrow(() -> new InputValidationException(
-                        ErrorMessage.KEY_RESTAURANT_NOT_FOUND,
-                        ErrorMessage.RESTAURANT_NOT_FOUND)));
+    public EmployeeDTO findById(Long id) {
+        return employeeMapper.toDTO((employeeRepository.findById(id)).
+                orElseThrow(() -> new ResourceNotFoundException(
+                        ErrorMessage.KEY_EMPLOYEE_NOT_FOUND,
+                        ErrorMessage.EMPLOYEE_NOT_FOUND)));
     }
 
     public List<EmployeeDTO> findAll() {
@@ -70,14 +70,14 @@ public class EmployeeService {
         return employeeMapper.toDTOList(employeeRepository.findAll(spec));
     }
 
-    public EmployeeDTO deleteEmployee(Long ID) {
-        Employee employee = employeeRepository.findById(ID).
+    public EmployeeDTO deleteEmployee(Long id) {
+        Employee employee = employeeRepository.findById(id).
                 orElseThrow(() -> new ResourceNotFoundException(
                         ErrorMessage.KEY_EMPLOYEE_NOT_FOUND,
                         ErrorMessage.EMPLOYEE_NOT_FOUND));
 
         employee.setStatus(StatusEnum.STATUS_INACTIVE);
-        return employeeMapper.toDTO(employee);
+        return employeeMapper.toDTO(employeeRepository.save(employee));
     }
 
     public void exportEmployeeList() {
@@ -126,15 +126,15 @@ public class EmployeeService {
     public void verifyAndModify(EmployeeDTO employeeDTO) {
 
         if (employeeDTO.getFirstName() != null) {
-            employeeDTO.setFirstName(utils.capitalizeFirstWordAndAfterWhitespace(employeeDTO.getFirstName().trim()));
+            employeeDTO.setFirstName(Utils.capitalizeFirstWordAndAfterWhitespace(employeeDTO.getFirstName().trim()));
         }
 
         if (employeeDTO.getLastName() != null) {
-            employeeDTO.setLastName(utils.capitalizeFirstWordAndAfterWhitespace(employeeDTO.getLastName().trim()));
+            employeeDTO.setLastName(Utils.capitalizeFirstWordAndAfterWhitespace(employeeDTO.getLastName().trim()));
         }
 
         if (employeeDTO.getAddress() != null) {
-            employeeDTO.setAddress(utils.capitalizeFirstWordAndAfterWhitespace(employeeDTO.getAddress().trim()));
+            employeeDTO.setAddress(Utils.capitalizeFirstWordAndAfterWhitespace(employeeDTO.getAddress().trim()));
         }
 
         if (isEmailExisted(employeeDTO.getEmail())) {
@@ -154,4 +154,6 @@ public class EmployeeService {
                         ErrorMessage.KEY_EMPLOYEE_NOT_FOUND,
                         ErrorMessage.EMPLOYEE_NOT_FOUND)));
     }
+
+
 }

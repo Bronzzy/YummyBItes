@@ -1,20 +1,13 @@
 package com.dhbinh.yummybites.restaurant.service;
 
-import com.dhbinh.yummybites.base.exception.ErrorMessage;
-import com.dhbinh.yummybites.base.exception.InputValidationException;
+import com.dhbinh.yummybites.base.exception.ResourceNotFoundException;
 import com.dhbinh.yummybites.restaurant.entity.Restaurant;
 import com.dhbinh.yummybites.restaurant.repository.RestaurantRepository;
 import com.dhbinh.yummybites.restaurant.service.dto.RestaurantDTO;
 import com.dhbinh.yummybites.restaurant.service.mapper.RestaurantMapper;
 import com.dhbinh.yummybites.utils.Utils;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.EmptySource;
-import org.junit.jupiter.params.provider.NullAndEmptySource;
-import org.junit.jupiter.params.provider.NullSource;
-import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -23,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -81,7 +75,7 @@ class RestaurantServiceTest {
     }
 
     @Test
-    public void testFindAll_Positive() {
+    public void findAll_AvailableRestaurant_ReturnModelList() {
         List<Restaurant> restaurants = new ArrayList<>();
         restaurants.add(new Restaurant());
         restaurants.add(new Restaurant());
@@ -98,68 +92,55 @@ class RestaurantServiceTest {
 
         assertEquals(expectedDTOs, actualDTOs);
     }
+
+    @Test
+    public void findRestaurant_ExistedId_DTO(){
+        Restaurant restaurant = validRestaurant();
+
+        RestaurantDTO dto = RestaurantDTO.builder()
+                .name("YummyBites")
+                .address("4089 Charing Cross Drive")
+                .phone("341-724-5075")
+                .openHour(LocalTime.of(11, 0, 0))
+                .closingHour(LocalTime.of(22, 0, 0))
+                .build();
+
+        when(restaurantRepository.findById(1L)).thenReturn(java.util.Optional.of(restaurant));
+        when(restaurantMapper.toDTO(restaurant)).thenReturn(dto);
+
+        RestaurantDTO actualDTO = restaurantService.findById(1L);
+
+        assertEquals(dto, actualDTO);
+    }
+
+    @Test
+    public void findRestaurant_NonExistedId_ThrowException() throws ResourceNotFoundException{
+        when(restaurantRepository.findById(999L)).thenReturn(Optional.empty());
+        assertThrows(ResourceNotFoundException.class, () -> restaurantService.findById(999L));
+    }
+
+    @Test
+    public void findRestaurantNameIgnoreCase_ExistedRestaurant_ReturnModel() {
+        String name = "Restaurant Name";
+        Restaurant restaurant = new Restaurant();
+        restaurant.setName(name);
+
+        when(restaurantRepository.findByNameIgnoreCase(name)).thenReturn(Optional.of(restaurant));
+
+        Restaurant result = restaurantService.findByNameIgnoreCase(name);
+
+        assertEquals(restaurant, result);
+    }
+
+    @Test
+    public void findRestaurantNameIgnoreCase_NonExistedRestaurant_ThrowException() {
+        String name = "Non-existent Restaurant Name";
+
+        when(restaurantRepository.findByNameIgnoreCase(name)).thenReturn(Optional.empty());
+
+        assertThrows(ResourceNotFoundException.class, () -> restaurantService.findByNameIgnoreCase(name));
+    }
 }
 
-//    @ParameterizedTest
-//    @NullAndEmptySource
-//    @ValueSource(strings = {" "})
-//    void createRestaurant_WithNameNullOrBlank_ReturnErrorMessage(String name) throws InputValidationException {
-//        RestaurantDTO dto = RestaurantDTO.builder()
-//                .name(name)
-//                .build();
-//
-//        assertThrows(InputValidationException.class, () -> restaurantService.createRestaurant(dto));
-//    }
-//
-//    @ParameterizedTest
-//    @NullAndEmptySource
-//    @ValueSource(strings = {" "})
-//    void createRestaurant_WithAddressNullOrBlank_ReturnErrorMessage(String address) throws InputValidationException {
-//        RestaurantDTO dto = RestaurantDTO.builder()
-//                .address(address)
-//                .build();
-//
-//        assertThrows(InputValidationException.class, () -> restaurantService.createRestaurant(dto));
-//    }
-//
-//    @ParameterizedTest
-//    @NullAndEmptySource
-//    @ValueSource(strings = {" "})
-//    void createRestaurant_WithPhoneNullOrBlank_ReturnErrorMessage(String phone)  {
-//        RestaurantDTO dto = RestaurantDTO.builder()
-//                .phone(phone)
-//                .build();
-//
-//        assertThrows(InputValidationException.class, () -> restaurantService.createRestaurant(dto));
-//    }
-//
-//
-//    @ParameterizedTest
-//    @ValueSource(strings = {"341-724-5075abc", "341-724-5075!#~!@"})
-//    void createRestaurant_WithPhoneWrongFormat_ReturnErrorMessage(String phone) throws InputValidationException {
-//        RestaurantDTO dto = RestaurantDTO.builder()
-//                .phone(phone)
-//                .build();
-//
-//        assertThrows(InputValidationException.class, () -> restaurantService.createRestaurant(dto));
-//    }
-//
-//    @Test
-//    void createRestaurant_WithOpenHourNull_ReturnErrorMessage(){
-//        RestaurantDTO dto = RestaurantDTO.builder()
-//                .openHour(null)
-//                .build();
-//
-//        assertThrows(InputValidationException.class, () -> restaurantService.createRestaurant(dto));
-//    }
-//
-//    @Test
-//    void createRestaurant_WithClosingHourNull_ReturnErrorMessage(){
-//        RestaurantDTO dto = RestaurantDTO.builder()
-//                .closingHour(null)
-//                .build();
-//
-//        assertThrows(InputValidationException.class, () -> restaurantService.createRestaurant(dto));
-//    }
 
 

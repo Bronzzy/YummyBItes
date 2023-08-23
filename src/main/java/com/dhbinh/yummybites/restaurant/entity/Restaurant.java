@@ -52,4 +52,5 @@ public class Restaurant {
     @Column(nullable = false)
     @NotNull(message = ErrorMessage.RESTAURANT_CLOSING_HOUR_NULL_OR_BLANK)
     private LocalTime closingHour;
+
 }

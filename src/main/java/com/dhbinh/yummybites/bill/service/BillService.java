@@ -52,7 +52,7 @@ public class BillService {
         return billMapper.toDTOList(billRepository.findAll(spec));
     }
 
-    @Scheduled(cron = "00 36 11 * * *")
+    @Scheduled(cron = "00 57 14 * * *")
     public void exportBillByDate() throws IOException {
         List<Bill> billList = billRepository.findAllBillByDate(LocalDate.now().getDayOfMonth());
         try (Workbook workbook = new XSSFWorkbook()) {
@@ -98,4 +98,6 @@ public class BillService {
             }
         }
     }
+
+
 }

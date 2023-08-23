@@ -126,6 +126,4 @@ public class RestaurantService {
                         ErrorMessage.KEY_RESTAURANT_NOT_FOUND,
                         ErrorMessage.RESTAURANT_NOT_FOUND));
     }
-
-
 }
