@@ -8,7 +8,6 @@ import javax.persistence.criteria.Predicate;
 import java.time.Year;
 
 public class EmployeeSpecification {
-
     public static Specification<Employee> findWithSpecifications(String firstName, String lastName, String address, int day, int month, int year, int ageLessThan, int ageGreaterThan) {
         return (root, query, criteriaBuilder) -> {
             Predicate predicate = criteriaBuilder.conjunction();

@@ -3,6 +3,9 @@ package com.dhbinh.yummybites.utils;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
+import java.security.SecureRandom;
+import java.util.Random;
+
 @Component
 public class Utils {
 

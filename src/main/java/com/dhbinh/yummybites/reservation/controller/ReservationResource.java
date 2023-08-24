@@ -57,6 +57,7 @@ public class ReservationResource {
 
     @GetMapping(value = "/reservation-confirm")
     public String confirmReservation(WebRequest webRequest, Model model, @RequestParam("token") String token){
+        System.out.println("THIS IS THE TOKEN{}" + token);
         return reservationService.confirmReservation(webRequest, model, token);
     }
 

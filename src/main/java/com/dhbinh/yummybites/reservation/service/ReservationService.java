@@ -82,6 +82,7 @@ public class ReservationService {
         VerificationToken verificationToken = getVerificationToken(token);
         if (verificationToken == null) {
             return "bad user";
+
         }
 
         Calendar cal = Calendar.getInstance();
