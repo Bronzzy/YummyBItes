@@ -86,7 +86,7 @@ public class ReservationService {
         }
 
         Calendar cal = Calendar.getInstance();
-        if ((verificationToken.getExpiryDate().getTime() - cal.getTime().getTime()) <= 0){
+        if ((verificationToken.getExpiryDate().getTime() - cal.getTime().getTime()) <= 0) {
             return "bad user";
         }
 

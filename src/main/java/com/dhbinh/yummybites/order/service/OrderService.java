@@ -52,7 +52,7 @@ public class OrderService {
                         ErrorMessage.ORDER_NOT_FOUND)));
     }
 
-    public List<OrderDTO> findWithSpecifications(String employeeName, int tableNumber, double priceLessThan, double priceGreaterThan, int day, int month, int year){
+    public List<OrderDTO> findWithSpecifications(String employeeName, int tableNumber, double priceLessThan, double priceGreaterThan, int day, int month, int year) {
         Specification<Order> spec = OrderSpecification.findWithSpecifications(employeeName, tableNumber, priceLessThan, priceGreaterThan, day, month, year);
         return orderMapper.toDTOList(orderRepository.findAll(spec));
     }

@@ -252,20 +252,6 @@ class EmployeeServiceTest {
         verify(employeeMapper, times(1)).toDTOList(employees);
     }
 
-//    @Test
-//    public void testDeleteEmployee_PositiveCase() {
-//        Employee employee = validEmployee();
-//
-//        when(employeeRepository.findById(1L)).thenReturn(Optional.of(employee));
-//        when(employeeRepository.save(employee)).thenReturn(employee);
-//        when(employeeMapper.toDTO(employee)).thenReturn(validEmployeeDTO());
-//
-//        EmployeeDTO result = employeeService.deleteEmployee(employee.getId());
-//
-//        assertEquals(StatusEnum.STATUS_INACTIVE, employee.getStatus());
-//        assertEquals(employee.getId(), result.getId());
-//    }
-
     @Test
     public void deleteEmployee_NonExistedId_ThrowException() {
         when(employeeRepository.findById(999L)).thenReturn(Optional.empty());

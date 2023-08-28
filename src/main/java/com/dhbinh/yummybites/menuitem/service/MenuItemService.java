@@ -29,9 +29,6 @@ public class MenuItemService {
     @Autowired
     private MenuItemMapper menuItemMapper;
 
-    @Autowired
-    private Utils utils;
-
     public MenuItemDTO create(MenuItemDTO menuItemDTO) {
         verifyAndModify(menuItemDTO);
 
@@ -51,14 +48,13 @@ public class MenuItemService {
                 orElseThrow(() -> new ResourceNotFoundException(
                         ErrorMessage.KEY_MENU_ITEM_NOT_FOUND,
                         ErrorMessage.MENU_ITEM_NOT_FOUND)));
-
     }
 
     public List<MenuItemDTO> findAll() {
         return menuItemMapper.toDTOList(menuItemRepository.findAll());
     }
 
-    public List<MenuItemDTO> findWithSpecifications(String name, double priceLessThan, double priceGreaterThan, String type){
+    public List<MenuItemDTO> findWithSpecifications(String name, double priceLessThan, double priceGreaterThan, String type) {
         Specification<MenuItem> spec = MenuItemSpecification.findWithSpecifications(name, priceLessThan, priceGreaterThan, type);
         return menuItemMapper.toDTOList(menuItemRepository.findAll(spec));
     }
@@ -77,11 +73,11 @@ public class MenuItemService {
 
     public void verifyAndModify(MenuItemDTO menuItemDTO) {
         if (menuItemDTO.getName() != null) {
-            menuItemDTO.setName(utils.capitalizeFirstWordAndAfterWhitespace(menuItemDTO.getName().trim()));
+            menuItemDTO.setName(Utils.capitalizeFirstWordAndAfterWhitespace(menuItemDTO.getName().trim()));
         }
 
         if (menuItemDTO.getDescription() != null) {
-            menuItemDTO.setDescription(utils.capitalizeFirstWord(menuItemDTO.getDescription().trim()));
+            menuItemDTO.setDescription(Utils.capitalizeFirstWord(menuItemDTO.getDescription().trim()));
         }
 
         if (isNameExisted(menuItemDTO.getName())) {

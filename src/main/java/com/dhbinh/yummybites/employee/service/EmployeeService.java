@@ -35,9 +35,6 @@ public class EmployeeService {
     @Autowired
     private EmployeeMapper employeeMapper;
 
-    @Autowired
-    private Utils utils;
-
     public EmployeeDTO createEmployee(EmployeeDTO employeeDTO) {
         verifyAndModify(employeeDTO);
 

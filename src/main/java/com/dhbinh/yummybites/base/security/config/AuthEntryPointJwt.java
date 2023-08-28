@@ -1,13 +1,8 @@
 package com.dhbinh.yummybites.base.security.config;
 
-import com.dhbinh.yummybites.base.exception.ErrorMessage;
-import com.dhbinh.yummybites.base.exception.ResponseBody;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.security.authentication.InsufficientAuthenticationException;
 import org.springframework.security.core.AuthenticationException;

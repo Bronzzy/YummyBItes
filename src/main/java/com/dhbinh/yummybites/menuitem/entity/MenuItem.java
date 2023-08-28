@@ -1,6 +1,5 @@
 package com.dhbinh.yummybites.menuitem.entity;
 
-import com.dhbinh.yummybites.base.enumvalidate.ValueOfEnum;
 import com.dhbinh.yummybites.base.exception.ErrorMessage;
 import com.dhbinh.yummybites.restaurant.entity.Restaurant;
 import lombok.AllArgsConstructor;

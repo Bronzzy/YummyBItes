@@ -76,7 +76,7 @@ public class IngredientService {
 
     public void verifyAndModify(IngredientDTO ingredientDTO) {
         if (ingredientDTO.getName() != null) {
-            ingredientDTO.setName(utils.capitalizeFirstWordAndAfterWhitespace(ingredientDTO.getName().trim()));
+            ingredientDTO.setName(Utils.capitalizeFirstWordAndAfterWhitespace(ingredientDTO.getName().trim()));
         }
 
         if (isIngredientExist(ingredientDTO.getName())) {

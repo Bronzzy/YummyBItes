@@ -17,15 +17,16 @@ import com.dhbinh.yummybites.ingredients.entity.Ingredient;
 import com.dhbinh.yummybites.ingredients.repository.IngredientRepository;
 import com.dhbinh.yummybites.supplier.service.SupplierService;
 import com.dhbinh.yummybites.supplier.service.mapper.SupplierMapper;
-import com.dhbinh.yummybites.utils.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Transactional
 public class BillDetailService {
 
     @Autowired
@@ -57,9 +58,6 @@ public class BillDetailService {
 
     @Autowired
     private JwtUtils jwtUtils;
-
-    @Autowired
-    private Utils utils;
 
     public BillDTO create(String token, List<BillDetailDTO> billDetailDTOList, String supplierName) {
 

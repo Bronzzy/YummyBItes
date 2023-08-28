@@ -1,8 +1,6 @@
 package com.dhbinh.yummybites.reservation.controller;
 
 
-import com.dhbinh.yummybites.reservation.entity.Reservation;
-import com.dhbinh.yummybites.reservation.entity.VerificationToken;
 import com.dhbinh.yummybites.reservation.repository.ReservationRepository;
 import com.dhbinh.yummybites.reservation.service.ReservationService;
 import com.dhbinh.yummybites.reservation.service.dto.ReservationDTO;
@@ -25,9 +23,7 @@ import org.springframework.web.context.request.WebRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.net.URI;
-import java.util.Calendar;
 import java.util.List;
-import java.util.Locale;
 
 @RestController
 @RequestMapping("/reservations")
@@ -56,8 +52,7 @@ public class ReservationResource {
     }
 
     @GetMapping(value = "/reservation-confirm")
-    public String confirmReservation(WebRequest webRequest, Model model, @RequestParam("token") String token){
-        System.out.println("THIS IS THE TOKEN{}" + token);
+    public String confirmReservation(WebRequest webRequest, Model model, @RequestParam("token") String token) {
         return reservationService.confirmReservation(webRequest, model, token);
     }
 

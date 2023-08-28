@@ -5,6 +5,7 @@ import com.dhbinh.yummybites.bill.service.dto.BillDTO;
 import com.dhbinh.yummybites.billdetail.service.BillDetailService;
 import com.dhbinh.yummybites.billdetail.service.dto.BillDetailDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
@@ -30,6 +31,9 @@ public class BillDetailResource {
 
     @Autowired
     private BillDetailService billDetailService;
+
+    @Autowired
+    private ApplicationEventPublisher applicationEventPublisher;
 
     @PostMapping
     public ResponseEntity<BillDTO> create(@RequestHeader("Authorization") String token,

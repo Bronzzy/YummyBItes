@@ -94,7 +94,7 @@ class RestaurantServiceTest {
     }
 
     @Test
-    public void findRestaurant_ExistedId_DTO(){
+    public void findRestaurant_ExistedId_DTO() {
         Restaurant restaurant = validRestaurant();
 
         RestaurantDTO dto = RestaurantDTO.builder()
@@ -114,7 +114,7 @@ class RestaurantServiceTest {
     }
 
     @Test
-    public void findRestaurant_NonExistedId_ThrowException() throws ResourceNotFoundException{
+    public void findRestaurant_NonExistedId_ThrowException() throws ResourceNotFoundException {
         when(restaurantRepository.findById(999L)).thenReturn(Optional.empty());
         assertThrows(ResourceNotFoundException.class, () -> restaurantService.findById(999L));
     }

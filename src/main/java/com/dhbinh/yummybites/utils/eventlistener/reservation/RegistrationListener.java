@@ -4,27 +4,20 @@ import com.dhbinh.yummybites.reservation.service.ReservationService;
 import com.dhbinh.yummybites.reservation.service.dto.ReservationDTO;
 import com.dhbinh.yummybites.reservation.service.mapper.ReservationMapper;
 import com.dhbinh.yummybites.utils.Utils;
-import net.bytebuddy.utility.RandomString;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.ApplicationListener;
 import org.springframework.context.MessageSource;
 import org.springframework.context.event.EventListener;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMailMessage;
 import org.springframework.stereotype.Component;
 
 import javax.mail.MessagingException;
 import javax.mail.Session;
 import javax.mail.internet.MimeMessage;
-import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.Properties;
-import java.util.Random;
 import java.util.UUID;
-import java.util.concurrent.ThreadLocalRandom;
 
 @Component
 public class RegistrationListener {

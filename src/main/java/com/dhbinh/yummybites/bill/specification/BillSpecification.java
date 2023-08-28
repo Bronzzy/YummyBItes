@@ -16,12 +16,12 @@ public class BillSpecification {
             Join<Bill, Employee> employeeJoin = root.join("employee");
             Join<Bill, Supplier> supplierJoin = root.join("supplier");
 
-            if(!employeeName.isEmpty()){
-                predicate = criteriaBuilder.and(predicate,criteriaBuilder.like(criteriaBuilder.lower(employeeJoin.get("lastName")), "%" + employeeName.toLowerCase().trim() + "%"));
+            if (!employeeName.isEmpty()) {
+                predicate = criteriaBuilder.and(predicate, criteriaBuilder.like(criteriaBuilder.lower(employeeJoin.get("lastName")), "%" + employeeName.toLowerCase().trim() + "%"));
             }
 
-            if(!supplierName.isEmpty()){
-                predicate = criteriaBuilder.and(predicate,criteriaBuilder.like(criteriaBuilder.lower(supplierJoin.get("name")), "%" + supplierName.toLowerCase().trim() + "%"));
+            if (!supplierName.isEmpty()) {
+                predicate = criteriaBuilder.and(predicate, criteriaBuilder.like(criteriaBuilder.lower(supplierJoin.get("name")), "%" + supplierName.toLowerCase().trim() + "%"));
             }
 
             if (day > 0) {

@@ -7,6 +7,7 @@ import com.dhbinh.yummybites.supplier.entity.Supplier;
 import com.dhbinh.yummybites.supplier.repository.SupplierRepository;
 import com.dhbinh.yummybites.supplier.service.dto.SupplierDTO;
 import com.dhbinh.yummybites.supplier.service.mapper.SupplierMapper;
+import com.dhbinh.yummybites.utils.CommonConstant;
 import com.dhbinh.yummybites.utils.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,9 +22,6 @@ public class SupplierService {
 
     @Autowired
     private SupplierMapper supplierMapper;
-
-    @Autowired
-    private Utils utils;
 
     public SupplierDTO create(SupplierDTO supplierDTO) {
         verifyAndModify(supplierDTO);
@@ -67,11 +65,11 @@ public class SupplierService {
     public void verifyAndModify(SupplierDTO supplierDTO) {
 
         if (supplierDTO.getName() != null) {
-            supplierDTO.setName(utils.capitalizeFirstWordAndAfterWhitespace(supplierDTO.getName().trim()));
+            supplierDTO.setName(Utils.capitalizeFirstWordAndAfterWhitespace(supplierDTO.getName().trim()));
         }
 
         if (supplierDTO.getAddress() != null) {
-            supplierDTO.setAddress(utils.capitalizeFirstWordAndAfterWhitespace(supplierDTO.getAddress().trim()));
+            supplierDTO.setAddress(Utils.capitalizeFirstWordAndAfterWhitespace(supplierDTO.getAddress().trim()));
         }
 
         if (isNameExist(supplierDTO.getName())) {
@@ -117,7 +115,7 @@ public class SupplierService {
 
     public boolean isPhoneValidFormat(String phone) {
         boolean isPhoneValidFormat = false;
-        String pattern = "^[0-9\\s()-]+$";
+        String pattern = CommonConstant.PHONE_NUMBER_PATTERN;
         if (phone != null) {
             isPhoneValidFormat = phone.trim().matches(pattern);
         }
@@ -126,7 +124,7 @@ public class SupplierService {
 
 
     public static boolean isEmailValidFormat(String email) {
-        String pattern = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$";
+        String pattern = CommonConstant.EMAIL_PATTERN;
         if (email == null) {
             return false;
         }

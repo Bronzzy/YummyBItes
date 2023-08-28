@@ -50,7 +50,7 @@ public class MenuItemResource {
     public ResponseEntity<List<MenuItemDTO>> findWithSpecifications(@RequestParam("name") String name,
                                                                     @RequestParam(value = "priceLessThan", defaultValue = "0") double priceLessThan,
                                                                     @RequestParam(value = "priceGreaterThan", defaultValue = "0") double priceGreaterThan,
-                                                                    @RequestParam("type") String type){
+                                                                    @RequestParam("type") String type) {
         return ResponseEntity.ok(menuItemService.findWithSpecifications(name, priceLessThan, priceGreaterThan, type));
     }
 
