@@ -1,5 +1,6 @@
 package com.dhbinh.yummybites.restaurant.service;
 
+import com.dhbinh.yummybites.base.exception.InputValidationException;
 import com.dhbinh.yummybites.base.exception.ResourceNotFoundException;
 import com.dhbinh.yummybites.restaurant.entity.Restaurant;
 import com.dhbinh.yummybites.restaurant.repository.RestaurantRepository;
@@ -21,6 +22,9 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith({MockitoExtension.class})
@@ -50,82 +54,73 @@ class RestaurantServiceTest {
                 .build();
     }
 
+    private RestaurantDTO validRestaurantDTO() {
+        return RestaurantDTO.builder()
+                .id(1L)
+                .name("YummyBites")
+                .address("4089 Charing Cross Drive")
+                .phone("341-724-5075")
+                .openHour(LocalTime.of(11, 0, 0))
+                .closingHour(LocalTime.of(22, 0, 0))
+                .build();
+    }
+
     @Test
     void createRestaurant_WithMandatoryFields_ReturnDTO() {
         Restaurant restaurant = validRestaurant();
+        RestaurantDTO dto = validRestaurantDTO();
 
-        RestaurantDTO dto = RestaurantDTO.builder()
-                .name("YummyBites")
-                .address("4089 Charing Cross Drive")
-                .phone("341-724-5075")
-                .openHour(LocalTime.of(11, 0, 0))
-                .closingHour(LocalTime.of(22, 0, 0))
-                .build();
+        when(restaurantRepository.save(any(Restaurant.class))).thenReturn(restaurant);
 
-        when(restaurantRepository.save(any())).thenReturn(restaurant);
-        when(restaurantMapper.toDTO(restaurant)).thenReturn(dto);
+        Restaurant created = restaurantService.createRestaurant(dto);
 
-        RestaurantDTO result = restaurantService.createRestaurant(dto);
+        verify(restaurantRepository).save(any(Restaurant.class));
 
-        assertEquals(result.getName(), dto.getName());
-        assertEquals(result.getAddress(), dto.getAddress());
-        assertEquals(result.getPhone(), dto.getPhone());
-        assertEquals(result.getOpenHour(), dto.getOpenHour());
-        assertEquals(result.getClosingHour(), dto.getClosingHour());
+        assertEquals(restaurant.getName(), created.getName());
+        assertEquals(restaurant.getAddress(), created.getAddress());
+        assertEquals(restaurant.getPhone(), created.getPhone());
+        assertEquals(restaurant.getOpenHour(), created.getOpenHour());
+        assertEquals(restaurant.getClosingHour(), created.getClosingHour());
+
     }
 
     @Test
-    public void findAll_AvailableRestaurant_ReturnModelList() {
-        List<Restaurant> restaurants = new ArrayList<>();
-        restaurants.add(new Restaurant());
-        restaurants.add(new Restaurant());
+     void findAll_AvailableRestaurant_ReturnModelList() {
+        List<Restaurant> expectedRestaurants = new ArrayList<>();
+        expectedRestaurants.add(new Restaurant());
+        expectedRestaurants.add(new Restaurant());
 
-        when(restaurantRepository.findAll()).thenReturn(restaurants);
+        when(restaurantRepository.findAll()).thenReturn(expectedRestaurants);
 
-        List<RestaurantDTO> expectedDTOs = new ArrayList<>();
-        expectedDTOs.add(new RestaurantDTO());
-        expectedDTOs.add(new RestaurantDTO());
+        List<Restaurant> actualRestaurants = restaurantService.findAll();
 
-        when(restaurantMapper.toDTOList(restaurants)).thenReturn(expectedDTOs);
-
-        List<RestaurantDTO> actualDTOs = restaurantService.findAll();
-
-        assertEquals(expectedDTOs, actualDTOs);
+        assertEquals(expectedRestaurants, actualRestaurants);
     }
 
     @Test
-    public void findRestaurant_ExistedId_DTO() {
-        Restaurant restaurant = validRestaurant();
+     void testFindByIdPositive() {
+        Restaurant restaurant = new Restaurant();
+        restaurant.setId(1L);
+        when(restaurantRepository.findById(1L)).thenReturn(Optional.of(restaurant));
 
-        RestaurantDTO dto = RestaurantDTO.builder()
-                .name("YummyBites")
-                .address("4089 Charing Cross Drive")
-                .phone("341-724-5075")
-                .openHour(LocalTime.of(11, 0, 0))
-                .closingHour(LocalTime.of(22, 0, 0))
-                .build();
+        Restaurant foundRestaurant = restaurantService.findById(1L);
 
-        when(restaurantRepository.findById(1L)).thenReturn(java.util.Optional.of(restaurant));
-        when(restaurantMapper.toDTO(restaurant)).thenReturn(dto);
-
-        RestaurantDTO actualDTO = restaurantService.findById(1L);
-
-        assertEquals(dto, actualDTO);
+        assertEquals(1L, foundRestaurant.getId().longValue());
     }
 
     @Test
-    public void findRestaurant_NonExistedId_ThrowException() throws ResourceNotFoundException {
+     void testFindByIdNegative() {
         when(restaurantRepository.findById(999L)).thenReturn(Optional.empty());
+
         assertThrows(ResourceNotFoundException.class, () -> restaurantService.findById(999L));
     }
 
     @Test
-    public void findRestaurantNameIgnoreCase_ExistedRestaurant_ReturnModel() {
-        String name = "Restaurant Name";
+     void testFindByNameIgnoreCase_Positive() {
+        String name = "Restaurant 1";
         Restaurant restaurant = new Restaurant();
         restaurant.setName(name);
-
-        when(restaurantRepository.findByNameIgnoreCase(name)).thenReturn(Optional.of(restaurant));
+        when(restaurantRepository.findByNameIgnoreCase(name.trim())).thenReturn(Optional.of(restaurant));
 
         Restaurant result = restaurantService.findByNameIgnoreCase(name);
 
@@ -133,12 +128,62 @@ class RestaurantServiceTest {
     }
 
     @Test
-    public void findRestaurantNameIgnoreCase_NonExistedRestaurant_ThrowException() {
-        String name = "Non-existent Restaurant Name";
-
-        when(restaurantRepository.findByNameIgnoreCase(name)).thenReturn(Optional.empty());
+     void testFindByNameIgnoreCase_Negative() {
+        String name = "Non-existing Restaurant";
+        when(restaurantRepository.findByNameIgnoreCase(name.trim())).thenReturn(Optional.empty());
 
         assertThrows(ResourceNotFoundException.class, () -> restaurantService.findByNameIgnoreCase(name));
+    }
+
+    @Test
+     void updateRestaurant_AddressIsUsed_ThrowException() {
+        RestaurantDTO restaurantDTO = new RestaurantDTO();
+        restaurantDTO.setName("Restaurant Name");
+        restaurantDTO.setAddress("Restaurant Address");
+        restaurantDTO.setPhone("1234567890");
+
+        when(restaurantRepository.findByNameIgnoreCase("Restaurant Name")).thenReturn(Optional.empty());
+        when(restaurantRepository.findByAddressIgnoreCase("Restaurant Address")).thenReturn(Optional.of(new Restaurant()));
+
+        assertThrows(InputValidationException.class, () -> restaurantService.verifyAndModify(restaurantDTO));
+    }
+
+    @Test
+     void updateRestaurant_NameIsUsed_ThrowException(){
+        RestaurantDTO dto = new RestaurantDTO();
+        dto.setName("Restaurant Name");
+        when(restaurantRepository.findByNameIgnoreCase("Restaurant Name")).thenReturn(Optional.of(new Restaurant()));
+
+        assertThrows(InputValidationException.class, () -> restaurantService.verifyAndModify(dto));
+    }
+
+    @Test
+     void updateRestaurant_PhoneNotValidFormat_ThrowException(){
+        RestaurantDTO dto = new RestaurantDTO();
+        dto.setPhone("290asd245");
+
+        assertThrows(InputValidationException.class, () -> restaurantService.verifyAndModify(dto));
+    }
+
+    @Test
+     void testUpdate_WithValidIdAndDTO_ReturnsUpdatedRestaurantDTO() {
+        Long id = 1L;
+        RestaurantDTO restaurantDTO = new RestaurantDTO();
+        restaurantDTO.setPhone("341-724-5075");
+        Restaurant restaurant = new Restaurant();
+        restaurant.setPhone("341-724-5075");
+
+        when(restaurantRepository.findById(id)).thenReturn(Optional.of(restaurant));
+        when(restaurantRepository.save(any(Restaurant.class))).thenReturn(restaurant);
+
+        doNothing().when(restaurantMapper).mapFromDto(restaurantDTO, restaurant);
+
+        Restaurant updatedRestaurant = restaurantService.update(id, restaurantDTO);
+
+        verify(restaurantRepository, times(1)).findById(id);
+        verify(restaurantRepository, times(1)).save(restaurant);
+        verify(restaurantMapper, times(1)).mapFromDto(restaurantDTO, restaurant);
+        assertEquals(restaurant, updatedRestaurant);
     }
 }
 

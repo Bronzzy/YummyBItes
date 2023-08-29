@@ -7,6 +7,7 @@ import com.dhbinh.yummybites.restaurant.entity.Restaurant;
 import com.dhbinh.yummybites.restaurant.repository.RestaurantRepository;
 import com.dhbinh.yummybites.restaurant.service.dto.RestaurantDTO;
 import com.dhbinh.yummybites.restaurant.service.mapper.RestaurantMapper;
+import com.dhbinh.yummybites.utils.CommonConstant;
 import com.dhbinh.yummybites.utils.Utils;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -30,10 +31,9 @@ public class RestaurantService {
 
     private static final Logger logger = LoggerFactory.getLogger(Restaurant.class);
 
-    public RestaurantDTO createRestaurant(RestaurantDTO restaurantDTO) {
+    public Restaurant createRestaurant(RestaurantDTO restaurantDTO) {
         verifyAndModify(restaurantDTO);
 
-        logger.info("create restaurant {}", restaurantDTO);
         Restaurant restaurant = Restaurant.builder()
                 .name(restaurantDTO.getName())
                 .address(restaurantDTO.getAddress())
@@ -42,31 +42,29 @@ public class RestaurantService {
                 .closingHour(restaurantDTO.getClosingHour())
                 .build();
 
-        return restaurantMapper.toDTO(restaurantRepository.save(restaurant));
+        return restaurantRepository.save(restaurant);
     }
 
-    public RestaurantDTO update(Long id, RestaurantDTO restaurantDTO) {
+    public Restaurant update(Long id, RestaurantDTO restaurantDTO) {
         verifyAndModify(restaurantDTO);
-        logger.info("update restaurant {}", restaurantDTO);
         Restaurant restaurant = restaurantRepository.findById(id).
                 orElseThrow(() -> new ResourceNotFoundException(
                         ErrorMessage.KEY_RESTAURANT_NOT_FOUND,
                         ErrorMessage.RESTAURANT_NOT_FOUND));
 
         restaurantMapper.mapFromDto(restaurantDTO, restaurant);
-
-        return restaurantMapper.toDTO(restaurantRepository.save(restaurant));
+        return restaurantRepository.save(restaurant);
     }
 
-    public List<RestaurantDTO> findAll() {
-        return restaurantMapper.toDTOList(restaurantRepository.findAll());
+    public List<Restaurant> findAll() {
+        return restaurantRepository.findAll();
     }
 
-    public RestaurantDTO findById(Long id) {
-        return restaurantMapper.toDTO(restaurantRepository.findById(id).
+    public Restaurant findById(Long id) {
+        return restaurantRepository.findById(id).
                 orElseThrow(() -> new ResourceNotFoundException(
                         ErrorMessage.KEY_RESTAURANT_NOT_FOUND,
-                        ErrorMessage.RESTAURANT_NOT_FOUND)));
+                        ErrorMessage.RESTAURANT_NOT_FOUND));
     }
 
     public void verifyAndModify(RestaurantDTO restaurantDTO) {
@@ -97,7 +95,7 @@ public class RestaurantService {
         }
     }
 
-    private boolean isNameExisted(String name) {
+    public boolean isNameExisted(String name) {
         boolean isNameExisted = false;
         if (name != null)
             isNameExisted = restaurantRepository.findByNameIgnoreCase(name.trim()).isPresent();
@@ -113,7 +111,7 @@ public class RestaurantService {
 
     private boolean isPhoneValidFormat(String phone) {
         boolean isPhoneWrongFormat = false;
-        String pattern = "^[0-9\\s()-]+$";
+        String pattern = CommonConstant.PHONE_NUMBER_PATTERN;
         if (phone != null)
             isPhoneWrongFormat = phone.matches(pattern);
 

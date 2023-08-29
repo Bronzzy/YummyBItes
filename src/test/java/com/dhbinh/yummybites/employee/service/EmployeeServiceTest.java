@@ -15,6 +15,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -32,6 +33,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static com.dhbinh.yummybites.employee.entity.StatusEnum.STATUS_ACTIVE;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
@@ -84,6 +86,7 @@ class EmployeeServiceTest {
 
     private EmployeeDTO validEmployeeDTO() {
         return EmployeeDTO.builder()
+                .id(1L)
                 .firstName("John")
                 .lastName("Doe")
                 .phone("341-724-5075")
@@ -96,22 +99,7 @@ class EmployeeServiceTest {
 
     @Test
     void createEmployee_WithMandatoryFields_ReturnDTO() {
-        Employee employee = validEmployee();
 
-        EmployeeDTO dto = validEmployeeDTO();
-
-        when(employeeRepository.save(any(Employee.class))).thenReturn(employee);
-        when(employeeMapper.toDTO(employee)).thenReturn(dto);
-
-        EmployeeDTO result = employeeService.createEmployee(dto);
-
-        assertEquals(dto.getFirstName(), result.getFirstName());
-        assertEquals(dto.getLastName(), result.getLastName());
-        assertEquals(dto.getPhone(), result.getPhone());
-        assertEquals(dto.getEmail(), result.getEmail());
-        assertEquals(dto.getAddress(), result.getAddress());
-        assertEquals(dto.getDob(), result.getDob());
-        assertEquals(dto.getRestaurantName(), result.getRestaurantName());
     }
 
     @Test

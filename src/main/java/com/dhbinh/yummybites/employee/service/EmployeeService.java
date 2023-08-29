@@ -35,7 +35,7 @@ public class EmployeeService {
     @Autowired
     private EmployeeMapper employeeMapper;
 
-    public EmployeeDTO createEmployee(EmployeeDTO employeeDTO) {
+    public Employee createEmployee(EmployeeDTO employeeDTO) {
         verifyAndModify(employeeDTO);
 
         Employee employee = Employee.builder()
@@ -48,7 +48,7 @@ public class EmployeeService {
                 .restaurant(restaurantService.findByNameIgnoreCase(employeeDTO.getRestaurantName().trim()))
                 .build();
 
-        return employeeMapper.toDTO(employeeRepository.save(employee));
+        return employeeRepository.save(employee);
     }
 
     public EmployeeDTO findById(Long id) {

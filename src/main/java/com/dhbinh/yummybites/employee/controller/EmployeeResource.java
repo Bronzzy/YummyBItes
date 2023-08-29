@@ -1,7 +1,9 @@
 package com.dhbinh.yummybites.employee.controller;
 
+import com.dhbinh.yummybites.employee.entity.Employee;
 import com.dhbinh.yummybites.employee.service.EmployeeService;
 import com.dhbinh.yummybites.employee.service.dto.EmployeeDTO;
+import com.dhbinh.yummybites.employee.service.mapper.EmployeeMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -28,9 +30,14 @@ public class EmployeeResource {
     @Autowired
     private EmployeeService employeeService;
 
+    @Autowired
+    private EmployeeMapper employeeMapper;
+
+
     @PostMapping
     public ResponseEntity<EmployeeDTO> createEmployee(@Valid @RequestBody EmployeeDTO employeeDTO) {
-        EmployeeDTO dto = employeeService.createEmployee(employeeDTO);
+        Employee result = employeeService.createEmployee(employeeDTO);
+        EmployeeDTO dto = employeeMapper.toDTO(result);
         return ResponseEntity.created(URI.create("/api/employees" + dto.getId())).body(dto);
     }
 
