@@ -60,7 +60,7 @@ public class OrderDetailService {
     public OrderDTO create(String token, List<OrderDetailDTO> orderDetailDTOList, Long tableId) {
         logger.info("Create order detail{}", orderDetailDTOList);
         Order order = Order.builder()
-                .employee(employeeMapper.toEntity(employeeService.findByEmail(jwtUtils.getUserNameFromToken(token))))
+                .employee(employeeService.findByEmail(jwtUtils.getUserNameFromToken(token)))
                 .isPaid(false)
                 .diningTable(diningTableMapper.toEntity(diningTableService.setOccupied(tableId)))
                 .build();

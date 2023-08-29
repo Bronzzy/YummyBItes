@@ -15,7 +15,6 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -33,13 +32,10 @@ import java.util.List;
 import java.util.Optional;
 
 import static com.dhbinh.yummybites.employee.entity.StatusEnum.STATUS_ACTIVE;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith({MockitoExtension.class})
 class EmployeeServiceTest {
@@ -78,7 +74,7 @@ class EmployeeServiceTest {
                 .phone("341-724-5075")
                 .email("johndoe@example.com")
                 .address("4089 Charing Cross Drive")
-                .dob(LocalDate.of(1984, 12, 31))
+                .dob(LocalDate.of(1990, 12, 31))
                 .status(STATUS_ACTIVE)
                 .restaurant(validRestaurant())
                 .build();
@@ -118,7 +114,7 @@ class EmployeeServiceTest {
     }
 
     @Test
-    public void findAll_AvailableEmployee_ReturnEmployeeList() {
+    void findAll_AvailableEmployee_ReturnEmployeeList() {
         List<Employee> employees = new ArrayList<>();
         employees.add(new Employee());
         employees.add(new Employee());
@@ -147,27 +143,29 @@ class EmployeeServiceTest {
         assertThrows(ResourceNotFoundException.class, () -> employeeService.findById(999L));
     }
 
-
     @Test
-    void findEmployee_WithExistedEmail_ReturnDTO() {
-        Employee employee = validEmployee();
+    void deleteEmployee_NonExistedId_ThrowException() {
+        when(employeeRepository.findById(999L)).thenReturn(Optional.empty());
 
-        EmployeeDTO dto = validEmployeeDTO();
-
-        when(employeeRepository.findByEmail("johndoe@example.com")).thenReturn(Optional.of(employee));
-        when(employeeMapper.toDTO(employee)).thenReturn(dto);
-
-        EmployeeDTO result = employeeService.findByEmail("johndoe@example.com");
-
-        assertEquals(dto.getFirstName(), result.getFirstName());
-        assertEquals(dto.getLastName(), result.getLastName());
-        assertEquals(dto.getPhone(), result.getPhone());
-        assertEquals(dto.getEmail(), result.getEmail());
-        assertEquals(dto.getAddress(), result.getAddress());
-        assertEquals(dto.getDob(), result.getDob());
-        assertEquals(dto.getRestaurantName(), result.getRestaurantName());
+        assertThrows(ResourceNotFoundException.class, () -> employeeService.deleteEmployee(999L));
     }
 
+    @Test
+    void findEmployee_WithExistedEmail_ReturnEntity() {
+        Employee employee = validEmployee();
+
+        when(employeeRepository.findByEmail("johndoe@example.com")).thenReturn(Optional.of(employee));
+
+        Employee result = employeeService.findByEmail("johndoe@example.com");
+
+        assertEquals(result.getFirstName(), employee.getFirstName());
+        assertEquals(result.getLastName(), employee.getLastName());
+        assertEquals(result.getPhone(), employee.getPhone());
+        assertEquals(result.getEmail(), employee.getEmail());
+        assertEquals(result.getAddress(), employee.getAddress());
+        assertEquals(result.getDob(), employee.getDob());
+        assertEquals(result.getRestaurant().getName(), employee.getRestaurant().getName());
+    }
 
     @Test
     void findEmployee_WithNonExistedEmail_ThrowException() {
@@ -175,11 +173,33 @@ class EmployeeServiceTest {
         assertThrows(ResourceNotFoundException.class, () -> employeeService.findByEmail("non-existed-email@gmail.com"));
     }
 
+    @Test
+    void testFindWithSpecifications_Positive() {
+        String firstName = "John";
+        String lastName = "Doe";
+        String address = "123 Main St";
+        int day = 1;
+        int month = 1;
+        int year = 1990;
+        int ageLessThan = 30;
+        int ageGreaterThan = 20;
 
+        List<Employee> employees = new ArrayList<>();
+        employees.add(new Employee());
+
+        when(employeeRepository.findAll(any(Specification.class))).thenReturn(employees);
+        when(employeeMapper.toDTOList(employees)).thenReturn(new ArrayList<>());
+
+        List<EmployeeDTO> result = employeeService.findWithSpecifications(firstName, lastName, address, day, month, year, ageLessThan, ageGreaterThan);
+
+        assertEquals(0, result.size());
+        verify(employeeRepository, times(1)).findAll(any(Specification.class));
+        verify(employeeMapper, times(1)).toDTOList(employees);
+    }
 
     @Test
     @MockitoSettings(strictness = Strictness.LENIENT)
-    public void testExportEmployeeList() throws IOException {
+    void testExportEmployeeList() throws IOException {
         List<Employee> employees = new ArrayList<>();
         employees.add(new Employee(1L, "John", "Doe", LocalDate.of(1990, 12, 30), "Address 1", "123456789", "john.doe@example.com", STATUS_ACTIVE, validRestaurant()));
         employees.add(new Employee(2L, "Jane", "Smith", LocalDate.of(1990, 11, 30), "Address 2", "987654321", "jane.smith@example.com", StatusEnum.STATUS_ACTIVE, validRestaurant()));
@@ -220,36 +240,5 @@ class EmployeeServiceTest {
                 assertEquals(employeeDTO.getRestaurantName(), row.getCell(5).getStringCellValue());
             }
         }
-    }
-
-    @Test
-    public void testFindWithSpecifications_Positive() {
-        String firstName = "John";
-        String lastName = "Doe";
-        String address = "123 Main St";
-        int day = 1;
-        int month = 1;
-        int year = 1990;
-        int ageLessThan = 30;
-        int ageGreaterThan = 20;
-
-        List<Employee> employees = new ArrayList<>();
-        employees.add(new Employee());
-
-        when(employeeRepository.findAll(any(Specification.class))).thenReturn(employees);
-        when(employeeMapper.toDTOList(employees)).thenReturn(new ArrayList<>());
-
-        List<EmployeeDTO> result = employeeService.findWithSpecifications(firstName, lastName, address, day, month, year, ageLessThan, ageGreaterThan);
-
-        assertEquals(0, result.size());
-        verify(employeeRepository, times(1)).findAll(any(Specification.class));
-        verify(employeeMapper, times(1)).toDTOList(employees);
-    }
-
-    @Test
-    public void deleteEmployee_NonExistedId_ThrowException() {
-        when(employeeRepository.findById(999L)).thenReturn(Optional.empty());
-
-        assertThrows(ResourceNotFoundException.class, () -> employeeService.deleteEmployee(999L));
     }
 }

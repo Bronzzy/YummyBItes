@@ -63,7 +63,7 @@ public class BillDetailService {
 
         Bill bill = Bill.builder()
                 .supplier(supplierMapper.toEntity(supplierService.findByNameIgnoreCase(supplierName.trim())))
-                .employee(employeeMapper.toEntity(employeeService.findByEmail(jwtUtils.getUserNameFromToken(token))))
+                .employee(employeeService.findByEmail(jwtUtils.getUserNameFromToken(token)))
                 .createdDate(LocalDateTime.now())
                 .build();
 

@@ -166,7 +166,7 @@ class RestaurantServiceTest {
     }
 
     @Test
-     void testUpdate_WithValidIdAndDTO_ReturnsUpdatedRestaurantDTO() {
+     void update_WithValidIdAndDTO_ReturnsUpdatedRestaurantDTO() {
         Long id = 1L;
         RestaurantDTO restaurantDTO = new RestaurantDTO();
         restaurantDTO.setPhone("341-724-5075");

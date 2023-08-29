@@ -50,7 +50,7 @@ public class UserServiceImpl {
         User user = User.builder()
                 .username(userDTO.getUsername().trim())
                 .password(encoder.encode(userDTO.getPassword()))
-                .employee(employeeMapper.toEntity(employeeService.findByEmail(userDTO.getEmployeeEmail())))
+                .employee(employeeService.findByEmail(userDTO.getEmployeeEmail()))
                 .active(true)
                 .build();
         userRepository.save(user);

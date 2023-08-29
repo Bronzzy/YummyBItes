@@ -51,15 +51,15 @@ public class EmployeeService {
         return employeeRepository.save(employee);
     }
 
+    public List<Employee> findAll() {
+        return employeeRepository.findAll();
+    }
+
     public Employee findById(Long id) {
         return employeeRepository.findById(id).
                 orElseThrow(() -> new ResourceNotFoundException(
                         ErrorMessage.KEY_EMPLOYEE_NOT_FOUND,
                         ErrorMessage.EMPLOYEE_NOT_FOUND));
-    }
-
-    public List<Employee> findAll() {
-        return employeeRepository.findAll();
     }
 
     public EmployeeDTO deleteEmployee(Long id) {
@@ -77,6 +77,12 @@ public class EmployeeService {
         return employeeMapper.toDTOList(employeeRepository.findAll(spec));
     }
 
+    public Employee findByEmail(String email) {
+        return employeeRepository.findByEmail(email).
+                orElseThrow(() -> new ResourceNotFoundException(
+                        ErrorMessage.KEY_EMPLOYEE_NOT_FOUND,
+                        ErrorMessage.EMPLOYEE_NOT_FOUND));
+    }
 
     public void exportEmployeeList() {
         List<Employee> employees = employeeRepository.findAll();
@@ -145,13 +151,5 @@ public class EmployeeService {
     public boolean isEmailExisted(String email) {
         return employeeRepository.findByEmail(email).isPresent();
     }
-
-    public EmployeeDTO findByEmail(String email) {
-        return employeeMapper.toDTO((employeeRepository.findByEmail(email)).
-                orElseThrow(() -> new ResourceNotFoundException(
-                        ErrorMessage.KEY_EMPLOYEE_NOT_FOUND,
-                        ErrorMessage.EMPLOYEE_NOT_FOUND)));
-    }
-
 
 }
