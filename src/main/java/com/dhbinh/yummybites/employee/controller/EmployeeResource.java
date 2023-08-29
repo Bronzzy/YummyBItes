@@ -43,12 +43,12 @@ public class EmployeeResource {
 
     @GetMapping
     public ResponseEntity<List<EmployeeDTO>> findAll() {
-        return ResponseEntity.ok(employeeService.findAll());
+        return ResponseEntity.ok(employeeMapper.toDTOList(employeeService.findAll()));
     }
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<EmployeeDTO> findByID(@PathVariable("id") Long ID) {
-        return ResponseEntity.ok(employeeService.findById(ID));
+        return ResponseEntity.ok(employeeMapper.toDTO(employeeService.findById(ID)));
     }
 
     @GetMapping(value = "/find-with-specification")

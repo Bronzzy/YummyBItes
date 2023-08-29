@@ -103,9 +103,9 @@ class RestaurantServiceTest {
         restaurant.setId(1L);
         when(restaurantRepository.findById(1L)).thenReturn(Optional.of(restaurant));
 
-        Restaurant foundRestaurant = restaurantService.findById(1L);
+        Restaurant foundedRestaurant = restaurantService.findById(1L);
 
-        assertEquals(1L, foundRestaurant.getId().longValue());
+        assertEquals(1L, foundedRestaurant.getId().longValue());
     }
 
     @Test

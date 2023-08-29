@@ -99,27 +99,46 @@ class EmployeeServiceTest {
 
     @Test
     void createEmployee_WithMandatoryFields_ReturnDTO() {
+        Employee employee = validEmployee();
+        EmployeeDTO dto = validEmployeeDTO();
 
+        when(employeeRepository.save(any(Employee.class))).thenReturn(employee);
+
+        Employee created = employeeService.createEmployee(dto);
+
+        verify(employeeRepository).save(any(Employee.class));
+
+        assertEquals(employee.getFirstName(), created.getFirstName());
+        assertEquals(employee.getLastName(), created.getLastName());
+        assertEquals(employee.getPhone(), created.getPhone());
+        assertEquals(employee.getEmail(), created.getEmail());
+        assertEquals(employee.getAddress(), created.getAddress());
+        assertEquals(employee.getDob(), created.getDob());
+        assertEquals(employee.getRestaurant().getName(), created.getRestaurant().getName());
+    }
+
+    @Test
+    public void findAll_AvailableEmployee_ReturnEmployeeList() {
+        List<Employee> employees = new ArrayList<>();
+        employees.add(new Employee());
+        employees.add(new Employee());
+        when(employeeRepository.findAll()).thenReturn(employees);
+
+        List<Employee> expected = employeeService.findAll();
+        verify(employeeRepository).findAll();
+        assertEquals(employees.size(), expected.size());
     }
 
     @Test
     void findEmployee_ExistedId_ReturnDTO() {
         Employee employee = validEmployee();
-
-        EmployeeDTO dto = validEmployeeDTO();
+        employee.setId(1L);
 
         when(employeeRepository.findById(1L)).thenReturn(Optional.of(employee));
-        when(employeeMapper.toDTO(employee)).thenReturn(dto);
 
-        EmployeeDTO result = employeeService.findById(1L);
+        Employee foundedEmployee = employeeService.findById(1L);
 
-        assertEquals(dto.getFirstName(), result.getFirstName());
-        assertEquals(dto.getLastName(), result.getLastName());
-        assertEquals(dto.getPhone(), result.getPhone());
-        assertEquals(dto.getEmail(), result.getEmail());
-        assertEquals(dto.getAddress(), result.getAddress());
-        assertEquals(dto.getDob(), result.getDob());
-        assertEquals(dto.getRestaurantName(), result.getRestaurantName());
+        assertEquals(1L, foundedEmployee.getId().longValue());
     }
 
     @Test
@@ -127,6 +146,7 @@ class EmployeeServiceTest {
         when(employeeRepository.findById(999L)).thenReturn(Optional.empty());
         assertThrows(ResourceNotFoundException.class, () -> employeeService.findById(999L));
     }
+
 
     @Test
     void findEmployee_WithExistedEmail_ReturnDTO() {
@@ -155,21 +175,7 @@ class EmployeeServiceTest {
         assertThrows(ResourceNotFoundException.class, () -> employeeService.findByEmail("non-existed-email@gmail.com"));
     }
 
-    @Test
-    public void testFindAll_PositiveCase() {
-        List<Employee> employees = new ArrayList<>();
-        employees.add(new Employee());
-        employees.add(new Employee());
-        when(employeeRepository.findAll()).thenReturn(employees);
 
-        List<EmployeeDTO> employeeDTOs = new ArrayList<>();
-        employeeDTOs.add(new EmployeeDTO());
-        employeeDTOs.add(new EmployeeDTO());
-        when(employeeMapper.toDTOList(employees)).thenReturn(employeeDTOs);
-
-        List<EmployeeDTO> result = employeeService.findAll();
-        assertEquals(employeeDTOs, result);
-    }
 
     @Test
     @MockitoSettings(strictness = Strictness.LENIENT)

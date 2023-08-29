@@ -51,20 +51,15 @@ public class EmployeeService {
         return employeeRepository.save(employee);
     }
 
-    public EmployeeDTO findById(Long id) {
-        return employeeMapper.toDTO((employeeRepository.findById(id)).
+    public Employee findById(Long id) {
+        return employeeRepository.findById(id).
                 orElseThrow(() -> new ResourceNotFoundException(
                         ErrorMessage.KEY_EMPLOYEE_NOT_FOUND,
-                        ErrorMessage.EMPLOYEE_NOT_FOUND)));
+                        ErrorMessage.EMPLOYEE_NOT_FOUND));
     }
 
-    public List<EmployeeDTO> findAll() {
-        return employeeMapper.toDTOList(employeeRepository.findAll());
-    }
-
-    public List<EmployeeDTO> findWithSpecifications(String firstName, String lastName, String address, int day, int month, int year, int ageLessThan, int ageGreaterThan) {
-        Specification<Employee> spec = EmployeeSpecification.findWithSpecifications(firstName, lastName, address, day, month, year, ageLessThan, ageGreaterThan);
-        return employeeMapper.toDTOList(employeeRepository.findAll(spec));
+    public List<Employee> findAll() {
+        return employeeRepository.findAll();
     }
 
     public EmployeeDTO deleteEmployee(Long id) {
@@ -76,6 +71,12 @@ public class EmployeeService {
         employee.setStatus(StatusEnum.STATUS_INACTIVE);
         return employeeMapper.toDTO(employeeRepository.save(employee));
     }
+
+    public List<EmployeeDTO> findWithSpecifications(String firstName, String lastName, String address, int day, int month, int year, int ageLessThan, int ageGreaterThan) {
+        Specification<Employee> spec = EmployeeSpecification.findWithSpecifications(firstName, lastName, address, day, month, year, ageLessThan, ageGreaterThan);
+        return employeeMapper.toDTOList(employeeRepository.findAll(spec));
+    }
+
 
     public void exportEmployeeList() {
         List<Employee> employees = employeeRepository.findAll();
