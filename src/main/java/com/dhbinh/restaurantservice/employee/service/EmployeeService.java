@@ -128,6 +128,7 @@ public class EmployeeService {
     }
 
     public void verifyAndModify(EmployeeDTO employeeDTO) {
+
         if (employeeDTO.getFirstName() != null) {
             employeeDTO.setFirstName(Utils.capitalizeFirstWordAndAfterWhitespace(employeeDTO.getFirstName().trim()));
         }
