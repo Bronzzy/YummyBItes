@@ -43,6 +43,7 @@ public class EmployeeService {
                 .lastName(employeeDTO.getLastName())
                 .phone(employeeDTO.getPhone().trim())
                 .email(employeeDTO.getEmail().trim())
+                .dob(employeeDTO.getDob())
                 .address(employeeDTO.getAddress())
                 .status(StatusEnum.STATUS_ACTIVE)
                 .restaurant(restaurantService.findByNameIgnoreCase(employeeDTO.getRestaurantName().trim()))
