@@ -47,7 +47,7 @@ public class Bill {
     private Supplier supplier;
 
     @NotEmpty(message = ErrorMessage.BILL_DETAIL_NULL_OR_BLANK)
-    @OneToMany(mappedBy = "bill", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "bill", cascade = CascadeType.ALL)
     private List<BillDetail> billDetails;
 
     @Column(nullable = false)
