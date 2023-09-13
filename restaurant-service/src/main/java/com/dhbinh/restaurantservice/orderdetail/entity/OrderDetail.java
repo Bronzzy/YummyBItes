@@ -2,6 +2,7 @@ package com.dhbinh.restaurantservice.orderdetail.entity;
 
 import com.dhbinh.restaurantservice.base.exception.ErrorMessage;
 import com.dhbinh.restaurantservice.menuitem.entity.MenuItem;
+import com.dhbinh.restaurantservice.onlineorder.entity.OnlineOrder;
 import com.dhbinh.restaurantservice.order.entity.Order;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,4 +1,4 @@
-package com.dhbinh.restaurantservice.onlineorder.service;
+package com.dhbinh.restaurantservice.utils.calculatedistance;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;

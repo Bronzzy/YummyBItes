@@ -1,0 +1,37 @@
+| 2023-09-12 11:52:19 |  INFO |  | Starting OrderServiceTest using Java 11.0.18 on AAVN-WS-380 with PID 4524 (started by dhbinh in D:\Program Files (x86)\JetBrains\IdeaProjects\YummyBites\restaurant-service)
+| 2023-09-12 11:52:19 | DEBUG |  | Running with Spring Boot v2.7.14, Spring v5.3.29
+| 2023-09-12 11:52:19 |  INFO |  | No active profile set, falling back to 1 default profile: "default"
+| 2023-09-12 11:52:33 |  INFO |  | Started OrderServiceTest in 14.429 seconds (JVM running for 17.245)
+| 2023-09-12 11:54:07 |  INFO |  | Starting OrderServiceTest using Java 11.0.18 on AAVN-WS-380 with PID 12956 (started by dhbinh in D:\Program Files (x86)\JetBrains\IdeaProjects\YummyBites\restaurant-service)
+| 2023-09-12 11:54:07 | DEBUG |  | Running with Spring Boot v2.7.14, Spring v5.3.29
+| 2023-09-12 11:54:07 |  INFO |  | No active profile set, falling back to 1 default profile: "default"
+| 2023-09-12 11:54:20 |  INFO |  | Started OrderServiceTest in 13.465 seconds (JVM running for 16.21)
+| 2023-09-12 11:56:24 |  INFO |  | Starting OrderServiceTest using Java 11.0.18 on AAVN-WS-380 with PID 17720 (started by dhbinh in D:\Program Files (x86)\JetBrains\IdeaProjects\YummyBites\restaurant-service)
+| 2023-09-12 11:56:24 | DEBUG |  | Running with Spring Boot v2.7.14, Spring v5.3.29
+| 2023-09-12 11:56:24 |  INFO |  | No active profile set, falling back to 1 default profile: "default"
+| 2023-09-12 11:56:39 |  INFO |  | Started OrderServiceTest in 15.608 seconds (JVM running for 18.607)
+| 2023-09-12 11:56:40 | ERROR |  | HHH000478: Unsuccessful: 
+    alter table bill 
+       drop constraint FKle28mnhpamru2e2o22d5u78bu
+| 2023-09-12 11:56:40 | ERROR |  | HHH000478: Unsuccessful: 
+    alter table bill 
+       drop constraint FK29ldosu59fnyk4uf8sfu2b6at
+| 2023-09-12 11:56:40 | ERROR |  | HHH000478: Unsuccessful: 
+    alter table bill_detail 
+       drop constraint FK3uswtgsec086qf6d89jeqwcxi
+| 2023-09-12 11:57:50 |  INFO |  | Starting OrderServiceTest using Java 11.0.18 on AAVN-WS-380 with PID 15568 (started by dhbinh in D:\Program Files (x86)\JetBrains\IdeaProjects\YummyBites\restaurant-service)
+| 2023-09-12 11:57:50 | DEBUG |  | Running with Spring Boot v2.7.14, Spring v5.3.29
+| 2023-09-12 11:57:50 |  INFO |  | No active profile set, falling back to 1 default profile: "default"
+| 2023-09-12 11:58:03 |  INFO |  | Started OrderServiceTest in 13.338 seconds (JVM running for 16.108)
+| 2023-09-12 11:59:40 |  INFO |  | Starting OrderServiceTest using Java 11.0.18 on AAVN-WS-380 with PID 20472 (started by dhbinh in D:\Program Files (x86)\JetBrains\IdeaProjects\YummyBites\restaurant-service)
+| 2023-09-12 11:59:40 | DEBUG |  | Running with Spring Boot v2.7.14, Spring v5.3.29
+| 2023-09-12 11:59:40 |  INFO |  | No active profile set, falling back to 1 default profile: "default"
+| 2023-09-12 11:59:53 |  INFO |  | Started OrderServiceTest in 14.201 seconds (JVM running for 17.233)
+| 2023-09-12 12:00:36 |  INFO |  | Starting OrderServiceTest using Java 11.0.18 on AAVN-WS-380 with PID 17348 (started by dhbinh in D:\Program Files (x86)\JetBrains\IdeaProjects\YummyBites\restaurant-service)
+| 2023-09-12 12:00:36 | DEBUG |  | Running with Spring Boot v2.7.14, Spring v5.3.29
+| 2023-09-12 12:00:36 |  INFO |  | No active profile set, falling back to 1 default profile: "default"
+| 2023-09-12 12:00:50 |  INFO |  | Started OrderServiceTest in 15.047 seconds (JVM running for 18.472)
+| 2023-09-12 12:11:12 |  INFO |  | Starting OrderServiceTest using Java 11.0.18 on AAVN-WS-380 with PID 16108 (started by dhbinh in D:\Program Files (x86)\JetBrains\IdeaProjects\YummyBites\restaurant-service)
+| 2023-09-12 12:11:12 | DEBUG |  | Running with Spring Boot v2.7.14, Spring v5.3.29
+| 2023-09-12 12:11:12 |  INFO |  | No active profile set, falling back to 1 default profile: "default"
+| 2023-09-12 12:11:24 |  INFO |  | Started OrderServiceTest in 12.552 seconds (JVM running for 15.71)

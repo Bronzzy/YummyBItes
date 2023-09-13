@@ -21,7 +21,7 @@ import java.util.List;
 
 @RestController
 @Validated
-@RequestMapping(value = "/menuitems")
+@RequestMapping(value = "/menu-items")
 @PreAuthorize("hasRole('OWNER')")
 public class MenuItemResource {
 

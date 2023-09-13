@@ -1,5 +1,6 @@
 package com.dhbinh.restaurantservice.orderdetail.controller;
 
+import com.dhbinh.restaurantservice.onlineorder.service.dto.OnlineOrderDTO;
 import com.dhbinh.restaurantservice.order.service.dto.OrderDTO;
 import com.dhbinh.restaurantservice.orderdetail.service.OrderDetailService;
 import com.dhbinh.restaurantservice.orderdetail.service.dto.OrderDetailDTO;
@@ -19,7 +20,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/orderdetails")
+@RequestMapping(value = "/order-details")
 @PreAuthorize("hasAnyRole('OWNER', 'WAITER')")
 @Validated
 public class OrderDetailResource {

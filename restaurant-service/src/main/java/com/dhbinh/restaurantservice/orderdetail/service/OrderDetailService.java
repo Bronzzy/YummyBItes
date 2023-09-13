@@ -7,6 +7,8 @@ import com.dhbinh.restaurantservice.employee.service.EmployeeService;
 import com.dhbinh.restaurantservice.employee.service.mapper.EmployeeMapper;
 import com.dhbinh.restaurantservice.menuitem.service.MenuItemService;
 import com.dhbinh.restaurantservice.menuitem.service.mapper.MenuItemMapper;
+import com.dhbinh.restaurantservice.onlineorder.repository.OnlineOrderRepository;
+import com.dhbinh.restaurantservice.onlineorder.service.mapper.OnlineOrderMapper;
 import com.dhbinh.restaurantservice.order.entity.Order;
 import com.dhbinh.restaurantservice.order.repository.OrderRepository;
 import com.dhbinh.restaurantservice.order.service.dto.OrderDTO;
@@ -29,13 +31,16 @@ import java.util.List;
 public class OrderDetailService {
 
     @Autowired
+    private OrderRepository orderRepository;
+
+    @Autowired
+    private OnlineOrderRepository onlineOrderRepository;
+
+    @Autowired
     private EmployeeService employeeService;
 
     @Autowired
     private MenuItemService menuItemService;
-
-    @Autowired
-    private OrderRepository orderRepository;
 
     @Autowired
     private DiningTableService diningTableService;
@@ -50,6 +55,9 @@ public class OrderDetailService {
     private OrderMapper orderMapper;
 
     @Autowired
+    private OnlineOrderMapper onlineOrderMapper;
+
+    @Autowired
     private DiningTableMapper diningTableMapper;
 
     @Autowired
@@ -58,7 +66,6 @@ public class OrderDetailService {
     private static final Logger logger = LoggerFactory.getLogger(OrderDetailService.class);
 
     public OrderDTO create(String token, List<OrderDetailDTO> orderDetailDTOList, Long tableId) {
-        logger.info("Create order detail{}", orderDetailDTOList);
         Order order = Order.builder()
                 .employee(employeeService.findByEmail(jwtUtils.getUserNameFromToken(token)))
                 .isPaid(false)
@@ -68,7 +75,6 @@ public class OrderDetailService {
         List<OrderDetail> detailList = new ArrayList<>();
         double orderTotalPrice = 0;
         for (OrderDetailDTO orderDetailDTO : orderDetailDTOList) {
-            logger.info("Order detail DTO {}", orderDetailDTO);
             OrderDetail orderDetail = OrderDetail.builder()
                     .order(order)
                     .menuItem(menuItemMapper.toEntity(menuItemService.findByName(orderDetailDTO.getMenuItemName().trim())))
@@ -85,4 +91,6 @@ public class OrderDetailService {
 
         return orderMapper.toDTO(orderRepository.save(order));
     }
+
+
 }
