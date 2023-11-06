@@ -52,6 +52,14 @@ public class BillService {
         return billMapper.toDTOList(billRepository.findAll(spec));
     }
 
+    public void delete(Long id){
+        Bill bill = billRepository.findById(id).
+                orElseThrow(() -> new ResourceNotFoundException(
+                        ErrorMessage.KEY_BILL_NOT_FOUND,
+                        ErrorMessage.BILL_NOT_FOUND));
+        billRepository.delete(bill);
+    }
+
     @Scheduled(cron = "00 57 14 * * *")
     public void exportBillByDate() throws IOException {
         List<Bill> billList = billRepository.findAllBillByDate(LocalDate.now().getDayOfMonth());

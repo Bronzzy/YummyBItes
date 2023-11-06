@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -50,5 +51,10 @@ public class BillResource {
     @PostMapping(value = "/export-bill-by-date")
     public void exportBillByDate() throws IOException {
         billService.exportBillByDate();
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public void delete(@PathVariable Long id){
+        billService.delete(id);
     }
 }
