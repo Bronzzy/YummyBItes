@@ -1,8 +1,7 @@
-package com.dhbinh.restaurantservice.order.entity;
+package com.dhbinh.restaurantservice.onlineorder.entity;
 
 import com.dhbinh.restaurantservice.base.exception.ErrorMessage;
-import com.dhbinh.restaurantservice.diningtable.entity.DiningTable;
-import com.dhbinh.restaurantservice.employee.entity.Employee;
+import com.dhbinh.restaurantservice.onlineorderdetail.entity.OnlineOrderDetail;
 import com.dhbinh.restaurantservice.orderdetail.entity.OrderDetail;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
@@ -10,7 +9,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.CascadeType;
@@ -19,12 +17,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -34,36 +29,34 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "orders")
-@ToString(exclude = "orderDetails")
-public class Order {
+@Table
+public class OnlineOrder {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.PERSIST)
-    private List<OrderDetail> orderDetails;
+    @OneToMany(mappedBy = "onlineOrder",cascade = CascadeType.PERSIST)
+    private List<OnlineOrderDetail> onlineOrderDetails;
 
-    @ManyToOne
-    @JoinColumn(name = "employee_id", nullable = false)
-    @NotNull(message = ErrorMessage.EMPLOYEE_NULL_OR_BLANK)
-    private Employee employee;
+    @Column
+    private String destination;
 
-    @ManyToOne
-    @JoinColumn(name = "table_id", nullable = false)
-    @NotNull(message = ErrorMessage.DINING_TABLE_NULL_OR_BLANK)
-    private DiningTable diningTable;
+    @Column
+    private Double deliveryFee;
 
-    @Column(nullable = false)
+    @Column
+    private String customerPhone;
+
+    @Column
     @Min(value = 1, message = ErrorMessage.PRICE_LESS_THAN_ONE)
     private Double totalPrice;
 
-    @Column(nullable = false)
+    @Column
     private Boolean isPaid;
 
     @CreationTimestamp
-    @Column(nullable = false)
+    @Column
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm")
     private LocalDateTime createdDate;
 }
