@@ -4,11 +4,8 @@ import com.dhbinh.restaurantservice.base.security.jwt.JwtUtils;
 import com.dhbinh.restaurantservice.diningtable.service.DiningTableService;
 import com.dhbinh.restaurantservice.diningtable.service.mapper.DiningTableMapper;
 import com.dhbinh.restaurantservice.employee.service.EmployeeService;
-import com.dhbinh.restaurantservice.employee.service.mapper.EmployeeMapper;
 import com.dhbinh.restaurantservice.menuitem.service.MenuItemService;
 import com.dhbinh.restaurantservice.menuitem.service.mapper.MenuItemMapper;
-import com.dhbinh.restaurantservice.onlineorder.repository.OnlineOrderRepository;
-import com.dhbinh.restaurantservice.onlineorder.service.mapper.OnlineOrderMapper;
 import com.dhbinh.restaurantservice.order.entity.Order;
 import com.dhbinh.restaurantservice.order.repository.OrderRepository;
 import com.dhbinh.restaurantservice.order.service.dto.OrderDTO;
@@ -34,9 +31,6 @@ public class OrderDetailService {
     private OrderRepository orderRepository;
 
     @Autowired
-    private OnlineOrderRepository onlineOrderRepository;
-
-    @Autowired
     private EmployeeService employeeService;
 
     @Autowired
@@ -49,13 +43,7 @@ public class OrderDetailService {
     private MenuItemMapper menuItemMapper;
 
     @Autowired
-    private EmployeeMapper employeeMapper;
-
-    @Autowired
     private OrderMapper orderMapper;
-
-    @Autowired
-    private OnlineOrderMapper onlineOrderMapper;
 
     @Autowired
     private DiningTableMapper diningTableMapper;
